@@ -1,0 +1,28 @@
+# editor
+.idea/
+.vscode/
+
+# misc
+.DS_Store
+
+.env
+.env*.local
+.env.*
+
+
+node_modules
+logs
+
+__pycache__
+
+.docs
+.gitkeep
+.eslintcache
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+yarn.lock
+
+.venv
+redis_schema.yaml

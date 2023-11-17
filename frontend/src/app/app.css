@@ -1,0 +1,36 @@
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.pf-v5-c-content {
+  --pf-v5-c-content--small--Color: red; /* changes all <small> color to red */
+  --pf-v5-c-content--blockquote--BorderLeftColor: purple; /* changes all <blockquote> left border color to purple */
+  --pf-v5-c-content--hr--BackgroundColor: lemonchiffon; /* changes a <hr> color to lemonchiffon */
+}
+
+.img-format { /*Default image formatting*/
+  margin: 5px; 
+  border: 2px solid darkgray;
+}
+
+.simple-padding {
+  padding: 5px;
+}
+
+.display-linebreak {
+  white-space: pre-line;
+}
+
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
+.image-gallery-thumbnail {
+  width: 50px;
+  height: 50px;
+}
+
+.image-gallery-original {
+  width: 100%;
+  height: 100%;
+}
