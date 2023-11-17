@@ -1,0 +1,29 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[[source]]
+url = "https://download.pytorch.org/whl/cu118/"
+verify_ssl = false
+name = "pytorch"
+
+[packages]
+boto3 = "~=1.28.0"
+fastapi = "~=0.104.0"
+langchain = "==0.0.324"
+python-dotenv = "~=1.0.0"
+psycopg2-binary = "~=2.9.9"
+redis = "~=5.0.1"
+sentence-transformers = "~=2.2.2"
+text-generation = "~=0.6.1"
+torch = {version = "==2.1.0+cu118", index = "pytorch"}
+torchvision = {version = "==0.16.0+cu118", index = "pytorch"}
+uvicorn = "~=0.23.2"
+python-multipart = "*"
+
+[dev-packages]
+"watchdog[watchmedo]" = "~=3.0.0"
+
+[requires]
+python_version = "3.11"
