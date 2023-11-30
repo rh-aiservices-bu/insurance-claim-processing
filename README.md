@@ -1,5 +1,18 @@
 # Insurance Claim Processing
 
+## General Development Information
+
+### Working with this repo
+
+- `main` branch is the one used for production. That's where the Prod and Test catalog items from [demo.redhat.com](https://demo.redhat.com) point to (instructions, materials used,...).
+- `dev` branch is for development. That's where the Dev catalog item points to.
+- Branches are made from `dev` (hot fixes could be made from `main` if really needed).
+- When ready, PRs should be made to `dev`. Once all features, bug fixes,... are checked in and tested for a new release, another PR will be made from `dev` to `main`.
+- Branches must be prefixed with `/feature` (example `feature/new-pipeline-instructions`), `bugfix`, or other meaningful info.
+- Add your name/handle in the branch name if needed to avoid confusion.
+- If your development relates to an Issue or a Feature Request, add its reference in the branch name.
+- Try to stash your changes before submitting a PR.
+
 ## Instructions Development
 
 ### Requirements
@@ -34,7 +47,7 @@ If you want to install packages manually:
 - In the `backend` folder, create a venv and install packages with the provided Pipfile/Pipfile.lock files.
 - In the `backend` folder, create the file `.env` base on the example `.env.example` and enter the configuration for the Inference server.
 
-### Develop
+### Development
 
 From the main folder, launch `npm run dev`. This will launch both backend and frontend.
 
