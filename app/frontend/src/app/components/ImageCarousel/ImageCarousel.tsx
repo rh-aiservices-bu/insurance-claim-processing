@@ -2,6 +2,7 @@ import * as React from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import ImageGallery from "react-image-gallery";
+import config from '@app/config';
 
 
 interface Image {
@@ -15,8 +16,8 @@ interface ImageCarouselProps {
 
 const ImageCarousel: React.FunctionComponent<ImageCarouselProps> = ({ images }) => {
     const transformedImages = images.map(image => ({
-        original: process.env.BACKEND_API_URL + "/images/" + image.image_key,
-        thumbnail: process.env.BACKEND_API_URL + "/images/" + image.image_key,
+        original: config.backend_api_url + "/images/" + image.image_key,
+        thumbnail: config.backend_api_url + "/images/" + image.image_key,
         thumbnailClass: "image-gallery-thumbnail",
         originalClass: "image-gallery-original",
     }));

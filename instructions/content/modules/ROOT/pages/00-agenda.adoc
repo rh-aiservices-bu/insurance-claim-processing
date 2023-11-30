@@ -1,0 +1,13 @@
+:icons: font
+
+= AI Based Smart Retail: Event-Driven Ansible & ChatOps
+
+
+== Introduction 
+TBD
+
+== Hands-On Session
+TBD
+
+== Challenge Lab
+TBD

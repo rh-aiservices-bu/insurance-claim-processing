@@ -5,13 +5,15 @@ import { Table, Thead, Tr, Th, Tbody, Td, TableText } from '@patternfly/react-ta
 import { ClaimDetail } from '../ClaimDetail/ClaimDetail';
 import { Link } from 'react-router-dom';
 import { any } from 'prop-types';
+import config from '@app/config';
 
 const ClaimsList: React.FunctionComponent = () => {
 
     const [claims, setClaims] = React.useState([]);
 
     React.useEffect(() => {
-        axios.get(process.env.BACKEND_API_URL + '/db/claims')
+        console.log(config.backend_api_url + '/db/claims')
+        axios.get(config.backend_api_url + '/db/claims')
             .then(response => {
                 setClaims(response.data);
             })

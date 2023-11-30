@@ -1,0 +1,25 @@
+site:
+  title: "AI Based Smart Retail: Event-Driven Ansible & ChatOps"
+  url: https://redhat-scholars.github.io/course-template
+  start_page: modules::index.adoc
+
+ui:
+  bundle:
+    url: https://github.com/tonykay/demo-gpte-classroom-ui/raw/main/releases/download/v0.0.2/ui-bundle.zip
+    snapshot: true
+  supplemental_files:
+    - path: ./instructions/content/supplemental-ui
+    - path: .nojekyll
+    - path: ui.yml
+      contents: "static_files: [ .nojekyll ]"
+
+content:
+  sources:
+    - url: ./
+      start_path: instructions/content
+
+output:
+  dir: ./instructions/www
+
+runtime:
+  cache_dir: ./instructions/.cache/antora

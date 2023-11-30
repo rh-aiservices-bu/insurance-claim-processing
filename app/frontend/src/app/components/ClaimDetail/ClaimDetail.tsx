@@ -6,6 +6,7 @@ import { Grid, GridItem } from '@patternfly/react-core';
 import { Link, useParams } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbItem } from '@patternfly/react-core';
 import { ImageCarousel } from '../ImageCarousel/ImageCarousel';
+import config from '@app/config';
 
 interface ClaimDetailProps { }
 
@@ -24,11 +25,11 @@ const ClaimDetail: React.FunctionComponent<ClaimDetailProps> = () => {
     const [claimNumber, setClaimNumber] = React.useState<number>(0);
 
     React.useEffect(() => {
-        axios.get(process.env.BACKEND_API_URL + `/db/claims/${claim_id}`).then((response) => {
+        axios.get(config.backend_api_url + `/db/claims/${claim_id}`).then((response) => {
             setClaim(response.data);
         });
 
-        axios.get(process.env.BACKEND_API_URL + '/db/claims').then((response) => {
+        axios.get(config.backend_api_url + '/db/claims').then((response) => {
             setClaimNumber(response.data.length);
         });
     }, [claim_id]);

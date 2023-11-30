@@ -7,6 +7,7 @@ import car3 from '@app/assets/images/car3.jpg';
 import new_car1 from '@app/assets/images/new_car1.png';
 import new_car2 from '@app/assets/images/new_car2.png';
 import new_car3 from '@app/assets/images/new_car3.png';
+import config from '@app/config';
 
 const NewApp: React.FunctionComponent = () => {
   const [activeTabKey, setActiveTabKey] = React.useState<string | number>(0);
@@ -29,7 +30,7 @@ const NewApp: React.FunctionComponent = () => {
 
   React.useEffect(() => {
     // Make an API request when the component mounts
-    fetch(`${process.env.BACKEND_API_URL}/db/claims/1`)
+    fetch(`${config.backend_api_url}/db/claims/1`)
       .then((response) => response.json())
       .then((data) => {
         setLoading(false);
