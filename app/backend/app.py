@@ -7,6 +7,7 @@ from threading import Thread
 from typing import List, Optional
 from urllib.parse import unquote
 import hashlib
+from pathlib import Path
 
 import boto3
 import data_classes
@@ -14,9 +15,10 @@ import db_utils
 import redis_utils
 from app_config import LOG_LEVELS, LOGGING_CONFIG
 from dotenv import dotenv_values, load_dotenv
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse
+from fastapi.responses import StreamingResponse, FileResponse
 from langchain.callbacks.base import BaseCallbackHandler
 from langchain.chains import RetrievalQA
 from langchain.embeddings.huggingface import HuggingFaceEmbeddings
@@ -202,6 +204,15 @@ async def s3_get_image(image_key: str):
     image = s3.get_object(Bucket=config["IMAGES_BUCKET"], Key=image_key)
     return StreamingResponse(image["Body"], media_type=image["ContentType"])
 
+# Serve static files 
+app.mount("/", StaticFiles(directory="public", html = True), name="static")
+
+#@app.get("/")
+#async def read_root():
+#    index_path = Path("./public/index.html")
+#    if not index_path.exists():
+#        raise HTTPException(status_code=404)
+#    return FileResponse(str(index_path))
 
 # Launch the FastAPI server
 if __name__ == "__main__":

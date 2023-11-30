@@ -4,25 +4,36 @@
 
 # misc
 .DS_Store
+.gitkeep
 
+# env vars
 .env
 .env*.local
 .env.*
 
-
+# dependencies
 node_modules
 logs
 
-__pycache__
+# build
+www
 
-.docs
-.gitkeep
+# cache
+__pycache__
+.cache
 .eslintcache
 
+# helpers
+.docs
+
+# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-yarn.lock
 
+# locks
+yarn.lock
+package-lock.json
+
+# local python env
 .venv
-redis_schema.yaml
