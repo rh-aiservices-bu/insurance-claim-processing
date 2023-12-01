@@ -4,16 +4,11 @@
 === Workshop Overview
 
 
-This solution about *AI based smart retail* showcases an architecture which is scalable and efficient system capturing and responding to events with operational actions to ease business teams by making product managers quickly take decisions and implement it through easy operations like ChatOps. With *Event-Driven Ansible*, this system can connect to, and consume from a number of systems, services and data sources by responding to triggering events.
+During this Lab, you will get to explore the following:
 
-This architecture demonstrates how an Event-Driven Ansible with Red Hat AMQ Streams and ChatOps can help build an intelligent system to drive business insights with an event-driven workflow.
-
+* A
+* B
+* C
 
 === Use Cases
 * Common use cases that can be addressed with this architecture are:
-
-** Machine Learning and Real-Time Analytics to build business intelligence.
-** Real-time events based on end-user feedback for better product analysis and management.
-** Real time interaction with the system with simple Chat Ops-based mechanisms.
-** Event driven Ansible using a combination of intelligent applications, Kafka and ChatOps.
-** Sentiment analysis.

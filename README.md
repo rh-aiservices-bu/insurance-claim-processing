@@ -1,4 +1,4 @@
-# Insurance Claim Processing
+# Streamlining insurance claims with OpenShift AI
 
 ## Introduction
 
