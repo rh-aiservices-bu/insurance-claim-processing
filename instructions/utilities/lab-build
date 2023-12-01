@@ -4,8 +4,15 @@
 echo "Starting build process..."
 echo "Removing old site..."
 rm -rf ./www/*
+
 echo "Building new site..."
-docker run --rm --name showroom-builder --platform linux/amd64 -v "$(pwd):/antora" docker.io/antora/antora default-site.yml
+mkdir -p ./instructions/www
+
+podman run --rm --name showroom-builder \
+    --platform linux/amd64 \
+    -v "${PWD}:/antora" \
+    docker.io/antora/antora default-site.yml
+
 echo "Build process complete. Check the ./www folder for the generated site."
 echo "To view the site locally, run the following command: utilities/lab-serve"
 echo "If already running then browse to http://localhost:8443/index.html"
