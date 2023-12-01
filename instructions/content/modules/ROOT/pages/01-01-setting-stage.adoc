@@ -1,0 +1,9 @@
+== Setting the stage
+
+=== Picture this ...
+
+you work for an insurance company.
+In fact, you do. Red Hat provides insure against vendor lock-in.
+
+
+
