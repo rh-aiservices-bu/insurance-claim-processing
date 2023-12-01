@@ -29,7 +29,8 @@ jobs:
       - name: Install Antora
         run: npm i antora
       - name: Generate Site
-        run: npx antora instructions/content/default-site.yml
+        run: npx antora default-site.yml
+        # run: npx antora instructions/content/default-site.yml
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
