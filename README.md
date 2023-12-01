@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repository contains the code, instructions, resources and materials associated with the Insurance Claim Processing lab for OpenShit AI.
+This repository contains the code, instructions, resources and materials associated with the Lab called **Streamlining insurance claims with OpenShift AI**.
 
 To consult the static version of the instructions, please use [this URL](http://does_not_exist_yet/)
 
