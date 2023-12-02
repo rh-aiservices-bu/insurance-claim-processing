@@ -33,14 +33,14 @@ jobs:
         # run: npx antora instructions/content/default-site.yml
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      - name: Output results
+      - name: find where the files are
         run: |
           pwd
           ls -alR .
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: build/site
+          path: instructions/www/
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
