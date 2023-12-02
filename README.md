@@ -26,6 +26,15 @@ If you want to participate in the creation and update of this content, please co
 
 ## How to update the **Instructions**
 
+Useful link: https://redhat-scholars.github.io/build-course/rhs-build-course/develop.html
+
+Live updating ...
+```bash
+cd
+npm install
+gulp
+```
+
 ### Requirements
 
 - Podman or Docker

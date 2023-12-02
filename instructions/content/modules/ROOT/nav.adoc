@@ -1,36 +1,36 @@
 * 1. The Pitch
 ** xref:01-01-setting-stage.adoc[1.1 Setting the stage]
-** xref:01-01-current-process.adoc[1.2 Current Process]
-** xref:01-01-prototype.adoc[1.3 Proposed Process / Prototype]
-** xref:01-01-results.adoc[1.4 Results and Next Steps]
+** xref:01-02-current-process.adoc[1.2 Current Process]
+** xref:01-03-prototype.adoc[1.3 Proposed Process / Prototype]
+** xref:01-04-results.adoc[1.4 Results and Next Steps]
 
 * 2. Connection and Setup
-** xref:01-01-getting-connected.adoc[2.1 Getting connected]
-** xref:01-01-validating-env[2.2 Validating access]
+** xref:02-01-getting-connected.adoc[2.1 Getting connected]
+** xref:02-02-validating-env[2.2 Validating access]
 
 * 3. Leveraging an LLM
-** xref:00-00-notebook-based-llm.adoc[3.1 Notebook-Based LLM Example]
-** xref:00-00-summarization.adoc[3.1 Summarization Check]
-** xref:00-00-sentiment.adoc[3.1 Sentiment Check]
-** xref:00-00-data-extractions.adoc[3.1 Data Extraction]
-** xref:00-00-comparing-models.adoc[3.1 Comparing Models accuracy]
-** xref:00-00-prompt-engineering.adoc[3.1 Prompt Engineering Exercise]
-** xref:00-00-sanity-check.adoc[3.1 Sanity-check pipeline]
+** xref:03-01-notebook-based-llm.adoc[3.1 Notebook-Based LLM Example]
+** xref:03-02-summarization.adoc[3.2 Summarization Check]
+** xref:03-03-sentiment.adoc[3.3 Sentiment Check]
+** xref:03-04-data-extractions.adoc[3.4 Data Extraction]
+** xref:03-05-comparing-models.adoc[3.5 Comparing Models accuracy]
+** xref:03-06-prompt-engineering.adoc[3.6 Prompt Engineering Exercise]
+** xref:03-07-sanity-check.adoc[3.7 Sanity-check pipeline]
 
 * 4. Image Processing
-** xref:00-00-placeholder.adoc[4.1 Overall Approach]
-** xref:00-00-placeholder.adoc[4.1 Car recognition]
-** xref:00-00-placeholder.adoc[4.1 Accident/Damage recognition]
-** xref:00-00-placeholder.adoc[4.1 Model retraining]
-** xref:00-00-placeholder.adoc[4.1 Model Serving (Manual)]
-** xref:00-00-placeholder.adoc[4.1 Model Serving (Automated)]
+** xref:04-01-over-approach.adoc[4.1 Overall Approach]
+** xref:04-02-car-recog.adoc[4.2 Car recognition]
+** xref:04-03-accident-recog.adoc[4.3 Accident/Damage recognition]
+** xref:04-04-model-retraining.adoc[4.4 Model retraining]
+** xref:04-05-serving-manual.adoc[4.5 Model Serving (Manual)]
+** xref:04-06-serving-automated.adoc[4.6 Model Serving (Automated)]
 
 * 5. Web App Deployment
-** xref:00-00-placeholder.adoc[5.1 Deploying your Web App manually]
-** xref:00-00-placeholder.adoc[5.1 Deploying your Web App via GitOps]
-** xref:00-00-placeholder.adoc[5.1 Updating your Web App via GitOps]
-** xref:00-00-placeholder.adoc[5.1 Validating Claims processing]
+** xref:05-01-web-app-deploy-manual.adoc[5.1 Deploying your Web App manually]
+** xref:05-02-web-app-deploy-gitops.adoc[5.2 Deploying your Web App via GitOps]
+** xref:05-03-web-app-update.adoc[5.3 Updating your Web App via GitOps]
+** xref:05-04-web-app-validating.adoc[5.4 Validating Claims processing]
 
 * 6. Productization and Extrapolations
-** xref:00-00-placeholder.adoc[5.1 Validating Claims processing]
-
+** xref:06-01-potential-imp-ref.adoc[6.1 Potential improvements and refinements]
+** xref:06-02-applicability-other.adoc[6.2 Applicability to other industries]

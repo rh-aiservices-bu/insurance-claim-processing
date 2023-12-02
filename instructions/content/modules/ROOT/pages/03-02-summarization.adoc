@@ -1,0 +1,2 @@
+= pages/03-02-summarization.adoc
+

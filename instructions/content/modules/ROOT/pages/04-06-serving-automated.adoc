@@ -1,0 +1,2 @@
+= pages/04-06-serving-automated.adoc
+
