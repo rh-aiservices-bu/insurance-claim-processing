@@ -1,7 +1,6 @@
+= {lab_name}
 
-== {lab_name}
-
-=== Lab Overview
+== Lab Overview
 
 This lab will illustrate how the use of various AI/ML technologies can be combined to produce a valuable solution to a business problem.
 

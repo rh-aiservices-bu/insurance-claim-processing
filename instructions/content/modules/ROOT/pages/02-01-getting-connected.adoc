@@ -1,2 +1,13 @@
-= pages/02-01-getting-connected.adoc
+= Getting connected
+
+For the purposes of this training session, we have provisioned a shared OpenShift environment, with OpenShift AI deployed on it.
+Each of you have your own accounts.
+
+// Your permissions are higher than what you would get in production-grade environment so that you can see it all (Cluster-reader? downsides?)
+
+Using the connecting details we provided you with, we will ask each of you to get connected to the environment.
+* Log in to OpenShift Console
+* Log in to OpenShift AI
+* Confirm you can see the shared project called "llm-serving"
+* Confirm you can create your own project playpen "userX-playpen"
 

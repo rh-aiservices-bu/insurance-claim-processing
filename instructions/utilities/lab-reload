@@ -73,4 +73,5 @@ fi
 
 printf "%b  %b %s\\n" "${OVER}" "${TICK}" "Site is served! "
 printf "%b  %b %s\\n" "${OVER}" "${TICK}" "Click on this link: http://localhost:8443/index.html "
+printf "%-100s\n" | tr ' ' '-'
 

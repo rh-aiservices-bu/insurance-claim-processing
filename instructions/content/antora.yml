@@ -1,4 +1,5 @@
 name: modules
+title: Navigation
 version: master
 nav:
   - modules/ROOT/nav.adoc

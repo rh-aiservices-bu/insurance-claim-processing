@@ -7,7 +7,7 @@
 
 * 2. Connection and Setup
 ** xref:02-01-getting-connected.adoc[2.1 Getting connected]
-** xref:02-02-validating-env[2.2 Validating access]
+** xref:02-02-validating-env.adoc[2.2 Validating access]
 
 * 3. Leveraging an LLM
 ** xref:03-01-notebook-based-llm.adoc[3.1 Notebook-Based LLM Example]
