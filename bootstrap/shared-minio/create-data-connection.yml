@@ -26,7 +26,7 @@ spec:
           done; echo
           id=$(oc get secret -n shared-minio minio-root-user -ogo-template='{{.data.MINIO_ROOT_USER|base64decode}}')
           secret=$(oc get secret -n shared-minio minio-root-user -ogo-template='{{.data.MINIO_ROOT_PASSWORD|base64decode}}')
-       		echo "Minio Console : https://$(oc get route -n shared-minio minio-console -ojsonpath='{.status.ingress[0].host}')/ "
+          echo "Minio Console : https://$(oc get route -n shared-minio minio-console -ojsonpath='{.status.ingress[0].host}')/ "
           echo "Minio user: ${id}"
           echo "Minio pass: ${secret}"
           cat << EOF | oc apply -f-
