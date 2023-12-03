@@ -1,14 +1,9 @@
 
 == {lab_name}
 
-=== Workshop Overview
+=== Lab Overview
 
+This lab will illustrate how the use of various AI/ML technologies can be combined to produce a valuable solution to a business problem.
 
-During this Lab, you will get to explore the following:
+The information, code, models and techniques it contains are illustration of what a first prototype would look like.
 
-* A
-* B
-* C
-
-=== Use Cases
-* Common use cases that can be addressed with this architecture are:
