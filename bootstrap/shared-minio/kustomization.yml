@@ -8,10 +8,15 @@ commonLabels:
   component: minio
 
 resources:
+# wave 0
 - namespace.yml
+# wave 1
 - pvc.yml
 - serviceaccount.yml
 - create-root-user-job.yml
 - deployment.yml
 - service.yml
 - route.yml
+# wave 2
+- create-data-connection.yml
+# - create-buckets.yaml

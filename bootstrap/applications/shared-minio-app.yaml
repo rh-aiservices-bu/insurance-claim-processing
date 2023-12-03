@@ -4,8 +4,8 @@ kind: Application
 metadata:
   name: shared-minio-app
   namespace: openshift-gitops
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
+  # finalizers:
+  #   - resources-finalizer.argocd.argoproj.io
   labels:
     component: bootstrap
     purpose: shared-minio-app
