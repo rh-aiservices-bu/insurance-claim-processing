@@ -32,6 +32,7 @@ spec:
           echo "Minio Console : https://$(oc get route -n shared-minio minio-console -ojsonpath='{.status.ingress[0].host}')/ "
           echo "Minio user: ${id}"
           echo "Minio pass: ${secret}"
+          echo "Internal service url: http://minio.shared-minio.svc.cluster.local:9000/"
           cat << EOF | oc apply -f-
           apiVersion: v1
           kind: Secret
