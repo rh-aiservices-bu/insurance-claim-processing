@@ -1,0 +1,17 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: serving-demo-gitops
+
+commonLabels:
+  component: minio
+
+resources:
+- namespace.yml
+- pvc.yml
+- serviceaccount.yml
+- create-root-user-job.yml
+- deployment.yml
+- service.yml
+- route.yml
