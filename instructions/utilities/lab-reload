@@ -35,9 +35,9 @@ else
     OVER="\\r\\033[K"
 fi
 
-printf "  %b Stopping Serving container %s\\n" "${INFO}"
+# printf "  %b Stopping Serving container %s\\n" "${INFO}"
 # ${container_runtime} container stop showroom-httpd
-printf "%b  %b %s\\n" "${OVER}" "${TICK}" "Container stopped "
+# printf "%b  %b %s\\n" "${OVER}" "${TICK}" "Container stopped "
 
 printf "  %b Cleaning site %s\\n" "${INFO}"
 rm -rf ./www/*
