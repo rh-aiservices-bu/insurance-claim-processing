@@ -2,9 +2,11 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: create-data-connection
+  # name: create-data-connection
+  generateName: create-dc-
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/hook: PostSync
 spec:
   backoffLimit: 4
   template:
@@ -19,7 +21,7 @@ spec:
         args:
         - -ec
         - |-
-          echo -n "Waiting for minio-root-user."
+          echo -n "Waiting for minio-root-user to exist"
           while [ -z "$(oc get secret -n shared-minio minio-root-user -oname 2>/dev/null)" ]; do
             echo -n '.'
             sleep 1
