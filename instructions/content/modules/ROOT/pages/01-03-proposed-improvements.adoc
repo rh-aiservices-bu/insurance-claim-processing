@@ -1,4 +1,4 @@
-== Proposed Process and Prototyping Results
+= Proposed Improvements
 :slide:
 
 * recommendations:

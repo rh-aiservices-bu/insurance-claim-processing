@@ -1,8 +1,8 @@
-== Setting the stage
+= Setting the stage
 
 Let's put this in context.
 
-=== Situation
+== Situation
 :slide:
 
 * You work for a large insurance company

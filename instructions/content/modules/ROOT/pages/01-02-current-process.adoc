@@ -1,4 +1,4 @@
-== Review of current claims processing
+= Review of current claims processing
 :slide:
 
 * Claims can come in with multiple mediums:
