@@ -1,2 +1,16 @@
-= pages/01-02-current-process.adoc
+== Review of current claims processing
+:slide:
+
+* Claims can come in with multiple mediums:
+** email
+** fax
+** phone
+** web form
+* All formats have to be transcribed into the web form
+
+* Claims have to be processed by claims adjusters
+** They spend an aggregated average of 7 hours/claim
+** We estimate that human errors accounts for $2.5M/year in lost revenue
+* Another $3.5M/year is likely lost due to fraud
+* There are a lot of inefficiencies!
 

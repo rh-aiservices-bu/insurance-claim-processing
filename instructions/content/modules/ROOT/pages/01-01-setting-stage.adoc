@@ -1,9 +1,23 @@
 == Setting the stage
 
-=== Picture this ...
+Let's put this in context.
 
-you work for an insurance company.
-In fact, you do. Red Hat provides insure against vendor lock-in.
+=== Situation
+:slide:
+
+* You work for a large insurance company
+** It is in the midst of digital transformation
+* Your team was asked to:
+** review the way insurance claims are processed
+** provide advice on potential improvements
+* Your team is currently very small (4)
+** You have to present your findings to the board
+** If you convince them, you'll be granted the resources to implement the recommendations
+* The next slides are the presentation to the board
 
 
-
+[.notes]
+--
+* tell anecdote
+* make a point
+--
