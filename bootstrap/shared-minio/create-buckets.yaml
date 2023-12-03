@@ -37,17 +37,22 @@ spec:
         - |-
           curl -LO https://ai-on-openshift.io/odh-rhods/img-triton/card.fraud.detection.onnx
           cat << 'EOF' | python3
-          filename = "card.fraud.detection.onnx"
+          # filename = "card.fraud.detection.onnx"
           import boto3, os
           s3 = boto3.client("s3",
                             endpoint_url=os.getenv("AWS_S3_ENDPOINT"),
                             aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
                             aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"))
-          bucket = os.getenv("AWS_S3_BUCKET")
-          if bucket not in [bu["Name"] for bu in s3.list_buckets()["Buckets"]]:
-            s3.create_bucket(Bucket=bucket)
-          with open(filename, "rb") as f:
-            s3.upload_fileobj(f, bucket, f'fraud/{filename}')
+          # bucket = os.getenv("AWS_S3_BUCKET")
+          # if bucket not in [bu["Name"] for bu in s3.list_buckets()["Buckets"]]:
+          #   s3.create_bucket(Bucket=bucket)
+          # with open(filename, "rb") as f:
+          #   s3.upload_fileobj(f, bucket, f'fraud/{filename}')
+          # a bunch of buckets:
+          for i in range(1, 51):
+              bucket_name = f"bucket-user-{i:02d}"
+              if bucket_name not in [bu["Name"] for bu in s3.list_buckets()["Buckets"]]:
+                  s3.create_bucket(Bucket=bucket_name)
           EOF
         envFrom:
         - secretRef:
