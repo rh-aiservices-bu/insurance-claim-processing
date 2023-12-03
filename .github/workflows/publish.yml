@@ -36,7 +36,7 @@ jobs:
       - name: find where the files are
         run: |
           pwd
-          ls -alR .
+          #ls -alR .
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
