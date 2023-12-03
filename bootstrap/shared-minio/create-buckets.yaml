@@ -1,0 +1,55 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: create-buckets
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+spec:
+  backoffLimit: 4
+  template:
+    spec:
+      serviceAccount: minio-manage
+      serviceAccountName: minio-manage
+      initContainers:
+      - name: wait-for-minio
+        image: image-registry.openshift-image-registry.svc:5000/openshift/tools:latest
+        imagePullPolicy: IfNotPresent
+        command: ["/bin/bash"]
+        args:
+        - -ec
+        - |-
+          echo -n "Waiting for minio pod in shared-minio namespace"
+          while [ -z "$(oc get pod -n shared-minio -l app=minio -o name 2>/dev/null)" ]; do
+              echo -n '.'
+              sleep 1
+          done
+          echo "Minio pod is running in shared-minio namespace"
+      containers:
+      - name: add-model
+        image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-generic-data-science-notebook:1.2
+        imagePullPolicy: IfNotPresent
+        command: ["/bin/bash"]
+        args:
+        - -ec
+        - |-
+          curl -LO https://ai-on-openshift.io/odh-rhods/img-triton/card.fraud.detection.onnx
+          cat << 'EOF' | python3
+          filename = "card.fraud.detection.onnx"
+          import boto3, os
+          s3 = boto3.client("s3",
+                            endpoint_url=os.getenv("AWS_S3_ENDPOINT"),
+                            aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
+                            aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"))
+          bucket = os.getenv("AWS_S3_BUCKET")
+          if bucket not in [bu["Name"] for bu in s3.list_buckets()["Buckets"]]:
+            s3.create_bucket(Bucket=bucket)
+          with open(filename, "rb") as f:
+            s3.upload_fileobj(f, bucket, f'fraud/{filename}')
+          EOF
+        envFrom:
+        - secretRef:
+            name: aws-connection-minio
+      restartPolicy: Never

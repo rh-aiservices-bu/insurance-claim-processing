@@ -19,4 +19,4 @@ resources:
 - route.yml
 # wave 2
 - create-data-connection.yml
-# - create-buckets.yaml
+- create-buckets.yaml
