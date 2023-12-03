@@ -14,6 +14,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: default
   source:
+    ## remember to change this to the gitea addresses
     path: bootstrap/shared-minio
     repoURL: >-
       https://github.com/rh-aiservices-bu/insurance-claim-processing.git
