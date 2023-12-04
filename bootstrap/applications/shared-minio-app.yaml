@@ -18,7 +18,7 @@ spec:
     path: bootstrap/shared-minio
     repoURL: >-
       https://github.com/rh-aiservices-bu/insurance-claim-processing.git
-    targetRevision: feature/minio-in-gitops
+    targetRevision: dev
   syncPolicy:
     automated:
       prune: true
