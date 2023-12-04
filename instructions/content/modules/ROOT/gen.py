@@ -13,7 +13,7 @@ def extract_file_names(content):
 def create_files(file_names):
     for name in file_names:
         name = "pages/"+name
-        file_path = f"{name}.adoc"
+        file_path = f"{name}"
         print(file_path)
         if not os.path.exists(file_path):
             with open(file_path, "w") as file:

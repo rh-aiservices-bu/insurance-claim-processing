@@ -4,7 +4,7 @@
 
 This repository contains the code, instructions, resources and materials associated with the Lab called **Streamlining insurance claims with OpenShift AI**.
 
-To consult the static version of the instructions, please use [this URL](http://does_not_exist_yet/)
+To consult the static version of the instructions, please use [this URL](https://rh-aiservices-bu.github.io/insurance-claim-processing/modules/index.html)
 
 If you want to participate in the creation and update of this content, please consult the sections below.
 
@@ -25,6 +25,15 @@ If you want to participate in the creation and update of this content, please co
 - Try to stash your changes before submitting a PR.
 
 ## How to update the **Instructions**
+
+Useful link: https://redhat-scholars.github.io/build-course/rhs-build-course/develop.html
+
+Live updating ...
+```bash
+cd
+npm install
+gulp
+```
 
 ### Requirements
 

@@ -1,0 +1,19 @@
+= Examples from prototyping work
+
+== Using an LLM for text summarization
+
+* Allows for faster reading by the claims adjuster
+
+image::01/proto-summary.png[test image]
+
+== Using an LLM for information extraction
+
+image::01/proto-info-extract.png[ info extraction]
+
+== Using an LLM for sentiment analysis
+
+== Using image recognition to frame vehicle(s) in pictures
+
+== Using image recognition to detect damage and collisions
+
+== Web Application to review/process claims

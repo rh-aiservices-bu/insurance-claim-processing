@@ -1,7 +1,7 @@
 name: Publish to GitHub Pages
 on:
   push:
-    branches: [feature/erwan-readme-and-structure]
+    branches: [feature/erwan_instructions_work]
     # branches: [main]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -33,10 +33,14 @@ jobs:
         # run: npx antora instructions/content/default-site.yml
       - name: Setup Pages
         uses: actions/configure-pages@v3
+      - name: find where the files are
+        run: |
+          pwd
+          #ls -alR .
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: workshop/build/site
+          path: instructions/www/
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
