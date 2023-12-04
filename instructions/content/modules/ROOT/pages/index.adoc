@@ -1,14 +1,11 @@
+= {lab_name}
 
-== {lab_name}
+== Lab Overview
 
-=== Workshop Overview
+This lab will illustrate how the use of various AI/ML technologies can be combined to produce a valuable solution to a business problem.
 
+The information, code, models and techniques it contains are illustration of what a first prototype could look like. It is not the definitive way of adressing the stated requirements.
 
-During this Lab, you will get to explore the following:
+== Contributing
 
-* A
-* B
-* C
-
-=== Use Cases
-* Common use cases that can be addressed with this architecture are:
+If you are interested in contributing to this project, consult this GitHub Repo: <https://github.com/rh-aiservices-bu/insurance-claim-processing>

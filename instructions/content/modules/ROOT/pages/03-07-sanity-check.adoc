@@ -1,0 +1,2 @@
+= pages/03-07-sanity-check.adoc
+
