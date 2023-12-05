@@ -9,3 +9,4 @@ kind: Kustomization
 
 resources:
 - shared-minio-app.yaml
+- shared-database-app.yaml
