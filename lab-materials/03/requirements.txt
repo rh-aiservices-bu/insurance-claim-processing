@@ -1,0 +1,9 @@
+## Application specific
+Flask
+gunicorn
+## Data Science libraries
+ultralytics
+tensorflow
+matplotlib
+six
+numpy
