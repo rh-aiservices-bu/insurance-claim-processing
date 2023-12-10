@@ -5,6 +5,7 @@ metadata:
   name: shared-minio
   labels:
     app: shared-minio
+    argocd.argoproj.io/managed-by: openshift-gitops
   annotations:
     openshift.io/display-name: "MinIO Object Storage"
     argocd.argoproj.io/sync-wave: "0"
