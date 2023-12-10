@@ -26,8 +26,13 @@ spec:
           genpass() {
               < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c"${1:-32}"
           }
-          id=$(genpass 16)
-          secret=$(genpass)
+          #id=$(genpass 16)
+          #secret=$(genpass)
+
+          # hard-code id and secret instead
+          id="minio"
+          secret="minio123"
+
           cat << EOF | oc apply -f-
           apiVersion: v1
           kind: Secret
