@@ -12,8 +12,14 @@ image::01/proto-info-extract.png[ info extraction]
 
 == Using an LLM for sentiment analysis
 
+TODO
+
 == Using image recognition to frame vehicle(s) in pictures
 
+TODO
+
 == Using image recognition to detect damage and collisions
+
+TODO
 
 == Web Application to review/process claims
