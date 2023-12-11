@@ -1,0 +1,7 @@
+= Validating the environment
+
+Now that you are connected, let's make sure that all the expected services are responding.
+
+In your workbench,
+
+Open the notebook called `02/02-03-validating.ipynb`
