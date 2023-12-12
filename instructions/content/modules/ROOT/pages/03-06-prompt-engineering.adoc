@@ -1,2 +1,2 @@
-= pages/03-06-prompt-engineering.adoc
+= Prompt Engineering exercise
 

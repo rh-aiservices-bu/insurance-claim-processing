@@ -1,2 +1,2 @@
-= pages/04-05-serving-manual.adoc
+= Model Serving (Manual)
 

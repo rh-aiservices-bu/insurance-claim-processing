@@ -5,3 +5,7 @@ Now that you are connected, let's make sure that all the expected services are r
 In your workbench,
 
 Open the notebook called `02/02-03-validating.ipynb`
+
+Running these cells will confirm that all the lab-required services are responding.
+
+If the output of this notebook looks suspicious, please inform the people leading the lab.

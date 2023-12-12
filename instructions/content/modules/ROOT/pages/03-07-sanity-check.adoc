@@ -1,2 +1,10 @@
-= pages/03-07-sanity-check.adoc
+= Sanity-Check Pipeline
+
+== Deploy a pipeline Server in your project
+
+== Deploy a sanity-check pipeline
+
+== Ad-Hoc execution
+
+== Schedule execution
 
