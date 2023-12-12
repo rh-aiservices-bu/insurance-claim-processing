@@ -1,2 +1,2 @@
-= pages/03-04-data-extractions.adoc
+= Data Extraction
 

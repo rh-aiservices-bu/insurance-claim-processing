@@ -5,9 +5,32 @@ Each of you have your own accounts.
 
 // Your permissions are higher than what you would get in production-grade environment so that you can see it all (Cluster-reader? downsides?)
 
-Using the connecting details we provided you with, we will ask each of you to get connected to the environment.
-* Log in to OpenShift Console
-* Log in to OpenShift AI
-* Confirm you can see the shared project called "llm-serving"
-* Confirm you can create your own project playpen "userX-playpen"
+The people facilitating the lab will share a URL with you.
+
+Once you open it, you will see something that looks like the following:
+
+== Your private user and password
+
+TODO: image of what that looks like
+
+TODO: claim your user: how to
+
+TODO: Figure out the OpenShift/OpenShift AI URL
+
+== Connecting to OpenShift Console
+
+* Click on the URL
+* Choose the Auth Provider called:
+* Enter your user `userX` where  `X` is between 1 and 50
+* Enter your provided password
+
+== Connecting to OpenShift AI
+
+* Same steps for auth
+
+== Other (shared) credentials:
+
+* ArgoCD view
+* Gitea
+* Database
 

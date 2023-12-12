@@ -7,7 +7,8 @@
 
 * 2. Connection and Setup
 ** xref:02-01-getting-connected.adoc[2.1 Getting connected]
-** xref:02-02-validating-env.adoc[2.2 Validating access]
+** xref:02-02-creating-project.adoc[2.2 Creating your project]
+** xref:02-03-validating-env.adoc[2.3 Validating the environment]
 
 * 3. Leveraging an LLM
 ** xref:03-01-notebook-based-llm.adoc[3.1 Notebook-Based LLM Example]
@@ -21,8 +22,8 @@
 * 4. Image Processing
 ** xref:04-01-over-approach.adoc[4.1 Overall Approach]
 ** xref:04-02-car-recog.adoc[4.2 Car recognition]
-** xref:04-03-accident-recog.adoc[4.3 Accident/Damage recognition]
-** xref:04-04-model-retraining.adoc[4.4 Model retraining]
+** xref:04-03-model-retraining.adoc[4.3 Model retraining]
+** xref:04-04-accident-recog.adoc[4.4 Accident/Damage recognition]
 ** xref:04-05-serving-manual.adoc[4.5 Model Serving (Manual)]
 ** xref:04-06-serving-automated.adoc[4.6 Model Serving (Automated)]
 
