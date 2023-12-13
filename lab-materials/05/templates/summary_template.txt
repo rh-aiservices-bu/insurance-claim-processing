@@ -1,0 +1,5 @@
+<s>[INST] <<SYS>>
+Summarize the below car insurance claim:
+<</SYS>>
+{car_claim}
+[/INST]
