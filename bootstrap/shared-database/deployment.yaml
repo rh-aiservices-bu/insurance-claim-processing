@@ -74,7 +74,3 @@ spec:
             claimName: claimdb
   strategy:
     type: Recreate
-    recreateParams:
-      timeoutSeconds: 600
-    resources: {}
-    activeDeadlineSeconds: 21600
