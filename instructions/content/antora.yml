@@ -1,13 +1,13 @@
 name: modules
 title: Navigation
-version: master
+version: dev
 nav:
   - modules/ROOT/nav.adoc
 
 
 asciidoc:
   attributes:
-    release-version: master
+    release-version: dev
     page-pagination: true
     experimental:
     numbered:
@@ -16,6 +16,10 @@ asciidoc:
     ssh_user: lab-user
     ssh_password: lab-user
     ssh_command: ssh lab-user@bastion.{guid}.example.opentlc.com
+    minio-user: minio
+    minio-pass: minio123
+    minio-endpoint: minio.ic-shared-minio.svc.cluster.local
+    git-repo-clone-url: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
 
   extensions:
     - ./content/lib/tab-block.js
