@@ -21,12 +21,12 @@ spec:
         args:
         - -ec
         - |-
-          echo -n "Waiting for minio pod in shared-minio namespace"
-          while [ -z "$(oc get pod -n shared-minio -l app=minio -o name 2>/dev/null)" ]; do
+          echo -n "Waiting for minio pod in ic-shared-minio namespace"
+          while [ -z "$(oc get pod -n ic-shared-minio -l app=minio -o name 2>/dev/null)" ]; do
               echo -n '.'
               sleep 1
           done
-          echo "Minio pod is running in shared-minio namespace"
+          echo "Minio pod is running in ic-shared-minio namespace"
       containers:
       - name: add-model
         image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-generic-data-science-notebook:1.2
