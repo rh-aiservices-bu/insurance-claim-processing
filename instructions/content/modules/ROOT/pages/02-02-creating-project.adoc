@@ -19,7 +19,7 @@ As a preliminary step, each of you is going to
 ** Name: `Shared Minio - pipelines`
 ** Access Key: `minio`
 ** Secret Key: `minio123`
-** Endpoint: `minio.shared-minio.svc.cluster.local`
+** Endpoint: `minio.ic-shared-minio.svc.cluster.local`
 ** Region: `none`
 ** Bucket: `bucket-user-01`
 

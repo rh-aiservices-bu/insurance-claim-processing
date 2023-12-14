@@ -23,16 +23,16 @@ spec:
         - -ec
         - |-
           echo -n "Waiting for minio-root-user to exist"
-          while [ -z "$(oc get secret -n shared-minio minio-root-user -oname 2>/dev/null)" ]; do
+          while [ -z "$(oc get secret -n ic-shared-minio minio-root-user -oname 2>/dev/null)" ]; do
             echo -n '.'
             sleep 1
           done; echo
-          id=$(oc get secret -n shared-minio minio-root-user -ogo-template='{{.data.MINIO_ROOT_USER|base64decode}}')
-          secret=$(oc get secret -n shared-minio minio-root-user -ogo-template='{{.data.MINIO_ROOT_PASSWORD|base64decode}}')
-          echo "Minio Console : https://$(oc get route -n shared-minio minio-console -ojsonpath='{.status.ingress[0].host}')/ "
+          id=$(oc get secret -n ic-shared-minio minio-root-user -ogo-template='{{.data.MINIO_ROOT_USER|base64decode}}')
+          secret=$(oc get secret -n ic-shared-minio minio-root-user -ogo-template='{{.data.MINIO_ROOT_PASSWORD|base64decode}}')
+          echo "Minio Console : https://$(oc get route -n ic-shared-minio minio-console -ojsonpath='{.status.ingress[0].host}')/ "
           echo "Minio user: ${id}"
           echo "Minio pass: ${secret}"
-          echo "Internal service url: http://minio.shared-minio.svc.cluster.local:9000/"
+          echo "Internal service url: http://minio.ic-shared-minio.svc.cluster.local:9000/"
           cat << EOF | oc apply -f-
           apiVersion: v1
           kind: Secret
@@ -49,7 +49,7 @@ spec:
             AWS_ACCESS_KEY_ID: ${id}
             AWS_SECRET_ACCESS_KEY: ${secret}
             AWS_DEFAULT_REGION: us
-            AWS_S3_ENDPOINT: http://minio.shared-minio.svc:9000
+            AWS_S3_ENDPOINT: http://minio.ic-shared-minio.svc:9000
             AWS_S3_BUCKET: bucket-placeholder
           EOF
       restartPolicy: Never
