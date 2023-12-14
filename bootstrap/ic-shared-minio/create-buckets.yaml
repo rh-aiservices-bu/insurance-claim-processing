@@ -35,9 +35,6 @@ spec:
         args:
         - -ec
         - |-
-          curl -LO https://ai-on-openshift.io/odh-rhods/img-triton/card.fraud.detection.onnx
-          ## TODO: grab actual model files
-
           cat << 'EOF' | python3
           import boto3, os
 
