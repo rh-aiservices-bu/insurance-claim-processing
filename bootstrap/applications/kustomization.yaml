@@ -4,5 +4,5 @@ kind: Kustomization
 
 resources:
 - ic-shared-minio-app.yaml
-- shared-database-app.yaml
-- shared-llm-app.yaml
+- ic-shared-database-app.yaml
+- ic-shared-llm-app.yaml
