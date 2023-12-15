@@ -16,7 +16,7 @@ ui:
 content:
   sources:
     - url: ./
-      start_path: instructions/content
+      start_path: .
 
 output:
   dir: ./www

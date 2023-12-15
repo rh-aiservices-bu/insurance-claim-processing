@@ -8,7 +8,7 @@ ui:
     url: https://github.com/tonykay/demo-gpte-classroom-ui/raw/main/releases/download/v0.0.2/ui-bundle.zip
     snapshot: true
   supplemental_files:
-    - path: ./instructions/content/supplemental-ui
+    - path: ./content/supplemental-ui
     - path: .nojekyll
     - path: ui.yml
       contents: "static_files: [ .nojekyll ]"
@@ -16,10 +16,10 @@ ui:
 content:
   sources:
     - url: ./
-      start_path: instructions/content
+      start_path: content
 
 output:
-  dir: ./instructions/www
+  dir: ./content/www
 
 runtime:
-  cache_dir: ./instructions/.cache/antora
+  cache_dir: ./content/.cache/antora
