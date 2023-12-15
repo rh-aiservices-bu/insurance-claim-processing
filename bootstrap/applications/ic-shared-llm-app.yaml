@@ -2,20 +2,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: shared-database-app
+  name: ic-shared-llm-app
   namespace: openshift-gitops
   # finalizers:
   #   - resources-finalizer.argocd.argoproj.io
   labels:
     component: bootstrap
-    purpose: shared-database-app
+    purpose: ic-shared-llm-app
 spec:
   destination:
     server: 'https://kubernetes.default.svc'
   project: default
   source:
     ## remember to change this to the gitea addresses
-    path: bootstrap/shared-database
+    path: bootstrap/ic-shared-llm
     repoURL: >-
       https://github.com/rh-aiservices-bu/insurance-claim-processing.git
     targetRevision: dev
