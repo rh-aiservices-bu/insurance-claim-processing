@@ -17,7 +17,8 @@
               "pipeline_parameters": [],
               "dependencies": [
                 "llm_usage.py",
-                "templates/summary_template.txt"
+                "templates/summary_template.txt",
+                "db_utils.py"
               ],
               "include_subdirectories": false,
               "outputs": [],
@@ -33,7 +34,7 @@
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
               "filename": "summarize_text.py",
-              "runtime_image": "quay.io/rlundber/rh1/sanity_pipeline:1.7"
+              "runtime_image": "quay.io/rlundber/rh1/processing_pipeline:1.1"
             },
             "label": "",
             "ui_data": {
@@ -89,7 +90,8 @@
               "pipeline_parameters": [],
               "dependencies": [
                 "llm_usage.py",
-                "templates/time_template.txt"
+                "templates/time_template.txt",
+                "db_utils.py"
               ],
               "include_subdirectories": false,
               "outputs": [],
@@ -160,7 +162,8 @@
               "pipeline_parameters": [],
               "dependencies": [
                 "llm_usage.py",
-                "templates/location_template.txt"
+                "templates/location_template.txt",
+                "db_utils.py"
               ],
               "include_subdirectories": false,
               "outputs": [],
@@ -231,7 +234,8 @@
               "pipeline_parameters": [],
               "dependencies": [
                 "llm_usage.py",
-                "templates/sentiment_template.txt"
+                "templates/sentiment_template.txt",
+                "db_utils.py"
               ],
               "include_subdirectories": false,
               "outputs": [],
@@ -301,7 +305,8 @@
             "component_parameters": {
               "pipeline_parameters": [],
               "dependencies": [
-                "process_image.py"
+                "process_image.py",
+                "db_utils.py"
               ],
               "include_subdirectories": false,
               "outputs": [],
@@ -378,7 +383,9 @@
               "pipeline_parameters": [
                 "claim_id"
               ],
-              "dependencies": [],
+              "dependencies": [
+                "db_utils.py"
+              ],
               "include_subdirectories": false,
               "outputs": [
                 "claims.json"
@@ -441,17 +448,13 @@
           "name": "process_claims",
           "runtime": "Data Science Pipelines",
           "pipeline_defaults": {
-            "kubernetes_shared_mem_size": {},
             "kubernetes_pod_labels": [],
+            "kubernetes_shared_mem_size": {},
+            "mounted_volumes": [],
             "kubernetes_tolerations": [],
             "kubernetes_pod_annotations": [],
-            "mounted_volumes": [],
+            "env_vars": [],
             "kubernetes_secrets": [
-              {
-                "env_var": "CLAIMS_ENDPOINT",
-                "name": "claims-info",
-                "key": "CLAIMS_ENDPOINT"
-              },
               {
                 "env_var": "LLM_ENDPOINT",
                 "name": "llm-info",
@@ -461,10 +464,54 @@
                 "env_var": "DETECTION_ENDPOINT",
                 "name": "detection-info",
                 "key": "DETECTION_ENDPOINT"
+              },
+              {
+                "env_var": "POSTGRES_HOST",
+                "name": "db-info",
+                "key": "POSTGRES_HOST"
+              },
+              {
+                "env_var": "POSTGRES_DB",
+                "name": "db-info",
+                "key": "POSTGRES_DB"
+              },
+              {
+                "env_var": "POSTGRES_USER",
+                "name": "db-info",
+                "key": "POSTGRES_USER"
+              },
+              {
+                "env_var": "POSTGRES_PASSWORD",
+                "name": "db-info",
+                "key": "POSTGRES_PASSWORD"
+              },
+              {
+                "env_var": "POSTGRES_PORT",
+                "name": "db-info",
+                "key": "POSTGRES_PORT"
+              },
+              {
+                "env_var": "DB_S3_ENDPOINT_URL",
+                "name": "db-info",
+                "key": "S3_ENDPOINT_URL"
+              },
+              {
+                "env_var": "IMAGES_BUCKET",
+                "name": "db-info",
+                "key": "IMAGES_BUCKET"
+              },
+              {
+                "env_var": "DB_AWS_ACCESS_KEY_ID",
+                "name": "claim-images-bucket-secret",
+                "key": "aws_access_key_id"
+              },
+              {
+                "env_var": "DB_AWS_SECRET_ACCESS_KEY",
+                "name": "claim-images-bucket-secret",
+                "key": "aws_secret_access_key"
               }
             ],
-            "env_vars": [],
-            "runtime_image": "quay.io/rlundber/rh1/processing_pipeline:1.0"
+            "runtime_image": "quay.io/rlundber/rh1/processing_pipeline:1.2"
           },
           "pipeline_parameters": [
             {

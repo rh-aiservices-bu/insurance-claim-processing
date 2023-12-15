@@ -2,10 +2,25 @@ import os
 import requests
 import json
 
-claims_endpoint = os.environ.get("CLAIMS_ENDPOINT")+"/db/claims"
+import logging
+from dotenv import dotenv_values, load_dotenv
+
+import db_utils
+
+# Initialize logger
+logger = logging.getLogger("app")
+
+# Get config
+config = {
+    **dotenv_values(".env"),  # load shared development variables
+    **dotenv_values(".env.secret"),  # load sensitive variables
+    **os.environ,  # override loaded values with environment variables
+}
+
+db = db_utils.Database(config, logger)
 
 def get_unprocessed_claims():
-    claims_info = requests.get(claims_endpoint).json()
+    claims_info = db.list_claims()
     
     unprocessed_list = []
     for claim in claims_info:
