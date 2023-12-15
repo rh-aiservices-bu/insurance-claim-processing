@@ -5,7 +5,7 @@ site:
 
 ui:
   bundle:
-    url: https://github.com/tonykay/demo-gpte-classroom-ui/raw/main/releases/download/v0.0.2/ui-bundle.zip
+    url: https://github.com/rhpds/showroom_theme_rh1/releases/download/v0.0.2/ui-bundle.zip
     snapshot: true
   supplemental_files:
     - path: ./content/supplemental-ui
