@@ -13,12 +13,12 @@ jobs:
       with:
         config_path: .github/.spellcheck.yaml # put path to configuration file here
         source_files: README.md CHANGELOG.md notes/Notes.md
-        task_name: asciidoc
-    #     output_file: spellcheck-output.txt
-    # - uses: actions/upload-artifact@v3
-    #   if: '!cancelled()' # Do not upload artifact if job was cancelled
-    #   with:
-    #     name: Spellcheck Output
-    #     path: spellcheck-output.txt
+        task_name: Markdown
+        output_file: spellcheck-output.txt
+    - uses: actions/upload-artifact@v3
+      if: '!cancelled()' # Do not upload artifact if job was cancelled
+      with:
+        name: Spellcheck Output
+        path: spellcheck-output.txt
 
 
