@@ -1,0 +1,48 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: bootstrap
+  namespace: openshift-gitops
+spec:
+  generators:
+  - list:
+      elements:
+      - cluster: in-cluster
+        url: https://kubernetes.default.svc
+        name: ic-shared-minio-app
+        repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
+        targetRevision: dev
+        path: bootstrap/ic-shared-minio
+      - cluster: in-cluster
+        url: https://kubernetes.default.svc
+        name: ic-shared-database-app
+        repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
+        targetRevision: dev
+        path: bootstrap/ic-shared-database
+      - cluster: in-cluster
+        url: https://kubernetes.default.svc
+        name: ic-shared-llm-app
+        repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
+        targetRevision: dev
+        path: bootstrap/ic-shared-llm
+  template:
+    metadata:
+      name: '{{name}}'
+      namespace: openshift-gitops
+      labels:
+        component: bootstrap
+        purpose: '{{name}}'
+    spec:
+      project: default
+      source:
+        repoURL: '{{repoURL}}'
+        targetRevision: '{{targetRevision}}'
+        path: '{{path}}'
+      destination:
+        server: 'https://kubernetes.default.svc'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - RespectIgnoreDifferences=true
