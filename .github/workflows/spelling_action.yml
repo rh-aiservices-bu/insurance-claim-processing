@@ -12,7 +12,6 @@ jobs:
       name: Spellcheck
       with:
         config_path: .github/.spellcheck.yaml # put path to configuration file here
-        source_files: *.adoc
         task_name: Markdown
         output_file: spellcheck-output.txt
     - uses: actions/upload-artifact@v3
