@@ -20,7 +20,7 @@ echo "Starting serve process..."
 ${container_runtime} run -it --rm \
     --name showroom-httpd \
     -p 8443:80 \
-    -v "${PWD}/instructions/www:/usr/local/apache2/htdocs/" \
+    -v "${PWD}/content/www:/usr/local/apache2/htdocs/" \
     docker.io/httpd:2.4
 
 echo "Serving lab content on http://localhost:8443/index.html"

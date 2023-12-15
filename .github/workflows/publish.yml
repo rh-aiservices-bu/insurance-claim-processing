@@ -29,7 +29,7 @@ jobs:
         run: npm i antora
       - name: Generate Site
         run: npx antora default-site.yml
-        # run: npx antora instructions/content/default-site.yml
+        # run: npx antora content/default-site.yml
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: find where the files are
@@ -39,7 +39,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: instructions/www/
+          path: content/www/
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
