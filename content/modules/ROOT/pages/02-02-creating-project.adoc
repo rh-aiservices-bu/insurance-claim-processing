@@ -16,16 +16,46 @@ As a preliminary step, each of you is going to
 
 * In your project, create a data connection that maps to the shared minio.
 * Here is the info you need to enter:
-** Name: `Shared Minio - pipelines`
-** Access Key: `{minio-user}`
-** Secret Key: `{minio-pass}`
-** Endpoint: `{minio-endpoint}`
-** Region: `none`
-** Bucket: `userX`
+** Name:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+Shared Minio - pipelines
+** Access Key:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+{minio-user}
+** Secret Key:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+{minio-pass}
+** Endpoint:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+{minio-endpoint}
+** Region:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+none
+** Bucket:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+userX
 
-looks like:
+The result should look like:
 
-image::02/2023-12-11-14-04-00.png[]
+image::02/data-connection.png[]
 
 
 == Launch a Workbench
@@ -51,8 +81,10 @@ Using the Git UI::
 +
 --
 If you want to use the UI:
-image::02/2023-12-11-12-07-52.png[]
-image::02/2023-12-11-12-08-57.png[]
+
+image::02/git-clone-1.png[]
+
+image::02/git-clone-2.png[]
 
 --
 Using the Git CLI::
