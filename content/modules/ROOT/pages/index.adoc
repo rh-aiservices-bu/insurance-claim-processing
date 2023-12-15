@@ -4,7 +4,7 @@
 
 This lab will illustrate how the use of various AI/ML technologies can be combined to produce a valuable solution to a business problem.
 
-The information, code, models and techniques it contains are illustration of what a first prototype could look like. It is not the definitive way of adressing the stated requirements.
+The information, code, models and techniques it contains are illustration of what a first prototype could look like. It is not the definitive way of addressing the stated requirements.
 
 == Contributing
 
