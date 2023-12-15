@@ -10,3 +10,11 @@ jobs:
     - uses: actions/checkout@v3
     - uses: rojopolis/spellcheck-github-actions@v0
       name: Spellcheck
+      with:
+        config_path: .github/.spellcheck.yaml # put path to configuration file here
+        source_files: README.md CHANGELOG.md notes/Notes.md
+        task_name: Markdown
+        output_file: spellcheck-output.txt
+
+
+
