@@ -76,6 +76,7 @@ patternfly
 Patternfly
 PatternFly
 Pipfile
+pn
 png
 Podman
 podname
