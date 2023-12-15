@@ -1,4 +1,5 @@
 name: modules
+title: Navigation
 version: master
 nav:
   - modules/ROOT/nav.adoc
@@ -10,7 +11,7 @@ asciidoc:
     page-pagination: true
     experimental:
     numbered:
-    lab_name: "AI Based Smart Retail: Event-Driven Ansible & ChatOps"
+    lab_name: "Streamlining insurance claims with OpenShift AI"
     guid: my-guid
     ssh_user: lab-user
     ssh_password: lab-user

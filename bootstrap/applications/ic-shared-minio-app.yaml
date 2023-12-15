@@ -1,0 +1,27 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ic-shared-minio-app
+  namespace: openshift-gitops
+  # finalizers:
+  #   - resources-finalizer.argocd.argoproj.io
+  labels:
+    component: bootstrap
+    purpose: ic-shared-minio-app
+spec:
+  destination:
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    ## remember to change this to the gitea addresses
+    path: bootstrap/ic-shared-minio
+    repoURL: >-
+      https://github.com/rh-aiservices-bu/insurance-claim-processing.git
+    targetRevision: dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - RespectIgnoreDifferences=true

@@ -1,0 +1,9 @@
+== PLACEHOLDER/EXAMPLEs
+
+This file is a placeholder for pages that don't exist yet.
+It's also a template to be copied when creating a new page.
+
+=== Inserting an image.
+
+image::2023-11-30-22-30-30.png[test image]
+

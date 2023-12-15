@@ -1,5 +1,5 @@
 site:
-  title: "AI Based Smart Retail: Event-Driven Ansible & ChatOps"
+  title: "Streamlining insurance claims with OpenShift AI"
   url: https://redhat-scholars.github.io/course-template
   start_page: modules::index.adoc
 
@@ -16,7 +16,7 @@ ui:
 content:
   sources:
     - url: ./
-      start_path: content
+      start_path: instructions/content
 
 output:
   dir: ./www

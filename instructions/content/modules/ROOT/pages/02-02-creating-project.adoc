@@ -1,0 +1,70 @@
+= Creating your playpen project
+
+As a preliminary step, each of you is going to
+1. Create a project
+2. Create a Data Connection
+3. Launch a Workbench
+4. Git-Clone the common repo
+
+== Create a project
+
+* Create a project like `userX-yourfirstname`
+** that means that if Jane gets assigned user number 12, she should create a project called `user12-jane`
+* Enter what you want in the description
+
+== Create a Data Connection
+
+* In your project, create a data connection that maps to the shared minio.
+* Here is the info you need to enter:
+** Name: `Shared Minio - pipelines`
+** Access Key: `minio`
+** Secret Key: `minio123`
+** Endpoint: `minio.ic-shared-minio.svc.cluster.local`
+** Region: `none`
+** Bucket: `bucket-user-01`
+
+looks like:
+
+image::02/2023-12-11-14-04-00.png[]
+
+== Launch a Workbench
+
+Once the Data Connection is created, launch a workbench with the following characteristics:
+
+* Choose a name for it
+* Image Selection: Pytorch
+* Version: 2023.2
+* Container Size: Small
+* Accelerator: None
+
+image::02/launch-workbench-01.png[]
+image::02/launch-workbench-02.png[]
+
+== Git-Clone the common repo
+
+
+
+[tabs]
+====
+Using the Git UI::
++
+--
+If you want to use the UI:
+image::02/2023-12-11-12-07-52.png[]
+image::02/2023-12-11-12-08-57.png[]
+
+--
+Using the Git CLI::
++
+--
+[.console-input]
+[source,adoc]
+----
+git clone https://github.com/rh-aiservices-bu/insurance-claim-processing.git
+cd insurance-claim-processing/
+git checkout dev
+----
+--
+====
+
+

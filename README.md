@@ -1,4 +1,15 @@
-# Insurance Claim Processing
+# Streamlining insurance claims with OpenShift AI
+
+## Introduction
+
+This repository contains the code, instructions, resources and materials associated with the Lab called **Streamlining insurance claims with OpenShift AI**.
+
+To consult the static version of the instructions, please use [this URL](https://rh-aiservices-bu.github.io/insurance-claim-processing/)
+
+If you want to participate in the creation and update of this content, please consult the sections below.
+
+<details>
+  <summary>Display Development-centric information</summary>
 
 ## General Development Information
 
@@ -13,7 +24,16 @@
 - If your development relates to an Issue or a Feature Request, add its reference in the branch name.
 - Try to stash your changes before submitting a PR.
 
-## Instructions Development
+## How to update the **Instructions**
+
+Useful link: https://redhat-scholars.github.io/build-course/rhs-build-course/develop.html
+
+Live updating ...
+```bash
+cd
+npm install
+gulp
+```
 
 ### Requirements
 
@@ -29,7 +49,7 @@
 - The site will be visible at [http://localhost:8443/](http://localhost:8443/)
 - When finished, you can stop serving the site by running from the root of the repo `instructions/utilities/lab-stop`.
 
-## Application Development
+## How to update the **Application**
 
 ### Requirements
 
@@ -53,3 +73,5 @@ From the main folder, launch `npm run dev`. This will launch both backend and fr
 
 - Frontend is accessible at `http://localhost:9000`
 - Backend is accessible at `http://localhost:5000`, with Swagger API doc at `http://localhost:5000/docs`
+
+</details>
