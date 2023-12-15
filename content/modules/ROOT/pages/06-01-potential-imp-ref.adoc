@@ -13,5 +13,14 @@ What we have showed in this lab is a very rough prototype, put together very qui
 * what could be done
 * that it was do-able at all
 
-In such a situation, it's common to cut corners and make short term decisions since there is no garantee that this will become a real project.
+In such a situation, it's common to go fast and make short term decisions since there is no guarantee that this will become a real project.
 
+Therefore, now, we need to review what was done, and make suggestions along these axes.
+
+* What **other** tools and techniques could be used in order to make the experience of our claims adjusters even better, more streamlined?
+
+* Is our current application robust enough? Describe what scenarios might make it harder to use?
+
+* How efficiently are we going to be able to make updates to its components if we need to? Is there a chance that making a change to the LLM model, the YOLOV8 model, the database, the application, we introduce breaking changes?
+
+* If that is the case, what would we want to do to avoid those possibilities?
