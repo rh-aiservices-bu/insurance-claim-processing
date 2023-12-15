@@ -8,24 +8,25 @@ As a preliminary step, each of you is going to
 
 == Create a project
 
-* Create a project like `userX-yourfirstname`
-** that means that if Jane gets assigned user number 12, she should create a project called `user12-jane`
-* Enter what you want in the description
+* Create a project based on the user ID that was assigned to you. (such as `userX`)
+* This line is a test to see if it renders or not: Hello %USER% your password is %PASSWORD%
+* Enter your own first and last name in the description of the project.
 
 == Create a Data Connection
 
 * In your project, create a data connection that maps to the shared minio.
 * Here is the info you need to enter:
 ** Name: `Shared Minio - pipelines`
-** Access Key: `minio`
-** Secret Key: `minio123`
-** Endpoint: `minio.ic-shared-minio.svc.cluster.local`
+** Access Key: `{minio-user}`
+** Secret Key: `{minio-pass}`
+** Endpoint: `{minio-endpoint}`
 ** Region: `none`
-** Bucket: `bucket-user-01`
+** Bucket: `userX`
 
 looks like:
 
 image::02/2023-12-11-14-04-00.png[]
+
 
 == Launch a Workbench
 
@@ -60,7 +61,7 @@ Using the Git CLI::
 [.console-input]
 [source,adoc]
 ----
-git clone https://github.com/rh-aiservices-bu/insurance-claim-processing.git
+git clone {git-clone-repo-url}
 cd insurance-claim-processing/
 git checkout dev
 ----

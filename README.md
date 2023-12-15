@@ -41,7 +41,7 @@ gulp
 
 ### Development
 
-- Add/Modify/Delete content in [instructions/content/modules/ROOT](instructions/content/modules/ROOT).
+- Add/Modify/Delete content in [content/modules/ROOT](content/modules/ROOT).
 - Navigation is handled in `nav.adoc`.
 - Content pages are in the `pages` folder.
 - To build the site, from the root of the repo, run `./instructions/utilities/lab-build`.
