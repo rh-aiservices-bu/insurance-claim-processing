@@ -4,7 +4,7 @@
 
 Although we welcome feedback, critique, we prefer https://github.com/rh-aiservices-bu/insurance-claim-processing/issues[Issues] and https://github.com/rh-aiservices-bu/insurance-claim-processing/pulls[Pull Requests].
 
-But this section of the lab is not meant for Improvements and Refinements to the lab. Instead it is about...
+But this section of the lab is not meant for Improvements and Refinements **to the lab**. Instead it is about...
 
 == To the presented prototype
 
@@ -24,3 +24,6 @@ Therefore, now, we need to review what was done, and make suggestions along thes
 * How efficiently are we going to be able to make updates to its components if we need to? Is there a chance that making a change to the LLM model, the YOLOV8 model, the database, the application, we introduce breaking changes?
 
 * If that is the case, what would we want to do to avoid those possibilities?
+
+* Which parts seem to still be manual and time-consuming, and how could we automate them better, to avoid human errors if we can.
+
