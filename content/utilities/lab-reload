@@ -45,13 +45,17 @@ printf "%b  %b %s\\n" "${OVER}" "${TICK}" "Site Cleaned "
 printf "  %b Rebuilding site %s\\n" "${INFO}"
 mkdir -p ./content/www
 
+time \
 ${container_runtime} run --rm --name showroom-builder \
     --platform linux/amd64 \
     -v "${PWD}:/antora" \
     docker.io/antora/antora default-site.yml
 printf "%b  %b %s\\n" "${OVER}" "${TICK}" "Site Rebuilt "
 
-
+printf "  %b Caching site %s\\n" "${INFO}"
+rm -rf ./content/www-cache/
+cp -rp  ./content/www/ \
+        ./content/www-cache/
 
 printf "  %b (Re-)Starting serving container %s\\n" "${INFO}"
 
@@ -65,7 +69,7 @@ else
         -d \
         --name showroom-httpd \
         -p 8443:80 \
-        -v "${PWD}/content/www:/usr/local/apache2/htdocs/" \
+        -v "${PWD}/content/www-cache:/usr/local/apache2/htdocs/" \
         docker.io/httpd:2.4
     printf "%b  %b %s\\n" "${OVER}" "${TICK}" "container started "
 fi

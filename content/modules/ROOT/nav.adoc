@@ -36,3 +36,6 @@
 * 6. Productization and Extrapolations
 ** xref:06-01-potential-imp-ref.adoc[6.1 Potential improvements and refinements]
 ** xref:06-02-applicability-other.adoc[6.2 Applicability to other industries]
+
+* 7. End of Lab
+** xref:07-01-end-of-lab.adoc[7.1 Thanks]
