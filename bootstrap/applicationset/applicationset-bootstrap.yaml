@@ -25,6 +25,12 @@ spec:
         repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
         targetRevision: dev
         path: bootstrap/ic-shared-llm
+      - cluster: in-cluster
+        url: https://kubernetes.default.svc
+        name: ic-shared-img-det
+        repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
+        targetRevision: feature/erwan-gitops-model
+        path: bootstrap/ic-shared-img-det
   template:
     metadata:
       name: '{{name}}'
