@@ -101,4 +101,4 @@ def batch_detect_objects(claim_ids = None):
         detect_objects(claim_id)
 
 if __name__ == '__main__':
-    batch_detect_objects([3])
+    batch_detect_objects()

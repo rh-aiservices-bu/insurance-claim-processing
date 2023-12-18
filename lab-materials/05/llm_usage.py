@@ -39,12 +39,3 @@ def similarity_metric(predicted_text, reference_text):
     evaluator = load_evaluator("embedding_distance", embeddings=embedding_model)
     distance_score = evaluator.evaluate_strings(prediction=predicted_text, reference=reference_text)
     return 1-distance_score["score"]
-    
-if __name__ == '__main__':
-    with open('example_text.txt') as f:
-        input_text = f.read()
-    
-    with open('template.txt') as f:
-        template = f.read()
-    
-    summarize_with_template(input_text, template)
