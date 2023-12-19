@@ -57,7 +57,7 @@ spec:
   multiModel: true
   protocolVersions:
   - grpc-v2
-  replicas: 2
+  replicas: 1
   supportedModelFormats:
   - autoSelect: true
     name: keras
