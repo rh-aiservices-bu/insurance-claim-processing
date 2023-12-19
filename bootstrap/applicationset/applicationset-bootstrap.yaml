@@ -8,25 +8,21 @@ spec:
   - list:
       elements:
       - cluster: in-cluster
-        url: https://kubernetes.default.svc
         name: ic-shared-minio-app
         repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
         targetRevision: dev
         path: bootstrap/ic-shared-minio
       - cluster: in-cluster
-        url: https://kubernetes.default.svc
         name: ic-shared-database-app
         repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
         targetRevision: dev
         path: bootstrap/ic-shared-database
       - cluster: in-cluster
-        url: https://kubernetes.default.svc
         name: ic-shared-llm-app
         repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
         targetRevision: dev
         path: bootstrap/ic-shared-llm
       - cluster: in-cluster
-        url: https://kubernetes.default.svc
         name: ic-shared-img-det
         repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
         targetRevision: feature/erwan-gitops-model
