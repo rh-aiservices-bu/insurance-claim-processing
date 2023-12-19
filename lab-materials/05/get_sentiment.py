@@ -2,25 +2,29 @@ import requests
 import os
 import json
 
-from llm_usage import infer_with_template
+import logging
+from dotenv import dotenv_values, load_dotenv
 
-claims_endpoint = os.environ.get("CLAIMS_ENDPOINT")+"/db/claims"
+from llm_usage import infer_with_template
+import db_utils
+
+# Initialize logger
+logger = logging.getLogger("app")
+
+# Get config
+config = {
+    **dotenv_values(".env"),  # load shared development variables
+    **dotenv_values(".env.secret"),  # load sensitive variables
+    **os.environ,  # override loaded values with environment variables
+}
+
+db = db_utils.Database(config, logger)
 
 def upload_sentiment(claim_id, sentiment):
-    upload_endpoint = claims_endpoint + f"/{claim_id}/sentiment"
-    data = {
-        "sentiment": sentiment,
-    }
-    headers = {'accept': 'application/json'}
-    response = requests.post(upload_endpoint, headers=headers, params=data)
-
-    if response.status_code!=200:
-        raise Exception(f"{response.status_code} {response.text}")
-    
+    db.update_claim_sentiment(claim_id, sentiment)
 
 def get_claim_sentiment(claim_id = None):    
-    claim_endpoint = claims_endpoint + f"/{claim_id}"
-    claim_info = requests.get(claim_endpoint).json()
+    claim_info = db.get_claim_info(claim_id)
     claim_body = claim_info["body"]
     
     with open('templates/sentiment_template.txt') as f:
