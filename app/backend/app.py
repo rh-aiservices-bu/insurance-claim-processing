@@ -1,32 +1,22 @@
 """ Backend for Insurance Claims Processing App """
+import hashlib
 import logging
 import os
-from collections.abc import Generator
-from queue import Empty, Queue
-from threading import Thread
-from typing import List, Optional
-from urllib.parse import unquote
-import hashlib
-from pathlib import Path
+import sys
+import time
+from typing import List
 
 import boto3
 import data_classes
 import db_utils
-import redis_utils
+import httpx
 from app_config import LOG_LEVELS, LOGGING_CONFIG
 from dotenv import dotenv_values, load_dotenv
-from fastapi import FastAPI, File, UploadFile, HTTPException
-from fastapi.staticfiles import StaticFiles
+from fastapi import FastAPI, File, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse, FileResponse
-from langchain.callbacks.base import BaseCallbackHandler
-from langchain.chains import RetrievalQA
-from langchain.embeddings.huggingface import HuggingFaceEmbeddings
-from langchain.llms import HuggingFaceTextGenInference
-from langchain.prompts import PromptTemplate
-from langchain.vectorstores.redis import Redis
+from fastapi.responses import Response, StreamingResponse
+from fastapi.staticfiles import StaticFiles
 from uvicorn import run
-import time
 
 # Load local env vars if present
 load_dotenv()
@@ -74,14 +64,7 @@ async def health():
     """ Basic status """
     return {"message": "Status:OK"}
 
-@app.get("/ping_redis")
-async def ping_redis():
-    """
-    Checks Redis connection. Returns 'true' if the connection is OK, 'false' otherwise
-    """
-    return redis_utils.ping_redis(config)
-
-@app.get("/db/tables")
+@app.get("/api/db/tables")
 async def db_list_tables():
     """
     List all the available tables in the Database
@@ -89,7 +72,7 @@ async def db_list_tables():
     tables = db.list_tables()
     return tables
 
-@app.get("/db/claims", response_model = List[data_classes.ClaimBaseInfo])
+@app.get("/api/db/claims", response_model = List[data_classes.ClaimBaseInfo])
 async def db_list_claims():
     """
     List all the claims
@@ -97,7 +80,7 @@ async def db_list_claims():
     claims = db.list_claims()
     return claims
 
-@app.get("/db/claims/{claim_id}", response_model = data_classes.ClaimFullInfo)
+@app.get("/api/db/claims/{claim_id}", response_model = data_classes.ClaimFullInfo)
 async def db_get_claim_info(claim_id):
     """
     Returns the full content of a claim
@@ -105,7 +88,7 @@ async def db_get_claim_info(claim_id):
     claim_info = db.get_claim_info(claim_id)
     return claim_info
 
-@app.post("/db/claims", response_model = data_classes.ClaimBaseInfo)
+@app.post("/api/db/claims", response_model = data_classes.ClaimBaseInfo)
 async def db_create_claim(claim: data_classes.ClaimCreationInfo):
     """
     Creates a new claim
@@ -114,7 +97,7 @@ async def db_create_claim(claim: data_classes.ClaimCreationInfo):
     claim_info = db.get_claim_base_info(claim_id)
     return claim_info
 
-@app.post("/db/claims/{claim_id}/original_image")
+@app.post("/api/db/claims/{claim_id}/original_image")
 async def db_upload_original_image(claim_id: int, image: UploadFile = File(...)):
     """
     Uploads an original image of a claim
@@ -135,7 +118,7 @@ async def db_upload_original_image(claim_id: int, image: UploadFile = File(...))
     
     return {"message": f"{image.filename} uploaded as an original image of claim {claim_id}"}
 
-@app.post("/db/claims/{claim_id}/processed_image")
+@app.post("/api/db/claims/{claim_id}/processed_image")
 async def db_upload_processed_image(claim_id: int, image: UploadFile = File(...)):
     """
     Uploads a processed image of a claim
@@ -156,7 +139,7 @@ async def db_upload_processed_image(claim_id: int, image: UploadFile = File(...)
     
     return {"message": f"{image.filename} uploaded as a processed image of claim {claim_id}"}
 
-@app.post("/db/claims/{claim_id}/summary")
+@app.post("/api/db/claims/{claim_id}/summary")
 async def db_update_claim_summary(claim_id: int, summary: str):
     """
     Updates the summary of a claim
@@ -164,7 +147,7 @@ async def db_update_claim_summary(claim_id: int, summary: str):
     db.update_claim_summary(claim_id, summary)
     return {"message": "Summary uploaded"}
 
-@app.post("/db/claims/{claim_id}/time")
+@app.post("/api/db/claims/{claim_id}/time")
 async def db_update_claim_time(claim_id: int, time: str):
     """
     Updates the time of a claim
@@ -172,7 +155,7 @@ async def db_update_claim_time(claim_id: int, time: str):
     db.update_claim_time(claim_id, time)
     return {"message": "Time uploaded"}
 
-@app.post("/db/claims/{claim_id}/location")
+@app.post("/api/db/claims/{claim_id}/location")
 async def db_update_claim_location(claim_id: int, location: str):
     """
     Updates the location of a claim
@@ -180,7 +163,7 @@ async def db_update_claim_location(claim_id: int, location: str):
     db.update_claim_location(claim_id, location)
     return {"message": "Location uploaded"}
 
-@app.post("/db/claims/{claim_id}/sentiment")
+@app.post("/api/db/claims/{claim_id}/sentiment")
 async def db_update_claim_sentiment(claim_id: int, sentiment: str):
     """
     Updates the sentiment of a claim
@@ -188,7 +171,7 @@ async def db_update_claim_sentiment(claim_id: int, sentiment: str):
     db.update_claim_sentiment(claim_id, sentiment)
     return {"message": "Sentiment uploaded"}
 
-@app.get("/images")
+@app.get("/api/images")
 async def s3_list_images():
     """
     Returns the list of images
@@ -196,7 +179,7 @@ async def s3_list_images():
     images = s3.list_objects(Bucket=config["IMAGES_BUCKET"])
     return images
 
-@app.get("/images/{image_key:path}")
+@app.get("/api/images/{image_key:path}")
 async def s3_get_image(image_key: str):
     """
     Returns the image with the given key
@@ -204,15 +187,29 @@ async def s3_get_image(image_key: str):
     image = s3.get_object(Bucket=config["IMAGES_BUCKET"], Key=image_key)
     return StreamingResponse(image["Body"], media_type=image["ContentType"])
 
-# Serve static files 
-app.mount("/", StaticFiles(directory="public", html = True), name="static")
 
-#@app.get("/")
-#async def read_root():
-#    index_path = Path("./public/index.html")
-#    if not index_path.exists():
-#        raise HTTPException(status_code=404)
-#    return FileResponse(str(index_path))
+# Serve React App
+from fastapi import HTTPException
+from starlette.exceptions import HTTPException as StarletteHTTPException
+
+
+class SPAStaticFiles(StaticFiles):
+    async def get_response(self, path: str, scope):
+        if len(sys.argv) > 1 and sys.argv[1] == "dev":
+            # We are in Dev mode, proxy to the React dev server
+            async with httpx.AsyncClient() as client:
+                response = await client.get(f"http://localhost:9000/{path}")
+            return Response(response.text, status_code=response.status_code)
+        else:
+            try:
+                return await super().get_response(path, scope)
+            except (HTTPException, StarletteHTTPException) as ex:
+                if ex.status_code == 404:
+                    return await super().get_response("index.html", scope)
+                else:
+                    raise ex
+
+app.mount("/", SPAStaticFiles(directory="public", html=True), name="spa-static-files")
 
 # Launch the FastAPI server
 if __name__ == "__main__":

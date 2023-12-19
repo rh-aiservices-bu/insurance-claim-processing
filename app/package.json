@@ -21,7 +21,7 @@
     "build:backend": "cd ./backend && export PATH=$PATH:/opt/app-root/src/.local/bin && python3 -m ensurepip --upgrade && pip3 install -r requirements.txt",
     "build:frontend": "cd ./frontend && npm run build && cp -r ./dist/* ../backend/public",
     "dev": "run-p -l dev:*",
-    "dev:backend": "cd ./backend && source ./.venv/bin/activate && nodemon app.py",
+    "dev:backend": "cd ./backend && source ./.venv/bin/activate && nodemon app.py dev",
     "dev:frontend": "cd ./frontend && npm run start:dev",
     "format": "prettier --write \"backend/**/*.ts\" \"frontend/**/*.ts\" \"frontend/**/*.tsx\"",
     "make": "make",
