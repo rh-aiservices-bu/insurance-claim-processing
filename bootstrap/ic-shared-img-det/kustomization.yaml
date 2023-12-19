@@ -13,6 +13,5 @@ resources:
 - create-data-connection.yaml
 - add-model-job.yaml
 - runtime.yaml
-- server.yaml
 - model.yaml
 - pinger.yaml
