@@ -29,8 +29,9 @@ metadata:
     openshift.io/display-name: img-det
     serving.kserve.io/deploymentMode: ModelMesh
   labels:
-    name: img-det
+    name: "img-det"
     opendatahub.io/dashboard: 'true'
+  name: "img-det"
 spec:
   predictor:
     model:
