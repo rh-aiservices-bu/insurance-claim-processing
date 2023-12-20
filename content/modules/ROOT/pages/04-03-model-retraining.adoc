@@ -1,2 +1,8 @@
 = Model Retraining
 
+. In your running pytorch workbench, navigate to the folder `lab-materials/04`.
+
+. look for the notebook called `04-003-model-retraining.ipynb`
+
+. Execute the cells of the notebook. But note that the actual training step would take way too long on CPU. Stop/terminate the kernel, to free up resources.
+
