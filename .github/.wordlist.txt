@@ -136,3 +136,5 @@ Prasanth
 Anbalagan
 Erwan
 Granger
+applicationset
+imagesdir
