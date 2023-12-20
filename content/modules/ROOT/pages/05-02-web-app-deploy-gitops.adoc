@@ -1,2 +1,129 @@
-= pages/05-02-web-app-deploy-gitops.adoc
+= Deploying application via GitOps
+
+
+== Deploy your instance of ArgoCD
+
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+cat <<EOF | oc apply -f -
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ArgoCD
+metadata:
+  name: argocd
+spec:
+  sso:
+    dex:
+      openShiftOAuth: true
+      resources:
+        limits:
+          cpu: 500m
+          memory: 256Mi
+        requests:
+          cpu: 250m
+          memory: 128Mi
+    provider: dex
+  rbac:
+    defaultPolicy: "role:readonly"
+    policy: "g, system:authenticated, role:admin"
+    scopes: "[groups]"
+  server:
+    insecure: true
+    route:
+      enabled: true
+      tls:
+        insecureEdgeTerminationPolicy: Redirect
+        termination: edge
+EOF
+oc rollout status deploy/argocd-server
+
+
+
+Now that Argo is deployed, let's find its route.
+echo "   ArgoCD UI : https://$(oc get route argocd-server -ojsonpath='{.status.ingress[0].host}')/ "
+
+
+== deploy apps
+
+
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+cat <<EOF | oc apply -f -
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: bootstrap
+spec:
+  generators:
+  - list:
+      elements:
+      - cluster: in-cluster
+        name: ic-shared-minio-app
+        repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
+        targetRevision: dev
+        path: bootstrap/ic-shared-minio
+      - cluster: in-cluster
+        name: ic-shared-database-app
+        repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
+        targetRevision: dev
+        path: bootstrap/ic-shared-database
+      - cluster: in-cluster
+        name: ic-shared-llm-app
+        repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
+        targetRevision: dev
+        path: bootstrap/ic-shared-llm
+      - cluster: in-cluster
+        name: ic-shared-img-det
+        repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
+        targetRevision: dev
+        path: bootstrap/ic-shared-img-det
+  template:
+    metadata:
+      name: '{{name}}'
+      labels:
+        component: bootstrap
+        purpose: '{{name}}'
+    spec:
+      project: default
+      source:
+        repoURL: '{{repoURL}}'
+        targetRevision: '{{targetRevision}}'
+        path: '{{path}}'
+      destination:
+        server: 'https://kubernetes.default.svc'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - RespectIgnoreDifferences=true
+EOF
+
+
+cat <<EOF | oc apply -f -
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bgd-app
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: apps/bgd/base
+    repoURL: https://github.com/rhpds/gitops-bgd-app
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
+    syncOptions:
+    - CreateNamespace=false
+EOF
+
 
