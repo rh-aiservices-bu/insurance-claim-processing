@@ -1,2 +1,32 @@
-= pages/05-01-web-app-deploy-manual.adoc
+= Deploying your Web App manually
+:imagesdir: ../assets/images
 
+== Opening the OpenShift Console
+
+Access the OpenShift Console via this link:
+
+image::05/01-openshift-console.png[]
+
+When prompted, enter your credentials.
+
+== Obtain a login token
+
+image::05/01-copy-login-command.png[]
+
+* authenticate
+
+* Click Display Token
+
+* Copy the `oc login ...` command:
+
+image::05/01-oc-login.png[]
+
+== Open a Web Terminal
+
+Click on the Web Terminal icon in the top right corner:
+
+image::05/web-term-1.png[]
+
+Then, choose your existing project and click start:
+
+image::05/web-term-2.png[]

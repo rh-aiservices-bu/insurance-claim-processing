@@ -17,6 +17,10 @@ As a preliminary step, each of you is going to
 * This line is a test to see if it renders or not: Hello %USER% your password is %PASSWORD%
 * Enter your own first and last name in the description of the project.
 
+It should look like this:
+
+image::02/02-02-create-project.png[]
+
 == Create a Data Connection
 
 * In your project, create a data connection that maps to the shared minio.
