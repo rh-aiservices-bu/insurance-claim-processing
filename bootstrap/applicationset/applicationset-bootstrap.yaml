@@ -25,7 +25,7 @@ spec:
       - cluster: in-cluster
         name: ic-shared-img-det
         repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
-        targetRevision: feature/erwan-gitops-model
+        targetRevision: dev
         path: bootstrap/ic-shared-img-det
   template:
     metadata:
