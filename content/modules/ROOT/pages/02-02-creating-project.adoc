@@ -1,10 +1,15 @@
 = Creating your playpen project
+:imagesdir: ../assets/images
 
 As a preliminary step, each of you is going to
-1. Create a project
-2. Create a Data Connection
-3. Launch a Workbench
-4. Git-Clone the common repo
+
+. Create a project
+
+. Create a Data Connection
+
+. Launch a Workbench
+
+. Git-Clone the common repo
 
 == Create a project
 

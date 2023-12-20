@@ -1,4 +1,9 @@
 = Car recognition
 
+. In your running pytorch workbench, navigate to the folder `lab-materials/04`.
+
+. look for the notebook called `04-02-car-recognition.ipynb`
+
+. Execute the cells of the notebook, and ensure you understand what is happening
 
 

@@ -1,2 +1,16 @@
 = Accident Recognition
 
+. In your running pytorch workbench, navigate to the folder `lab-materials/04`.
+
+. look for the notebook called `04-04-accident-recog.ipynb`
+
+. Execute the cells of the notebook.
+
+note: if you need to download the version of the model that has been retrained, use this:
+
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+curl -LO https://rhods-public.s3.amazonaws.com/demo-models/ic-models/accident/accident_detect.onnx
+

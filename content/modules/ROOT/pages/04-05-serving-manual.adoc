@@ -1,2 +1,25 @@
 = Model Serving (Manual)
 
+. at this point, we need to deploy the model into RHOAI model serving.
+
+. Look at the information used to create the Data Connection that was used for the pipeline server.
+
+. Re-create another data connection, with identical information, but change the bucket name from `userX` to 'models'
+
+. Then create a model server
+
+. Then create a model
+
+. Then wait for it to deploy
+
+. Then , from a notebook, run
+
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+some command that can confirm the model is working in modelmesh too
+
+
+
+
