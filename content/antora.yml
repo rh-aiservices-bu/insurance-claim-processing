@@ -19,7 +19,7 @@ asciidoc:
     minio-user: minio
     minio-pass: minio123
     minio-endpoint: minio.ic-shared-minio.svc.cluster.local
-    git-repo-clone-url: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
+    git-clone-repo-url: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
 
   extensions:
     - ./content/lib/tab-block.js
