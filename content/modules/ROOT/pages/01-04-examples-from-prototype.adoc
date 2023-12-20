@@ -1,4 +1,5 @@
 = Examples from prototyping work
+:imagesdir: ../assets/images
 
 == Using an LLM for text summarization
 
