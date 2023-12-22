@@ -1,0 +1,6 @@
+:imagesdir: ../assets/images
+= Pipeline for processing claims
+
+== Run the pipeline
+
+== Check the results
