@@ -15,6 +15,8 @@ As a preliminary step, each of you is going to
 
 * Create a project based on the user ID that was assigned to you. (such as `userX`)
 * This line is a test to see if it renders or not: Hello %USER% your password is %PASSWORD%
+* This line is a test to see if it renders or not:
+** Hello {user} your password is {password} and your url for your console is {openshift_console_url}
 * Enter your own first and last name in the description of the project.
 
 It should look like this:
