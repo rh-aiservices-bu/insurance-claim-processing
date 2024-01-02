@@ -1,6 +1,9 @@
 = Examples from prototyping work
 :imagesdir: ../assets/images
 
+The examples below are what we hope to achieve through our prototype version of the improved process.
+Some are mockups, and some are screenshots from the prototype application.
+
 == Using an LLM for text summarization
 
 * Allows for faster reading by the claims adjuster
@@ -9,18 +12,30 @@ image::01/proto-summary.png[test image]
 
 == Using an LLM for information extraction
 
+* Extract key pieces of information for better population of database
+
 image::01/proto-info-extract.png[ info extraction]
 
 == Using an LLM for sentiment analysis
 
-TODO
+* Detect tone of text, and potentially act on it.
+
+image::01/proto-sentiment-analysis.png[]
 
 == Using image recognition to frame vehicle(s) in pictures
 
-TODO
+* Analyse images provided by customer
 
-== Using image recognition to detect damage and collisions
+image::01/proto-car-recog.png[]
 
-TODO
+== Using image recognition to detect damage
+
+* Assessment of damage based on picture
+
+image::01/proto-accident-grading.png[]
 
 == Web Application to review/process claims
+
+* Have an application that ties in these tools together and enables users to process the incoming claims more efficiently
+
+image::01/proto-claims-processing-app.png[]
