@@ -6,7 +6,6 @@
 [.lines_space]
 [.console-input]
 [source, text]
-[subs=attributes+]
 cat <<EOF | oc apply -f -
 ---
 apiVersion: argoproj.io/v1alpha1
@@ -51,7 +50,6 @@ echo "   ArgoCD UI : https://$(oc get route argocd-server -ojsonpath='{.status.i
 [.lines_space]
 [.console-input]
 [source, text]
-[subs=attributes+]
 cat <<EOF | oc apply -f -
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
@@ -104,6 +102,9 @@ spec:
 EOF
 
 
+[.lines_space]
+[.console-input]
+[source, text]
 cat <<EOF | oc apply -f -
 ---
 apiVersion: argoproj.io/v1alpha1
