@@ -1,6 +1,9 @@
 = Examples from prototyping work
 :imagesdir: ../assets/images
 
+The examples below are what we hope to achieve through our prototype version of the improved process.
+Some are mockups, and some are screenshots from the prototype application.
+
 == Using an LLM for text summarization
 
 * Allows for faster reading by the claims adjuster
@@ -13,7 +16,7 @@ image::01/proto-info-extract.png[ info extraction]
 
 == Using an LLM for sentiment analysis
 
-TODO
+image::01/proto-sentiment-analysis.png[]
 
 == Using image recognition to frame vehicle(s) in pictures
 
