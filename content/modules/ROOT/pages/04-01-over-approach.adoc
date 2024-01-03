@@ -1,9 +1,20 @@
 = Overall Approach
+:imagesdir: ../assets/images
 
 As part of this prototype, we investigated the use of the YOLOV8 model.
-This model can be found online at ... and downloaded.
+This model can be found online at https://www.yolov8.com[yolov8] and downloaded.
 
 We will first review its out-of-the-box capabilities. We will then fine-tune it to allow it to do more specialized work for us. Once we have a new, customized version of the model, we will deploy it in ModelMesh. Once that is done, we will send queries to it.
+
+Let's start by looking at a yolov8 model and explore how it works on static car images.  
+
+image::04/sample-car-image.png[car image]
+
+In your running pytorch workbench, navigate to the folder `lab-materials/04`.
+
+. Look for (and open) the notebook called `04-01-over-approach.ipynb`
+
+. Execute the cells of the notebook, and ensure you understand what is happening
 
 
 
