@@ -1,36 +1,61 @@
 = Getting connected
 
-For the purposes of this training session, we have provisioned a shared OpenShift environment, with OpenShift AI deployed on it.
-Each of you have your own accounts.
+For the purposes of this training session, we have provisioned a single OpenShift cluster, with OpenShift AI deployed on it.
+
+Each person attending this lab will have a unique user account in which to do their work.
 
 // Your permissions are higher than what you would get in production-grade environment so that you can see it all (Cluster-reader? downsides?)
 
-The people facilitating the lab will share a URL with you.
+The people facilitating the lab will share a URL with you. This URL will provide you with
+
+* The cluster's URLs
+* Your account id (like `userX` where `X` is a number)
+* Your password (likely to be `openshift`) for that account
+* a link to a **customized** version of these instructions.
 
 Once you open it, you will see something that looks like the following:
 
-== Your private user and password
+== Customized environment information
 
-TODO: image of what that looks like
+If you are using the customized version of the instructions, the information below will render properly. If not, you will see variable names surrounded by curly braces (`{}`).
 
-TODO: claim your user: how to
+* OpenShift Console URL: {openshift_console_url}[{openshift_console_url}]
+* Your account id: `{user}`
+* Your password: `{password}`
+* The RHOAI URL:
+** https://rhods-dashboard-redhat-ods-applications.apps.{openshift_cluster_ingress_domain}/
+* The `oc login` command:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+{login_command}
 
-TODO: Figure out the OpenShift/OpenShift AI URL
+// TODO: image of what that looks like
+
+// TODO: claim your user: how to
+
+// TODO: Figure out the OpenShift/OpenShift AI URL
 
 == Connecting to OpenShift Console
 
-* Click on the URL
-* Choose the Auth Provider called:
-* Enter your user `userX` where  `X` is between 1 and 50
-* Enter your provided password
+* Click on the OpenShift Console URL above
+* Choose the Auth Provider called **HTpasswd**.
+* Enter your user id `userX` where `X` is a number.
+* Enter your provided password (`openshift`)
 
 == Connecting to OpenShift AI
 
-* Same steps for auth
+* Once you are connected to the OpenShift Console:
+** Click on the App Switcher Icon
+** Then Navigate to OpenShift AI
 
-== Other (shared) credentials:
+
+
+== Other credentials and URLs:
+
+TODO?
 
 * ArgoCD view
 * Gitea
 * Database
-
