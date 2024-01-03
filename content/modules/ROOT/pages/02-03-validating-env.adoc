@@ -17,4 +17,4 @@ If the output of this notebook looks suspicious, please inform the people leadin
 
 This is a summarized visualization of how the environment is laid out.
 
-image::02/ic-eng-diag.drawio.png[]
+image::02/ic-eng-diag.drawio.svg[]
