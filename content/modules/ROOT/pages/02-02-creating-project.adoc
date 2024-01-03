@@ -11,17 +11,25 @@ As a preliminary step, each of you is going to
 
 . Git-Clone the common repo
 
+== Unique user ID
+
+* If you are using instructions that have been customized for you, here are your details:
+** User id: `{user}`
+** Password: `{password}`
+** OpenShift Console URL: {openshift_console_url}
+** Hello {user} your password is {password} and your url for your console is {openshift_console_url}[{openshift_console_url}]
+* Otherwise, use the user id that you've claimed in the Lab Worksheet
+
 == Create a project
 
 * Create a project based on the user ID that was assigned to you. (such as `userX`)
-* This line is a test to see if it renders or not: Hello %USER% your password is %PASSWORD%
-* This line is a test to see if it renders or not:
-** Hello {user} your password is {password} and your url for your console is {openshift_console_url}
-* Enter your own first and last name in the description of the project.
+* Enter your first and last name in the description of the project.
 
 It should look like this:
 
 image::02/02-02-create-project.png[]
+
+But should NOT be `userX`. (`X` should be a number instead)
 
 == Create a Data Connection
 
@@ -91,7 +99,7 @@ image::02/launch-workbench-02.png[]
 Using the Git UI::
 +
 --
-If you want to use the UI:
+If you want to use the git UI in Jupyter:
 
 image::02/git-clone-1.png[]
 
@@ -101,12 +109,14 @@ image::02/git-clone-2.png[]
 Using the Git CLI::
 +
 --
+If you prefer using the `git` CLI in a terminal in Jupyter:
+
 [.console-input]
 [source,adoc]
 ----
 git clone {git-clone-repo-url}
 cd insurance-claim-processing/
-git checkout dev
+git checkout {git-clone-repo-branch}
 ----
 --
 ====
