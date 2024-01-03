@@ -117,6 +117,7 @@ If you prefer using the `git` CLI in a terminal in Jupyter:
 
 [.console-input]
 [source,adoc]
+[subs=attributes+]
 ----
 git clone {git-clone-repo-url}
 cd insurance-claim-processing/
