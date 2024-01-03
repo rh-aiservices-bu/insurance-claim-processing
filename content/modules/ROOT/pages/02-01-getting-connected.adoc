@@ -19,11 +19,11 @@ Once you open it, you will see something that looks like the following:
 
 If you are using the customized version of the instructions, the information below will render properly. If not, you will see variable names surrounded by curly braces (`{}`).
 
-* OpenShift Console URL: {openshift_console_url}[{openshift_console_url}]
+* OpenShift Console URL: {openshift_console_url}[{openshift_console_url},window=_blank]
 * Your account id: `{user}`
 * Your password: `{password}`
 * The RHOAI URL:
-** https://rhods-dashboard-redhat-ods-applications.apps.{openshift_cluster_ingress_domain}/
+** https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/[https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/,window=_blank]
 * The `oc login` command:
 [.lines_space]
 [.console-input]

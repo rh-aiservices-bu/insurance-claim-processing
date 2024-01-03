@@ -2,11 +2,11 @@
 :imagesdir: ../assets/images
 
 As part of this prototype, we investigated the use of the YOLOV8 model.
-This model can be found online at https://www.yolov8.com[yolov8] and downloaded.
+This model can be found online at https://www.yolov8.com[yolov8,window=_blank] and downloaded.
 
 We will first review its out-of-the-box capabilities. We will then fine-tune it to allow it to do more specialized work for us. Once we have a new, customized version of the model, we will deploy it in ModelMesh. Once that is done, we will send queries to it.
 
-Let's start by looking at a yolov8 model and explore how it works on static car images.  
+Let's start by looking at a yolov8 model and explore how it works on static car images.
 
 image::04/sample-car-image.png[car image]
 
