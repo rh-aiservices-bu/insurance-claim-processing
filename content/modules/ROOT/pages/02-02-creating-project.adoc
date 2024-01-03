@@ -78,10 +78,27 @@ The result should look like:
 
 image::02/data-connection.png[]
 
+== Create a Pipeline Server
+
+It is highly recommended to create your pipeline server before creating a workbench. So let's do that now!
+
+* In your DS project, click on **Create a pipeline Server**
++
+image::02/02-02-pipelineserver01.png[]
+
+* Select the Data Connection created earlier (**Shared Minio - pipelines**) and click the **configure** button:
++
+image::02/02-02-pipelineserver02.png[]
+
+* When your pipeline server is ready, your screen will look like the following:
++
+image::02/02-02-pipelineserver03.png[]
+
+At this point, your pipeline server is ready and deployed.
 
 == Launch a Workbench
 
-Once the Data Connection is created, launch a workbench with the following characteristics:
+Once the Data Connection and Pipeline Server are created, Create a workbench with the following characteristics:
 
 * Choose a name for it
 * Image Selection: Pytorch
