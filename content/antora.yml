@@ -21,6 +21,11 @@ asciidoc:
     minio-endpoint: minio.ic-shared-minio.svc.cluster.local
     git-clone-repo-url: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
     git-clone-repo-branch: dev
+    user: userX
+    password: openshift
+    openshift_console_url: http://PLACEHOLDER-URL.com/
+    openshift_cluster_ingress_domain: URL.com
+    login_command: oc login --insecure-skip-tls-verify=false -u userX -p openshift https://api.MYCLUSTER.com:6443"
 
   extensions:
     - ./content/lib/tab-block.js

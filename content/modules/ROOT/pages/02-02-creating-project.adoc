@@ -17,23 +17,25 @@ As a preliminary step, each of you is going to
 ** User id: `{user}`
 ** Password: `{password}`
 ** OpenShift Console URL: {openshift_console_url}
-** Hello {user} your password is {password} and your url for your console is {openshift_console_url}[{openshift_console_url}]
-* Otherwise, use the user id that you've claimed in the Lab Worksheet
 
 == Create a project
 
-* Create a project based on the user ID that was assigned to you. (such as `userX`)
+* Create a project with the same name as your user id.
+** You have been assigned a user in the form of `{user}`
+** Create a project with that exact name
+* Leave the resource name unchanged
 * Enter your first and last name in the description of the project.
 
 It should look like this:
 
 image::02/02-02-create-project.png[]
 
-But should NOT be `userX`. (`X` should be a number instead)
+But should NOT be `userX`. (for you, `X` should be a number instead)
 
 == Create a Data Connection
 
-* In your project, create a data connection that maps to the shared minio.
+* We have deployed an instance of Minio in the cluster to act as a simple Object Storage for our purposes.
+* We will create a **Data Connection** to it.
 * Here is the info you need to enter:
 ** Name:
 [.lines_space]
@@ -70,7 +72,7 @@ none
 [.console-input]
 [source, text]
 [subs=attributes+]
-userX
+{user}
 
 The result should look like:
 
@@ -90,9 +92,11 @@ Once the Data Connection is created, launch a workbench with the following chara
 image::02/launch-workbench-01.png[]
 image::02/launch-workbench-02.png[]
 
+Once the Workbench is created and running, Connect to it. (You will be asked to authenticate again, and accept some settings)
+
 == Git-Clone the common repo
 
-
+There are 2 potential ways of cloning the git repo into your workbench. Choose the one you are most comfortable with.
 
 [tabs]
 ====

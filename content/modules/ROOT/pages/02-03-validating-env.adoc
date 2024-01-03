@@ -1,11 +1,20 @@
 = Validating the environment
+:imagesdir: ../assets/images
 
-Now that you are connected, let's make sure that all the expected services are responding.
+Now that you are connected to your workbench, let's make sure that all the expected services are responding properly in the cluster.
 
-In your workbench,
+In your workbench:
 
-Open the notebook called `02/02-03-validating.ipynb`
+. In the left hand navigation menu, navigate to the folder called: `lab-materials/02`
 
-Running these cells will confirm that all the lab-required services are responding.
+. Open the notebook called `02-03-validating.ipynb`
+
+. Running these cells will confirm that all the lab-required services are responding.
 
 If the output of this notebook looks suspicious, please inform the people leading the lab.
+
+== Overall view
+
+This is a summarized visualization of how the environment is laid out.
+
+image::02/ic-eng-diag.drawio.png[]
