@@ -3,7 +3,7 @@
 
 As a preliminary step, each of you is going to
 
-. Create a project
+. Create a Data Science project
 
 . Create a Data Connection
 
@@ -20,6 +20,10 @@ As a preliminary step, each of you is going to
 
 == Create a project
 
+* First, navigate to the Data Science Project menu on the left:
++
+image::02/02-02-ds-proj-nav.png[]
+
 * Create a project with the same name as your user id.
 ** You have been assigned a user in the form of `{user}`
 ** Create a project with that exact name
@@ -32,7 +36,7 @@ image::02/02-02-create-project.png[]
 
 But should NOT be `userX`. (for you, `X` should be a number instead)
 
-== Create a Data Connection
+== Create a Data Connection for the pipeline server
 
 * We have deployed an instance of Minio in the cluster to act as a simple Object Storage for our purposes.
 * We will create a **Data Connection** to it.
@@ -78,10 +82,27 @@ The result should look like:
 
 image::02/data-connection.png[]
 
+== Create a Pipeline Server
+
+It is highly recommended to create your pipeline server before creating a workbench. So let's do that now!
+
+* In your DS project, click on **Create a pipeline Server**
++
+image::02/02-02-pipelineserver01.png[]
+
+* Select the Data Connection created earlier (**Shared Minio - pipelines**) and click the **configure** button:
++
+image::02/02-02-pipelineserver02.png[]
+
+* When your pipeline server is ready, your screen will look like the following:
++
+image::02/02-02-pipelineserver03.png[]
+
+At this point, your pipeline server is ready and deployed.
 
 == Launch a Workbench
 
-Once the Data Connection is created, launch a workbench with the following characteristics:
+Once the Data Connection and Pipeline Server are created, Create a workbench with the following characteristics:
 
 * Choose a name for it
 * Image Selection: Pytorch
@@ -117,6 +138,7 @@ If you prefer using the `git` CLI in a terminal in Jupyter:
 
 [.console-input]
 [source,adoc]
+[subs=attributes+]
 ----
 git clone {git-clone-repo-url}
 cd insurance-claim-processing/

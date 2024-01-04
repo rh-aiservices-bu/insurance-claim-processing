@@ -18,7 +18,7 @@ asciidoc:
     ssh_command: ssh lab-user@bastion.{guid}.example.opentlc.com
     minio-user: minio
     minio-pass: minio123
-    minio-endpoint: minio.ic-shared-minio.svc.cluster.local
+    minio-endpoint: http://minio.ic-shared-minio.svc.cluster.local:9000/
     git-clone-repo-url: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
     git-clone-repo-branch: dev
     user: userX
