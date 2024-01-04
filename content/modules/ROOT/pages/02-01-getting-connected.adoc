@@ -6,30 +6,43 @@ Each person attending this lab will have a unique user account in which to do th
 
 // Your permissions are higher than what you would get in production-grade environment so that you can see it all (Cluster-reader? downsides?)
 
-The people facilitating the lab will share a URL with you. This URL will provide you with
+// The people facilitating the lab will share a URL with you. This URL will provide you with
 
-* The cluster's URLs
-* Your account id (like `userX` where `X` is a number)
-* Your password (likely to be `openshift`) for that account
-* a link to a **customized** version of these instructions.
+// * The cluster's URLs
+// * Your account id (like `userX` where `X` is a number)
+// * Your password (likely to be `openshift`) for that account
+// * a link to a **customized** version of these instructions.
 
-Once you open it, you will see something that looks like the following:
+// Once you open it, you will see something that looks like the following:
 
-== Customized environment information
+== Environment information
 
-If you are using the customized version of the instructions, the information below will render properly. If not, you will see variable names surrounded by curly braces (`{}`).
+If you are using the customized version of the instructions, the information below will render properly. If not, you will see placeholder values instead.
 
-* OpenShift Console URL: {openshift_console_url}[{openshift_console_url},window=_blank]
 * Your account id: `{user}`
 * Your password: `{password}`
-* The RHOAI URL:
-** https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/[https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/,window=_blank]
-* The `oc login` command:
-[.lines_space]
-[.console-input]
-[source, text]
-[subs=attributes+]
-{login_command}
+
+In a new window or tab, open the following URL and log in:
+
+* OpenShift Console URL: {openshift_console_url}[{openshift_console_url},window=_blank]
+The result should look like:
++
+TODO
+
+Now, open the OpenShift AI URL, and log in with the same credentials:
+
+* The RHOAI URL: https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/[https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/,window=_blank]
+
+* The result should look like:
++
+TODO
+
+// * The `oc login` command:
+// [.lines_space]
+// [.console-input]
+// [source, text]
+// [subs=attributes+]
+// {login_command}
 
 // TODO: image of what that looks like
 
@@ -37,25 +50,25 @@ If you are using the customized version of the instructions, the information bel
 
 // TODO: Figure out the OpenShift/OpenShift AI URL
 
-== Connecting to OpenShift Console
+// == Connecting to OpenShift Console
 
-* Click on the OpenShift Console URL above
-* Choose the Auth Provider called **HTpasswd**.
-* Enter your user id `userX` where `X` is a number.
-* Enter your provided password (`openshift`)
+// * Click on the OpenShift Console URL above
+// * Choose the Auth Provider called **HTpasswd**.
+// * Enter your user id `userX` where `X` is a number.
+// * Enter your provided password (`openshift`)
 
-== Connecting to OpenShift AI
+// == Connecting to OpenShift AI
 
-* Once you are connected to the OpenShift Console:
-** Click on the App Switcher Icon
-** Then Navigate to OpenShift AI
+// * Once you are connected to the OpenShift Console:
+// ** Click on the App Switcher Icon
+// ** Then Navigate to OpenShift AI
 
 
 
-== Other credentials and URLs:
+// == Other credentials and URLs:
 
-TODO?
+// TODO?
 
-* ArgoCD view
-* Gitea
-* Database
+// * ArgoCD view
+// * Gitea
+// * Database
