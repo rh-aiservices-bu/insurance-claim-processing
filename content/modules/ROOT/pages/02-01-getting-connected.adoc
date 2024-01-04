@@ -1,4 +1,5 @@
 = Getting connected
+:imagesdir: ../assets/images
 
 For the purposes of this training session, we have provisioned a single OpenShift cluster, with OpenShift AI deployed on it.
 
@@ -27,7 +28,11 @@ In a new window or tab, open the following URL and log in:
 * OpenShift Console URL: {openshift_console_url}[{openshift_console_url},window=_blank]
 The result should look like:
 +
-TODO
+image::02/02-01-login1.png[]
+
+* and after that:
++
+image::02/02-01-login2.png[]
 
 Now, open the OpenShift AI URL, and log in with the same credentials:
 
