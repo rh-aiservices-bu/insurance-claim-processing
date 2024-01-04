@@ -1,5 +1,5 @@
 name: modules
-title: Navigation for {user}
+title: Navigation
 version: dev
 nav:
   - modules/ROOT/nav.adoc
