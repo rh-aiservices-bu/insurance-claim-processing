@@ -58,7 +58,7 @@ To do that:
 image::03/07-create-run.png[create run]
 
 . On the next screen, choose a name, select **Hourly** and click **Create**:
-
++
 image::03/03-07-hourlyrun.png[]
 
 . We can now leave the sanity-check pipeline alone.
