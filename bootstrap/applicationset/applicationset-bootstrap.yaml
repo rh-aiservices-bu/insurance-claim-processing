@@ -27,6 +27,11 @@ spec:
         repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
         targetRevision: dev
         path: bootstrap/ic-shared-img-det
+      - cluster: in-cluster
+        name: ic-rhoai-configuration
+        repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
+        targetRevision: feature/notebook-image
+        path: bootstrap/ic-rhoai-configuration
   template:
     metadata:
       name: '{{name}}'

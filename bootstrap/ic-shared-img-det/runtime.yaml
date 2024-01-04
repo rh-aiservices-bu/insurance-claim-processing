@@ -125,11 +125,11 @@ spec:
       name: ovms
       resources:
         limits:
-          cpu: '2'
-          memory: 8Gi
+          cpu: '1'
+          memory: 1Gi
         requests:
           cpu: '1'
-          memory: 2Gi
+          memory: 1Gi
       volumeMounts:
         - mountPath: /dev/shm
           name: shm

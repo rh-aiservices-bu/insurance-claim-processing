@@ -1,0 +1,17 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+commonLabels:
+  component: ic-rhoai-configuration
+
+resources:
+# wave 0
+# wave 1
+- workbench-imagestream.yaml
+- odhdashboardconfig.yaml
+- images-puller.yaml
+# wave 2
+
+
+  

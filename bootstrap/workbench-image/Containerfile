@@ -1,0 +1,172 @@
+FROM quay.io/sclorg/python-311-c9s:c9s
+
+###########################
+# Deploy OS Packages      #
+###########################
+
+USER 0
+
+WORKDIR /opt/app-root/bin/
+
+COPY --chown=1001:0 os-ide/os-packages.txt ./os-ide/os-packages.txt
+
+RUN echo "tsflags=nodocs" | tee -a /etc/yum.conf && \
+    yum -y update && \
+    yum install -y yum-utils && \
+    yum-config-manager --enable crb && \
+    yum install -y https://download.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm && \
+    yum install -y $(cat os-ide/os-packages.txt) && \   
+    rm -f os-ide/os-packages.txt && \
+    yum -y clean all --enablerepo='*' && \
+    rm -rf /var/cache/dnf && \
+    find /var/log -type f -name "*.log" -exec rm -f {} \;
+
+#############################################
+# End of OS Packages                        #
+#############################################
+
+###################################################################################################
+# CUDA 12.1 Layer, from https://gitlab.com/nvidia/container-images/cuda/-/blob/master/dist/12.1.1 #
+###################################################################################################
+
+USER 0
+
+ENV NVARCH x86_64
+ENV NVIDIA_REQUIRE_CUDA "cuda>=12.1 brand=tesla,driver>=470,driver<471 brand=unknown,driver>=470,driver<471 brand=nvidia,driver>=470,driver<471 brand=nvidiartx,driver>=470,driver<471 brand=geforce,driver>=470,driver<471 brand=geforcertx,driver>=470,driver<471 brand=quadro,driver>=470,driver<471 brand=quadrortx,driver>=470,driver<471 brand=titan,driver>=470,driver<471 brand=titanrtx,driver>=470,driver<471 brand=tesla,driver>=525,driver<526 brand=unknown,driver>=525,driver<526 brand=nvidia,driver>=525,driver<526 brand=nvidiartx,driver>=525,driver<526 brand=geforce,driver>=525,driver<526 brand=geforcertx,driver>=525,driver<526 brand=quadro,driver>=525,driver<526 brand=quadrortx,driver>=525,driver<526 brand=titan,driver>=525,driver<526 brand=titanrtx,driver>=525,driver<526"
+ENV NV_CUDA_CUDART_VERSION 12.1.105-1
+
+COPY cuda.repo-x86_64 /etc/yum.repos.d/cuda.repo
+
+RUN NVIDIA_GPGKEY_SUM=d0664fbbdb8c32356d45de36c5984617217b2d0bef41b93ccecd326ba3b80c87 && \
+    curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/rhel9/${NVARCH}/D42D0685.pub | sed '/^Version/d' > /etc/pki/rpm-gpg/RPM-GPG-KEY-NVIDIA && \
+    echo "$NVIDIA_GPGKEY_SUM  /etc/pki/rpm-gpg/RPM-GPG-KEY-NVIDIA" | sha256sum -c --strict -
+
+ENV CUDA_VERSION 12.1.1
+
+# For libraries in the cuda-compat-* package: https://docs.nvidia.com/cuda/eula/index.html#attachment-a
+RUN yum upgrade -y && yum install -y \
+    cuda-cudart-12-1-${NV_CUDA_CUDART_VERSION} \
+    cuda-compat-12-1 \
+    && ln -s cuda-12.1 /usr/local/cuda \
+    && yum -y clean all --enablerepo='*' && \
+    rm -rf /var/cache/dnf && \
+    find /var/log -type f -name "*.log" -exec rm -f {} \;
+
+# nvidia-docker 1.0
+RUN echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf && \
+    echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf
+
+ENV PATH /usr/local/nvidia/bin:/usr/local/cuda/bin:${PATH}
+ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
+
+COPY NGC-DL-CONTAINER-LICENSE /
+
+# nvidia-container-runtime
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
+
+ENV NV_CUDA_LIB_VERSION 12.1.1-1
+
+ENV NV_NVTX_VERSION 12.1.105-1
+ENV NV_LIBNPP_VERSION 12.1.0.40-1
+ENV NV_LIBNPP_PACKAGE libnpp-12-1-${NV_LIBNPP_VERSION}
+ENV NV_LIBCUBLAS_VERSION 12.1.3.1-1
+ENV NV_LIBNCCL_PACKAGE_NAME libnccl
+ENV NV_LIBNCCL_PACKAGE_VERSION 2.17.1-1
+ENV NV_LIBNCCL_VERSION 2.17.1
+ENV NCCL_VERSION 2.17.1
+ENV NV_LIBNCCL_PACKAGE ${NV_LIBNCCL_PACKAGE_NAME}-${NV_LIBNCCL_PACKAGE_VERSION}+cuda12.1
+
+RUN yum install -y \
+    cuda-libraries-12-1-${NV_CUDA_LIB_VERSION} \
+    cuda-nvtx-12-1-${NV_NVTX_VERSION} \
+    ${NV_LIBNPP_PACKAGE} \
+    libcublas-12-1-${NV_LIBCUBLAS_VERSION} \
+    ${NV_LIBNCCL_PACKAGE} \
+    && yum -y clean all --enablerepo='*' && \
+    rm -rf /var/cache/dnf && \
+    find /var/log -type f -name "*.log" -exec rm -f {} \;
+
+# Set this flag so that libraries can find the location of CUDA
+ENV XLA_FLAGS=--xla_gpu_cuda_data_dir=/usr/local/cuda
+
+# CuDNN
+ENV NV_CUDNN_VERSION 8.9.0.131-1
+ENV NV_CUDNN_PACKAGE libcudnn8-${NV_CUDNN_VERSION}.cuda12.1
+
+RUN yum install -y \
+    ${NV_CUDNN_PACKAGE} \
+    && yum -y clean all --enablerepo='*' && \
+    rm -rf /var/cache/dnf && \
+    find /var/log -type f -name "*.log" -exec rm -f {} \;
+
+#############################################
+# End of CUDA 12.1 Layer                    #
+#############################################
+
+######################################
+# Deploy Python packages and Jupyter #
+######################################
+
+USER 1001
+
+WORKDIR /opt/app-root/bin
+
+# Copy packages list
+COPY --chown=1001:0 requirements.txt ./
+
+# Copy notebook launcher and utils
+COPY --chown=1001:0 utils utils/
+COPY --chown=1001:0 start-notebook.sh ./
+
+# Copy Elyra setup to utils so that it's sourced at startup
+COPY --chown=1001:0 setup-elyra.sh ./utils/
+
+# Install packages and cleanup
+# (all commands are chained to minimize layer size)
+RUN echo "Installing softwares and packages" && \
+    # Install Python packages \
+    pip install --no-cache-dir --no-dependencies -r requirements.txt && \
+    # setup path for runtime configuration \
+    mkdir /opt/app-root/runtimes && \
+    # switch to Data Science Pipeline \
+    cp utils/pipeline-flow.svg /opt/app-root/lib/python3.11/site-packages/elyra/static/icons/kubeflow.svg && \
+    sed -i "s/Kubeflow Pipelines/Data Science/g" /opt/app-root/lib/python3.11/site-packages/elyra/pipeline/runtime_type.py && \
+    sed -i "s/Kubeflow Pipelines/Data Science Pipelines/g" /opt/app-root/lib/python3.11/site-packages/elyra/metadata/schemas/kfp.json && \
+    sed -i "s/kubeflow-service/data-science-pipeline-service/g" /opt/app-root/lib/python3.11/site-packages/elyra/metadata/schemas/kfp.json && \
+    sed -i "s/\"default\": \"Argo\",/\"default\": \"Tekton\",/g" /opt/app-root/lib/python3.11/site-packages/elyra/metadata/schemas/kfp.json && \
+    # Workaround for passing ssl_sa_cert and to ensure that Elyra redirects to a correct pipeline run URL \
+    patch /opt/app-root/lib/python3.11/site-packages/elyra/pipeline/kfp/kfp_authentication.py -i utils/kfp_authentication.patch && \
+    patch /opt/app-root/lib/python3.11/site-packages/elyra/pipeline/kfp/processor_kfp.py -i utils/processor_kfp.patch && \
+    # switch to Data Science Pipeline in component catalog \
+    DIR_COMPONENT="/opt/app-root/lib/python3.11/site-packages/elyra/metadata/schemas/local-directory-catalog.json" && \
+    FILE_COMPONENT="/opt/app-root/lib/python3.11/site-packages/elyra/metadata/schemas/local-file-catalog.json" && \
+    URL_COMPONENT="/opt/app-root/lib/python3.11/site-packages/elyra/metadata/schemas/url-catalog.json" && \
+    tmp=$(mktemp) && \
+    jq '.properties.metadata.properties.runtime_type = input' $DIR_COMPONENT utils/component_runtime.json > "$tmp" && mv "$tmp" $DIR_COMPONENT && \
+    jq '.properties.metadata.properties.runtime_type = input' $FILE_COMPONENT utils/component_runtime.json > "$tmp" && mv "$tmp" $FILE_COMPONENT && \
+    jq '.properties.metadata.properties.runtime_type = input' $URL_COMPONENT utils/component_runtime.json > "$tmp" && mv "$tmp" $URL_COMPONENT && \
+    sed -i "s/metadata.metadata.runtime_type/\"DATA_SCIENCE_PIPELINES\"/g" /opt/app-root/share/jupyter/labextensions/@elyra/pipeline-editor-extension/static/lib_index_js.*.js && \
+    # Remove Elyra logo from JupyterLab because this is not a pure Elyra image \
+    sed -i "s/widget\.id === \x27jp-MainLogo\x27/widget\.id === \x27jp-MainLogo\x27 \&\& false/" /opt/app-root/share/jupyter/labextensions/@elyra/theme-extension/static/lib_index_js.*.js && \
+    # Replace Notebook's launcher, "(ipykernel)" with Python's version 3.x.y \
+    sed -i -e "s/Python.*/$(python --version | cut -d '.' -f-2)\",/" /opt/app-root/share/jupyter/kernels/python3/kernel.json && \
+    # Remove default Elyra runtime-images \
+    rm /opt/app-root/share/jupyter/metadata/runtime-images/*.json && \
+    # Fix permissions to support pip in Openshift environments \
+    chmod -R g+w /opt/app-root/lib/python3.11/site-packages && \
+    fix-permissions /opt/app-root -P
+
+# Copy Elyra runtime-images definitions and set the version
+COPY --chown=1001:0 runtime-images/ /opt/app-root/share/jupyter/metadata/runtime-images/
+RUN sed -i "s/RELEASE/2023c/" /opt/app-root/share/jupyter/metadata/runtime-images/*.json 
+
+# Jupyter Server config to allow hidden files/folders in explorer. Ref: https://jupyterlab.readthedocs.io/en/latest/user/files.html#displaying-hidden-files
+# Jupyter Lab config to hide disabled exporters (WebPDF, Qtpdf, Qtpng)
+COPY --chown=1001:0 etc/ /opt/app-root/etc/jupyter/
+
+WORKDIR /opt/app-root/src
+
+ENTRYPOINT ["start-notebook.sh"]
+
+
