@@ -1,29 +1,120 @@
 = Model Serving (Manual)
 include::_attributes.adoc[]
 
-. at this point, we need to deploy the model into RHOAI model serving.
-
+. At this point, we need to deploy the model into RHOAI model serving.
 . Look at the information used to create the Data Connection that was used for the pipeline server.
 
 . Re-create another data connection, with identical information, but change the bucket name from `userX` to 'models'
 
-[.bordershadow]
-image::04/create-data-connection.png[create connection]
+== Create a Data Connection
 
-. Then create a model server
-
-. Then create a model
-
-. Then wait for it to deploy
-
-. Then , from a notebook, run
-
+* In your project, create a data connection that maps to the shared minio.
+* Here is the info you need to enter:
+** Name:
 [.lines_space]
 [.console-input]
 [source, text]
 [subs=attributes+]
-some command that can confirm the model is working in modelmesh too
+Shared Minio - model
+** Access Key:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+{minio-user}
+** Secret Key:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+{minio-pass}
+** Endpoint:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+{minio-endpoint}
+** Region:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+none
+** Bucket:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+models
+The result should look like:
 
+image::04/model-data-connection.png[model connection]
+
+
+== Launch a Workbench
+
+Once the Data Connection is created, launch a workbench with the following characteristics:
+
+* Choose a name for it
+* Image Selection: Pytorch
+* Version: 2023.2
+* Container Size: Small
+* Accelerator: None
+For the Data connections and Cluster Storage sections use the following attributes listed in the below screen captures.
+
+image::04/data-connection.png[]
+image::04/cluster-storage.png[]
+
+== Create a Model Server
+In your project create a model server. Click 'Add server'
+
+image::04/add-model-server.png[]
+
+* Here is the info you need to enter:
+** Model server name:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+Shared Minio - model
+** Serving runtime:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+OpenVINO Model Server
+** Number of model server replicas to deploy:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+1
+** Model server size
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+small
+** Model route
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+
+Make deployed models available through an external route
+The result should look like:
+
+image::04/add-model-server2.png[]
+
+== Confirm the Model is working
+Once the model has been deployed, we need to confirm that the model is working in model mesh.
+
+
+. In your running pytorch workbench, navigate to the folder `lab-materials/04`.
+
+. Look for (and open) the notebook called `04-05-serving-mannual.ipynb`
+
+. Execute the cells of the notebook, and ensure you understand what is happening
 
 
 
