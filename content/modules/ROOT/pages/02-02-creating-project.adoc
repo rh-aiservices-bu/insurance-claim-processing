@@ -120,14 +120,12 @@ At this point, your pipeline server is ready and deployed.
 Once the Data Connection and Pipeline Server are created, Create a workbench with the following characteristics:
 
 * Choose a name for it, like: `My Workbench`
-* Image Selection: Pytorch
-* Version: 2023.2
+* Image Selection: `Insurance Claim Processing Lab Workbench`
 * Container Size: Standard
 * Accelerator: None
 
 [.bordershadow]
-image::02/launch-workbench-01.png[]
-// image::02/launch-workbench-02.png[]
+image::02/02-02-launch-workbench-01.png[]
 
 * Wait for your workbench to be fully started
 * Once it is, click the **Open** Link to connect to it.
