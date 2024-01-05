@@ -46,10 +46,11 @@ none
 [source, text]
 [subs=attributes+]
 models
-The result should look like:
 
+* The result should look like:
++
+[.bordershadow]
 image::04/model-data-connection.png[model connection]
-
 
 == Launch a Workbench
 
