@@ -26,8 +26,6 @@ image::02/02-01-login2.png[]
 Now, open the OpenShift AI URL, and log in with the same credentials:
 
 * The RHOAI URL: https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/[https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/,window=_blank]
-* Maybe this URL will work better in Showroom:
-** https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/["https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/",window=_blank]
 
 * Alternatively, you can access Red Hat OpenShift AI from the OpenShift Console by clicking on:
 +
