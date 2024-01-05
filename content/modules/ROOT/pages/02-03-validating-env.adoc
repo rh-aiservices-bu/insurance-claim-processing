@@ -5,7 +5,7 @@ Now that you are connected to your workbench, let's make sure that all the expec
 
 In your workbench:
 
-. In the left hand navigation menu, navigate to the folder called: `lab-materials/02`
+. In the left hand navigation menu, navigate to the folder called: `insurance-claim-processing/lab-materials/02`
 
 . Open the notebook called `02-03-validating.ipynb`
 
