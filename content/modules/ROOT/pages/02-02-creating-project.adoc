@@ -7,9 +7,13 @@ As a preliminary step, each of you is going to
 
 . Create a Data Connection
 
+. Deploy a Data Science Pipeline Server
+
 . Launch a Workbench
 
-. Git-Clone the common repo
+. Clone the git repo into your Workbench
+
+The instructions below will guide you through these steps. Follow them carefully.
 
 == Unique user ID
 
@@ -24,9 +28,12 @@ As a preliminary step, each of you is going to
 +
 image::02/02-02-ds-proj-nav.png[]
 
-* Create a project with the same name as your user id.
-** You have been assigned a user in the form of `{user}`
-** Create a project with that exact name
+* Create a project with the **same name** as your user id.
+** You have been assigned a unique user ID:  `{user}`
+** You need to now create a project with the exact same name: `{user}`
+
+IMPORTANT: Your assigned user is {user}. Don't mess that up or things will break later on
+
 * Leave the resource name unchanged
 * Enter your first and last name in the description of the project.
 
@@ -34,7 +41,7 @@ It should look like this:
 
 image::02/02-02-create-project.png[]
 
-But should NOT be `userX`. (for you, `X` should be a number instead)
+IMPORTANT: But it should NOT be `userX` like in the screenshot. (for you, `X` should be a number instead)
 
 == Create a Data Connection for the pipeline server
 
@@ -78,6 +85,8 @@ none
 [subs=attributes+]
 {user}
 
+IMPORTANT: Once again, the bucket you will use has to match with the user ID you were provided
+
 The result should look like:
 
 image::02/data-connection.png[]
@@ -104,16 +113,26 @@ At this point, your pipeline server is ready and deployed.
 
 Once the Data Connection and Pipeline Server are created, Create a workbench with the following characteristics:
 
-* Choose a name for it
+* Choose a name for it, like: `My Workbench`
 * Image Selection: Pytorch
 * Version: 2023.2
-* Container Size: Small
+* Container Size: Standard
 * Accelerator: None
 
 image::02/launch-workbench-01.png[]
-image::02/launch-workbench-02.png[]
+// image::02/launch-workbench-02.png[]
 
-Once the Workbench is created and running, Connect to it. (You will be asked to authenticate again, and accept some settings)
+* Wait for your workbench to be fully started
+* Once it is, click the **Open** Link to connect to it.
+* Authenticate with the same credentials as earlier
+* You will be asked to accept these settings:
++
+image::02/02-02-accept.png[]
+
+* Do so.
+* You should now see this:
++
+image::02/02-02-jupyter.png[]
 
 == Git-Clone the common repo
 
@@ -128,13 +147,22 @@ If you want to use the git UI in Jupyter:
 
 image::02/git-clone-1.png[]
 
+Enter the URL of the Git repo:
+
+[.console-input]
+[source,adoc]
+[subs=attributes+]
+----
+{git-clone-repo-url}
+----
+
 image::02/git-clone-2.png[]
 
 --
 Using the Git CLI::
 +
 --
-If you prefer using the `git` CLI in a terminal in Jupyter:
+If you prefer using the `git` CLI, open a a terminal in JupyterLab, and paste this code:
 
 [.console-input]
 [source,adoc]
@@ -147,4 +175,4 @@ git checkout {git-clone-repo-branch}
 --
 ====
 
-
+At this point, your project is ready for the work we want to do in it.

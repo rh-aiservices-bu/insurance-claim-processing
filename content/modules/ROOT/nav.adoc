@@ -5,7 +5,7 @@
 ** xref:01-04-examples-from-prototype.adoc[1.4 Examples from prototype]
 ** xref:01-05-results.adoc[1.5 Results and Next Steps]
 
-* 2. Connection and Setup
+* 2. Connection and Setup ({user})
 ** xref:02-01-getting-connected.adoc[2.1 Getting connected]
 ** xref:02-02-creating-project.adoc[2.2 Creating your project]
 ** xref:02-03-validating-env.adoc[2.3 Validating the environment]

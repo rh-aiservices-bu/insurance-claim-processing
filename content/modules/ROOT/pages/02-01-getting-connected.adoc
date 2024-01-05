@@ -1,19 +1,9 @@
 = Getting connected
+:imagesdir: ../assets/images
 
 For the purposes of this training session, we have provisioned a single OpenShift cluster, with OpenShift AI deployed on it.
 
 Each person attending this lab will have a unique user account in which to do their work.
-
-// Your permissions are higher than what you would get in production-grade environment so that you can see it all (Cluster-reader? downsides?)
-
-// The people facilitating the lab will share a URL with you. This URL will provide you with
-
-// * The cluster's URLs
-// * Your account id (like `userX` where `X` is a number)
-// * Your password (likely to be `openshift`) for that account
-// * a link to a **customized** version of these instructions.
-
-// Once you open it, you will see something that looks like the following:
 
 == Environment information
 
@@ -25,17 +15,29 @@ If you are using the customized version of the instructions, the information bel
 In a new window or tab, open the following URL and log in:
 
 * OpenShift Console URL: {openshift_console_url}[{openshift_console_url},window=_blank]
-The result should look like:
+* The result should look like:
 +
-TODO
+image::02/02-01-login1.png[]
+
+* and after that:
++
+image::02/02-01-login2.png[]
 
 Now, open the OpenShift AI URL, and log in with the same credentials:
 
 * The RHOAI URL: https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/[https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/,window=_blank]
+* Maybe this URL will work better in Showroom:
+** https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/["https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/",window=_blank]
 
-* The result should look like:
+* Alternatively, you can access Red Hat OpenShift AI from the OpenShift Console by clicking on:
 +
-TODO
+image::02/02-01-access-rhoai.png[]
+
+* After you authenticate, the result should look like:
++
+image::02/02-01-rhoai-front-page.png[]
+
+If you got this far and saw all that, congratulations, you got properly connected to the environment!
 
 // * The `oc login` command:
 // [.lines_space]
@@ -43,27 +45,6 @@ TODO
 // [source, text]
 // [subs=attributes+]
 // {login_command}
-
-// TODO: image of what that looks like
-
-// TODO: claim your user: how to
-
-// TODO: Figure out the OpenShift/OpenShift AI URL
-
-// == Connecting to OpenShift Console
-
-// * Click on the OpenShift Console URL above
-// * Choose the Auth Provider called **HTpasswd**.
-// * Enter your user id `userX` where `X` is a number.
-// * Enter your provided password (`openshift`)
-
-// == Connecting to OpenShift AI
-
-// * Once you are connected to the OpenShift Console:
-// ** Click on the App Switcher Icon
-// ** Then Navigate to OpenShift AI
-
-
 
 // == Other credentials and URLs:
 
