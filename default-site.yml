@@ -5,13 +5,8 @@ site:
 
 ui:
   bundle:
-    url: https://github.com/tonykay/demo-gpte-classroom-ui/raw/main/releases/download/v0.0.2/ui-bundle.zip
-    snapshot: true
-  supplemental_files:
-    - path: ./content/supplemental-ui
-    - path: .nojekyll
-    - path: ui.yml
-      contents: "static_files: [ .nojekyll ]"
+    url: ./content/docs-ui/ui-bundle.zip
+  supplemental_files: ./content/supplemental-ui
 
 content:
   sources:

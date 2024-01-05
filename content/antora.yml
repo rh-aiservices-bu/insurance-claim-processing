@@ -23,8 +23,9 @@ asciidoc:
     git-clone-repo-branch: dev
     user: userX
     password: openshift
-    openshift_console_url: http://PLACEHOLDER-URL.com/
-    openshift_cluster_ingress_domain: PLACEHOLDER-URL.com
+    openshift_console_url: https://PLACEHOLDER-URL.com/
+    openshift_cluster_ingress_domain: URL.com
+    rhoai_dashboard_url: https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/
     login_command: oc login --insecure-skip-tls-verify=false -u userX -p openshift https://api.MYCLUSTER.com:6443"
 
   extensions:
