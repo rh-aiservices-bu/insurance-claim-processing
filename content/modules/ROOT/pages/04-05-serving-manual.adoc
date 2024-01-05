@@ -52,23 +52,27 @@ models
 [.bordershadow]
 image::04/model-data-connection.png[model connection]
 
-== Launch a Workbench
+// == Launch a Workbench
 
-Once the Data Connection is created, launch a workbench with the following characteristics:
+// Once the Data Connection is created, launch a workbench with the following characteristics:
 
-* Choose a name for it
-* Image Selection: Pytorch
-* Version: 2023.2
-* Container Size: Small
-* Accelerator: None
-For the Data connections and Cluster Storage sections use the following attributes listed in the below screen captures.
+// * Choose a name for it
+// * Image Selection: Pytorch
+// * Version: 2023.2
+// * Container Size: Small
+// * Accelerator: None
+// For the Data connections and Cluster Storage sections use the following attributes listed in the below screen captures.
 
-image::04/data-connection.png[]
-image::04/cluster-storage.png[]
+// image::04/data-connection.png[]
+// image::04/cluster-storage.png[]
 
 == Create a Model Server
-In your project create a model server. Click 'Add server'
 
+In your project create a model server.
+
+* Click 'Add server'
++
+[.bordershadow]
 image::04/add-model-server.png[]
 
 * Here is the info you need to enter:
@@ -77,7 +81,7 @@ image::04/add-model-server.png[]
 [.console-input]
 [source, text]
 [subs=attributes+]
-Shared Minio - model
+My first Model Server
 ** Serving runtime:
 [.lines_space]
 [.console-input]
@@ -95,16 +99,24 @@ OpenVINO Model Server
 [.console-input]
 [source, text]
 [subs=attributes+]
-small
+standard
 ** Model route
 [.lines_space]
 [.console-input]
 [source, text]
 [subs=attributes+]
+unchecked
+** Token authorization
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+unchecked
 
-Make deployed models available through an external route
+
 The result should look like:
-
++
+[.bordershadow]
 image::04/add-model-server2.png[]
 
 == Confirm the Model is working
