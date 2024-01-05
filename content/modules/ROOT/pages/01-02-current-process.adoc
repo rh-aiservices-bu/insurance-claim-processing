@@ -1,4 +1,5 @@
 = Review of current claims processing
+include::_attributes.adoc[]
 :slide:
 
 * Claims can come in from multiple mediums:

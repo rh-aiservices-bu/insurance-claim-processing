@@ -1,5 +1,5 @@
-:imagesdir: ../assets/images
 = Pipeline for processing claims
+include::_attributes.adoc[]
 
 == Run the pipeline
 

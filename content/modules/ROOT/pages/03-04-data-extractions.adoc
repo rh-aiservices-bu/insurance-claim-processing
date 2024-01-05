@@ -1,2 +1,2 @@
 = Data Extraction
-
+include::_attributes.adoc[]

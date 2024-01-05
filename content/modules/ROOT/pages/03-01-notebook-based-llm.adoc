@@ -1,4 +1,5 @@
 = Notebook-Based LLM Example
+include::_attributes.adoc[]
 
 In this exercise, we will use a notebook to investigate how LLMs can be leveraged
 

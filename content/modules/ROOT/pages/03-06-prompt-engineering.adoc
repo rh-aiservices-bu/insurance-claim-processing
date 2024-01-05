@@ -1,2 +1,3 @@
 = Prompt Engineering exercise
+include::_attributes.adoc[]
 

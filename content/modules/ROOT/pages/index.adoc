@@ -1,4 +1,5 @@
 = {lab_name}
+include::_attributes.adoc[]
 
 == Lab Overview
 

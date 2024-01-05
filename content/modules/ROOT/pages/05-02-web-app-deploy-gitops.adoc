@@ -1,5 +1,5 @@
 = Deploying application via GitOps
-
+include::_attributes.adoc[]
 
 == Deploy your instance of ArgoCD
 
