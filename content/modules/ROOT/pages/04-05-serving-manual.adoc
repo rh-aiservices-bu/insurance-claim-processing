@@ -105,6 +105,16 @@ The result should look like:
 [.bordershadow]
 image::04/add-model-server2.png[]
 
+== Deploy the Model
+
+In your project, under 'Models and model servers' select 'Deploy model'.
+
+* Click 'Deploy model'
++
+[.bordershadow]
+image::04/select-deploy-model.png[]
+
+
 == Confirm the Model is working
 Once the model has been deployed, we need to confirm that the model is working in model mesh.
 
