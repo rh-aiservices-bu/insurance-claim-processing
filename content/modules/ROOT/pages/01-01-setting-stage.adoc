@@ -1,4 +1,5 @@
 = Setting the stage
+include::_attributes.adoc[]
 
 In order to make this lab seem more realistic, we will be describing this imaginary scenario.
 
