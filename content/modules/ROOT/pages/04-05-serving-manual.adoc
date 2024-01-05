@@ -114,6 +114,46 @@ In your project, under 'Models and model servers' select 'Deploy model'.
 [.bordershadow]
 image::04/select-deploy-model.png[]
 
+* Here is the information you will need to enter:
+
+** Model name:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+My first Model
+** Model server
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+My first Model Server
+** Model server - Model framework
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+onnx-1
+** Existing data connection - Name
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+Shared Minio - model
+** Existing data connection - Path
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+http://modelmesh-serving.user1:8008/v2/models/my-first-model/accident_detect.onnx
+
+The result should look like:
++
+[.bordershadow]
+image::04/deploy-a-model.png[]
+
+
+
 
 == Confirm the Model is working
 Once the model has been deployed, we need to confirm that the model is working in model mesh.
