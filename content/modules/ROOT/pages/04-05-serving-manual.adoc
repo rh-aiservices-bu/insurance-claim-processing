@@ -153,7 +153,12 @@ The result should look like:
 image::04/deploy-a-model.png[]
 
 
+If the model is successfully deployed you will see its status as green.
++
+[.bordershadow]
+image::04/model-deployed-success.png[]
 
+Now confirm that the model is working!
 
 == Confirm the Model is working
 Once the model has been deployed, we need to confirm that the model is working in model mesh.
