@@ -52,20 +52,6 @@ models
 [.bordershadow]
 image::04/model-data-connection.png[model connection]
 
-// == Launch a Workbench
-
-// Once the Data Connection is created, launch a workbench with the following characteristics:
-
-// * Choose a name for it
-// * Image Selection: Pytorch
-// * Version: 2023.2
-// * Container Size: Small
-// * Accelerator: None
-// For the Data connections and Cluster Storage sections use the following attributes listed in the below screen captures.
-
-// image::04/data-connection.png[]
-// image::04/cluster-storage.png[]
-
 == Create a Model Server
 
 In your project create a model server.
