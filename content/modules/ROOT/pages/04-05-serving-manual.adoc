@@ -111,9 +111,9 @@ Once the model has been deployed, we need to confirm that the model is working i
 
 . In your running pytorch workbench, navigate to the folder `lab-materials/04`.
 
-. Look for (and open) the notebook called `04-05-serving-mannual.ipynb`
+. Look for (and open) the notebook called `04-05-serving-mannual.ipynb`.
 
-. Execute the cells of the notebook, and ensure you understand what is happening
+. Execute the cells of the notebook, and ensure you understand what is happening.
 
 
 
