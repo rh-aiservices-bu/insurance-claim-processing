@@ -1,5 +1,5 @@
 = Creating your playpen project
-:imagesdir: ../assets/images
+include::_attributes.adoc[]
 
 As a preliminary step, each of you is going to
 
@@ -26,6 +26,7 @@ The instructions below will guide you through these steps. Follow them carefully
 
 * First, navigate to the Data Science Project menu on the left:
 +
+[.bordershadow]
 image::02/02-02-ds-proj-nav.png[]
 
 * Create a project with the **same name** as your user id.
@@ -39,6 +40,7 @@ IMPORTANT: Your assigned user is {user}. Don't mess that up or things will break
 
 It should look like this:
 
+[.bordershadow]
 image::02/02-02-create-project.png[]
 
 IMPORTANT: But it should NOT be `userX` like in the screenshot. (for you, `X` should be a number instead)
@@ -89,6 +91,7 @@ IMPORTANT: Once again, the bucket you will use has to match with the user ID you
 
 The result should look like:
 
+[.bordershadow]
 image::02/data-connection.png[]
 
 == Create a Pipeline Server
@@ -97,14 +100,17 @@ It is highly recommended to create your pipeline server before creating a workbe
 
 * In your DS project, click on **Create a pipeline Server**
 +
+[.bordershadow]
 image::02/02-02-pipelineserver01.png[]
 
 * Select the Data Connection created earlier (**Shared Minio - pipelines**) and click the **configure** button:
 +
+[.bordershadow]
 image::02/02-02-pipelineserver02.png[]
 
 * When your pipeline server is ready, your screen will look like the following:
 +
+[.bordershadow]
 image::02/02-02-pipelineserver03.png[]
 
 At this point, your pipeline server is ready and deployed.
@@ -119,6 +125,7 @@ Once the Data Connection and Pipeline Server are created, Create a workbench wit
 * Container Size: Standard
 * Accelerator: None
 
+[.bordershadow]
 image::02/launch-workbench-01.png[]
 // image::02/launch-workbench-02.png[]
 
@@ -127,11 +134,13 @@ image::02/launch-workbench-01.png[]
 * Authenticate with the same credentials as earlier
 * You will be asked to accept these settings:
 +
+[.bordershadow]
 image::02/02-02-accept.png[]
 
 * Do so.
 * You should now see this:
 +
+[.bordershadow]
 image::02/02-02-jupyter.png[]
 
 == Git-Clone the common repo
@@ -145,6 +154,7 @@ Using the Git UI::
 --
 If you want to use the git UI in Jupyter:
 
+[.bordershadow]
 image::02/git-clone-1.png[]
 
 Enter the URL of the Git repo:
@@ -156,6 +166,7 @@ Enter the URL of the Git repo:
 {git-clone-repo-url}
 ----
 
+[.bordershadow]
 image::02/git-clone-2.png[]
 
 --

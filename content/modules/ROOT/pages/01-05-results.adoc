@@ -1,4 +1,5 @@
 = Results
+include::_attributes.adoc[]
 
 == Board was convinced!
 :slide:

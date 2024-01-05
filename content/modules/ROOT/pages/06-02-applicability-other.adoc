@@ -1,4 +1,5 @@
 = Applicability to other industries
+include::_attributes.adoc[]
 
 Now, the examples we've shown throughout this lab are specific to the Insurance industry, and within that, claims processing.
 

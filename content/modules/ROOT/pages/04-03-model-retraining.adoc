@@ -1,8 +1,9 @@
 = Model Retraining
-:imagesdir: ../assets/images
+include::_attributes.adoc[]
 
 To retrain the YOLO model we need a prepared dataset of car images with moderate and severe accident labels.  We have such a dataset (from https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5/dataset/1[RoboFlow,window=_blank] ) that has annotated images and has split them into training and validation datasets.  We will use this training set to retrain our currentl YOLO model.
 
+[.bordershadow]
 image::04/roboflow-test-images.png[roboflow images]
 
 
@@ -22,6 +23,7 @@ Once the images and associated annotations are ready, we create a dataset descri
 
 == Interpreting the Model re-Training Results
 
+[.bordershadow]
 image::04/model-retraining-summary.png[retraining summary]
 
 For each epoch, in the above image, we can see a summary for both the training and validation phases: lines 1 and 2 show results of the training phase and lines 3 and 4 show the results of the validation phase for each epoch.

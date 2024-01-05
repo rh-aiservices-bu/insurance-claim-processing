@@ -1,4 +1,5 @@
 = Model Serving (Automated)
+include::_attributes.adoc[]
 
 OPTIONAL. Skip for now, you can come back if you have some time at the end.
 

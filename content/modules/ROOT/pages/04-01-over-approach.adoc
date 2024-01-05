@@ -1,5 +1,5 @@
 = Overall Approach
-:imagesdir: ../assets/images
+include::_attributes.adoc[]
 
 As part of this prototype, we investigated the use of the YOLOV8 model.
 This model can be found online at https://www.yolov8.com[yolov8,window=_blank] and downloaded.
@@ -8,6 +8,7 @@ We will first review its out-of-the-box capabilities. We will then fine-tune it 
 
 Let's start by looking at a yolov8 model and explore how it works on static car images.
 
+[.bordershadow]
 image::04/sample-car-image.png[car image]
 
 In your running pytorch workbench, navigate to the folder `lab-materials/04`.

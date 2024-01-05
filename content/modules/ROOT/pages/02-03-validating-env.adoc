@@ -1,5 +1,5 @@
 = Validating the environment
-:imagesdir: ../assets/images
+include::_attributes.adoc[]
 
 Now that you are connected to your workbench, let's make sure that all the expected services are responding properly in the cluster.
 
@@ -17,4 +17,5 @@ If the output of this notebook looks suspicious, please inform the people leadin
 
 This is a summarized visualization of how the environment is laid out.
 
+[.bordershadow]
 image::02/ic-eng-diag.drawio.svg[]

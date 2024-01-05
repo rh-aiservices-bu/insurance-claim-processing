@@ -1,5 +1,7 @@
 = Proposed Improvements
+include::_attributes.adoc[]
 :slide:
+
 
 * Recommendations:
 ** Progressive, step-wise, implementation

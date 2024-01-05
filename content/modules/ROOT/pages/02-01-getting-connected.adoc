@@ -1,5 +1,5 @@
 = Getting connected
-:imagesdir: ../assets/images
+include::_attributes.adoc[]
 
 For the purposes of this training session, we have provisioned a single OpenShift cluster, with OpenShift AI deployed on it.
 
@@ -17,6 +17,8 @@ In a new window or tab, open the following URL and log in:
 * OpenShift Console URL: {openshift_console_url}[{openshift_console_url},window=_blank]
 * The result should look like:
 +
+
+[.bordershadow]
 image::02/02-01-login1.png[]
 
 * and after that:
@@ -29,10 +31,12 @@ Now, open the OpenShift AI URL, and log in with the same credentials:
 
 * Alternatively, you can access Red Hat OpenShift AI from the OpenShift Console by clicking on:
 +
+[.bordershadow]
 image::02/02-01-access-rhoai.png[]
 
 * After you authenticate, the result should look like:
 +
+[.bordershadow]
 image::02/02-01-rhoai-front-page.png[]
 
 If you got this far and saw all that, congratulations, you got properly connected to the environment!

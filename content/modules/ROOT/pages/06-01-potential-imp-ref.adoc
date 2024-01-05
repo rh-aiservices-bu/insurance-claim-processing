@@ -1,4 +1,5 @@
 = Potential Improvements and Refinements
+include::_attributes.adoc[]
 
 == To the lab materials
 

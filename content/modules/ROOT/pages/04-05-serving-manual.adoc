@@ -1,4 +1,5 @@
 = Model Serving (Manual)
+include::_attributes.adoc[]
 
 . at this point, we need to deploy the model into RHOAI model serving.
 
@@ -6,6 +7,7 @@
 
 . Re-create another data connection, with identical information, but change the bucket name from `userX` to 'models'
 
+[.bordershadow]
 image::04/create-data-connection.png[create connection]
 
 . Then create a model server

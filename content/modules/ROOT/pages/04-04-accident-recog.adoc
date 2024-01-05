@@ -1,10 +1,11 @@
 = Accident Recognition
-:imagesdir: ../assets/images
+include::_attributes.adoc[]
 
 Now that we have retrained our model we can test it against our 'test' images. But where is our re-trained model located? 
 
 When training started, a 'runs/detect/train' folder was created. After each epoch, a trained model is exported to /runs/detect/train/weights/last.pt file.  The re-trained model with the highest precision is exported to /runs/detect/train/weights/best.pt.  As you were unable to execute the re-training of the model, we created a 'models' folder and placed the best.pt model into that folder.
 
+[.bordershadow]
 image::04/best-model.png[best model]
 
 . In your running pytorch workbench, navigate to the folder `lab-materials/04`.
@@ -23,4 +24,5 @@ curl -LO https://rhods-public.s3.amazonaws.com/demo-models/ic-models/accident/ac
 
 Using the re-trained model, on the below image, we see that the model is able to identify a 'severe' car crash with '88%' probability.
 
+[.bordershadow]
 image::04/retrained-model-results.png[retrained modelresults]

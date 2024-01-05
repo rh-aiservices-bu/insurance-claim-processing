@@ -1,2 +1,3 @@
 = Comparing Models
+include::_attributes.adoc[]
 
