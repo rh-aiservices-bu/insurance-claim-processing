@@ -24,7 +24,7 @@ asciidoc:
     user: userX
     password: openshift
     openshift_console_url: http://PLACEHOLDER-URL.com/
-    openshift_cluster_ingress_domain: URL.com
+    openshift_cluster_ingress_domain: PLACEHOLDER-URL.com
     login_command: oc login --insecure-skip-tls-verify=false -u userX -p openshift https://api.MYCLUSTER.com:6443"
 
   extensions:

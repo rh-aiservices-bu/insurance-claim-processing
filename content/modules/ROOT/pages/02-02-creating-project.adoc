@@ -7,9 +7,13 @@ As a preliminary step, each of you is going to
 
 . Create a Data Connection
 
+. Deploy a Data Science Pipeline Server
+
 . Launch a Workbench
 
-. Git-Clone the common repo
+. Clone the git repo into your Workbench
+
+The instructions below will guide you through these steps. Follow them carefully.
 
 == Unique user ID
 
@@ -24,9 +28,12 @@ As a preliminary step, each of you is going to
 +
 image::02/02-02-ds-proj-nav.png[]
 
-* Create a project with the same name as your user id.
-** You have been assigned a user in the form of `{user}`
-** Create a project with that exact name
+* Create a project with the **same name** as your user id.
+** You have been assigned a unique user ID:  `{user}`
+** You need to now create a project with the exact same name: `{user}`
+
+IMPORTANT: Your assigned user is {user}. Don't mess that up or things will break later on
+
 * Leave the resource name unchanged
 * Enter your first and last name in the description of the project.
 
@@ -34,7 +41,7 @@ It should look like this:
 
 image::02/02-02-create-project.png[]
 
-But should NOT be `userX`. (for you, `X` should be a number instead)
+IMPORTANT: But it should NOT be `userX` like in the screenshot. (for you, `X` should be a number instead)
 
 == Create a Data Connection for the pipeline server
 
@@ -77,6 +84,8 @@ none
 [source, text]
 [subs=attributes+]
 {user}
+
+IMPORTANT: Once again, the bucket you will use has to match with the user ID you were provided
 
 The result should look like:
 

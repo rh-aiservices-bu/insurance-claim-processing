@@ -5,17 +5,6 @@ For the purposes of this training session, we have provisioned a single OpenShif
 
 Each person attending this lab will have a unique user account in which to do their work.
 
-// Your permissions are higher than what you would get in production-grade environment so that you can see it all (Cluster-reader? downsides?)
-
-// The people facilitating the lab will share a URL with you. This URL will provide you with
-
-// * The cluster's URLs
-// * Your account id (like `userX` where `X` is a number)
-// * Your password (likely to be `openshift`) for that account
-// * a link to a **customized** version of these instructions.
-
-// Once you open it, you will see something that looks like the following:
-
 == Environment information
 
 If you are using the customized version of the instructions, the information below will render properly. If not, you will see placeholder values instead.
@@ -26,7 +15,7 @@ If you are using the customized version of the instructions, the information bel
 In a new window or tab, open the following URL and log in:
 
 * OpenShift Console URL: {openshift_console_url}[{openshift_console_url},window=_blank]
-The result should look like:
+* The result should look like:
 +
 image::02/02-01-login1.png[]
 
@@ -48,6 +37,7 @@ image::02/02-01-access-rhoai.png[]
 +
 image::02/02-01-rhoai-front-page.png[]
 
+If you got this far and saw all that, congratulations, you got properly connected to the environment!
 
 // * The `oc login` command:
 // [.lines_space]
@@ -55,8 +45,6 @@ image::02/02-01-rhoai-front-page.png[]
 // [source, text]
 // [subs=attributes+]
 // {login_command}
-
-
 
 // == Other credentials and URLs:
 
