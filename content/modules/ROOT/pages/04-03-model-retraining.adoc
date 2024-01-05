@@ -1,7 +1,7 @@
 = Model Retraining
 :imagesdir: ../assets/images
 
-To retrain the YOLO model we need a prepared dataset of car images with moderate and severe accident labels.  We have such a dataset (from RoboFlow - https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5/dataset/1) that has annotated images and has split them into training and validation datasets.  We will use this training set to retrain our currentl YOLO model.
+To retrain the YOLO model we need a prepared dataset of car images with moderate and severe accident labels.  We have such a dataset (from https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5/dataset/1[RoboFlow,window=_blank] ) that has annotated images and has split them into training and validation datasets.  We will use this training set to retrain our currentl YOLO model.
 
 image::04/roboflow-test-images.png[roboflow images]
 
@@ -31,7 +31,7 @@ The training phase includes a calculation of the amount of error in a loss funct
 box_loss shows the amount of error in detected bounding boxes.
 cls_loss shows the amount of error in detected object classes.
 
-If the model really learns something from the data, then you should see that these values decrease from epoch to epoch. 
+If the model really learns something from the data, then you should see that these values decrease from epoch to epoch.
 In a previous screenshot the box_loss decreased: 1.271, 1.113, 0.8679 and the cls_loss decreased too: 1.893, 1.404, 0.9703.
 
 The most valuable quality metric is mAP50-95, which is Mean Average Precision. If the model learns and improves, the precision should grow from epoch to epoch.  In a previous screenshot mAP50-95 increased: 0.314 (epoch1), 0.663 (epoch4), 0.882 (epoch7)
