@@ -33,6 +33,8 @@ sentence_transformers = "==2.2.2"
 # Image recognition section - YOLO
 Flask = "~=3.0.0"
 gunicorn = "~=21.2.0"
+onnx = "~=1.15.0"
+onnxruntime = "~=1.16.3"
 opencv-python-headless = "~=4.9.0.80"
 ultralytics = "~=8.0.232"
 
