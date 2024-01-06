@@ -1,6 +1,6 @@
 name: modules
 title: Navigation
-version: dev
+version: ~
 nav:
   - modules/ROOT/nav.adoc
 
