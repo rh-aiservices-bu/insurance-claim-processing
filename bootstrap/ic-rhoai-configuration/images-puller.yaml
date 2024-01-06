@@ -6,6 +6,8 @@ metadata:
   namespace: rhods-notebooks
   labels:
     k8s-app: image-puller
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   selector:
     matchLabels:
@@ -17,7 +19,7 @@ spec:
     spec:
       containers:
       - name: image-puller
-        image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-workbench:1.0
+        image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/ic-workbench:1.1
         command: ["tail"]
         args: ["-f", "/dev/null"]
         resources:
