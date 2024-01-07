@@ -12,6 +12,7 @@ resources:
 # wave 1
 - workbench-imagestream.yaml
 - odhdashboardconfig.yaml
+- accelerator-profile.yaml
 # wave 2
 - images-puller.yaml
 
