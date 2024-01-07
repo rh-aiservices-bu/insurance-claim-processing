@@ -9,6 +9,7 @@ ui:
   supplemental_files: ./content/supplemental-ui
 
 content:
+  edit_url: 'https://github.com/rh-aiservices-bu/insurance-claim-processing/edit/dev/{path}'
   sources:
     - url: ./
       start_path: content
