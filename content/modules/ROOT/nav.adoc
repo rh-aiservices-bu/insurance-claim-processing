@@ -10,14 +10,13 @@
 ** xref:02-02-creating-project.adoc[2.2 Creating your project]
 ** xref:02-03-validating-env.adoc[2.3 Validating the environment]
 
-* 3. Leveraging an LLM
+* 3. Working with an LLM
 ** xref:03-01-notebook-based-llm.adoc[3.1 Notebook-Based LLM Example]
-** xref:03-02-summarization.adoc[3.2 Summarization Check]
-** xref:03-03-sentiment.adoc[3.3 Sentiment Check]
-** xref:03-04-data-extractions.adoc[3.4 Data Extraction]
-** xref:03-05-comparing-models.adoc[3.5 Comparing Models accuracy]
-** xref:03-06-prompt-engineering.adoc[3.6 Prompt Engineering Exercise]
-** xref:03-07-sanity-check.adoc[3.7 Sanity-check pipeline]
+** xref:03-02-summarization.adoc[3.2 Text Summarization]
+** xref:03-03-information-extractions.adoc[3.4 Information Extraction]
+** xref:03-04-comparing-models.adoc[3.4 Comparing Models Accuracy]
+** xref:03-05-prompt-engineering.adoc[3.5 Prompt Engineering Exercise]
+** xref:03-06-sanity-check.adoc[3.6 Sanity-check pipeline]
 
 * 4. Image Processing
 ** xref:04-01-over-approach.adoc[4.1 Overall Approach]

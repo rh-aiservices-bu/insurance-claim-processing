@@ -2,25 +2,16 @@
 include::_attributes.adoc[]
 
 == What will the pipeline do?
-To make sure that everything works as we would expect it, and that the LLM model has not been tampered with, we create a sanity-check pipeline that tests the model through its endpoint. +
+To make sure that everything works as we would expect it, and that the LLM model has not been tampered with, we need to create a sanity-check pipeline that tests the model through its endpoint. +
 We will test the response time, the response quality, and that the model hash has not changed.
 
 == Deploy a pipeline Server in your project
 
 This step was already done as part of the project setup.
 
-// Start by deploying a pipeline server that can we can use to run pipelines with:
-
-// - Go to your Data Science Project
-// - Scroll down to Pipelines and press "Create a pipeline server"
-// - Select the existing data connection "Pipelines"
-// - Press Create
-
-// We need to connect the pipeline server with a data connection as the pipeline server will use the S3 storage to store logs and other artifacts.
-
 == Deploy a sanity-check pipeline
 
-There are two pipeline files, one *sanity_check.pipeline* and one *sanity_check.yaml* file.
+In the `lab-materials/03/06` folder there are two pipeline files, one *sanity_check.pipeline* and one *sanity_check.yaml* file.
 
 The `.pipeline` file can be opened in Elyra to be visually modified and executed, while the `.yaml` file can be imported into the pipeline server through the dashboard. +
 Here we will be running the pipeline through Elyra.
@@ -29,7 +20,7 @@ Here we will be running the pipeline through Elyra.
 Running it through Elyra is the same as doing an ad-hoc execution of the pipeline, as opposed to importing the pipeline which won't automatically execute it.
 
 . Start by going to your running workbench
-. Navigate to the folder `insurance-claim-processing/lab-materials/03/07`
+. Navigate to the folder `insurance-claim-processing/lab-materials/03/06`
 . Open up the `sanity_check.pipeline` file
 . Here we can see that the pipeline consists of 3 checks:
 .. response quality check

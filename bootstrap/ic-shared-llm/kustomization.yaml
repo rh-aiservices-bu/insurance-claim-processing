@@ -13,4 +13,6 @@ resources:
 - pvc.yaml
 - deployment.yaml
 - service.yaml
+- deployment-flant5.yaml
+- service-flant5.yaml
 # wave 2
