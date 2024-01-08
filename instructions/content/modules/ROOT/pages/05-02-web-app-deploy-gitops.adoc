@@ -1,2 +1,0 @@
-= pages/05-02-web-app-deploy-gitops.adoc
-

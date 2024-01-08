@@ -1,5 +1,0 @@
-= Notebook-Based LLM Example
-
-In this exercise, we will use a notebook to investigate how LLMs can be leveraged
-
-Please open the notebook called `03-01-nb-llm-example.ipynb`

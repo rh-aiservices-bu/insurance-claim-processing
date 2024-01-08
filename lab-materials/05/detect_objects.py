@@ -1,15 +1,39 @@
 import os
 import requests
 import json
+import time
+import hashlib
+
+import logging
+import boto3
+from dotenv import dotenv_values, load_dotenv
 
 from process_image import process_image
+import db_utils
+
+# Initialize logger
+logger = logging.getLogger("app")
+
+# Get config
+config = {
+    **dotenv_values(".env"),  # load shared development variables
+    **dotenv_values(".env.secret"),  # load sensitive variables
+    **os.environ,  # override loaded values with environment variables
+}
+
+db = db_utils.Database(config, logger)
+
+s3 = boto3.client(
+    's3',
+    endpoint_url=config["DB_S3_ENDPOINT_URL"],
+    aws_access_key_id=config["DB_AWS_ACCESS_KEY_ID"],
+    aws_secret_access_key=config["DB_AWS_SECRET_ACCESS_KEY"],
+    use_ssl=config["LLM_ENDPOINT"].startswith("https"),)
 
 detection_endpoint = os.environ.get("DETECTION_ENDPOINT")
-claims_endpoint = os.environ.get("CLAIMS_ENDPOINT")
 
 def download_images(claim_id):
-    claim_endpoint = claims_endpoint + f"/db/claims/{claim_id}"
-    claim_info = requests.get(claim_endpoint).json()
+    claim_info = db.get_claim_info(claim_id)
     images = claim_info["original_images"]
     
     downloaded_images = []
@@ -18,23 +42,13 @@ def download_images(claim_id):
     for image in images:
         image_name = image["image_name"]
         image_key = image["image_key"]
-        image_endpoint = claims_endpoint + f"/images/{image_key}"
         
-        response = requests.get(image_endpoint)
+        image = s3.get_object(Bucket=config["IMAGES_BUCKET"], Key=image_key)
+        image_content = image["Body"].read()
         
-        if response.status_code == 200:
-            content_type = response.headers['Content-Type']
-            if content_type == 'binary/octet-stream':
-                with open(f"{image_name}", 'wb') as file:
-                    file.write(response.content)
-                print(f'Saved image {image_name}.')
-            else:
-                print(f"Unexpected content type: {content_type}")
-                failed_downloads.append(image_name)
-        else:
-            print(f"Failed to retrieve image {image_name}. Status code: {response.status_code}")
-            failed_downloads.append(image_name)
-        
+        with open(f"{image_name}", 'wb') as file:
+            file.write(image_content)
+
         downloaded_images.append(image_name)
         
     if failed_downloads:
@@ -42,12 +56,25 @@ def download_images(claim_id):
         
     return downloaded_images
 
-def upload_images(claim_id, images):
-    upload_endpoint = claims_endpoint + f"/db/claims/{claim_id}/processed_image"
-    
+def upload_image(claim_id, image):
+    filename = os.path.basename(image)
+    timestamp = int(time.time())
+    sha256_hash = hashlib.sha256(filename.encode()).hexdigest()
+    image_key = f"processed_images/{claim_id}_{timestamp}_{sha256_hash[:8]}_{filename}"
+    # Upload the image to S3
+    s3.put_object(
+        Bucket=config["IMAGES_BUCKET"],
+        Key=image_key,
+        Body=open(image, 'rb'),
+    )
+    # Save image info to DB
+    db.upload_processed_image(claim_id, filename, image_key)
+
+def upload_images(claim_id, images):    
     for image in images:
-        files = {'image': (image, open(image, 'rb'), 'image/jpeg')}
-        response = requests.post(upload_endpoint, files=files)
+        upload_image(claim_id, image)
+        # files = {'image': (image, open(image, 'rb'), 'image/jpeg')}
+        # response = requests.post(upload_endpoint, files=files)
     
 def process_images(images):
     processed_images = []

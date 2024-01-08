@@ -1,0 +1,21 @@
+= Validating the environment
+include::_attributes.adoc[]
+
+Now that you are connected to your workbench, let's make sure that all the expected services are responding properly in the cluster.
+
+In your workbench:
+
+. In the left hand navigation menu, navigate to the folder called: `insurance-claim-processing/lab-materials/02`
+
+. Open the notebook called `02-03-validating.ipynb`
+
+. Running these cells will confirm that all the lab-required services are responding.
+
+If the output of this notebook looks suspicious, please inform the people leading the lab.
+
+== Overall view
+
+This is a summarized visualization of how the environment is laid out.
+
+[.bordershadow]
+image::02/ic-eng-diag.drawio.svg[]

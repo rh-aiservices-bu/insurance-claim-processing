@@ -1,0 +1,174 @@
+= Model Serving (Manual)
+include::_attributes.adoc[]
+
+. At this point, we need to deploy the model into RHOAI model serving.
+. Look at the information used to create the Data Connection that was used for the pipeline server.
+
+. Re-create another data connection, with identical information, but change the bucket name from `userX` to 'models'
+
+== Create a Data Connection
+
+* In your project, create a data connection that maps to the shared minio.
+* Here is the info you need to enter:
+** Name:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+Shared Minio - model
+** Access Key:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+{minio-user}
+** Secret Key:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+{minio-pass}
+** Endpoint:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+{minio-endpoint}
+** Region:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+none
+** Bucket:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+models
+
+* The result should look like:
++
+[.bordershadow]
+image::04/model-data-connection.png[model connection]
+
+== Create a Model Server
+
+In your project create a model server.
+
+* Click 'Add server'
++
+[.bordershadow]
+image::04/add-model-server.png[]
+
+* Here is the info you need to enter:
+** Model server name:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+My first Model Server
+** Serving runtime:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+OpenVINO Model Server
+** Number of model server replicas to deploy:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+1
+** Model server size
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+standard
+** Model route
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+unchecked
+** Token authorization
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+unchecked
+
+
+The result should look like:
++
+[.bordershadow]
+image::04/add-model-server2.png[]
+
+== Deploy the Model
+
+In your project, under 'Models and model servers' select 'Deploy model'.
+
+* Click 'Deploy model'
++
+[.bordershadow]
+image::04/select-deploy-model.png[]
+
+* Here is the information you will need to enter:
+
+** Model name:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+My first Model
+** Model server
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+My first Model Server
+** Model server - Model framework
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+onnx-1
+** Existing data connection - Name
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+Shared Minio - model
+** Existing data connection - Path
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+http://modelmesh-serving.user1:8008/v2/models/my-first-model/accident_detect.onnx
+
+The result should look like:
++
+[.bordershadow]
+image::04/deploy-a-model.png[]
+
+
+If the model is successfully deployed you will see its status as green.
++
+[.bordershadow]
+image::04/model-deployed-success.png[]
+
+Now confirm that the model is working!
+
+== Confirm the Model is working
+Once the model has been deployed, we need to confirm that the model is working in model mesh.
+
+
+. In your running pytorch workbench, navigate to the folder `lab-materials/04`.
+
+. Look for (and open) the notebook called `04-05-serving-mannual.ipynb`.
+
+. Execute the cells of the notebook, and ensure you understand what is happening.
+
+
+

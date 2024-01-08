@@ -1,5 +1,0 @@
-= Sentiment Detection check
-
-We will run a few tests to confirm that the LLM is able to accurately detect the sentiments conveyed in the original text.
-
-

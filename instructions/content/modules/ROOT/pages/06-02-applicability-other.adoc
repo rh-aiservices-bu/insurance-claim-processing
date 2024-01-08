@@ -1,2 +1,0 @@
-= pages/06-02-applicability-other.adoc
-

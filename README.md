@@ -26,14 +26,7 @@ If you want to participate in the creation and update of this content, please co
 
 ## How to update the **Instructions**
 
-Useful link: https://redhat-scholars.github.io/build-course/rhs-build-course/develop.html
-
-Live updating ...
-```bash
-cd
-npm install
-gulp
-```
+Useful link: [https://redhat-scholars.github.io/build-course/rhs-build-course/develop.html](https://redhat-scholars.github.io/build-course/rhs-build-course/develop.html)
 
 ### Requirements
 
@@ -41,13 +34,13 @@ gulp
 
 ### Development
 
-- Add/Modify/Delete content in [instructions/content/modules/ROOT](instructions/content/modules/ROOT).
+- Add/Modify/Delete content in [content/modules/ROOT](content/modules/ROOT).
 - Navigation is handled in `nav.adoc`.
 - Content pages are in the `pages` folder.
-- To build the site, from the root of the repo, run `./instructions/utilities/lab-build`.
-- To serve the site for previewing, from the root of the repo, run `instructions/utilities/lab-serve`.
+- To build the site, from the root of the repo, run `./content/utilities/lab-build`.
+- To serve the site for previewing, from the root of the repo, run `./content/utilities/lab-serve`.
 - The site will be visible at [http://localhost:8443/](http://localhost:8443/)
-- When finished, you can stop serving the site by running from the root of the repo `instructions/utilities/lab-stop`.
+- When finished, you can stop serving the site by running from the root of the repo `./content/utilities/lab-stop`.
 
 ## How to update the **Application**
 

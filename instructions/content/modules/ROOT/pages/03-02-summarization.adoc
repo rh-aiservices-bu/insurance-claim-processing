@@ -1,5 +1,0 @@
-= Summarization Check
-
-Now that we have seen the pros and cons of running an LLM in a notebook vs in a pod, and on CPU vs on GPU, for the rest of this workshop, we will use the version of the LLM that is hosted and running on the GPU.
-
-In this notebook (`03-02-summarization-check.ipynb`) we will investigate how the LLM can be used to summarize text.

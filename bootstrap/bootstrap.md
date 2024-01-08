@@ -10,6 +10,8 @@ CMD=" oc apply -f ${GITEA_INT_URL}${GITEA_REPO}raw/branch/${GITEA_BRANCH}${GITEA
 
 echo ${CMD}
 
+oc apply -f ./bootstrap/applicationset/applicationset-bootstrap.yaml
+
 ```
 
 <!--

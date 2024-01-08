@@ -1,0 +1,57 @@
+= Getting connected
+include::_attributes.adoc[]
+
+For the purposes of this training session, we have provisioned a single OpenShift cluster, with OpenShift AI deployed on it.
+
+Each person attending this lab will have a unique user account in which to do their work.
+
+== Environment information
+
+If you are using the customized version of the instructions, the information below will render properly. If not, you will see placeholder values instead.
+
+* Your account id: `{user}`
+* Your password: `{password}`
+
+In a new window or tab, open the following URL and log in:
+
+* OpenShift Console URL: {openshift_console_url}[{openshift_console_url},window=_blank]
+* The result should look like:
++
+
+[.bordershadow]
+image::02/02-01-login1.png[]
+
+* and after that:
++
+image::02/02-01-login2.png[]
+
+Now, open the OpenShift AI URL, and log in with the same credentials:
+
+* The RHOAI URL: https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/[https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/,window=_blank]
+
+* Alternatively, you can access Red Hat OpenShift AI from the OpenShift Console by clicking on:
++
+[.bordershadow]
+image::02/02-01-access-rhoai.png[]
+
+* After you authenticate, the result should look like:
++
+[.bordershadow]
+image::02/02-01-rhoai-front-page.png[]
+
+If you got this far and saw all that, congratulations, you got properly connected to the environment!
+
+// * The `oc login` command:
+// [.lines_space]
+// [.console-input]
+// [source, text]
+// [subs=attributes+]
+// {login_command}
+
+// == Other credentials and URLs:
+
+// TODO?
+
+// * ArgoCD view
+// * Gitea
+// * Database

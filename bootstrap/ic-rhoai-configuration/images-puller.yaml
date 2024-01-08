@@ -1,0 +1,88 @@
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: image-puller-workbench
+  namespace: rhods-notebooks
+  labels:
+    k8s-app: image-puller
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  selector:
+    matchLabels:
+      name: image-puller
+  template:
+    metadata:
+      labels:
+        name: image-puller
+    spec:
+      containers:
+      - name: image-puller
+        image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/ic-workbench:1.2
+        command: ["tail"]
+        args: ["-f", "/dev/null"]
+        resources:
+          limits:
+            memory: 20Mi
+          requests:
+            cpu: 10m
+            memory: 10Mi
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: image-puller-ovms
+  namespace: rhods-notebooks
+  labels:
+    k8s-app: image-puller
+spec:
+  selector:
+    matchLabels:
+      name: image-puller
+  template:
+    metadata:
+      labels:
+        name: image-puller
+    spec:
+      containers:
+      - name: oauth-proxy
+        image: registry.redhat.io/openshift4/ose-oauth-proxy@sha256:4bef31eb993feb6f1096b51b4876c65a6fb1f4401fee97fa4f4542b6b7c9bc46
+        command: ["tail"]
+        args: ["-f", "/dev/null"]
+        resources:
+          limits:
+            memory: 20Mi
+          requests:
+            cpu: 10m
+            memory: 10Mi
+      - name: model-server
+        image: quay.io/opendatahub/openvino_model_server@sha256:2cbe8a48ab0bc6fe7fb76919bf33253e83a6218a9c4b486b744c3dcf30679616
+        command: ["tail"]
+        args: ["-f", "/dev/null"]
+        resources:
+          limits:
+            memory: 20Mi
+          requests:
+            cpu: 10m
+            memory: 10Mi
+      - name: runtime-adapter
+        image: registry.redhat.io/rhods/odh-modelmesh-runtime-adapter-rhel8@sha256:6bba39a3ab246803a1ab6fec1629246c10934faed3ed20add59aeb0945f29883
+        command: ["tail"]
+        args: ["-f", "/dev/null"]
+        resources:
+          limits:
+            memory: 20Mi
+          requests:
+            cpu: 10m
+            memory: 10Mi
+      - name: modelmesh
+        image: registry.redhat.io/rhods/odh-modelmesh-rhel8@sha256:2977caf3d7914f9d9c407ad3e01d78f783202c358766b70fca342560e1afe3df
+        command: ["tail"]
+        args: ["-f", "/dev/null"]
+        resources:
+          limits:
+            memory: 20Mi
+          requests:
+            cpu: 10m
+            memory: 10Mi

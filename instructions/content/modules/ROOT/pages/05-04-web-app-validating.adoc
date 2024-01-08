@@ -1,2 +1,0 @@
-= pages/05-04-web-app-validating.adoc
-

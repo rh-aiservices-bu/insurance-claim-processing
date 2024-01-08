@@ -1,0 +1,187 @@
+= Creating your playpen project
+include::_attributes.adoc[]
+
+As a preliminary step, each of you is going to
+
+. Create a Data Science project
+
+. Create a Data Connection
+
+. Deploy a Data Science Pipeline Server
+
+. Launch a Workbench
+
+. Clone the git repo into your Workbench
+
+The instructions below will guide you through these steps. Follow them carefully.
+
+== Unique user ID
+
+* If you are using instructions that have been customized for you, here are your details:
+** User id: `{user}`
+** Password: `{password}`
+** OpenShift Console URL: {openshift_console_url}
+
+== Create a project
+
+* First, navigate to the Data Science Project menu on the left:
++
+[.bordershadow]
+image::02/02-02-ds-proj-nav.png[]
+
+* Create a project with the **same name** as your user id.
+** You have been assigned a unique user ID:  `{user}`
+** You need to now create a project with the exact same name: `{user}`
+
+IMPORTANT: Your assigned user is {user}. Don't mess that up or things will break later on
+
+* Leave the resource name unchanged
+* Enter your first and last name in the description of the project.
+
+It should look like this:
+
+[.bordershadow]
+image::02/02-02-create-project.png[]
+
+IMPORTANT: But it should NOT be `userX` like in the screenshot. (for you, `X` should be a number instead)
+
+== Create a Data Connection for the pipeline server
+
+* We have deployed an instance of Minio in the cluster to act as a simple Object Storage for our purposes.
+* We will create a **Data Connection** to it.
+* Here is the info you need to enter:
+** Name:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+Shared Minio - pipelines
+** Access Key:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+{minio-user}
+** Secret Key:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+{minio-pass}
+** Endpoint:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+{minio-endpoint}
+** Region:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+none
+** Bucket:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+{user}
+
+IMPORTANT: Once again, the bucket you will use has to match with the user ID you were provided
+
+The result should look like:
+
+[.bordershadow]
+image::02/data-connection.png[]
+
+== Create a Pipeline Server
+
+It is highly recommended to create your pipeline server before creating a workbench. So let's do that now!
+
+* In your DS project, click on **Create a pipeline Server**
++
+[.bordershadow]
+image::02/02-02-pipelineserver01.png[]
+
+* Select the Data Connection created earlier (**Shared Minio - pipelines**) and click the **configure** button:
++
+[.bordershadow]
+image::02/02-02-pipelineserver02.png[]
+
+* When your pipeline server is ready, your screen will look like the following:
++
+[.bordershadow]
+image::02/02-02-pipelineserver03.png[]
+
+At this point, your pipeline server is ready and deployed.
+
+== Launch a Workbench
+
+Once the Data Connection and Pipeline Server are created, Create a workbench with the following characteristics:
+
+* Choose a name for it, like: `My Workbench`
+* Image Selection: `Insurance Claim Processing Lab Workbench`
+* Container Size: Standard
+* Accelerator: None
+
+[.bordershadow]
+image::02/02-02-launch-workbench-01.png[]
+
+* Wait for your workbench to be fully started
+* Once it is, click the **Open** Link to connect to it.
+* Authenticate with the same credentials as earlier
+* You will be asked to accept these settings:
++
+[.bordershadow]
+image::02/02-02-accept.png[]
+
+* Do so.
+* You should now see this:
++
+[.bordershadow]
+image::02/02-02-jupyter.png[]
+
+== Git-Clone the common repo
+
+There are 2 potential ways of cloning the git repo into your workbench. Choose the one you are most comfortable with.
+
+[tabs]
+====
+Using the Git UI::
++
+--
+If you want to use the git UI in Jupyter:
+
+[.bordershadow]
+image::02/git-clone-1.png[]
+
+Enter the URL of the Git repo:
+
+[.console-input]
+[source,adoc]
+[subs=attributes+]
+----
+{git-clone-repo-url}
+----
+
+[.bordershadow]
+image::02/git-clone-2.png[]
+
+--
+Using the Git CLI::
++
+--
+If you prefer using the `git` CLI, open a a terminal in JupyterLab, and paste this code:
+
+[.console-input]
+[source,adoc]
+[subs=attributes+]
+----
+git clone {git-clone-repo-url}
+cd insurance-claim-processing/
+git checkout {git-clone-repo-branch}
+----
+--
+====
+
+At this point, your project is ready for the work we want to do in it.

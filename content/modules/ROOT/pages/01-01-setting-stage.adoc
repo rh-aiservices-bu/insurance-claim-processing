@@ -1,0 +1,19 @@
+= Setting the stage
+include::_attributes.adoc[]
+
+In order to make this lab seem more realistic, we will be describing this imaginary scenario.
+
+== Situation
+:slide:
+
+* We all work for a large multi-national insurance company
+** Our company is in the midst of digital transformation
+** It is looking at modernizing practices and leveraging new technologies
+* A small team was asked to:
+** review the way insurance claims are currently being processed
+** provide advice on potential improvements
+* That team is currently very small (about 4 people)
+** Findings will be presented to the board
+** If they are convincing, we'll be granted the resources to implement the recommendations
+* The next slides are the materials that were presented to the board
+

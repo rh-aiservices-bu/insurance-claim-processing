@@ -1,0 +1,6 @@
+= Pipeline for processing claims
+include::_attributes.adoc[]
+
+== Run the pipeline
+
+== Check the results

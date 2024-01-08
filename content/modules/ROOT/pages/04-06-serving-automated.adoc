@@ -1,0 +1,22 @@
+= Model Serving (Automated)
+include::_attributes.adoc[]
+
+OPTIONAL. Skip for now, you can come back if you have some time at the end.
+
+== Get an OpenShift Token
+
+
+== Deploy your own gitops server in your namespace
+
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+oc apply ... something here
+
+
+== Create a gitops app defining your model server and model
+
+
+== Updating your model deployment via git
+
