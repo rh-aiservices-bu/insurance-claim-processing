@@ -1,28 +1,20 @@
 = Accident Recognition
 include::_attributes.adoc[]
 
-Now that we have retrained our model we can test it against our 'test' images. But where is our re-trained model located? 
+Now that we have retrained our model we can test it against some sample images.
 
-When training started, a 'runs/detect/train' folder was created. After each epoch, a trained model is exported to /runs/detect/train/weights/last.pt file.  The re-trained model with the highest precision is exported to /runs/detect/train/weights/best.pt.  As you were unable to execute the re-training of the model, we created a 'models' folder and placed the best.pt model into that folder.
+We have converted our model to onnx format and placed a copy within an amazon s3 bucket.  We will test this version against some sample test images. 
+
+
+Using the re-trained model, on the below image, we see that the model is able to identify a 'severe' car crash with '88%' probability.
 
 [.bordershadow]
-image::04/best-model.png[best model]
+image::04/retrained-model-results.png[retrained modelresults]
+
+
 
 . In your running pytorch workbench, navigate to the folder `lab-materials/04`.
 
 . Look for (and open) the notebook called `04-04-accident-recog.ipynb`
 
 . Execute the cells of the notebook.
-
-Note:  to download the version of the model that has been retrained, use this:
-
-[.lines_space]
-[.console-input]
-[source, text]
-[subs=attributes+]
-curl -LO https://rhods-public.s3.amazonaws.com/demo-models/ic-models/accident/accident_detect.onnx
-
-Using the re-trained model, on the below image, we see that the model is able to identify a 'severe' car crash with '88%' probability.
-
-[.bordershadow]
-image::04/retrained-model-results.png[retrained modelresults]
