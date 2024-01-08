@@ -27,5 +27,5 @@ def test_responsetime(endpoint):
         }, f)
 
 if __name__ == '__main__':
-    health_endpoint = os.environ.get("LLM_ENDPOINT") + "/health"
+    health_endpoint = "http://llm.ic-shared-llm.svc.cluster.local:3000" + "/health"
     test_responsetime(health_endpoint)
