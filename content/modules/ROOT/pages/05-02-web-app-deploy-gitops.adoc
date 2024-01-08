@@ -3,6 +3,16 @@ include::_attributes.adoc[]
 
 == Deploy your instance of ArgoCD
 
+We will start by deploying an instance of ArgoCD on the cluster. This will be used to deploy the rest of the applications.
+
+Copy the content of the following text, and paste it in the terminal to deploy ArgoCD.
+
+[.lines_space]
+[.console-input]
+
+[.lines_space]
+[.console-input]
+
 [.lines_space]
 [.console-input]
 [source, text]
@@ -36,71 +46,34 @@ spec:
         insecureEdgeTerminationPolicy: Redirect
         termination: edge
 EOF
-oc rollout status deploy/argocd-server
 
-
-
-Now that Argo is deployed, let's find its route.
-echo "   ArgoCD UI : https://$(oc get route argocd-server -ojsonpath='{.status.ingress[0].host}')/ "
-
-
-== deploy apps
-
+Still in the Terminal, run the following command to check the status of the ArgoCD deployment.
 
 [.lines_space]
 [.console-input]
 [source, text]
-cat <<EOF | oc apply -f -
-apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
-metadata:
-  name: bootstrap
-spec:
-  generators:
-  - list:
-      elements:
-      - cluster: in-cluster
-        name: ic-shared-minio-app
-        repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
-        targetRevision: dev
-        path: bootstrap/ic-shared-minio
-      - cluster: in-cluster
-        name: ic-shared-database-app
-        repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
-        targetRevision: dev
-        path: bootstrap/ic-shared-database
-      - cluster: in-cluster
-        name: ic-shared-llm-app
-        repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
-        targetRevision: dev
-        path: bootstrap/ic-shared-llm
-      - cluster: in-cluster
-        name: ic-shared-img-det
-        repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
-        targetRevision: dev
-        path: bootstrap/ic-shared-img-det
-  template:
-    metadata:
-      name: '{{name}}'
-      labels:
-        component: bootstrap
-        purpose: '{{name}}'
-    spec:
-      project: default
-      source:
-        repoURL: '{{repoURL}}'
-        targetRevision: '{{targetRevision}}'
-        path: '{{path}}'
-      destination:
-        server: 'https://kubernetes.default.svc'
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
-        syncOptions:
-          - RespectIgnoreDifferences=true
-EOF
+oc rollout status deploy/argocd-server
 
+After a few seconds, the deployment should be complete:
+
+[.bordershadow]
+image::05/argocd-rollout.png[]
+
+Now that Argo is deployed, let's find its route.
+
+[.lines_space]
+[.console-input]
+[source, text]
+echo "   ArgoCD UI : https://$(oc get route argocd-server -ojsonpath='{.status.ingress[0].host}')/ "
+
+You should obtain something like this:
+  
+[.bordershadow]
+image::05/argocd-route.png[]
+
+== Deploy the applications via GitOps
+
+Now that ArgoCD is deployed in your namespace, you can deploy the application via GitOps.
 
 [.lines_space]
 [.console-input]
@@ -110,15 +83,15 @@ cat <<EOF | oc apply -f -
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: bgd-app
+  name: claim-insurance-app
 spec:
   destination:
     server: https://kubernetes.default.svc
   project: default
   source:
     path: apps/bgd/base
-    repoURL: https://github.com/rhpds/gitops-bgd-app
-    targetRevision: main
+    repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
+    targetRevision: dev
   syncPolicy:
     automated:
       prune: true
