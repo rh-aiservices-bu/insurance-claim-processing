@@ -24,7 +24,7 @@ def test_security(endpoint, expected_model_sha, expected_serving_sha):
         }, f)
 
 if __name__ == '__main__':
-    info_endpoint = os.environ.get("LLM_ENDPOINT") + "/info"
-    expected_model_sha = os.environ.get("MODEL_SHA")
-    expected_serving_sha = os.environ.get("SERVING_SHA")
+    info_endpoint = "http://llm.ic-shared-llm.svc.cluster.local:3000" + "/info"
+    expected_model_sha = "b70aa86578567ba3301b21c8a27bea4e8f6d6d61"
+    expected_serving_sha = "630800eed37b15c4b0c9eb8e6ab47212026720f7"
     test_security(info_endpoint, expected_model_sha, expected_serving_sha)
