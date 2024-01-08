@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: image-puller
-        image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/ic-workbench:1.1
+        image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/ic-workbench:1.2
         command: ["tail"]
         args: ["-f", "/dev/null"]
         resources:
