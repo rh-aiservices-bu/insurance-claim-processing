@@ -9,10 +9,10 @@ include::_attributes.adoc[]
 [.bordershadow]
 image::02/02-03-create-wb.png[]
 * Make sure it has the following characteristics:
-  * Choose a name for it, like: `My Workbench`
-  * Image Selection: `Insurance Claim Processing Lab Workbench`
-  * Container Size: Standard
-  * Accelerator: None
+** Choose a name for it, like: `My Workbench`
+** Image Selection: `Insurance Claim Processing Lab Workbench`
+** Container Size: Standard
+** Accelerator: None
 * That should look like:
 +
 [.bordershadow]

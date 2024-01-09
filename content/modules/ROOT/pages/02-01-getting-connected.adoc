@@ -21,7 +21,7 @@ In a new window or tab, open the following URL and log in:
 // image::02/02-01-login2.png[]
 
 * The Red Hat OpenShift AI URL for our shared environment:
-  * https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/[https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/,window=_blank]
+** https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/[https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/,window=_blank]
 
 // * Alternatively, you can access Red Hat OpenShift AI from the OpenShift Console by clicking on:
 // +
