@@ -16,7 +16,7 @@ As a preliminary step, each of you is going to
 ** we will use it to review content and notebooks
 
 . Clone the git repo into your Workbench
-** this contains all the code we've been using in our protoyping efforts
+** this contains all the code we've been using in our prototyping efforts
 
 The instructions below will guide you through these steps. Follow them carefully.
 
