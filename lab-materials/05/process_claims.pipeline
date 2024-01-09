@@ -18,15 +18,12 @@
               "dependencies": [
                 "llm_usage.py",
                 "templates/summary_template.txt",
-                "db_utils.py"
+                "db_utils.py",
+                ".pipeline-envs"
               ],
               "include_subdirectories": false,
               "outputs": [],
-              "env_vars": [
-                {
-                  "env_var": "CLAIMS_ENDPOINT"
-                }
-              ],
+              "env_vars": [],
               "kubernetes_pod_annotations": [],
               "kubernetes_pod_labels": [],
               "kubernetes_secrets": [],
@@ -91,15 +88,12 @@
               "dependencies": [
                 "llm_usage.py",
                 "templates/time_template.txt",
-                "db_utils.py"
+                "db_utils.py",
+                ".pipeline-envs"
               ],
               "include_subdirectories": false,
               "outputs": [],
-              "env_vars": [
-                {
-                  "env_var": "CLAIMS_ENDPOINT"
-                }
-              ],
+              "env_vars": [],
               "kubernetes_pod_annotations": [],
               "kubernetes_pod_labels": [],
               "kubernetes_secrets": [],
@@ -163,15 +157,12 @@
               "dependencies": [
                 "llm_usage.py",
                 "templates/location_template.txt",
-                "db_utils.py"
+                "db_utils.py",
+                ".pipeline-envs"
               ],
               "include_subdirectories": false,
               "outputs": [],
-              "env_vars": [
-                {
-                  "env_var": "CLAIMS_ENDPOINT"
-                }
-              ],
+              "env_vars": [],
               "kubernetes_pod_annotations": [],
               "kubernetes_pod_labels": [],
               "kubernetes_secrets": [],
@@ -235,15 +226,12 @@
               "dependencies": [
                 "llm_usage.py",
                 "templates/sentiment_template.txt",
-                "db_utils.py"
+                "db_utils.py",
+                ".pipeline-envs"
               ],
               "include_subdirectories": false,
               "outputs": [],
-              "env_vars": [
-                {
-                  "env_var": "CLAIMS_ENDPOINT"
-                }
-              ],
+              "env_vars": [],
               "kubernetes_pod_annotations": [],
               "kubernetes_pod_labels": [],
               "kubernetes_secrets": [],
@@ -306,21 +294,12 @@
               "pipeline_parameters": [],
               "dependencies": [
                 "process_image.py",
-                "db_utils.py"
+                "db_utils.py",
+                ".pipeline-envs"
               ],
               "include_subdirectories": false,
               "outputs": [],
-              "env_vars": [
-                {
-                  "env_var": "DETECTION_ENDPOINT"
-                },
-                {
-                  "env_var": "CLAIMS_ENDPOINT"
-                },
-                {
-                  "env_var": "claim_id"
-                }
-              ],
+              "env_vars": [],
               "kubernetes_pod_annotations": [],
               "kubernetes_pod_labels": [],
               "kubernetes_secrets": [],
@@ -384,7 +363,8 @@
                 "claim_id"
               ],
               "dependencies": [
-                "db_utils.py"
+                "db_utils.py",
+                ".pipeline-envs"
               ],
               "include_subdirectories": false,
               "outputs": [
@@ -448,67 +428,16 @@
           "name": "process_claims",
           "runtime": "Data Science Pipelines",
           "pipeline_defaults": {
-            "kubernetes_pod_labels": [],
             "kubernetes_shared_mem_size": {},
             "mounted_volumes": [],
-            "kubernetes_tolerations": [],
+            "kubernetes_pod_labels": [],
             "kubernetes_pod_annotations": [],
-            "env_vars": [],
-            "kubernetes_secrets": [
-              {
-                "env_var": "LLM_ENDPOINT",
-                "name": "llm-info",
-                "key": "LLM_ENDPOINT"
-              },
+            "kubernetes_tolerations": [],
+            "kubernetes_secrets": [],
+            "env_vars": [
               {
                 "env_var": "DETECTION_ENDPOINT",
-                "name": "detection-info",
-                "key": "DETECTION_ENDPOINT"
-              },
-              {
-                "env_var": "POSTGRES_HOST",
-                "name": "db-info",
-                "key": "POSTGRES_HOST"
-              },
-              {
-                "env_var": "POSTGRES_DB",
-                "name": "db-info",
-                "key": "POSTGRES_DB"
-              },
-              {
-                "env_var": "POSTGRES_USER",
-                "name": "db-info",
-                "key": "POSTGRES_USER"
-              },
-              {
-                "env_var": "POSTGRES_PASSWORD",
-                "name": "db-info",
-                "key": "POSTGRES_PASSWORD"
-              },
-              {
-                "env_var": "POSTGRES_PORT",
-                "name": "db-info",
-                "key": "POSTGRES_PORT"
-              },
-              {
-                "env_var": "DB_S3_ENDPOINT_URL",
-                "name": "db-info",
-                "key": "S3_ENDPOINT_URL"
-              },
-              {
-                "env_var": "IMAGES_BUCKET",
-                "name": "db-info",
-                "key": "IMAGES_BUCKET"
-              },
-              {
-                "env_var": "DB_AWS_ACCESS_KEY_ID",
-                "name": "claim-images-bucket-secret",
-                "key": "aws_access_key_id"
-              },
-              {
-                "env_var": "DB_AWS_SECRET_ACCESS_KEY",
-                "name": "claim-images-bucket-secret",
-                "key": "aws_secret_access_key"
+                "value": ""
               }
             ],
             "runtime_image": "quay.io/rlundber/rh1/processing_pipeline:1.2"

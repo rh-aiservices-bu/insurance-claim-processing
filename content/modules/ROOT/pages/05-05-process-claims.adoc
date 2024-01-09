@@ -1,6 +1,43 @@
 = Pipeline for processing claims
 include::_attributes.adoc[]
 
+== What will the pipeline do?
+Now that we have the web app deployed, we need some way to process the claims in the web app. For that, we will use a pipeline that either can run ad-hoc or be scheduled just like the sanity check pipeline. +
+This pipeline is also a good starting point for creating an ArgoCD or Tekton pipeline which can be automatically triggered.
+
+== Look at the pipeline
+Start by navigating to `lab-materials/05/` and open the file `process_claims.pipeline` +
+Just like before, this is our Elyra version of the pipeline. Feel free to take a look at the different files and properties of the pipeline to see how it all fits together, but don't change anything just yet. +
+These are the main files of the pipeline and what they do:
+
+* *get_claims* - Will connect to the database, fetch any unprocessed claims, and add them to a list that will be passed to the other tasks through a file `claims.json`.
+* The following will go through all the claims and use the full body of the text to try and find some important feature, then push that to the databse:
+** *get_location* - Finds the location of the accident.
+** *get_accident_time* - Finds the time of the accident.
+** *summarize_text* - Makes a short summary of the text.
+** *get_sentiment* - Gets the sentiment of the text.
+* *detect_objects* - Downloads the images of the claims and uses the served object-detection model to find damages in the image.
+
 == Run the pipeline
+Before we can run the pipeline, we need to tell it what the endpoint to object-detection model is. +
+Go to the properties of the pipeline, and then scroll down until you see an environment variable called `DETECTION_ENDPOINT` and copy-paste your object-detection endpoint as Value.
+
+image::05/05-open-pipeline-properties.png[open pipeline properties]
+
+image::05/05-object-detection-endpoint.png[add the detection endpoint]
+
+Now we can press the *Run* button to start the pipeline.
+
+When starting the pipeline we now have an extra option called `claim_id`. This will let you choose which claim to process. If set to 0 (default), it will automatically process all unprocessed claims. +
+Leave it at 0 and press OK.
+
+image::05/05-run-settings.png[run settings]
+
+Press the `run-details` in the next popup to see how the run is progressing.
+
+image::05/05-run-details.png[run details]
 
 == Check the results
+After the pipeline has finished running, you can go to the app and take a look at the claims. +
+Instead of just a long body, you will now see a summary, a location field, an accident time field, and a sentiment field. +
+You can also see that we have new image(s) which have bounding boxes where the damage is.
