@@ -17,7 +17,7 @@ image::02/02-03-create-wb.png[]
 +
 [.bordershadow]
 image::02/02-02-launch-workbench-01.png[]
-
+* You should not need to modify any other Workbench settings (such as Storage)
 * Wait for your workbench to be fully started
 * Once it is, click the **Open** Link to connect to it.
 * Authenticate with the same credentials as earlier
