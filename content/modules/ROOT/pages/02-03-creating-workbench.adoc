@@ -3,7 +3,12 @@ include::_attributes.adoc[]
 
 == Launch a Workbench
 
-* Once the Data Connection and Pipeline Server are fully created, create a workbench with the following characteristics:
+* Once the Data Connection and Pipeline Server are fully created
+* Create a workbench
++
+[.bordershadow]
+image::02/02-03-create-wb.png[]
+* Make sure it has the following characteristics:
   * Choose a name for it, like: `My Workbench`
   * Image Selection: `Insurance Claim Processing Lab Workbench`
   * Container Size: Standard
@@ -16,7 +21,7 @@ image::02/02-02-launch-workbench-01.png[]
 * Wait for your workbench to be fully started
 * Once it is, click the **Open** Link to connect to it.
 * Authenticate with the same credentials as earlier
-* You will be asked to accept these settings:
+* You will be asked to accept the following settings:
 +
 [.bordershadow]
 image::02/02-02-accept.png[]
