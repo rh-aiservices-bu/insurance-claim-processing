@@ -14,32 +14,38 @@ If you are using the customized version of the instructions, the information bel
 
 In a new window or tab, open the following URL and log in:
 
-* OpenShift Console URL: {openshift_console_url}[{openshift_console_url},window=_blank]
+// * OpenShift Console URL: {openshift_console_url}[{openshift_console_url},window=_blank]
+
+// * and after that:
+// +
+// image::02/02-01-login2.png[]
+
+* The Red Hat OpenShift AI URL for our shared environment:
+  * https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/[https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/,window=_blank]
+
+// * Alternatively, you can access Red Hat OpenShift AI from the OpenShift Console by clicking on:
+// +
+// [.bordershadow]
+// image::02/02-01-access-rhoai.png[]
+* Enter your credentials (as detailed above)
 * The result should look like:
 +
-
 [.bordershadow]
 image::02/02-01-login1.png[]
 
-* and after that:
-+
-image::02/02-01-login2.png[]
+* Because the password is so simple (`{password}`), Chrome might display a scary message such as:
 
-Now, open the OpenShift AI URL, and log in with the same credentials:
-
-* The RHOAI URL: https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/[https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/,window=_blank]
-
-* Alternatively, you can access Red Hat OpenShift AI from the OpenShift Console by clicking on:
 +
 [.bordershadow]
-image::02/02-01-access-rhoai.png[]
+image::02/02-01-login-scary.png[]
+* It is safe here to ignore this message when it pops up.
 
 * After you authenticate, the result should look like:
 +
 [.bordershadow]
 image::02/02-01-rhoai-front-page.png[]
 
-If you got this far and saw all that, congratulations, you got properly connected to the environment!
+If you got this far and saw all that, congratulations, you got properly connected to the OpenShift AI Dashboard Application!
 
 // * The `oc login` command:
 // [.lines_space]
