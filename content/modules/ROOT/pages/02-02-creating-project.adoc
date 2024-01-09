@@ -1,17 +1,22 @@
-= Creating your playpen project
+= Creating your project and pipeline server
 include::_attributes.adoc[]
 
 As a preliminary step, each of you is going to
 
 . Create a Data Science project
+** this will help keep your things together
 
 . Create a Data Connection
+** we need that for the pipeline server to store it artifacts
 
 . Deploy a Data Science Pipeline Server
+** we will need one, and it's better to create it from the start
 
 . Launch a Workbench
+** we will use it to review content and notebooks
 
 . Clone the git repo into your Workbench
+** this contains all the code we've been using in our prototyping efforts
 
 The instructions below will guide you through these steps. Follow them carefully.
 
@@ -20,11 +25,11 @@ The instructions below will guide you through these steps. Follow them carefully
 * If you are using instructions that have been customized for you, here are your details:
 ** User id: `{user}`
 ** Password: `{password}`
-** OpenShift Console URL: {openshift_console_url}
+** RHOAI URL: https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/[https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/,window=_blank]
 
 == Create a project
 
-* First, navigate to the Data Science Project menu on the left:
+* First, in the OpenShift AI Dashboard application, navigate to the Data Science Project menu on the left:
 +
 [.bordershadow]
 image::02/02-02-ds-proj-nav.png[]
@@ -38,17 +43,21 @@ IMPORTANT: Your assigned user is {user}. Don't mess that up or things will break
 * Leave the resource name unchanged
 * Enter your first and last name in the description of the project.
 
-It should look like this:
-
+* It should look like this:
++
 [.bordershadow]
 image::02/02-02-create-project.png[]
 
-IMPORTANT: But it should NOT be `userX` like in the screenshot. (for you, `X` should be a number instead)
+IMPORTANT: It should **NOT** be `userX` like in the screenshot. (for you, `X` should be a number instead)
 
 == Create a Data Connection for the pipeline server
 
 * We have deployed an instance of Minio in the cluster to act as a simple Object Storage for our purposes.
-* We will create a **Data Connection** to it.
+* We will need to **Add Data Connection** that points to it.
++
+[.bordershadow]
+image::02/02-02-add-dc.png[]
+
 * Here is the info you need to enter:
 ** Name:
 [.lines_space]
@@ -89,8 +98,8 @@ none
 
 IMPORTANT: Once again, the bucket you will use has to match with the user ID you were provided
 
-The result should look like:
-
+* The result should look like:
++
 [.bordershadow]
 image::02/data-connection.png[]
 
@@ -115,73 +124,5 @@ image::02/02-02-pipelineserver03.png[]
 
 At this point, your pipeline server is ready and deployed.
 
-== Launch a Workbench
+IMPORTANT: You need to **wait** until that screen is ready. If it's still spinning, wait for it to complete. If you continue and create your workbench **before** the pipeline server is ready, your workbench will not be able to submit pipelines to it.
 
-Once the Data Connection and Pipeline Server are created, Create a workbench with the following characteristics:
-
-* Choose a name for it, like: `My Workbench`
-* Image Selection: `Insurance Claim Processing Lab Workbench`
-* Container Size: Standard
-* Accelerator: None
-
-[.bordershadow]
-image::02/02-02-launch-workbench-01.png[]
-
-* Wait for your workbench to be fully started
-* Once it is, click the **Open** Link to connect to it.
-* Authenticate with the same credentials as earlier
-* You will be asked to accept these settings:
-+
-[.bordershadow]
-image::02/02-02-accept.png[]
-
-* Do so.
-* You should now see this:
-+
-[.bordershadow]
-image::02/02-02-jupyter.png[]
-
-== Git-Clone the common repo
-
-There are 2 potential ways of cloning the git repo into your workbench. Choose the one you are most comfortable with.
-
-[tabs]
-====
-Using the Git UI::
-+
---
-If you want to use the git UI in Jupyter:
-
-[.bordershadow]
-image::02/git-clone-1.png[]
-
-Enter the URL of the Git repo:
-
-[.console-input]
-[source,adoc]
-[subs=attributes+]
-----
-{git-clone-repo-url}
-----
-
-[.bordershadow]
-image::02/git-clone-2.png[]
-
---
-Using the Git CLI::
-+
---
-If you prefer using the `git` CLI, open a a terminal in JupyterLab, and paste this code:
-
-[.console-input]
-[source,adoc]
-[subs=attributes+]
-----
-git clone {git-clone-repo-url}
-cd insurance-claim-processing/
-git checkout {git-clone-repo-branch}
-----
---
-====
-
-At this point, your project is ready for the work we want to do in it.
