@@ -9,6 +9,17 @@ In your workbench:
 
 . Open the notebook called `02-04-validating.ipynb`
 
+. If you have never executed Cells in a Jupyter Notebook before, here is what you need to do:
+
+.. Click on the **Restart kernel and Run all Cells** link:
++
+[.bordershadow]
+image::02/02-04-restart-and-run.png[]
+.. Click **Restart** :
++
+[.bordershadow]
+image::02/02-04-restart-kernel.png[]
++
 . Running these cells will confirm that all the lab-required services are responding.
 
 If the output of this notebook looks suspicious, please inform the people leading the lab.
