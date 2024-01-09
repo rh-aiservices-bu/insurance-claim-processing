@@ -29,7 +29,7 @@ The instructions below will guide you through these steps. Follow them carefully
 
 == Create a project
 
-* First, navigate to the Data Science Project menu on the left:
+* First, in the OpenShift AI Dashboard application, navigate to the Data Science Project menu on the left:
 +
 [.bordershadow]
 image::02/02-02-ds-proj-nav.png[]
@@ -43,17 +43,21 @@ IMPORTANT: Your assigned user is {user}. Don't mess that up or things will break
 * Leave the resource name unchanged
 * Enter your first and last name in the description of the project.
 
-It should look like this:
-
+* It should look like this:
++
 [.bordershadow]
 image::02/02-02-create-project.png[]
 
-IMPORTANT: But it should NOT be `userX` like in the screenshot. (for you, `X` should be a number instead)
+IMPORTANT: It should **NOT** be `userX` like in the screenshot. (for you, `X` should be a number instead)
 
 == Create a Data Connection for the pipeline server
 
 * We have deployed an instance of Minio in the cluster to act as a simple Object Storage for our purposes.
-* We will create a **Data Connection** to it.
+* We will need to **Add Data Connection** that points to it.
++
+[.bordershadow]
+image::02/02-02-add-dc.png[]
+
 * Here is the info you need to enter:
 ** Name:
 [.lines_space]
@@ -94,8 +98,8 @@ none
 
 IMPORTANT: Once again, the bucket you will use has to match with the user ID you were provided
 
-The result should look like:
-
+* The result should look like:
++
 [.bordershadow]
 image::02/data-connection.png[]
 
@@ -120,17 +124,18 @@ image::02/02-02-pipelineserver03.png[]
 
 At this point, your pipeline server is ready and deployed.
 
-IMPORTANT: You need to wait until that screen is ready. If it's still spinning, wait for it to complete. If you continue and create your workbench **before** the pipeline server is ready, your workbench will not be able to submit pipelines to it.
+IMPORTANT: You need to **wait** until that screen is ready. If it's still spinning, wait for it to complete. If you continue and create your workbench **before** the pipeline server is ready, your workbench will not be able to submit pipelines to it.
 
 == Launch a Workbench
 
-Once the Data Connection and Pipeline Server are created, create a workbench with the following characteristics:
+* Once the Data Connection and Pipeline Server are fully created, create a workbench with the following characteristics:
 
-* Choose a name for it, like: `My Workbench`
-* Image Selection: `Insurance Claim Processing Lab Workbench`
-* Container Size: Standard
-* Accelerator: None
-
+  * Choose a name for it, like: `My Workbench`
+  * Image Selection: `Insurance Claim Processing Lab Workbench`
+  * Container Size: Standard
+  * Accelerator: None
+* That should look like:
++
 [.bordershadow]
 image::02/02-02-launch-workbench-01.png[]
 
