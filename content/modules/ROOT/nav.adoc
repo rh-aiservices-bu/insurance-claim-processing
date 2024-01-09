@@ -7,8 +7,9 @@
 
 * 2. Connection and Setup ({user})
 ** xref:02-01-getting-connected.adoc[2.1 Getting connected]
-** xref:02-02-creating-project.adoc[2.2 Creating your project]
-** xref:02-03-validating-env.adoc[2.3 Validating the environment]
+** xref:02-02-creating-project.adoc[2.2 Creating your project and pipeline server]
+** xref:02-03-creating-workbench.adoc[2.3 Creating your workbench]
+** xref:02-04-validating-env.adoc[2.4 Validating the environment]
 
 * 3. Working with an LLM
 ** xref:03-01-notebook-based-llm.adoc[3.1 Notebook-Based LLM Example]

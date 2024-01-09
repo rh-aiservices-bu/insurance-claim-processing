@@ -7,7 +7,7 @@ In your workbench:
 
 . In the left hand navigation menu, navigate to the folder called: `insurance-claim-processing/lab-materials/02`
 
-. Open the notebook called `02-03-validating.ipynb`
+. Open the notebook called `02-04-validating.ipynb`
 
 . Running these cells will confirm that all the lab-required services are responding.
 
