@@ -46,7 +46,7 @@ spec:
             sh -c "mkdir -p ./jupyter-work-dir && cd ./jupyter-work-dir"
             sh -c "echo 'Downloading file:///opt/app-root/bin/utils/bootstrapper.py' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/bootstrapper.py --output bootstrapper.py"
             sh -c "echo 'Downloading file:///opt/app-root/bin/utils/requirements-elyra.txt' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/requirements-elyra.txt --output requirements-elyra.txt"
-            sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt && python3 bootstrapper.py --pipeline-name 'sanity_check' --cos-endpoint 'https://minio-api-robert-serving-test.apps.rhods-internal.61tk.p1.openshiftapps.com' --cos-bucket 'pipeline-bucket' --cos-directory 'sanity_check-1215145442' --cos-dependencies-archive 'test_response_quality-d0510f0c-fc50-42fc-a598-97e26b34ed88.tar.gz' --file 'insurance-claim-processing/lab-materials/03/test_response_quality.py' --outputs 'quality_result.json' "
+            sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt && python3 bootstrapper.py --pipeline-name 'sanity_check' --cos-endpoint 'https://minio-api-robert-serving-test.apps.rhods-internal.61tk.p1.openshiftapps.com' --cos-bucket 'pipeline-bucket' --cos-directory 'sanity_check-0109084010' --cos-dependencies-archive 'test_response_quality-d0510f0c-fc50-42fc-a598-97e26b34ed88.tar.gz' --file 'insurance-claim-processing/lab-materials/03/06/test_response_quality.py' --outputs 'quality_result.json' "
           command:
           - sh
           - -c
@@ -71,21 +71,6 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.annotations['pipelines.kubeflow.org/run_name']
-          - name: LLM_ENDPOINT
-            valueFrom:
-              secretKeyRef:
-                key: LLM_ENDPOINT
-                name: llm-info
-          - name: MODEL_SHA
-            valueFrom:
-              secretKeyRef:
-                key: MODEL_SHA
-                name: llm-info
-          - name: SERVING_SHA
-            valueFrom:
-              secretKeyRef:
-                key: SERVING_SHA
-                name: llm-info
           image: quay.io/rlundber/rh1/sanity_pipeline:1.7
         stepTemplate:
           volumeMounts:
@@ -103,11 +88,11 @@ spec:
             elyra/node-name: test_response_quality
             pipelines.kubeflow.org/cache_enabled: "true"
           annotations:
-            elyra/node-file-name: insurance-claim-processing/lab-materials/03/test_response_quality.py
+            elyra/node-file-name: insurance-claim-processing/lab-materials/03/06/test_response_quality.py
             elyra/pipeline-source: sanity_check.pipeline
             pipelines.kubeflow.org/task_display_name: test_response_quality
             pipelines.kubeflow.org/component_spec_digest: '{"name": "Run a file",
-              "outputs": [], "version": "Run a file@sha256=7e955de34869fba374b1d87fd591922910d2f2490d11e7fdd1312ae0749a0742"}'
+              "outputs": [], "version": "Run a file@sha256=5358a652664edc3aa96dcbf0002719b8c6b6b4dfa176a48c3c3786c22766358e"}'
     - name: run-a-file-2
       taskSpec:
         steps:
@@ -117,7 +102,7 @@ spec:
             sh -c "mkdir -p ./jupyter-work-dir && cd ./jupyter-work-dir"
             sh -c "echo 'Downloading file:///opt/app-root/bin/utils/bootstrapper.py' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/bootstrapper.py --output bootstrapper.py"
             sh -c "echo 'Downloading file:///opt/app-root/bin/utils/requirements-elyra.txt' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/requirements-elyra.txt --output requirements-elyra.txt"
-            sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt && python3 bootstrapper.py --pipeline-name 'sanity_check' --cos-endpoint 'https://minio-api-robert-serving-test.apps.rhods-internal.61tk.p1.openshiftapps.com' --cos-bucket 'pipeline-bucket' --cos-directory 'sanity_check-1215145442' --cos-dependencies-archive 'test_responsetime-c50bb14f-a036-4af1-b5dc-21e48eb80f7f.tar.gz' --file 'insurance-claim-processing/lab-materials/03/test_responsetime.py' --outputs 'responsetime_result.json' "
+            sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt && python3 bootstrapper.py --pipeline-name 'sanity_check' --cos-endpoint 'https://minio-api-robert-serving-test.apps.rhods-internal.61tk.p1.openshiftapps.com' --cos-bucket 'pipeline-bucket' --cos-directory 'sanity_check-0109084010' --cos-dependencies-archive 'test_responsetime-c50bb14f-a036-4af1-b5dc-21e48eb80f7f.tar.gz' --file 'insurance-claim-processing/lab-materials/03/06/test_responsetime.py' --outputs 'responsetime_result.json' "
           command:
           - sh
           - -c
@@ -142,21 +127,6 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.annotations['pipelines.kubeflow.org/run_name']
-          - name: LLM_ENDPOINT
-            valueFrom:
-              secretKeyRef:
-                key: LLM_ENDPOINT
-                name: llm-info
-          - name: MODEL_SHA
-            valueFrom:
-              secretKeyRef:
-                key: MODEL_SHA
-                name: llm-info
-          - name: SERVING_SHA
-            valueFrom:
-              secretKeyRef:
-                key: SERVING_SHA
-                name: llm-info
           image: quay.io/modh/runtime-images@sha256:7dd23e58291cad7a0ab4a8e04bda06492f2c027eb33b226358380db58dcdd60b
         stepTemplate:
           volumeMounts:
@@ -174,11 +144,11 @@ spec:
             elyra/node-name: test_responsetime
             pipelines.kubeflow.org/cache_enabled: "true"
           annotations:
-            elyra/node-file-name: insurance-claim-processing/lab-materials/03/test_responsetime.py
+            elyra/node-file-name: insurance-claim-processing/lab-materials/03/06/test_responsetime.py
             elyra/pipeline-source: sanity_check.pipeline
             pipelines.kubeflow.org/task_display_name: test_responsetime
             pipelines.kubeflow.org/component_spec_digest: '{"name": "Run a file",
-              "outputs": [], "version": "Run a file@sha256=afa090f686bb464016ab6640a960b8e31b88c415166d799c2c734f6e9ba58f6a"}'
+              "outputs": [], "version": "Run a file@sha256=3e58a6283faf2610ead4310f242aa11d207880bb328d65d9b80064eac003274c"}'
     - name: run-a-file-3
       taskSpec:
         steps:
@@ -188,7 +158,7 @@ spec:
             sh -c "mkdir -p ./jupyter-work-dir && cd ./jupyter-work-dir"
             sh -c "echo 'Downloading file:///opt/app-root/bin/utils/bootstrapper.py' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/bootstrapper.py --output bootstrapper.py"
             sh -c "echo 'Downloading file:///opt/app-root/bin/utils/requirements-elyra.txt' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/requirements-elyra.txt --output requirements-elyra.txt"
-            sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt && python3 bootstrapper.py --pipeline-name 'sanity_check' --cos-endpoint 'https://minio-api-robert-serving-test.apps.rhods-internal.61tk.p1.openshiftapps.com' --cos-bucket 'pipeline-bucket' --cos-directory 'sanity_check-1215145442' --cos-dependencies-archive 'test_security-6b595dc7-afb8-46bb-bf52-7cd695ddafb8.tar.gz' --file 'insurance-claim-processing/lab-materials/03/test_security.py' --outputs 'security_result.json' "
+            sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt && python3 bootstrapper.py --pipeline-name 'sanity_check' --cos-endpoint 'https://minio-api-robert-serving-test.apps.rhods-internal.61tk.p1.openshiftapps.com' --cos-bucket 'pipeline-bucket' --cos-directory 'sanity_check-0109084010' --cos-dependencies-archive 'test_security-6b595dc7-afb8-46bb-bf52-7cd695ddafb8.tar.gz' --file 'insurance-claim-processing/lab-materials/03/06/test_security.py' --outputs 'security_result.json' "
           command:
           - sh
           - -c
@@ -213,21 +183,6 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.annotations['pipelines.kubeflow.org/run_name']
-          - name: LLM_ENDPOINT
-            valueFrom:
-              secretKeyRef:
-                key: LLM_ENDPOINT
-                name: llm-info
-          - name: MODEL_SHA
-            valueFrom:
-              secretKeyRef:
-                key: MODEL_SHA
-                name: llm-info
-          - name: SERVING_SHA
-            valueFrom:
-              secretKeyRef:
-                key: SERVING_SHA
-                name: llm-info
           image: quay.io/modh/runtime-images@sha256:7dd23e58291cad7a0ab4a8e04bda06492f2c027eb33b226358380db58dcdd60b
         stepTemplate:
           volumeMounts:
@@ -245,11 +200,11 @@ spec:
             elyra/node-name: test_security
             pipelines.kubeflow.org/cache_enabled: "true"
           annotations:
-            elyra/node-file-name: insurance-claim-processing/lab-materials/03/test_security.py
+            elyra/node-file-name: insurance-claim-processing/lab-materials/03/06/test_security.py
             elyra/pipeline-source: sanity_check.pipeline
             pipelines.kubeflow.org/task_display_name: test_security
             pipelines.kubeflow.org/component_spec_digest: '{"name": "Run a file",
-              "outputs": [], "version": "Run a file@sha256=a523a1dc72737c6cfaf07342df759a61f68c9b45bf34ab33d3f20cb496ae8083"}'
+              "outputs": [], "version": "Run a file@sha256=51651082dff4a766733eb7e70c27fa7c33370a3c14f3af453c03a463d0a64dac"}'
     - name: run-a-file-4
       taskSpec:
         steps:
@@ -259,7 +214,7 @@ spec:
             sh -c "mkdir -p ./jupyter-work-dir && cd ./jupyter-work-dir"
             sh -c "echo 'Downloading file:///opt/app-root/bin/utils/bootstrapper.py' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/bootstrapper.py --output bootstrapper.py"
             sh -c "echo 'Downloading file:///opt/app-root/bin/utils/requirements-elyra.txt' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/requirements-elyra.txt --output requirements-elyra.txt"
-            sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt && python3 bootstrapper.py --pipeline-name 'sanity_check' --cos-endpoint 'https://minio-api-robert-serving-test.apps.rhods-internal.61tk.p1.openshiftapps.com' --cos-bucket 'pipeline-bucket' --cos-directory 'sanity_check-1215145442' --cos-dependencies-archive 'summarize_results-6b99ceae-d124-4758-904a-03e1a49fe56d.tar.gz' --file 'insurance-claim-processing/lab-materials/03/summarize_results.py' --inputs 'security_result.json;responsetime_result.json;quality_result.json' --outputs 'results.json' "
+            sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt && python3 bootstrapper.py --pipeline-name 'sanity_check' --cos-endpoint 'https://minio-api-robert-serving-test.apps.rhods-internal.61tk.p1.openshiftapps.com' --cos-bucket 'pipeline-bucket' --cos-directory 'sanity_check-0109084010' --cos-dependencies-archive 'summarize_results-6b99ceae-d124-4758-904a-03e1a49fe56d.tar.gz' --file 'insurance-claim-processing/lab-materials/03/06/summarize_results.py' --inputs 'responsetime_result.json;security_result.json;quality_result.json' --outputs 'results.json' "
           command:
           - sh
           - -c
@@ -284,21 +239,6 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.annotations['pipelines.kubeflow.org/run_name']
-          - name: LLM_ENDPOINT
-            valueFrom:
-              secretKeyRef:
-                key: LLM_ENDPOINT
-                name: llm-info
-          - name: MODEL_SHA
-            valueFrom:
-              secretKeyRef:
-                key: MODEL_SHA
-                name: llm-info
-          - name: SERVING_SHA
-            valueFrom:
-              secretKeyRef:
-                key: SERVING_SHA
-                name: llm-info
           image: quay.io/modh/runtime-images@sha256:7dd23e58291cad7a0ab4a8e04bda06492f2c027eb33b226358380db58dcdd60b
         stepTemplate:
           volumeMounts:
@@ -316,11 +256,11 @@ spec:
             elyra/node-name: summarize_results
             pipelines.kubeflow.org/cache_enabled: "true"
           annotations:
-            elyra/node-file-name: insurance-claim-processing/lab-materials/03/summarize_results.py
+            elyra/node-file-name: insurance-claim-processing/lab-materials/03/06/summarize_results.py
             elyra/pipeline-source: sanity_check.pipeline
             pipelines.kubeflow.org/task_display_name: summarize_results
             pipelines.kubeflow.org/component_spec_digest: '{"name": "Run a file",
-              "outputs": [], "version": "Run a file@sha256=9e2cfcee5f1d1f9eb84f47713866930314f31eb4ea3e7f564394dce005843176"}'
+              "outputs": [], "version": "Run a file@sha256=bfe6fa070a3ebd821fe5801ef8beb2f710d88a1e58380eb85b169a1b44a5b753"}'
       runAfter:
       - run-a-file
       - run-a-file-2
