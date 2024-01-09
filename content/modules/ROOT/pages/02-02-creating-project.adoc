@@ -25,7 +25,7 @@ The instructions below will guide you through these steps. Follow them carefully
 * If you are using instructions that have been customized for you, here are your details:
 ** User id: `{user}`
 ** Password: `{password}`
-** RHOAI URL: https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/[https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/,window=_blank]
+** RHOAI Dashboard URL: https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/[https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/,window=_blank]
 
 == Create a project
 
