@@ -25,7 +25,7 @@
 ** xref:04-03-model-retraining.adoc[4.3 Model retraining]
 ** xref:04-04-accident-recog.adoc[4.4 Accident/Damage recognition]
 ** xref:04-05-serving-manual.adoc[4.5 Model Serving (Manual)]
-** xref:04-06-serving-automated.adoc[4.6 Model Serving (Automated)]
+// ** xref:04-06-serving-automated.adoc[4.6 Model Serving (Automated)]
 
 * 5. Web App Deployment
 ** xref:05-01-application.adoc[5.1 Application overview]
