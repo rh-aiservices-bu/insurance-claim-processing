@@ -18,6 +18,8 @@ logs
 # build
 www
 www-cache
+app/backend/public/*
+!app/backend/public/.folder_keep
 
 # cache
 __pycache__

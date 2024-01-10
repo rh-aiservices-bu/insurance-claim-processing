@@ -3,11 +3,6 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
 
-[[source]]
-url = "https://download.pytorch.org/whl/cu118/"
-verify_ssl = false
-name = "pytorch"
-
 [packages]
 boto3 = "~=1.28.0"
 fastapi = "~=0.104.0"
