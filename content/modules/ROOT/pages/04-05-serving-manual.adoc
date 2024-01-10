@@ -145,7 +145,7 @@ Shared Minio - model
 [.console-input]
 [source, text]
 [subs=attributes+]
-http://modelmesh-serving.user1:8008/v2/models/my-first-model/accident_detect.onnx
+accident/
 
 The result should look like:
 +
