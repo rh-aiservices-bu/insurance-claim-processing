@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS claims.claims
     summary text COLLATE pg_catalog."default",
     location text COLLATE pg_catalog."default",
     "time" text COLLATE pg_catalog."default",
+    sentiment text COLLATE pg_catalog."default",
     CONSTRAINT claims_pkey PRIMARY KEY (id)
 )
 WITH (

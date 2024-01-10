@@ -1,3 +1,0 @@
-= pages/05-03-web-app-update.adoc
-include::_attributes.adoc[]
-

@@ -28,11 +28,11 @@
 ** xref:04-06-serving-automated.adoc[4.6 Model Serving (Automated)]
 
 * 5. Web App Deployment
-** xref:05-01-web-app-deploy-manual.adoc[5.1 Deploying your Web App manually]
-** xref:05-02-web-app-deploy-gitops.adoc[5.2 Deploying your Web App via GitOps]
-** xref:05-03-web-app-update.adoc[5.3 Updating your Web App via GitOps]
-** xref:05-04-web-app-validating.adoc[5.4 Validating Claims processing]
-** xref:05-05-process-claims.adoc[5.5 Processing Claims with a pipeline]
+** xref:05-01-application.adoc[5.1 Application overview]
+** xref:05-02-openshift-terminal.adoc[5.2 OpenShift Terminal]
+** xref:05-03-web-app-deploy-application.adoc[5.3 Deploying the application via GitOps]
+** xref:05-04-web-app-validating.adoc[5.4 Validating the application]
+** xref:05-05-process-claims.adoc[5.5 Claims processing automation]
 
 * 6. Productization and Extrapolations
 ** xref:06-01-potential-imp-ref.adoc[6.1 Potential improvements and refinements]
