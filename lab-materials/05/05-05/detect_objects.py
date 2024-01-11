@@ -31,7 +31,7 @@ s3 = boto3.client(
     aws_secret_access_key=config["DB_AWS_SECRET_ACCESS_KEY"],
     use_ssl=config["LLM_ENDPOINT"].startswith("https"),)
 
-detection_endpoint = os.environ.get("DETECTION_ENDPOINT")
+detection_endpoint = os.environ.get("detection_endpoint")
 
 def download_images(claim_id):
     claim_info = db.get_claim_info(claim_id)
