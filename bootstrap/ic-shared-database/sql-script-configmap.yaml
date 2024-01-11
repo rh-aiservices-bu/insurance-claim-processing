@@ -184,7 +184,7 @@ data:
     Policy Number: PT567890
     ',
     '
-    The text is a letter of complaint from John T. Anderson to Prestige Insurances regarding an unresolved car insurance claim, #XYZ789. The incident occurred on January 15, 2024, when Anderson''s vehicle was hit by another driver, Samantha Reynolds, who ran a red light. The accident caused significant damage to Anderson's car, and he reported the claim immediately, providing all necessary details. However, he has experienced poor communication and a delayed response from Prestige Insurances. Anderson demands an explanation for the delay, transparency, and urgency in handling his claim. He threatens to escalate the matter to regulatory authorities and consider legal action if his concerns are not addressed promptly. Anderson requests a comprehensive update on the status of his claim within the next 48 hours.
+    The text is a letter of complaint from John T. Anderson to Prestige Insurances regarding an unresolved car insurance claim, #XYZ789. The incident occurred on January 15, 2024, when Anderson''s vehicle was hit by another driver, Samantha Reynolds, who ran a red light. The accident caused significant damage to Anderson''s car, and he reported the claim immediately, providing all necessary details. However, he has experienced poor communication and a delayed response from Prestige Insurances. Anderson demands an explanation for the delay, transparency, and urgency in handling his claim. He threatens to escalate the matter to regulatory authorities and consider legal action if his concerns are not addressed promptly. Anderson requests a comprehensive update on the status of his claim within the next 48 hours.
     ',
     'Near the intersection of Maple Street and Oak Avenue in Rivertown',
     'January 15, 2024, at approximately 3:45 PM',
@@ -224,5 +224,14 @@ data:
     'January 15, 2024, at around 3:30 PM',
     'The person sending the claim, Jane Doe, expresses feelings of anxiety and confusion regarding the car accident she was involved in. She is seeking guidance and assistance from AssuranceCare Inc. to help her navigate the process of filing an insurance claim and getting her vehicle repaired.'
     );
+
+    -- IMAGES
+
+    INSERT INTO claims.original_images (image_name, image_key, claim_id) VALUES ('car1.jpg', 'original_images/1_1700087084_5f809e2a_car1.jpg', 1);
+    INSERT INTO claims.original_images (image_name, image_key, claim_id) VALUES ('car2.jpg', 'original_images/2_1700187120_b49918e5_car2.jpg', 2);
+    INSERT INTO claims.original_images (image_name, image_key, claim_id) VALUES ('car3.jpg', 'original_images/3_1700187120_b49918e5_car3.jpg', 3);
+    INSERT INTO claims.processed_images (image_name, image_key, claim_id) VALUES ('new_car1.jpg', 'processed_images/1_1700086614_cdfe1fac_new_car1.png', 1);
+    INSERT INTO claims.processed_images (image_name, image_key, claim_id) VALUES ('new_car2.jpg', 'processed_images/1_1700187172_eb6ba78d_new_car2.png', 2);
+    INSERT INTO claims.processed_images (image_name, image_key, claim_id) VALUES ('new_car3.jpg', 'processed_images/3_1700187181_1cafe160_new_car3.png', 3);
 
 
