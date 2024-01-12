@@ -24,7 +24,7 @@ image::05/01-copy-login-command.png[]
 * Click Display Token
 
 * Copy the `oc login ...` command to your clipboard:
-
++
 [.bordershadow]
 image::05/01-oc-login.png[]
 
