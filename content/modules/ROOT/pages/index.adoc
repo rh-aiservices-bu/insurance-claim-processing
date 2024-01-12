@@ -46,7 +46,7 @@ a|- car recognition checks
 a|- deployment
 - update
 
-|Productization  |15 | Presentation + discussion
+|Productization  |5 | Presentation + discussion
 a|- What else could we add that would have value?
 - What else could we do following the same patterns?
 
