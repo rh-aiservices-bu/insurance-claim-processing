@@ -20,7 +20,7 @@ We have provided the following 2 training data sets, available as 'zip files', a
 1. accident-full.zip - to be used to fully re-train the model.
 2. accident-sample.zip - to be used to partially re-train the model when we don't have the time to fully re-train the model.
 
-Your instructor will let you know which data set 'zip file' you will be using in your workshop.
+Your instructor will let you know which data set 'zip file' you will be using in your lab.
 
 Once the images and associated annotations are ready, we create a dataset descriptor YAML file (data.yaml) that points to the created datasets and describes the object classes in them.  This YAML file is passed to the 'train' method of the model to start the training process.
 
