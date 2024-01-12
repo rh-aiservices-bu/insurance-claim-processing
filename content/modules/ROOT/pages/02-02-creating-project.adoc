@@ -20,13 +20,6 @@ As a preliminary step, each of you is going to
 
 The instructions below will guide you through these steps. Follow them carefully.
 
-== Unique user ID
-
-* If you are using instructions that have been customized for you, here are your details:
-** User id: `{user}`
-** Password: `{password}`
-** RHOAI Dashboard URL: https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/[https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/,window=_blank]
-
 == Create a project
 
 * First, in the OpenShift AI Dashboard application, navigate to the Data Science Project menu on the left:
