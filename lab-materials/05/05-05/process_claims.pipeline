@@ -432,7 +432,7 @@
             "kubernetes_pod_labels": [],
             "env_vars": [],
             "kubernetes_secrets": [],
-            "runtime_image": "quay.io/rlundber/rh1/processing_pipeline:1.2"
+            "runtime_image": "quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.0"
           },
           "pipeline_parameters": [
             {

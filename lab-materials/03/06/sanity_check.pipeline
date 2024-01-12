@@ -30,7 +30,7 @@
               "kubernetes_shared_mem_size": {},
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
-              "runtime_image": "quay.io/rlundber/rh1/sanity_pipeline:1.7",
+              "runtime_image": "quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-sanity-pipeline:1.0",
               "filename": "test_response_quality.py"
             },
             "label": "",

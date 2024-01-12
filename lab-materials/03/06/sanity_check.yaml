@@ -71,7 +71,7 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.annotations['pipelines.kubeflow.org/run_name']
-          image: quay.io/rlundber/rh1/sanity_pipeline:1.7
+          image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-sanity-pipeline:1.0
         stepTemplate:
           volumeMounts:
           - name: mlpipeline-metrics
