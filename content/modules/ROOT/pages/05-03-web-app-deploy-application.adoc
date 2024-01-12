@@ -5,14 +5,8 @@ include::_attributes.adoc[]
 
 We will start by deploying an instance of ArgoCD in your namespace. This will be used to deploy the rest of the applications.
 
-Copy the content of the following text, and paste it in the OpenShift Terminal to deploy ArgoCD.
-
-[.lines_space]
-[.console-input]
-
-[.lines_space]
-[.console-input]
-
+- Copy the content of the following text, and paste it in the OpenShift Terminal to deploy ArgoCD.
++
 [.lines_space]
 [.console-input]
 [source, text]
@@ -47,34 +41,43 @@ spec:
         termination: edge
 EOF
 
-Still in the Terminal, run the following command to check the status of the ArgoCD deployment.
-
+- Still in the Terminal, run the following command to check the status of the ArgoCD deployment.
++
 [.lines_space]
 [.console-input]
 [source, text]
 oc rollout status deploy/argocd-server
 
-After a few seconds, the deployment should be complete:
-
+- After a few seconds, the deployment should be complete:
 [.bordershadow]
 image::05/argocd-rollout.png[]
 
-Now that Argo is deployed, if you want to connect to its UI (optional), you will need its Route. Let's find it...
+**Optional**: connect to the ArgoCD UI
+[%collapsible]
+====
+Now that Argo is deployed, you can connect to its UI through its Route.
 
+- Let's find the Route of the ArgoCD instance by running the following command in the Terminal:
++
 [.lines_space]
 [.console-input]
 [source, text]
 echo "   ArgoCD UI : https://$(oc get route argocd-server -ojsonpath='{.status.ingress[0].host}')/ "
 
-You should obtain something like this:
-
+- You should obtain something like this:
++
 [.bordershadow]
 image::05/argocd-route.png[]
 
+- You can now connect to the ArgoCD UI using your given credentials ({user}/{password}).
+====
+
 == Deploy the applications via GitOps
 
-Now that ArgoCD is deployed in your namespace, you can deploy the application via GitOps.
+Now that ArgoCD is deployed in your namespace, we can use it to deploy the application via GitOps.
 
+- Copy the content of the following text, and paste it in the OpenShift Terminal to deploy the application.
++
 [.lines_space]
 [.console-input]
 [source, text, subs="attributes+"]
@@ -97,15 +100,17 @@ spec:
     automated:
       prune: true
       selfHeal: false
-    syncOptions:
-    - CreateNamespace=false
+    syncOptions: [CreateNamespace=false]
 EOF
 
-Once the application is deployed, you can check its Route with the following command:
 
+- Once the application is deployed, you can check its Route with the following command:
++
 [.lines_space]
 [.console-input]
 [.lines_space]
 [.console-input]
 [source, text]
 echo "   Application URL : https://$(oc get route ic-app -ojsonpath='{.status.ingress[0].host}')/ "
+
+Open the URL in your browser to access the application and head for the next step.

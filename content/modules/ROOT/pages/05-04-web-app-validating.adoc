@@ -1,5 +1,22 @@
 = Validating the application
 include::_attributes.adoc[]
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit.
+== Original App
 
+The first item menu on the left, Original App, gives a view of what the older application used at the insurance company looks like. You can navigate each claim and see that the interface was very crude, with a simple copy of the originally received email with the pictures that were attached to it.
+
+[.bordershadow]
+image::05/original-app-1.png[]
+[.bordershadow]
+image::05/original-app-2.png[]
+
+== New App
+
+The second item menu on the left, New App, gives a view of what the new application looks like. You can navigate each claim and see that the interface is much more user friendly, with a nice interface to navigate the claim and see the pictures that were attached to it.
+
+Moreover, for the claims that have been processed, you can see the summary of this claim as well as the customer sentiment analysis, the location and time of the event that have been extracted from the claim, and the pictures that have been processed by the AI.
+
+[.bordershadow]
+image::05/new-app-1.png[]
+
+This is still obviously a very simple and crude application, but remember that this was a prototype. And it was enough to show the potential of an AI-Enhanced application to the board, and convince them to invest in the project.

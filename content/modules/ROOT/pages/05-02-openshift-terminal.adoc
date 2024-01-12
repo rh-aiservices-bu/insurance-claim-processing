@@ -5,41 +5,23 @@ To deploy the application, you will use the OpenShift Terminal. This is a web-ba
 
 == Opening the OpenShift Console
 
-Access the OpenShift Console via this link:
-
+- Access the OpenShift Console via this link:
++
 [.bordershadow]
 image::05/01-openshift-console.png[]
 
-When prompted, enter your credentials.
-
-== Obtain a login token
-
-On the OpenShift Console, click on your username in the top right corner and select `Copy Login Command`:
-
-[.bordershadow]
-image::05/01-copy-login-command.png[]
-
-* Authenticate again
-
-* Click Display Token
-
-* Copy the `oc login ...` command to your clipboard:
-+
-[.bordershadow]
-image::05/01-oc-login.png[]
-
-* Close the Token tab
+- When prompted, enter your credentials.
 
 == Open a Web Terminal
 
-Back on the OpenShift Console, click on the Web Terminal icon in the top right corner:
-
+- On the OpenShift Console, click on the Web Terminal icon in the top right corner:
++
 [.bordershadow]
 image::05/web-term-1.png[]
 
-Then, choose your existing project and click start:
-
+- Then, choose your existing project and click start:
++
 [.bordershadow]
 image::05/web-term-2.png[]
 
-After a few seconds, a Terminal interface will open. This is where you will execute the commands in the next steps.
+- After a few seconds, a Terminal interface will open. This is where you will execute the commands in the next steps.
