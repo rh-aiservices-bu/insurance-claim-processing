@@ -27,7 +27,7 @@ spec:
           git clone https://github.com/rh-aiservices-bu/insurance-claim-processing.git
 
           cat << 'EOF' | python3
-          import boto3, os
+          import boto3, os, botocore
 
           s3 = boto3.client("s3",
                             endpoint_url=os.getenv("AWS_S3_ENDPOINT"),

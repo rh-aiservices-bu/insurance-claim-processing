@@ -1,4 +1,4 @@
-= Model Serving (Manual)
+= Model Serving
 include::_attributes.adoc[]
 
 . At this point, we need to deploy the model into RHOAI model serving.
@@ -56,12 +56,13 @@ image::04/model-data-connection.png[model connection]
 
 In your project create a model server.
 
-* Click 'Add server'
-+
+- Click 'Add server'
+
 [.bordershadow]
 image::04/add-model-server.png[]
 
-* Here is the info you need to enter:
+Here is the info you need to enter:
+
 ** Model server name:
 [.lines_space]
 [.console-input]
@@ -85,7 +86,13 @@ OpenVINO Model Server
 [.console-input]
 [source, text]
 [subs=attributes+]
-standard
+Standard
+** Accelerator
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+None
 ** Model route
 [.lines_space]
 [.console-input]
@@ -101,9 +108,11 @@ unchecked
 
 
 The result should look like:
-+
+
 [.bordershadow]
-image::04/add-model-server2.png[]
+image::04/add-model-server-config.png[]
+
+You can click on **Add** to create the model server.
 
 == Deploy the Model
 
@@ -148,27 +157,35 @@ Shared Minio - model
 accident/
 
 The result should look like:
-+
+
 [.bordershadow]
 image::04/deploy-a-model.png[]
 
+Click on "Deploy". If the model is successfully deployed you will see its status as green after 15 to 30 seconds.
 
-If the model is successfully deployed you will see its status as green.
-+
 [.bordershadow]
 image::04/model-deployed-success.png[]
 
-Now confirm that the model is working!
+We will now confirm that the model is indeed working by querying it!
 
-== Confirm the Model is working
-Once the model has been deployed, we need to confirm that the model is working in model mesh.
+== Using the served Model
 
+Once the model is served, we can use it directly as an endpoint that can be queried.
 
-. In your running pytorch workbench, navigate to the folder `lab-materials/04`.
+First, we need to get the URL of the model server. To do this, click on the **Internal Service** link under the **Inference endpoint** column.
 
-. Look for (and open) the notebook called `04-05-serving-mannual.ipynb`.
+This will open a new tab with the URL of the model server.
 
-. Execute the cells of the notebook, and ensure you understand what is happening.
+[.bordershadow]
+image::04/inference-url.png[]
+
+Note or copy the **RestUrl**, which should be something like `http://modelmesh-serving.{user}:8008`.
+
+We will now use this URL to query the model.
+
+- In your running workbench, navigate to the folder `lab-materials/04`.
+- Look for (and open) the notebook called `04-05-model-serving.ipynb`.
+- Execute the cells of the notebook, and ensure you understand what is happening.
 
 
 

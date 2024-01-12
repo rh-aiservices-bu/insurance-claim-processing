@@ -21,11 +21,8 @@ Therefore we need to write some code that will place 'boxes' around the 'cars' i
 [.bordershadow]
 image::04/box-identified-cars.png[identify cars]
 
-
-. In your running pytorch workbench, navigate to the folder `lab-materials/04`.
-
-. Look for (and open) the notebook called `04-02-car-recognition.ipynb`
-
-. Execute the cells of the notebook, and ensure you understand what is happening
+- In your running pytorch workbench, navigate to the folder `lab-materials/04`.
+- Look for (and open) the notebook called `04-02-car-recognition.ipynb`
+- Execute the cells of the notebook, and ensure you understand what is happening
 
 
