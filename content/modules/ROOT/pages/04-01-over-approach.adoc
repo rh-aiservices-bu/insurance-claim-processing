@@ -11,11 +11,9 @@ Let's start by looking at a yolov8 model and explore how it works on static car 
 [.bordershadow]
 image::04/sample-car-image.png[car image]
 
-In your running pytorch workbench, navigate to the folder `lab-materials/04`.
-
-. Look for (and open) the notebook called `04-01-over-approach.ipynb`
-
-. Execute the cells of the notebook, and ensure you understand what is happening
+- In your running workbench, navigate to the folder `lab-materials/04`.
+- Look for (and open) the notebook called `04-01-over-approach.ipynb`
+- Execute the cells of the notebook, and ensure you understand what is happening
 
 
 

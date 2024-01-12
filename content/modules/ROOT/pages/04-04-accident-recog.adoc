@@ -11,10 +11,6 @@ Using the re-trained model, on the below image, we see that the model is able to
 [.bordershadow]
 image::04/retrained-model-results.png[retrained modelresults]
 
-
-
-. In your running pytorch workbench, navigate to the folder `lab-materials/04`.
-
-. Look for (and open) the notebook called `04-04-accident-recog.ipynb`
-
-. Execute the cells of the notebook.
+- In your running pytorch workbench, navigate to the folder `lab-materials/04`.
+- Look for (and open) the notebook called `04-04-accident-recog.ipynb`
+- Execute the cells of the notebook.

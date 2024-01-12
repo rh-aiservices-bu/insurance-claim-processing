@@ -27,13 +27,9 @@ Once the images and associated annotations are ready, we create a dataset descri
 [.bordershadow]
 image::04/yaml-file.png[yaml file]
 
-. In your running pytorch workbench, navigate to the folder `lab-materials/04`.
-
-. Look for (and open) the notebook called `04-03-model-retraining.ipynb`
-
-. Execute the cells of the notebook. But note that the actual training step would take way too long on CPU. Stop/terminate the kernel, to free up resources.
-
-
+- In your running workbench, navigate to the folder `lab-materials/04`.
+- Look for (and open) the notebook called `04-03-model-retraining.ipynb`
+- Execute the cells of the notebook. But note that the actual training step would take way too long on CPU, so we will do the training on a sample only. Even with that, you can stop/terminate the kernel if you want if it takes too long to free up resources.
 
 
 == Interpreting the Model re-Training Results

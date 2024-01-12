@@ -1,6 +1,4 @@
-import os
 import requests
-from pathlib import Path
 
 import cv2.dnn
 import numpy as np
@@ -10,6 +8,7 @@ CLASSES = {
     1: "severe"
 }
 colors = np.random.uniform(0, 255, size=(len(CLASSES), 3))
+
 
 def preprocess(image_path):
     original_image: np.ndarray = cv2.imread(image_path)
@@ -27,6 +26,7 @@ def preprocess(image_path):
     blob = cv2.dnn.blobFromImage(image, scalefactor=1 / 255, size=(640, 640), swapRB=True)
     return blob, scale, original_image
 
+
 def draw_bounding_box(img, class_id, confidence, x, y, x_plus_w, y_plus_h):
     """
     Draws bounding boxes on the input image based on the provided arguments.
@@ -40,12 +40,15 @@ def draw_bounding_box(img, class_id, confidence, x, y, x_plus_w, y_plus_h):
         x_plus_w (int): X-coordinate of the bottom-right corner of the bounding box.
         y_plus_h (int): Y-coordinate of the bottom-right corner of the bounding box.
     """
-    label = f'{CLASSES[class_id]} ({confidence:.2f})'
-    color = colors[class_id]
-    cv2.rectangle(img, (x, y), (x_plus_w, y_plus_h), color, 2)
-    cv2.putText(img, label, (x - 10, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+    font = cv2.FONT_HERSHEY_SIMPLEX,
+    text_color_bg = colors[class_id]
+    label = f'{CLASSES[class_id]} {confidence:.2f}'
+    (label_width, label_height), _ = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 1)
+    cv2.rectangle(img, (x, y), (x_plus_w, y_plus_h), text_color_bg, 2) # Box
+    cv2.rectangle(img, (x, y-label_height), (x+label_width, y), text_color_bg, cv2.FILLED)  # Background label
+    cv2.putText(img, label, (x, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 1, cv2.LINE_AA)
 
-def postprocess(response, scale, original_image):    
+def postprocess(response, scale, original_image):
     outputs = np.array([cv2.transpose(response[0])])
     rows = outputs.shape[1]
 
@@ -83,6 +86,7 @@ def postprocess(response, scale, original_image):
                           round((box[0] + box[2]) * scale), round((box[1] + box[3]) * scale))
     return original_image
 
+
 def _serialize(image):
     payload = {
         'inputs': [
@@ -96,12 +100,13 @@ def _serialize(image):
     }
     return payload
 
+
 def _unpack(response_item):
     return np.array(response_item['data']).reshape(response_item['shape'])
 
+
 def send_request(image, endpoint):
     payload = _serialize(image)
-    
     raw_response = requests.post(endpoint, json = payload)
     try:
         response = raw_response.json()
@@ -110,7 +115,7 @@ def send_request(image, endpoint):
               f'Status code: {raw_response.status_code}\n'
               f'Response body: {raw_response.text}')
         raise
-    
+
     try:
         model_output = response['outputs']
     except:
@@ -121,19 +126,10 @@ def send_request(image, endpoint):
     unpacked_output = [_unpack(item) for item in model_output]
     return unpacked_output
 
+
 def process_image(image_path, endpoint):
     preprocessed, scale, original_image = preprocess(image_path)
     response = send_request(preprocessed, endpoint)
     new_image = postprocess(response[0], scale, original_image)
-    
-    filename = os.path.basename(image_path)
-    Path("processed_images").mkdir(parents=True, exist_ok=True)
-    new_file_path = f"processed_images/{filename}"
-    cv2.imwrite(new_file_path, new_image)
-    print(f"Successfully processed image {filename}")
-    
-    return new_file_path
 
-if __name__ == '__main__':
-    detection_endpoint = os.environ.get("DETECTION_ENDPOINT")
-    process_image("test_image.jpg", detection_endpoint)
+    return new_image
