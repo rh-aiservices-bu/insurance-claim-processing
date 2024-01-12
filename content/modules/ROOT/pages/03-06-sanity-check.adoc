@@ -13,7 +13,7 @@ This step was already done as part of the project setup.
 
 In the `lab-materials/03/06` folder there are two pipeline files, one *sanity_check.pipeline* and one *sanity_check.yaml* file.
 
-The `.pipeline` file can be opened in Elyra to be visually modified and executed, while the `.yaml` file can be imported into the pipeline server through the dashboard. +
+The `.pipeline` file can be opened in Elyra to be visually modified and executed, while the `.yaml` file can be imported into the pipeline server through the RHOAI Dashboard. +
 Here we will be running the pipeline through Elyra.
 
 == Ad-Hoc execution

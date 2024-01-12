@@ -22,8 +22,10 @@ These are the main files of the pipeline and what they do:
 Before we can run the pipeline, we need to tell it what the endpoint to object-detection model is. +
 Go to the properties of the pipeline, and then scroll down until you see an environment variable called `DETECTION_ENDPOINT` and copy-paste your object-detection endpoint as Value.
 
+[.bordershadow]
 image::05/05-open-pipeline-properties.png[open pipeline properties]
 
+[.bordershadow]
 image::05/05-object-detection-endpoint.png[add the detection endpoint]
 
 Now we can press the *Run* button to start the pipeline.
@@ -31,10 +33,12 @@ Now we can press the *Run* button to start the pipeline.
 When starting the pipeline we now have an extra option called `claim_id`. This will let you choose which claim to process. If set to 0 (default), it will automatically process all unprocessed claims. +
 Leave it at 0 and press OK.
 
+[.bordershadow]
 image::05/05-run-settings.png[run settings]
 
 Press the `run-details` in the next popup to see how the run is progressing.
 
+[.bordershadow]
 image::05/05-run-details.png[run details]
 
 == Check the results

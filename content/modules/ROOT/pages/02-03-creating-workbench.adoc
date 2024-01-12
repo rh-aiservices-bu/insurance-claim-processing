@@ -42,7 +42,7 @@ Using the Git UI::
 +
 --
 If you want to use the git UI in Jupyter:
-
++
 [.bordershadow]
 image::02/git-clone-1.png[]
 
@@ -54,7 +54,7 @@ Enter the URL of the Git repo:
 ----
 {git-clone-repo-url}
 ----
-
++
 [.bordershadow]
 image::02/git-clone-2.png[]
 

@@ -25,17 +25,17 @@ If you want to have a look at the code of the application, you can do it directl
 - Go back to the OpenShift AI dashboard.
 - Stop your Workbench by using the toggle button.
 - Edit the Workbench configuration by clicking on the menu item at the left, then **Edit** button.
-
++
 [.bordershadow]
 image::05/stop-workbench.png[]
 
 - In the image section, change the image to `VSCode for Insurance Claim Processsing Lab:
-
++
 [.bordershadow]
 image::05/vscode-image.png[]
 
 - Then click on `Update workbench` at the bottom of the page:
-
++
 [.bordershadow]
 image::05/update-workbench.png[]
 
@@ -43,14 +43,14 @@ image::05/update-workbench.png[]
 - Once the Workbench is started, click on the **Open** Link. You will be redirected to the VSCode IDE.
 - After logging in and accepting the authorization, VSCode will open.
 - The first time you connect to it, you must indicate that you trust the workspace. Click on the **Yes, I trust the authors** button.
-
++
 [.bordershadow]
 image::05/trust-vscode.png[]
 
 - You can also close the Welcome tab, and you are in a familiar VSCode environment.
 - As your Persistent Volume has been automatically reconnected to this new environment, all the data you created in the Jupyter environment is still available (you can see more files however, as VSCode displays hidden files by default, which Jupyter does not do).
 - If you want, you can now explore the code of the application, in the `app` folder:
-
++
 [.bordershadow]
 image::05/app-code.png[]
 

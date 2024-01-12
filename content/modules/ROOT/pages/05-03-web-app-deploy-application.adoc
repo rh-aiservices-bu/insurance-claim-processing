@@ -67,7 +67,7 @@ Now that Argo is deployed, if you want to connect to its UI (optional), you will
 echo "   ArgoCD UI : https://$(oc get route argocd-server -ojsonpath='{.status.ingress[0].host}')/ "
 
 You should obtain something like this:
-  
+
 [.bordershadow]
 image::05/argocd-route.png[]
 
