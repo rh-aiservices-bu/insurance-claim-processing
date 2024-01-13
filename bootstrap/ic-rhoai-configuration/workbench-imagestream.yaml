@@ -7,8 +7,8 @@ metadata:
       https://github.com/rh-aiservices-bu/insurance-claim-processing/tree/main/bootstrap/workbench-image
     internal.config.kubernetes.io/previousNamespaces: default
     internal.config.kubernetes.io/previousKinds: ImageStream
-    opendatahub.io/notebook-image-name: Insurance Claim Processing Lab Workbench
-    internal.config.kubernetes.io/previousNames: Insurance Claim Processing Lab Workbench
+    opendatahub.io/notebook-image-name: CUSTOM - Insurance Claim Processing Lab Workbench
+    internal.config.kubernetes.io/previousNames: CUSTOM - Insurance Claim Processing Lab Workbench
     opendatahub.io/recommended-accelerators: '["nvidia.com/gpu"]'
     opendatahub.io/notebook-image-desc: >-
       Jupyter notebook image with all the libraries needed for the OpenShit AI Insurance Claim Lab.
