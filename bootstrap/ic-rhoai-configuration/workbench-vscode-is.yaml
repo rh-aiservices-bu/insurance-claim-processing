@@ -7,8 +7,8 @@ metadata:
       https://github.com/opendatahub-io-contrib/workbench-images
     internal.config.kubernetes.io/previousNamespaces: default
     internal.config.kubernetes.io/previousKinds: ImageStream
-    opendatahub.io/notebook-image-name: VSCode for Insurance Claim Processing Lab
-    internal.config.kubernetes.io/previousNames: VSCode for Insurance Claim Processing Lab
+    opendatahub.io/notebook-image-name: CUSTOM - VSCode for Insurance Claim Processing Lab
+    internal.config.kubernetes.io/previousNames: CUSTOM - VSCode for Insurance Claim Processing Lab
     opendatahub.io/recommended-accelerators: '["nvidia.com/gpu"]'
     opendatahub.io/notebook-image-desc: >-
       VSCode image for the OpenShit AI Insurance Claim Lab.
