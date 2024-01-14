@@ -73,7 +73,9 @@ From the main folder, launch `npm run dev`. This will launch both backend and fr
 # Script to restart all showroom pods - You must be logged in as a cluster admin to run this script
 
 # Get all namespaces
-namespaces=$(oc get namespaces -o jsonpath='{.items[*].metadata.name}')
+namespaces=$(oc get namespaces -o jsonpath='{.items[*].metadata.name}' \
+    | tr ' ' '\n' \
+    | grep '^showroom')
 
 # Loop through each namespace
 for namespace in $namespaces; do
