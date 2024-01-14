@@ -13,9 +13,9 @@ Each person attending this lab will have a unique user account in which to do th
 ** If they are unsure or if it's likely to be a long explanation, they might ask you to "post the question in slack" instead. (see below)
 * Over slack
 ** We have a dedicated Slack Channel where more colleagues (who kindly agreed to stay up late) will try to answer questions.
-** Head over to the slack channel called https://redhat.enterprise.slack.com/archives/C066EQ8LWBS,window=_blank[#rh1-insurance-claims-lab]
+** Head over to the slack channel called https://redhat.enterprise.slack.com/archives/C066EQ8LWBS[#rh1-insurance-claims-lab,window=_blank]
 ** Post a message such as `I have an issue with exercise number 2.4`
-** Use the https://slack.com/help/articles/115000769927-Use-threads-to-organize-discussions-,window=_blank[threads] feature in slack to then post a screenshot of a description of the issue, in-thread.
+** Use the https://slack.com/help/articles/115000769927-Use-threads-to-organize-discussions-[threads,window=_blank] feature in slack to then post a screenshot of a description of the issue, in-thread.
 
 == Environment information
 
