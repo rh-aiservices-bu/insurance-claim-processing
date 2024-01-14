@@ -2,22 +2,22 @@
 include::_attributes.adoc[]
 
 In our last notebook we confirmed that the YOLO model could identify cars in a photograph.
-+
+
 [.bordershadow]
 image::04/sample-car-image.png[car image]
 
 We also confirmed that while a YOLO model can identify multiple 'cars' in an image, humans may have a difficult time verifying the identified cars.
-+
+
 [.bordershadow]
 image::04/multiple-car-images.png[multiple cars]
-+
+
 [.bordershadow]
 image::04/model-prediction-results.png[predict cars]
 
 In the above image, the yolo model identified 17 cars and 1 truck.  Which cars ,in the above image, were identified?
 
 Therefore we need to write some code that will place 'boxes' around the 'cars' identified by the YOLO model.
-+
+
 [.bordershadow]
 image::04/box-identified-cars.png[identify cars]
 

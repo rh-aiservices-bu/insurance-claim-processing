@@ -7,7 +7,7 @@ We have converted our model to onnx format and placed a copy within an amazon s3
 
 
 Using the re-trained model, on the below image, we see that the model is able to identify a 'severe' car crash with '88%' probability.
-+
+
 [.bordershadow]
 image::04/retrained-model-results.png[retrained modelresults]
 
