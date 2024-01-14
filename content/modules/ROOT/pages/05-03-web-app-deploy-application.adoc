@@ -3,7 +3,8 @@ include::_attributes.adoc[]
 
 == Deploy your instance of ArgoCD
 
-We will start by deploying an instance of ArgoCD in your namespace. This will be used to deploy the rest of the applications.
+We will start by deploying an instance of ArgoCD in your namespace. +
+This will be used to deploy the rest of the applications.
 
 - Copy the content of the following text, and paste it in the OpenShift Terminal to deploy ArgoCD.
 +
@@ -53,6 +54,7 @@ oc rollout status deploy/argocd-server
 image::05/argocd-rollout.png[]
 
 **Optional**: connect to the ArgoCD UI
+If you know and understand ArgoCD and want to look at its interface ...
 [%collapsible]
 ====
 Now that Argo is deployed, you can connect to its UI through its Route.
