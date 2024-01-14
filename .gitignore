@@ -40,3 +40,6 @@ package-lock.json
 
 # local python env
 .venv
+
+# notebook checkpoints
+*/*/.ipynb_checkpoints/*
