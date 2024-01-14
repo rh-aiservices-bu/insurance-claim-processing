@@ -43,3 +43,8 @@ package-lock.json
 
 # notebook checkpoints
 */*/.ipynb_checkpoints/*
+
+# training stuff
+lab-materials/04/datasets/*
+lab-materials/04/runs/*
+
