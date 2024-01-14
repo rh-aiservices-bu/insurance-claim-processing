@@ -2,8 +2,9 @@
 include::_attributes.adoc[]
 
 == What will the pipeline do?
-To make sure that everything works as we would expect it, and that the LLM model has not been tampered with, we need to create a sanity-check pipeline that tests the model through its endpoint. +
-We will test the response time, the response quality, and that the model hash has not changed.
+To make sure that everything works as we would expect it to, and that the LLM model has not been tampered with, we will create a sanity-check pipeline that tests the model through its endpoint. +
+We will test the response time, the response quality, and that the model hash has not changed. +
+And to make sure it remains the case, we'll schedule that pipeline.
 
 == Deploy a pipeline Server in your project
 
@@ -54,7 +55,7 @@ image::03/07-create-run.png[create run]
 . On the next screen, choose a name, select **Hourly** and click **Create**:
 +
 [.bordershadow]
-image::03/03-07-hourlyrun.png[]
+image::03/03-06-dailyrun.png[]
 
 . We can now leave the sanity-check pipeline alone.
 . It will run hourly, and will inform us if anything goes wrong with our LLM model.
