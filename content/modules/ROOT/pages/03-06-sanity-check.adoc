@@ -52,10 +52,10 @@ To do that:
 [.bordershadow]
 image::03/07-create-run.png[create run]
 
-. On the next screen, choose a name, select **Hourly** and click **Create**:
+. On the next screen, choose a name, select a periodic run to trigger every **Day** and click **Create**:
 +
 [.bordershadow]
 image::03/03-06-dailyrun.png[]
 
 . We can now leave the sanity-check pipeline alone.
-. It will run hourly, and will inform us if anything goes wrong with our LLM model.
+. It will run daily, and will inform us if anything goes wrong with our LLM model.
