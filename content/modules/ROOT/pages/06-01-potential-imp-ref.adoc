@@ -28,3 +28,24 @@ Therefore, now, we need to review what was done, and make suggestions along thes
 
 * Which parts seem to still be manual and time-consuming, and how could we automate them better, to avoid human errors if we can.
 
+**Think about these questions first**
+
+If you want to read what **we** thought could be improved, read below! (responses are not exhaustive)
+[%collapsible]
+====
+
+* We could have something that analyzes the images and checks for discrepancies with the customer data, such as:
+** not the same make or color car as what is on file
+** mismatch in license plate, if visible in the picture
+* We've only scratched the surface with gitops and pipelines here
+** There was not performance testing done. If too many users connect at the same time, it might overwhelm either the app, the database, the LLM, etc...
+* Currently, most simple changes would probably end up breaking the application. And the person who, for example decides to change Mistral7B for Flan-T5-Small would not necessarily realize that.
+** It would be critical to have multiple instances (Dev/Test/UAT/Prod) of the application
+** It would also be required to have integration pipelines run in these environments to confirm that changes made do not break the overall application.
+* We could ask the LLM to start writing a response to the customer.
+** It could be just to ask for missing details.
+** or it could be to let them know whether the claim is accepted or denied
+* However, to do this, the LLM would have to be aware of the policies that the insurance company has to make those determinations.
+** This could be an interesting use-case for the https://research.ibm.com/blog/retrieval-augmented-generation-RAG[RAG,window=_blank] approach.
+
+====

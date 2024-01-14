@@ -67,4 +67,23 @@ From the main folder, launch `npm run dev`. This will launch both backend and fr
 - Frontend is accessible at `http://localhost:9000`
 - Backend is accessible at `http://localhost:5000`, with Swagger API doc at `http://localhost:5000/docs`
 
+```bash
+#!/bin/bash
+
+# Script to restart all showroom pods - You must be logged in as a cluster admin to run this script
+
+# Get all namespaces
+namespaces=$(oc get namespaces -o jsonpath='{.items[*].metadata.name}')
+
+# Loop through each namespace
+for namespace in $namespaces; do
+    # Check if the deployment "showroom" exists in the namespace
+    if oc -n $namespace get deployment showroom &> /dev/null; then
+        # If it exists, restart the rollout
+        oc -n $namespace rollout restart deployment/showroom
+    fi
+done
+```
+
+
 </details>

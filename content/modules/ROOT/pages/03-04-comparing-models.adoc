@@ -1,7 +1,10 @@
 = Comparing Models
 include::_attributes.adoc[]
 
-So far, for this lab, we have used the model https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2[Mistral-7B Instruct v2]. Although lighter than other models, it is still quite heavy and we need a large GPU to run it. Would we get as good results with a smaller model? Let's try!
+So far, for this lab, we have used the model https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2[Mistral-7B Instruct v2,window=_blank]. Although lighter than other models, it is still quite heavy and we need a large GPU to run it. Would we get as good results with a smaller model? Let's try!
+
+In this exercise, we'll pitch it against a much smaller LLM called https://huggingface.co/google/flan-t5-small)[flan-t5-small,window=_blank].
+
 
 From the `lab-materials/03` folder, please open the notebook called `03-04-comparing-models.ipynb` and follow the instructions.
 

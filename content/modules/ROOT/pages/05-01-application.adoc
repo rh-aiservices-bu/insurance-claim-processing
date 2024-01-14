@@ -24,15 +24,17 @@ If you want to have a look at the code of the application, you can do it directl
 - Close the different Jupyter tabs that may still be opened in your browser.
 - Go back to the OpenShift AI dashboard.
 - Stop your Workbench by using the toggle button.
+-- You should probably give it 5 or 10 seconds to fully stop.
 - Edit the Workbench configuration by clicking on the menu item at the left, then **Edit** button.
 +
 [.bordershadow]
 image::05/stop-workbench.png[]
 
-- In the image section, change the image to `VSCode for Insurance Claim Processsing Lab:
+- In the image section, change the image to `CUSTOM - VSCode for Insurance Claim Processsing Lab`:
 +
 [.bordershadow]
 image::05/vscode-image.png[]
+- Note that this is a Custom-built image added in this particular lab to illustrate the flexibility of the OpenShift AI platform. Not everyone wants to use Jupyter Notebooks for everything.
 
 - Then click on `Update workbench` at the bottom of the page:
 +
@@ -40,15 +42,19 @@ image::05/vscode-image.png[]
 image::05/update-workbench.png[]
 
 - You can now start your Workbench again by using the toggle button.
-- Once the Workbench is started, click on the **Open** Link. You will be redirected to the VSCode IDE.
+- Once the Workbench is started, click on the **Open** Link.
+- You will be redirected to the VSCode IDE.
 - After logging in and accepting the authorization, VSCode will open.
-- The first time you connect to it, you must indicate that you trust the workspace. Click on the **Yes, I trust the authors** button.
+- The first time you connect to it, you must indicate that you trust the workspace.
+- Click on the **Yes, I trust the authors** button.
 +
 [.bordershadow]
 image::05/trust-vscode.png[]
 
 - You can also close the Welcome tab, and you are in a familiar VSCode environment.
-- As your Persistent Volume has been automatically reconnected to this new environment, all the data you created in the Jupyter environment is still available (you can see more files however, as VSCode displays hidden files by default, which Jupyter does not do).
+- Your Persistent Volume has been automatically reconnected to this new environment.
+-- Therefore, all the data you created in the Jupyter environment is still available
+-- You can see more files because VSCode displays hidden files by default, which Jupyter does not do.
 - If you want, you can now explore the code of the application, in the `app` folder:
 +
 [.bordershadow]

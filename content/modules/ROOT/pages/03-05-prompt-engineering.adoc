@@ -1,5 +1,7 @@
-= Prompt Engineering exercise
+= Prompt Engineering exercise (optional)
 include::_attributes.adoc[]
+
+NOTE: This part of the lab is marked as optional. It can therefore be skipped without effect on the other parts of the lab. You can always come back to it later at the end of the lab if you have time to spare.
 
 As you have seen in the previous sections, there are different factors that will influence the results you can get from your model: the model parameters, the prompt, the query, and of course the data itself...
 
