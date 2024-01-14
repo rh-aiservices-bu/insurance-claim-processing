@@ -1,7 +1,7 @@
 = Model Retraining
 include::_attributes.adoc[]
 
-To retrain the YOLO model we need a prepared dataset of car images with moderate and severe accident labels.  We have such a dataset (from https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5/dataset/1[RoboFlow,window=_blank] ) that has annotated images and has split them into training and validation datasets.  We will use this training set to retrain our currentl YOLO model.
+To retrain the YOLO model we need a prepared dataset of car images with moderate and severe accident labels.  We have such a dataset (from https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5/dataset/1[RoboFlow,window=_blank] ) that has annotated images and has split them into training and validation datasets.  We will use this training set to retrain our current YOLO model.
 
 [.bordershadow]
 image::04/roboflow-test-images.png[roboflow images]

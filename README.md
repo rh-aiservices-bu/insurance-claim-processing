@@ -70,7 +70,7 @@ From the main folder, launch `npm run dev`. This will launch both backend and fr
 ```bash
 #!/bin/bash
 
-# Script to restart all showroom pods - You must be looged in as a cluster admin to run this script
+# Script to restart all showroom pods - You must be logged in as a cluster admin to run this script
 
 # Get all namespaces
 namespaces=$(oc get namespaces -o jsonpath='{.items[*].metadata.name}')

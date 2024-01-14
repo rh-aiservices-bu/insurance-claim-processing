@@ -11,7 +11,7 @@ Just like before, this is our Elyra version of the pipeline. Feel free to take a
 These are the main files of the pipeline and what they do:
 
 * *get_claims* - Will connect to the database, fetch any unprocessed claims, and add them to a list that will be passed to the other tasks through a file `claims.json`.
-* The following will go through all the claims and use the full body of the text to try and find some important feature, then push that to the databse:
+* The following will go through all the claims and use the full body of the text to try and find some important feature, then push that to the database:
 ** *get_location* - Finds the location of the accident.
 ** *get_accident_time* - Finds the time of the accident.
 ** *summarize_text* - Makes a short summary of the text.
