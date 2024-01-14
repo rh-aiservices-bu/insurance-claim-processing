@@ -16,7 +16,7 @@ image::04/model-prediction-results.png[predict cars]
 
 In the above image, the yolo model identified 17 cars and 1 truck.  Which cars ,in the above image, were identified?
 
-Therefore we need to write some code that will place 'boxes' around the 'cars' identified by the YOLO model.
+Therefore we need to write some code that will draw boxes around the cars identified by the YOLO model.
 
 [.bordershadow]
 image::04/box-identified-cars.png[identify cars]
