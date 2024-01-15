@@ -11,7 +11,7 @@ metadata:
     internal.config.kubernetes.io/previousNames: CUSTOM - Insurance Claim Processing Lab Workbench
     opendatahub.io/recommended-accelerators: '["nvidia.com/gpu"]'
     opendatahub.io/notebook-image-desc: >-
-      Jupyter notebook image with all the libraries needed for the OpenShit AI Insurance Claim Lab.
+      Jupyter notebook image with all the libraries needed for the OpenShift AI Insurance Claim Lab.
     argocd.argoproj.io/sync-wave: "1"
   name: ic-workbench
   namespace: redhat-ods-applications

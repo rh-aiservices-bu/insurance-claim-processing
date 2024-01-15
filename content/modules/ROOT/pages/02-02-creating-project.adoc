@@ -22,7 +22,7 @@ The instructions below will guide you through these steps. Follow them carefully
 
 == Create a project
 
-* First, in the OpenShift AI Dashboard application, navigate to the Data Science Project menu on the left:
+* First, in the OpenShift AI Dashboard application, navigate to the Data Science Projects menu on the left:
 +
 [.bordershadow]
 image::02/02-02-ds-proj-nav.png[]
@@ -46,7 +46,7 @@ IMPORTANT: It should **NOT** be `userX` like in the screenshot. (for you, `X` sh
 == Create a Data Connection for the pipeline server
 
 * We have deployed an instance of Minio in the cluster to act as a simple Object Storage for our purposes.
-* We will need to **Add Data Connection** that points to it.
+* We will need to **Add data connection** that points to it.
 +
 [.bordershadow]
 image::02/02-02-add-dc.png[]

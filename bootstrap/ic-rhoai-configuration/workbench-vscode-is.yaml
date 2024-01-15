@@ -11,7 +11,7 @@ metadata:
     internal.config.kubernetes.io/previousNames: CUSTOM - VSCode for Insurance Claim Processing Lab
     opendatahub.io/recommended-accelerators: '["nvidia.com/gpu"]'
     opendatahub.io/notebook-image-desc: >-
-      VSCode image for the OpenShit AI Insurance Claim Lab.
+      VSCode image for the OpenShift AI Insurance Claim Lab.
     argocd.argoproj.io/sync-wave: "1"
   name: ic-workbench-vscode
   namespace: redhat-ods-applications
