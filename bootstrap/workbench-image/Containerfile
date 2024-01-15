@@ -153,7 +153,7 @@ RUN echo "Installing softwares and packages" && \
     sed -i -e "s/Python.*/$(python --version | cut -d '.' -f-2)\",/" /opt/app-root/share/jupyter/kernels/python3/kernel.json && \
     # Remove default Elyra runtime-images \
     rm /opt/app-root/share/jupyter/metadata/runtime-images/*.json && \
-    # Fix permissions to support pip in Openshift environments \
+    # Fix permissions to support pip in OpenShift environments \
     chmod -R g+w /opt/app-root/lib/python3.11/site-packages && \
     fix-permissions /opt/app-root -P
 
