@@ -73,16 +73,33 @@ From the main folder, launch `npm run dev`. This will launch both backend and fr
 # Script to restart all showroom pods - You must be logged in as a cluster admin to run this script
 
 # Get all namespaces
-namespaces=$(oc get namespaces -o jsonpath='{.items[*].metadata.name}')
+namespaces=$(oc get namespaces -o jsonpath='{.items[*].metadata.name}' \
+    | tr ' ' '\n' \
+    | grep '^showroom')
 
-# Loop through each namespace
+# Stop all the pods
 for namespace in $namespaces; do
     # Check if the deployment "showroom" exists in the namespace
     if oc -n $namespace get deployment showroom &> /dev/null; then
         # If it exists, restart the rollout
-        oc -n $namespace rollout restart deployment/showroom
+        # oc -n $namespace rollout restart deployment/showroom
+        oc -n $namespace scale deploy showroom --replicas=0
     fi
 done
+
+
+# wait for them all to fully stop
+# start all the pods
+for namespace in $namespaces; do
+    # Check if the deployment "showroom" exists in the namespace
+    if oc -n $namespace get deployment showroom &> /dev/null; then
+        # If it exists, restart the rollout
+        # oc -n $namespace rollout restart deployment/showroom
+        oc -n $namespace scale deploy showroom --replicas=1
+    fi
+done
+
+
 ```
 
 
