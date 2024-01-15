@@ -77,14 +77,29 @@ namespaces=$(oc get namespaces -o jsonpath='{.items[*].metadata.name}' \
     | tr ' ' '\n' \
     | grep '^showroom')
 
-# Loop through each namespace
+# Stop all the pods
 for namespace in $namespaces; do
     # Check if the deployment "showroom" exists in the namespace
     if oc -n $namespace get deployment showroom &> /dev/null; then
         # If it exists, restart the rollout
-        oc -n $namespace rollout restart deployment/showroom
+        # oc -n $namespace rollout restart deployment/showroom
+        oc -n $namespace scale deploy showroom --replicas=0
     fi
 done
+
+
+# wait for them all to fully stop
+# start all the pods
+for namespace in $namespaces; do
+    # Check if the deployment "showroom" exists in the namespace
+    if oc -n $namespace get deployment showroom &> /dev/null; then
+        # If it exists, restart the rollout
+        # oc -n $namespace rollout restart deployment/showroom
+        oc -n $namespace scale deploy showroom --replicas=1
+    fi
+done
+
+
 ```
 
 
