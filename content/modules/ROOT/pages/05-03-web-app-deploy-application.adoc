@@ -4,9 +4,9 @@ include::_attributes.adoc[]
 == Deploy your instance of ArgoCD
 
 We will start by deploying an instance of ArgoCD in your namespace. +
-This will be used to deploy the rest of the applications.
+This will be used to deploy the application.
 
-- Copy the content of the following text, and paste it in the OpenShift Terminal to deploy ArgoCD.
+- Copy the following text, and paste it in the OpenShift Terminal to deploy ArgoCD.
 +
 [.lines_space]
 [.console-input]
@@ -50,11 +50,11 @@ EOF
 oc rollout status deploy/argocd-server
 
 - After a few seconds, the deployment should be complete:
++
 [.bordershadow]
 image::05/argocd-rollout.png[]
 
-**Optional**: connect to the ArgoCD UI
-If you know and understand ArgoCD and want to look at its interface ...
+**Optional**: If you know and understand ArgoCD and want to look at its interface, look at the following details. Otherwise, you can skip to the next step.
 [%collapsible]
 ====
 Now that Argo is deployed, you can connect to its UI through its Route.
@@ -74,7 +74,7 @@ image::05/argocd-route.png[]
 - You can now connect to the ArgoCD UI using your given credentials ({user}/{password}).
 ====
 
-== Deploy the applications via GitOps
+== Deploy the application(s) via GitOps
 
 Now that ArgoCD is deployed in your namespace, we can use it to deploy the application via GitOps.
 
@@ -105,7 +105,6 @@ spec:
     syncOptions: [CreateNamespace=false]
 EOF
 
-
 - Once the application is deployed, you can check its Route with the following command:
 +
 [.lines_space]
@@ -115,4 +114,4 @@ EOF
 [source, text]
 echo "   Application URL : https://$(oc get route ic-app -ojsonpath='{.status.ingress[0].host}')/ "
 
-Open the URL in your browser to access the application and head for the next step.
+Open the URL in your browser to access the application and head to the next step.

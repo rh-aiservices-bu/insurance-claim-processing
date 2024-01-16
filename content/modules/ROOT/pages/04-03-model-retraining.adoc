@@ -15,22 +15,11 @@ image::04/roboflow-test-images.png[roboflow images]
 3. Each image has an annotation text file in the 'labels' subfolder. The annotation text files have the same names as the image files.
 ====
 
-We have provided the following 2 training data sets, available as 'zip files', and located in an S3 bucket:
+We have provided the following training data set, available as a zip file, and located in an S3 bucket: `accident-sample.zip` (as we don,t have time in this Lab to fully retrain the model, we will use a sample of the training data set).
 
-1. accident-full.zip - to be used to fully re-train the model.
-2. accident-sample.zip - to be used to partially re-train the model when we don't have the time to fully re-train the model.
-
-Your instructor will let you know which data set 'zip file' you will be using in your lab.
-
-Once the images and associated annotations are ready, we create a dataset descriptor YAML file (data.yaml) that points to the created datasets and describes the object classes in them.  This YAML file is passed to the 'train' method of the model to start the training process.
-
-[.bordershadow]
-image::04/yaml-file.png[yaml file]
-
-- In your running workbench, navigate to the folder `lab-materials/04`.
+- In your running workbench, navigate to the folder `insurance-claim-processing/lab-materials/04`.
 - Look for (and open) the notebook called `04-03-model-retraining.ipynb`
-- Execute the cells of the notebook. But note that the actual training step would take way too long on CPU, so we will do the training on a sample only. Even with that, you can stop/terminate the kernel if you want if it takes too long to free up resources.
-
+- Execute the cells of the notebook.
 
 == Interpreting the Model re-Training Results
 [%collapsible]

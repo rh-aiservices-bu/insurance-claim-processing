@@ -10,9 +10,9 @@ image::05/original-app-1.png[]
 [.bordershadow]
 image::05/original-app-2.png[]
 
-== New App
+== Prototype App
 
-The second item menu on the left, New App, gives a view of what the new application looks like. You can navigate each claim and see that the interface is much more user friendly, with a nice interface to navigate the claim and see the pictures that were attached to it.
+The second item menu on the left, New App, gives a view of what the prototype of the new application looks like. You can navigate each claim and see that the interface is much more user friendly, with a nice interface to navigate the claim and see the pictures that were attached to it.
 
 Moreover, for the claims that have been processed, you can see the summary of this claim as well as the customer sentiment analysis, the location and time of the event that have been extracted from the claim, and the pictures that have been processed by the AI.
 

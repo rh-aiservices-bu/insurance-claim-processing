@@ -16,5 +16,5 @@ include::_attributes.adoc[]
 ** improve fraud detection by 25%
 * Requirements
 ** More precise measurements of performance
-** at baseline
-** after every change/improvement
+**** at baseline
+**** after every change/improvement

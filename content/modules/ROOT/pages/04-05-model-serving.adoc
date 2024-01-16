@@ -4,7 +4,7 @@ include::_attributes.adoc[]
 . At this point, we need to deploy the model into RHOAI model serving.
 . We will create another data connection...
 .. with almost identical information
-.. but we will change the bucket name from `userX` to 'models'
+.. but we will change the bucket name from `userX` to `models`
 
 == Create a Data Connection
 
@@ -56,7 +56,7 @@ image::04/model-data-connection.png[model connection]
 
 In your project create a model server.
 
-* Click **Add server**
+* Click **Add model server**
 +
 [.bordershadow]
 image::04/add-model-server.png[]
@@ -116,7 +116,7 @@ image::04/add-model-server-config.png[]
 
 == Deploy the Model
 
-In your project, under 'Models and model servers' select 'Deploy model'.
+In your project, under **Models and model servers** select **Deploy model**.
 
 * Click **Deploy model**
 +
@@ -169,7 +169,7 @@ image::04/model-deployed-success.png[]
 
 We will now confirm that the model is indeed working by querying it!
 
-== Using the served Model
+== Querying the served Model
 
 Once the model is served, we can use it as an endpoint that can be queried. We'll send a request to it, and get a result. And unlike our earlier notebook-based version, this applies to anyone working within our cluster. This could either be colleagues, or applications.
 
@@ -180,11 +180,11 @@ Once the model is served, we can use it as an endpoint that can be queried. We'l
 [.bordershadow]
 image::04/inference-url.png[]
 
-* Note or copy the **RestUrl**, which should be something like `http://modelmesh-serving.{user}:8008`
+* Note or copy the **RestUrl**, which should be something like `\http://modelmesh-serving.{user}:8008`
 
 We will now use this URL to query the model.
 
-- In your running workbench, navigate to the folder `lab-materials/04`.
+- In your running workbench, navigate to the folder `insurance-claim-processing/lab-materials/04`.
 - Look for (and open) the notebook called `04-05-model-serving.ipynb`.
 - Execute the cells of the notebook, and ensure you understand what is happening.
 

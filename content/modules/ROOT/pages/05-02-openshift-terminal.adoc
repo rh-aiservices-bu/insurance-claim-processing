@@ -1,8 +1,8 @@
 = Working with the OpenShift Terminal
 include::_attributes.adoc[]
 
-To deploy the application, you will use the OpenShift Terminal. +
-This is a web-based terminal that allows you to execute commands on the OpenShift cluster.
+To deploy the application, you will use the OpenShift Web Terminal. +
+This is a web-based terminal that allows you to execute commands on the OpenShift cluster from the OpenShift Console.
 
 == Opening the OpenShift Console
 

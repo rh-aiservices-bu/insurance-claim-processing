@@ -2,7 +2,6 @@
 include::_attributes.adoc[]
 
 The examples below are what we hope to achieve through our prototype version of the improved process.
-Some are mockups, and some are screenshots from the prototype application.
 
 == Using an LLM for text summarization
 
