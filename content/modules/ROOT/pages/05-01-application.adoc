@@ -23,9 +23,9 @@ If you want to have a look at the code of the application, you can do it directl
 
 - Close the different Jupyter tabs that may still be opened in your browser.
 - Go back to the OpenShift AI dashboard.
-- Stop your Workbench by using the toggle button.
+- Stop your Workbench by using the toggle.
 -- You should probably give it 5 or 10 seconds to fully stop.
-- Edit the Workbench configuration by clicking on the menu item at the left, then **Edit** button.
+- Edit the Workbench configuration by clicking on the menu item at the left, then **Edit workbench** button.
 +
 [.bordershadow]
 image::05/stop-workbench.png[]
@@ -41,7 +41,7 @@ image::05/vscode-image.png[]
 [.bordershadow]
 image::05/update-workbench.png[]
 
-- You can now start your Workbench again by using the toggle button.
+- You can now start your Workbench again by using the toggle.
 - Once the Workbench is started, click on the **Open** Link.
 - You will be redirected to the VSCode IDE.
 - After logging in and accepting the authorization, VSCode will open.
@@ -51,11 +51,11 @@ image::05/update-workbench.png[]
 [.bordershadow]
 image::05/trust-vscode.png[]
 
-- You can also close the Welcome tab, and you are in a familiar VSCode environment.
-- Your Persistent Volume has been automatically reconnected to this new environment.
--- Therefore, all the data you created in the Jupyter environment is still available
--- You can see more files because VSCode displays hidden files by default, which Jupyter does not do.
-- If you want, you can now explore the code of the application, in the `app` folder:
+* You can also close the Welcome tab, and you are in a familiar VSCode environment.
+* Your Persistent Volume has been automatically reconnected to this new environment.
+** Therefore, all the data you created in the Jupyter environment is still available
+** You can see more files because VSCode displays hidden files by default, which Jupyter does not do.
+* If you want, you can now explore the code of the application, in the `app` folder:
 +
 [.bordershadow]
 image::05/app-code.png[]

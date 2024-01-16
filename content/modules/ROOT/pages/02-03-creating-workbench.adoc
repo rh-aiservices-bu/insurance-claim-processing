@@ -11,8 +11,8 @@ image::02/02-03-create-wb.png[]
 * Make sure it has the following characteristics:
 ** Choose a name for it, like: `My Workbench`
 ** Image Selection: `CUSTOM - Insurance Claim Processing Lab Workbench`
-** Container Size: Standard
-** Accelerator: None
+** Container Size: `Standard`
+** Accelerator: `None`
 * That should look like:
 +
 [.bordershadow]
@@ -30,7 +30,7 @@ image::02/02-03-open-link.png[]
 [.bordershadow]
 image::02/02-02-accept.png[]
 
-* Do so.
+* Do so
 * You should now see this:
 +
 [.bordershadow]
@@ -41,7 +41,7 @@ image::02/02-02-jupyter.png[]
 We will clone the content of our Git repo so that you can access all the materials that were created as part of our prototyping exercise.
 
 * Using the Git UI:
-** If you want to use the git UI in Jupyter:
+** Open the Git UI in Jupyter:
 +
 [.bordershadow]
 image::02/git-clone-1.png[]
@@ -57,22 +57,5 @@ image::02/git-clone-1.png[]
 +
 [.bordershadow]
 image::02/git-clone-2.png[]
-
-// --
-// Using the Git CLI::
-// +
-// --
-// If you prefer using the `git` CLI, open a a terminal in JupyterLab, and paste this code:
-
-// [.console-input]
-// [source,adoc]
-// [subs=attributes+]
-// ----
-// git clone {git-clone-repo-url}
-// cd insurance-claim-processing/
-// git checkout {git-clone-repo-branch}
-// ----
-// --
-// ====
 
 At this point, your project is ready for the work we want to do in it.

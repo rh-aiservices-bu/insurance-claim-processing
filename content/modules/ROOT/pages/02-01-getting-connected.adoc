@@ -5,18 +5,6 @@ For the purposes of this training session, we have provisioned a single OpenShif
 
 Each person attending this lab will have a unique user account in which to do their work.
 
-== Getting Support during RH1 In-Person Labs
-
-* In the room
-** Some very kind colleagues will be walking around in the room, to help and/or answer questions.
-** If you run into a particular issue, call out to one of them and quietly explain what the issue is.
-** If they are unsure or if it's likely to be a long explanation, they might ask you to "post the question in slack" instead. (see below)
-* Over slack
-** We have a dedicated Slack Channel where more colleagues (who kindly agreed to stay up late) will try to answer questions.
-** Head over to the slack channel called https://redhat.enterprise.slack.com/archives/C066EQ8LWBS[#rh1-insurance-claims-lab,window=_blank]
-** Post a message such as `I have an issue with exercise number 2.4`
-** Use the https://slack.com/help/articles/115000769927-Use-threads-to-organize-discussions-[threads,window=_blank] feature in slack to then post a screenshot of a description of the issue, in-thread.
-
 == Environment information
 
 If you are using the customized version of the instructions, the information below will render properly. If not, you will see placeholder values instead.
@@ -26,27 +14,15 @@ If you are using the customized version of the instructions, the information bel
 
 In a new window or tab, open the following URL and log in:
 
-// * OpenShift Console URL: {openshift_console_url}[{openshift_console_url},window=_blank]
-
-// * and after that:
-// +
-// image::02/02-01-login2.png[]
-
 * The Red Hat OpenShift AI Dashboard URL for our shared environment:
 ** https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/[https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/,window=_blank]
-
-// * Alternatively, you can access Red Hat OpenShift AI from the OpenShift Console by clicking on:
-// +
-// [.bordershadow]
-// image::02/02-01-access-rhoai.png[]
 * Enter your credentials (as detailed above)
 * The result should look like:
 +
 [.bordershadow]
-image::02/02-01-login1.png[]
+image::02/02-01-login1.png[width=50%]
 
-* Because the password is so simple (`{password}`), Chrome might display a scary message such as:
-
+* Because the password is so simple (`{password}`), your browser might display a scary message such as:
 +
 [.bordershadow]
 image::02/02-01-login-scary.png[]
@@ -57,19 +33,18 @@ image::02/02-01-login-scary.png[]
 [.bordershadow]
 image::02/02-01-rhoai-front-page.png[]
 
-If you got this far and saw all that, congratulations, you got properly connected to the OpenShift AI Dashboard Application!
+If you got this far and saw all that, congratulations, you properly connected to the OpenShift AI Dashboard Application!
 
-// * The `oc login` command:
-// [.lines_space]
-// [.console-input]
-// [source, text]
-// [subs=attributes+]
-// {login_command}
+We are now ready to start the lab.
 
-// == Other credentials and URLs:
+== Getting Support during RH1 In-Person Labs
 
-// TODO?
-
-// * ArgoCD view
-// * Gitea
-// * Database
+* In the room
+** Some very kind colleagues will be walking around in the room, to help and/or answer questions.
+** If you run into a particular issue, call out to one of them and quietly explain what the issue is.
+** If they are unsure or if it's likely to be a long explanation, they might ask you to "post the question in slack" instead. (see below)
+* Over slack
+** We have a dedicated Slack Channel where more colleagues (who kindly agreed to stay up late) will try to answer questions.
+** Head over to the slack channel called https://redhat.enterprise.slack.com/archives/C066EQ8LWBS[#rh1-insurance-claims-lab,window=_blank]
+** Post a message such as `I am userX and I have an issue with exercise number 2.4`
+** Use the https://slack.com/help/articles/115000769927-Use-threads-to-organize-discussions-[threads,window=_blank] feature in slack to then post a screenshot of a description of the issue, in-thread.

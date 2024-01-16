@@ -14,6 +14,6 @@ In order to make this lab seem more realistic, we will be describing this imagin
 ** provide advice on potential improvements
 * That team is currently very small (about 4 people)
 ** Findings will be presented to the board
-** If they are convincing, we'll be granted the resources to implement the recommendations
-* The next slides are the materials that were presented to the board
+** If they are convincing, the team will be granted the resources to implement the recommendations
+* The next sections in this chapter are the materials that were presented to the board
 
