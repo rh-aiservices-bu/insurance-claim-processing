@@ -6,7 +6,7 @@ Now that we have the web app deployed, we need some way to process the claims in
 This pipeline is also a good starting point for creating an ArgoCD or Tekton pipeline which can be automatically triggered.
 
 == What's inside the pipeline?
-If you naviage to `lab-materials/05/05-05/` you can see a variety of files. +
+If you navigate to `lab-materials/05/05-05/` you can see a variety of files. +
 Just like before, we have both an Elyra version and a yaml version of the pipeline. This time, we will use the yaml file of the pipeline, which has been slightly customized to be able to run independently of Elyra. +
 Here are the main files of the pipeline and what they do:
 
