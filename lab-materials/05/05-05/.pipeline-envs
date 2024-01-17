@@ -1,0 +1,10 @@
+LLM_ENDPOINT=http://llm.ic-shared-llm.svc.cluster.local:3000
+POSTGRES_HOST=claimdb.ic-shared-db.svc.cluster.local
+POSTGRES_DB=claimdb
+POSTGRES_USER=claimdb
+POSTGRES_PASSWORD=claimdb
+POSTGRES_PORT=5432
+DB_S3_ENDPOINT_URL=http://minio.ic-shared-minio.svc.cluster.local:9000
+IMAGES_BUCKET=claim-images
+DB_AWS_ACCESS_KEY_ID=minio
+DB_AWS_SECRET_ACCESS_KEY=minio123

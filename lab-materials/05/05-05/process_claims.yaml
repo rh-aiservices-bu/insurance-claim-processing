@@ -2,6 +2,7 @@ apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
   name: process-claims
+  # generateName: training-pipeline-
   annotations:
     tekton.dev/output_artifacts: '{"run-a-file": [{"key": "artifacts/$PIPELINERUN/run-a-file/mlpipeline-metrics.tgz",
       "name": "mlpipeline-metrics", "path": "/tmp/mlpipeline-metrics.json"}, {"key":
@@ -58,21 +59,17 @@ spec:
     - name: detection_endpoint
       default: https://your-endpoint
     tasks:
-    - name: run-a-file
-      params:
-      - name: claim_id
-        value: $(params.claim_id)
+    - name: initialize
       taskSpec:
         steps:
         - name: main
           args:
           - |
-            claim_id="$0"
-            sh -c "mkdir -p ./jupyter-work-dir && cd ./jupyter-work-dir"
-            sh -c "echo 'Downloading file:///opt/app-root/bin/utils/bootstrapper.py' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/bootstrapper.py --output bootstrapper.py"
-            sh -c "echo 'Downloading file:///opt/app-root/bin/utils/requirements-elyra.txt' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/requirements-elyra.txt --output requirements-elyra.txt"
-            sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt && python3 bootstrapper.py --pipeline-name 'process_claims' --cos-endpoint 'https://minio-api-robert-serving-test.apps.rhods-internal.61tk.p1.openshiftapps.com' --cos-bucket 'pipeline-bucket' --cos-directory 'process_claims-0111164720' --cos-dependencies-archive 'get_claims-5a1b2fe1-12c3-4c02-a958-706d09245133.tar.gz' --file 'insurance-claim-processing/lab-materials/05/05-05/get_claims.py' --outputs 'claims.json' --pipeline-parameters 'claim_id=$claim_id' --parameter-pass-method 'env' "
-          - $(inputs.params.claim_id)
+            cd /shared-data
+            rm -r *
+            git clone https://github.com/rh-aiservices-bu/insurance-claim-processing
+            cd insurance-claim-processing
+            ls
           command:
           - sh
           - -c
@@ -81,12 +78,12 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: AWS_ACCESS_KEY_ID
-                name: aws-connection-minio-pipeline
+                name: aws-connection-shared-minio---pipelines
           - name: AWS_SECRET_ACCESS_KEY
             valueFrom:
               secretKeyRef:
                 key: AWS_SECRET_ACCESS_KEY
-                name: aws-connection-minio-pipeline
+                name: aws-connection-shared-minio---pipelines
           - name: ELYRA_RUNTIME_ENV
             value: kfp
           - name: ELYRA_ENABLE_PIPELINE_INFO
@@ -98,6 +95,79 @@ spec:
               fieldRef:
                 fieldPath: metadata.annotations['pipelines.kubeflow.org/run_name']
           image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.0
+          volumeMounts:
+          - mountPath: /shared-data
+            name: processing-pipeline-storage
+            readOnly: false
+        stepTemplate:
+          volumeMounts:
+          - name: mlpipeline-metrics
+            mountPath: /tmp
+        volumes:
+        - name: mlpipeline-metrics
+          emptyDir: {}
+        - name: processing-pipeline-storage
+          persistentVolumeClaim:
+            claimName: processing-pipeline-storage
+        metadata:
+          labels:
+            elyra/node-type: notebook-script
+            elyra/pipeline-name: process_claims
+            elyra/pipeline-version: ''
+            elyra/experiment-name: ''
+            elyra/node-name: initialize
+            pipelines.kubeflow.org/cache_enabled: "true"
+          annotations:
+            elyra/node-file-name: insurance-claim-processing/lab-materials/05/05-05/initialize.py
+            elyra/pipeline-source: process_claims.pipeline
+            pipelines.kubeflow.org/task_display_name: initialize
+            pipelines.kubeflow.org/component_spec_digest: '{"name": "Run a file",
+              "outputs": [], "version": "Run a file@sha256=3889d6b450d7892186c111f69a758dd2d7928e45f350a7fb00f8229314150432"}'
+    - name: get-claims
+      params:
+      - name: claim_id
+        value: $(params.claim_id)
+      taskSpec:
+        steps:
+        - name: main
+          args:
+          - |
+            claim_id="$0"
+            export claim_id=$claim_id
+            cd /shared-data
+            cd insurance-claim-processing/lab-materials/05/05-05
+            python get_claims.py
+            ls
+          - $(inputs.params.claim_id)
+          command:
+          - sh
+          - -c
+          env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                key: AWS_ACCESS_KEY_ID
+                name: aws-connection-shared-minio---pipelines
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                key: AWS_SECRET_ACCESS_KEY
+                name: aws-connection-shared-minio---pipelines
+          - name: ELYRA_RUNTIME_ENV
+            value: kfp
+          - name: ELYRA_ENABLE_PIPELINE_INFO
+            value: "True"
+          - name: ELYRA_WRITABLE_CONTAINER_DIR
+            value: /tmp
+          - name: ELYRA_RUN_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.annotations['pipelines.kubeflow.org/run_name']
+          image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.0
+          volumeMounts:
+          - mountPath: /shared-data
+            name: processing-pipeline-storage
+            readOnly: false
         params:
         - name: claim_id
         stepTemplate:
@@ -107,6 +177,9 @@ spec:
         volumes:
         - name: mlpipeline-metrics
           emptyDir: {}
+        - name: processing-pipeline-storage
+          persistentVolumeClaim:
+            claimName: processing-pipeline-storage
         metadata:
           labels:
             elyra/node-type: notebook-script
@@ -120,17 +193,18 @@ spec:
             elyra/pipeline-source: process_claims.pipeline
             pipelines.kubeflow.org/task_display_name: get_claims
             pipelines.kubeflow.org/component_spec_digest: '{"name": "Run a file",
-              "outputs": [], "version": "Run a file@sha256=da5be1a681b2f0167894a310d3a8a1731b03daa22c4746f73fc71667df8f21b4"}'
-    - name: run-a-file-2
+              "outputs": [], "version": "Run a file@sha256=3889d6b450d7892186c111f69a758dd2d7928e45f350a7fb00f8229314150432"}'
+      runAfter:
+      - initialize
+    - name: get-accident-time
       taskSpec:
         steps:
         - name: main
           args:
           - |
-            sh -c "mkdir -p ./jupyter-work-dir && cd ./jupyter-work-dir"
-            sh -c "echo 'Downloading file:///opt/app-root/bin/utils/bootstrapper.py' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/bootstrapper.py --output bootstrapper.py"
-            sh -c "echo 'Downloading file:///opt/app-root/bin/utils/requirements-elyra.txt' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/requirements-elyra.txt --output requirements-elyra.txt"
-            sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt && python3 bootstrapper.py --pipeline-name 'process_claims' --cos-endpoint 'https://minio-api-robert-serving-test.apps.rhods-internal.61tk.p1.openshiftapps.com' --cos-bucket 'pipeline-bucket' --cos-directory 'process_claims-0111164720' --cos-dependencies-archive 'get_accident_time-e5233ced-99d5-4420-a56b-c3244f268d46.tar.gz' --file 'insurance-claim-processing/lab-materials/05/05-05/get_accident_time.py' --inputs 'claims.json' "
+            cd /shared-data
+            cd insurance-claim-processing/lab-materials/05/05-05
+            python get_accident_time.py
           command:
           - sh
           - -c
@@ -139,12 +213,12 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: AWS_ACCESS_KEY_ID
-                name: aws-connection-minio-pipeline
+                name: aws-connection-shared-minio---pipelines
           - name: AWS_SECRET_ACCESS_KEY
             valueFrom:
               secretKeyRef:
                 key: AWS_SECRET_ACCESS_KEY
-                name: aws-connection-minio-pipeline
+                name: aws-connection-shared-minio---pipelines
           - name: ELYRA_RUNTIME_ENV
             value: kfp
           - name: ELYRA_ENABLE_PIPELINE_INFO
@@ -156,6 +230,10 @@ spec:
               fieldRef:
                 fieldPath: metadata.annotations['pipelines.kubeflow.org/run_name']
           image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.0
+          volumeMounts:
+          - mountPath: /shared-data
+            name: processing-pipeline-storage
+            readOnly: false
         stepTemplate:
           volumeMounts:
           - name: mlpipeline-metrics
@@ -163,6 +241,9 @@ spec:
         volumes:
         - name: mlpipeline-metrics
           emptyDir: {}
+        - name: processing-pipeline-storage
+          persistentVolumeClaim:
+            claimName: processing-pipeline-storage
         metadata:
           labels:
             elyra/node-type: notebook-script
@@ -176,19 +257,18 @@ spec:
             elyra/pipeline-source: process_claims.pipeline
             pipelines.kubeflow.org/task_display_name: get_accident_time
             pipelines.kubeflow.org/component_spec_digest: '{"name": "Run a file",
-              "outputs": [], "version": "Run a file@sha256=58abd6a6c89a1939bec4c701e1048c7b049b905a9a14824d59a2deeffa12450f"}'
+              "outputs": [], "version": "Run a file@sha256=da07fb04c1e95b2900f6c50973b0dac8bba94da0e31e927025c89506a70411e7"}'
       runAfter:
-      - run-a-file
-    - name: run-a-file-3
+      - get-claims
+    - name: get-location
       taskSpec:
         steps:
         - name: main
           args:
           - |
-            sh -c "mkdir -p ./jupyter-work-dir && cd ./jupyter-work-dir"
-            sh -c "echo 'Downloading file:///opt/app-root/bin/utils/bootstrapper.py' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/bootstrapper.py --output bootstrapper.py"
-            sh -c "echo 'Downloading file:///opt/app-root/bin/utils/requirements-elyra.txt' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/requirements-elyra.txt --output requirements-elyra.txt"
-            sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt && python3 bootstrapper.py --pipeline-name 'process_claims' --cos-endpoint 'https://minio-api-robert-serving-test.apps.rhods-internal.61tk.p1.openshiftapps.com' --cos-bucket 'pipeline-bucket' --cos-directory 'process_claims-0111164720' --cos-dependencies-archive 'get_location-555e8b99-1b42-41c3-bd84-1d26889a72c9.tar.gz' --file 'insurance-claim-processing/lab-materials/05/05-05/get_location.py' --inputs 'claims.json' "
+            cd /shared-data
+            cd insurance-claim-processing/lab-materials/05/05-05
+            python get_location.py
           command:
           - sh
           - -c
@@ -197,12 +277,12 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: AWS_ACCESS_KEY_ID
-                name: aws-connection-minio-pipeline
+                name: aws-connection-shared-minio---pipelines
           - name: AWS_SECRET_ACCESS_KEY
             valueFrom:
               secretKeyRef:
                 key: AWS_SECRET_ACCESS_KEY
-                name: aws-connection-minio-pipeline
+                name: aws-connection-shared-minio---pipelines
           - name: ELYRA_RUNTIME_ENV
             value: kfp
           - name: ELYRA_ENABLE_PIPELINE_INFO
@@ -214,6 +294,10 @@ spec:
               fieldRef:
                 fieldPath: metadata.annotations['pipelines.kubeflow.org/run_name']
           image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.0
+          volumeMounts:
+          - mountPath: /shared-data
+            name: processing-pipeline-storage
+            readOnly: false
         stepTemplate:
           volumeMounts:
           - name: mlpipeline-metrics
@@ -221,6 +305,9 @@ spec:
         volumes:
         - name: mlpipeline-metrics
           emptyDir: {}
+        - name: processing-pipeline-storage
+          persistentVolumeClaim:
+            claimName: processing-pipeline-storage
         metadata:
           labels:
             elyra/node-type: notebook-script
@@ -234,19 +321,18 @@ spec:
             elyra/pipeline-source: process_claims.pipeline
             pipelines.kubeflow.org/task_display_name: get_location
             pipelines.kubeflow.org/component_spec_digest: '{"name": "Run a file",
-              "outputs": [], "version": "Run a file@sha256=528dc0e8235ed361548a5eb37a2233b20c029786ea23acbf68a814d20dfdaf24"}'
+              "outputs": [], "version": "Run a file@sha256=0c1606205c836ad73d75f89b44bff3163cbbe9b7c3171334eb5688a5f13f6a4a"}'
       runAfter:
-      - run-a-file
-    - name: run-a-file-4
+      - get-claims
+    - name: get-sentiment
       taskSpec:
         steps:
         - name: main
           args:
           - |
-            sh -c "mkdir -p ./jupyter-work-dir && cd ./jupyter-work-dir"
-            sh -c "echo 'Downloading file:///opt/app-root/bin/utils/bootstrapper.py' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/bootstrapper.py --output bootstrapper.py"
-            sh -c "echo 'Downloading file:///opt/app-root/bin/utils/requirements-elyra.txt' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/requirements-elyra.txt --output requirements-elyra.txt"
-            sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt && python3 bootstrapper.py --pipeline-name 'process_claims' --cos-endpoint 'https://minio-api-robert-serving-test.apps.rhods-internal.61tk.p1.openshiftapps.com' --cos-bucket 'pipeline-bucket' --cos-directory 'process_claims-0111164720' --cos-dependencies-archive 'get_sentiment-81e80566-39c6-4f9b-a427-92bcbc7d5c92.tar.gz' --file 'insurance-claim-processing/lab-materials/05/05-05/get_sentiment.py' --inputs 'claims.json' "
+            cd /shared-data
+            cd insurance-claim-processing/lab-materials/05/05-05
+            python get_sentiment.py
           command:
           - sh
           - -c
@@ -255,12 +341,12 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: AWS_ACCESS_KEY_ID
-                name: aws-connection-minio-pipeline
+                name: aws-connection-shared-minio---pipelines
           - name: AWS_SECRET_ACCESS_KEY
             valueFrom:
               secretKeyRef:
                 key: AWS_SECRET_ACCESS_KEY
-                name: aws-connection-minio-pipeline
+                name: aws-connection-shared-minio---pipelines
           - name: ELYRA_RUNTIME_ENV
             value: kfp
           - name: ELYRA_ENABLE_PIPELINE_INFO
@@ -272,6 +358,10 @@ spec:
               fieldRef:
                 fieldPath: metadata.annotations['pipelines.kubeflow.org/run_name']
           image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.0
+          volumeMounts:
+          - mountPath: /shared-data
+            name: processing-pipeline-storage
+            readOnly: false
         stepTemplate:
           volumeMounts:
           - name: mlpipeline-metrics
@@ -279,6 +369,9 @@ spec:
         volumes:
         - name: mlpipeline-metrics
           emptyDir: {}
+        - name: processing-pipeline-storage
+          persistentVolumeClaim:
+            claimName: processing-pipeline-storage
         metadata:
           labels:
             elyra/node-type: notebook-script
@@ -292,10 +385,10 @@ spec:
             elyra/pipeline-source: process_claims.pipeline
             pipelines.kubeflow.org/task_display_name: get_sentiment
             pipelines.kubeflow.org/component_spec_digest: '{"name": "Run a file",
-              "outputs": [], "version": "Run a file@sha256=d1969409acb82d196a631affa0765081db2d582d2032693657409b6870dd46d8"}'
+              "outputs": [], "version": "Run a file@sha256=a0516303ea38bb88d586b2c791cb59e60f547cbc6aed3bd000d925a7821b2bfa"}'
       runAfter:
-      - run-a-file
-    - name: run-a-file-5
+      - get-claims
+    - name: detect-objects
       params:
       - name: detection_endpoint
         value: $(params.detection_endpoint)
@@ -305,10 +398,10 @@ spec:
           args:
           - |
             detection_endpoint="$0"
-            sh -c "mkdir -p ./jupyter-work-dir && cd ./jupyter-work-dir"
-            sh -c "echo 'Downloading file:///opt/app-root/bin/utils/bootstrapper.py' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/bootstrapper.py --output bootstrapper.py"
-            sh -c "echo 'Downloading file:///opt/app-root/bin/utils/requirements-elyra.txt' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/requirements-elyra.txt --output requirements-elyra.txt"
-            sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt && python3 bootstrapper.py --pipeline-name 'process_claims' --cos-endpoint 'https://minio-api-robert-serving-test.apps.rhods-internal.61tk.p1.openshiftapps.com' --cos-bucket 'pipeline-bucket' --cos-directory 'process_claims-0111164720' --cos-dependencies-archive 'detect_objects-2b07dca0-af2c-4973-8cab-328bb18cecbf.tar.gz' --file 'insurance-claim-processing/lab-materials/05/05-05/detect_objects.py' --inputs 'claims.json' --pipeline-parameters 'detection_endpoint=$detection_endpoint' --parameter-pass-method 'env' "
+            export detection_endpoint=$detection_endpoint
+            cd /shared-data
+            cd insurance-claim-processing/lab-materials/05/05-05
+            python detect_objects.py
           - $(inputs.params.detection_endpoint)
           command:
           - sh
@@ -318,12 +411,12 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: AWS_ACCESS_KEY_ID
-                name: aws-connection-minio-pipeline
+                name: aws-connection-shared-minio---pipelines
           - name: AWS_SECRET_ACCESS_KEY
             valueFrom:
               secretKeyRef:
                 key: AWS_SECRET_ACCESS_KEY
-                name: aws-connection-minio-pipeline
+                name: aws-connection-shared-minio---pipelines
           - name: ELYRA_RUNTIME_ENV
             value: kfp
           - name: ELYRA_ENABLE_PIPELINE_INFO
@@ -335,6 +428,10 @@ spec:
               fieldRef:
                 fieldPath: metadata.annotations['pipelines.kubeflow.org/run_name']
           image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.0
+          volumeMounts:
+          - mountPath: /shared-data
+            name: processing-pipeline-storage
+            readOnly: false
         params:
         - name: detection_endpoint
         stepTemplate:
@@ -344,6 +441,9 @@ spec:
         volumes:
         - name: mlpipeline-metrics
           emptyDir: {}
+        - name: processing-pipeline-storage
+          persistentVolumeClaim:
+            claimName: processing-pipeline-storage
         metadata:
           labels:
             elyra/node-type: notebook-script
@@ -357,19 +457,18 @@ spec:
             elyra/pipeline-source: process_claims.pipeline
             pipelines.kubeflow.org/task_display_name: detect_objects
             pipelines.kubeflow.org/component_spec_digest: '{"name": "Run a file",
-              "outputs": [], "version": "Run a file@sha256=2c90640ce8b2534f6165c2861aa0e2cefc2f204d6c414c4d08ab01ec9e62bf7a"}'
+              "outputs": [], "version": "Run a file@sha256=97bb4511ba9be4acba71bc51de5bde38d838b73e69cbb1cb8e2a6b28952537fd"}'
       runAfter:
-      - run-a-file
-    - name: run-a-file-6
+      - get-claims
+    - name: summarize-text
       taskSpec:
         steps:
         - name: main
           args:
           - |
-            sh -c "mkdir -p ./jupyter-work-dir && cd ./jupyter-work-dir"
-            sh -c "echo 'Downloading file:///opt/app-root/bin/utils/bootstrapper.py' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/bootstrapper.py --output bootstrapper.py"
-            sh -c "echo 'Downloading file:///opt/app-root/bin/utils/requirements-elyra.txt' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/requirements-elyra.txt --output requirements-elyra.txt"
-            sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt && python3 bootstrapper.py --pipeline-name 'process_claims' --cos-endpoint 'https://minio-api-robert-serving-test.apps.rhods-internal.61tk.p1.openshiftapps.com' --cos-bucket 'pipeline-bucket' --cos-directory 'process_claims-0111164720' --cos-dependencies-archive 'summarize_text-af47e64c-33fb-4881-b6ee-6ffa382a33e1.tar.gz' --file 'insurance-claim-processing/lab-materials/05/05-05/summarize_text.py' --inputs 'claims.json' "
+            cd /shared-data
+            cd insurance-claim-processing/lab-materials/05/05-05
+            python summarize_text.py
           command:
           - sh
           - -c
@@ -378,12 +477,12 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: AWS_ACCESS_KEY_ID
-                name: aws-connection-minio-pipeline
+                name: aws-connection-shared-minio---pipelines
           - name: AWS_SECRET_ACCESS_KEY
             valueFrom:
               secretKeyRef:
                 key: AWS_SECRET_ACCESS_KEY
-                name: aws-connection-minio-pipeline
+                name: aws-connection-shared-minio---pipelines
           - name: ELYRA_RUNTIME_ENV
             value: kfp
           - name: ELYRA_ENABLE_PIPELINE_INFO
@@ -395,6 +494,10 @@ spec:
               fieldRef:
                 fieldPath: metadata.annotations['pipelines.kubeflow.org/run_name']
           image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.0
+          volumeMounts:
+          - mountPath: /shared-data
+            name: processing-pipeline-storage
+            readOnly: false
         stepTemplate:
           volumeMounts:
           - name: mlpipeline-metrics
@@ -402,6 +505,9 @@ spec:
         volumes:
         - name: mlpipeline-metrics
           emptyDir: {}
+        - name: processing-pipeline-storage
+          persistentVolumeClaim:
+            claimName: processing-pipeline-storage
         metadata:
           labels:
             elyra/node-type: notebook-script
@@ -415,6 +521,6 @@ spec:
             elyra/pipeline-source: process_claims.pipeline
             pipelines.kubeflow.org/task_display_name: summarize_text
             pipelines.kubeflow.org/component_spec_digest: '{"name": "Run a file",
-              "outputs": [], "version": "Run a file@sha256=db618b5962e9d8c5507df90e3360408e6694e8efc303936ed675b26eff7b77aa"}'
+              "outputs": [], "version": "Run a file@sha256=8ace3a6f7e6e8f14b8102c388a305026254f0dd18c0630eada6a0ba347dda20e"}'
       runAfter:
-      - run-a-file
+      - get-claims

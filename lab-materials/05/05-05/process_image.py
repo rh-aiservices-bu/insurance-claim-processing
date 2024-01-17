@@ -102,7 +102,7 @@ def _unpack(response_item):
 def send_request(image, endpoint):
     payload = _serialize(image)
     
-    raw_response = requests.post(endpoint, json = payload)
+    raw_response = requests.post(f"{endpoint}/v2/models/my-first-model/infer", json = payload)
     try:
         response = raw_response.json()
     except:
