@@ -224,7 +224,11 @@ data:
     INSERT INTO claims.original_images (image_name, image_key, claim_id) VALUES ('car1.jpg', 'original_images/car1.jpg', 1);
     INSERT INTO claims.original_images (image_name, image_key, claim_id) VALUES ('car2.jpg', 'original_images/car2.jpg', 2);
     INSERT INTO claims.original_images (image_name, image_key, claim_id) VALUES ('car3.jpg', 'original_images/car3.jpg', 3);
-    INSERT INTO claims.original_images (image_name, image_key, claim_id) VALUES ('car3.jpg', 'original_images/car5.jpg', 3);
-    INSERT INTO claims.original_images (image_name, image_key, claim_id) VALUES ('car3.jpg', 'original_images/car6.jpg', 3);
-    -- INSERT INTO claims.processed_images (image_name, image_key, claim_id) VALUES ('new_car1.jpg', 'processed_images/1_1700086614_cdfe1fac_new_car1.png', 1);
-    -- INSERT INTO claims.processed_images (image_name, image_key, claim_id) VALUES ('new_car2.jpg', 'processed_images/1_1700187172_eb6ba78d_new_car2.png', 2);
+    INSERT INTO claims.original_images (image_name, image_key, claim_id) VALUES ('car5.jpg', 'original_images/car5.jpg', 3);
+    INSERT INTO claims.original_images (image_name, image_key, claim_id) VALUES ('car6.jpg', 'original_images/car6.jpg', 3);
+    INSERT INTO claims.processed_images (image_name, image_key, claim_id) VALUES ('car0-processed.jpg', 'processed_images/car0-processed.jpg', 1);
+    INSERT INTO claims.processed_images (image_name, image_key, claim_id) VALUES ('car1-processed.jpg', 'processed_images/car1-processed.jpg', 1);
+    INSERT INTO claims.processed_images (image_name, image_key, claim_id) VALUES ('car2-processed.jpg', 'processed_images/car2-processed.jpg', 2);
+    -- INSERT INTO claims.processed_images (image_name, image_key, claim_id) VALUES ('car3-processed.jpg', 'processed_images/car3-processed.jpg', 3);
+    -- INSERT INTO claims.processed_images (image_name, image_key, claim_id) VALUES ('car5-processed.jpg', 'processed_images/car5-processed.jpg', 3);
+    -- INSERT INTO claims.processed_images (image_name, image_key, claim_id) VALUES ('car6-processed.jpg', 'processed_images/car6-processed.jpg', 3);
