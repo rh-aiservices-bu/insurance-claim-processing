@@ -1,8 +1,8 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  # name: process-claims
-  generateName: training-pipeline-
+  name: process-claims
+  #generateName: training-pipeline-
   annotations:
     tekton.dev/output_artifacts: '{"run-a-file": [{"key": "artifacts/$PIPELINERUN/run-a-file/mlpipeline-metrics.tgz",
       "name": "mlpipeline-metrics", "path": "/tmp/mlpipeline-metrics.json"}, {"key":

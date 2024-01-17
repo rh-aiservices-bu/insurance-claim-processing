@@ -5,6 +5,8 @@ metadata:
   name: ic-app
   labels:
     app: ic-app
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   to:
     kind: Service

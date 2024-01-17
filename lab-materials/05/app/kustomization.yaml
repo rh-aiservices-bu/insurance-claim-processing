@@ -9,8 +9,14 @@ resources:
 # wave 0
 - secret-db.yaml
 - secret-minio.yaml
+- pvc-db.yaml
+- sql-script-configmap.yaml
 # wave 1
-- deployment.yaml
-- service.yaml
-- route.yaml
+- deployment-db.yaml
+- service-db.yaml
+- db-init-job.yaml
+- populate-images.yaml
 # wave 2
+- deployment-app.yaml
+- service-app.yaml
+- route-app.yaml
