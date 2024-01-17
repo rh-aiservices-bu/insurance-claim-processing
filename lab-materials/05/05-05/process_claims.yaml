@@ -69,7 +69,6 @@ spec:
             rm -r *
             git clone https://github.com/rh-aiservices-bu/insurance-claim-processing
             cd insurance-claim-processing
-            git checkout fix/move-some-pipeline-envs
             ls
           command:
           - sh
