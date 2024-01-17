@@ -104,3 +104,11 @@ done
 
 
 </details>
+
+
+
+<details>
+  <summary>Links for RH1 event environment assignment</summary>
+* URL for all labs: https://one.demo.redhat.com/[https://one.demo.redhat.com/,window=_blank]
+* Search for `insurance`
+</details>

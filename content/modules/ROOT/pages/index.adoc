@@ -1,11 +1,6 @@
 = {lab_name}
 include::_attributes.adoc[]
 
-During RH1:
-
-* URL for all labs: https://one.demo.redhat.com/[https://one.demo.redhat.com/,window=_blank]
-* Search for `insurance`
-
 == Lab Overview
 
 This lab will illustrate how the use of various AI/ML technologies can be combined to produce a valuable solution to a business problem.
