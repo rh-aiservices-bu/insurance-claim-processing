@@ -5,10 +5,10 @@ include::_attributes.adoc[]
 Now that we have the web app deployed, we need some way to process the claims in the web app. For that, we will use a pipeline that either can run ad-hoc or be scheduled just like the sanity check pipeline. +
 This pipeline is also a good starting point for creating an ArgoCD or Tekton pipeline which can be automatically triggered.
 
-== Look at the pipeline
-Start by navigating to `lab-materials/05/` and open the file `process_claims.pipeline` +
-Just like before, this is our Elyra version of the pipeline. Feel free to take a look at the different files and properties of the pipeline to see how it all fits together, but don't change anything just yet. +
-These are the main files of the pipeline and what they do:
+== What's inside the pipeline?
+If you naviage to `lab-materials/05/05-05/` you can see a variety of files. +
+Just like before, we have both an Elyra version and a yaml version of the pipeline. This time, we will use the yaml file of the pipeline, which has been slightly customized to be able to run independently of Elyra. +
+Here are the main files of the pipeline and what they do:
 
 * *get_claims* - Will connect to the database, fetch any unprocessed claims, and add them to a list that will be passed to the other tasks through a file `claims.json`.
 * The following will go through all the claims and use the full body of the text to try and find some important feature, then push that to the database:
@@ -18,28 +18,104 @@ These are the main files of the pipeline and what they do:
 ** *get_sentiment* - Gets the sentiment of the text.
 * *detect_objects* - Downloads the images of the claims and uses the served object-detection model to find damages in the image.
 
+== Create a new PVC
+Before we can run the pipeline, we need to create a PVC it can use to store file and results in. +
+Go to the OpenShift Console and navigate to Storage ->  PersistantStorageClaims.
+
+[.bordershadow]
+image::05/05-PVC.png[go to PVC]
+
+Make sure you are in the right project (your username) and then press `Create PersistantVolumeClaim`.
+
+[.bordershadow]
+image::05/05-create-pvc.png[Create PVC]
+
+* Use these settings:
+** StorageClass:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+ocs-storagecluster-cephfs
+** PersistentVolumeClaim name:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+processing-pipeline-storage
+** Access mode:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+Shared access (RWX)
+** Size:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+1 GiB
+
+[.bordershadow]
+image::05/05-PVC-settings.png[PVC settings]
+
+Then press `Create`.
+
 == Run the pipeline
-Before we can run the pipeline, we need to tell it what the endpoint to object-detection model is. +
-Go to the properties of the pipeline, and then scroll down until you see an environment variable called `DETECTION_ENDPOINT` and copy-paste your object-detection endpoint as Value.
+To run the pipeline, start by downloading the `process_claims.yaml` file locally. +
+Then go to your Data Science project and press Import Pipeline.
 
 [.bordershadow]
-image::05/05-open-pipeline-properties.png[open pipeline properties]
+image::05/05-import-pipeline-button.png[import pipeline]
+
+Now upload process_claims.yaml file, either by drag-and-dropping or using the Upload button. Then make sure to give your pipeline a good name like `Process Claims Pipeline`. +
+It should look something like this afterwards:
 
 [.bordershadow]
-image::05/05-object-detection-endpoint.png[add the detection endpoint]
+image::05/05-imported-pipeline.png[imported pipeline]
 
-Now we can press the *Run* button to start the pipeline.
+Press `Import Pipeline` and you should see it pop up under your pipelines.
 
-When starting the pipeline we now have an extra option called `claim_id`. This will let you choose which claim to process. If set to 0 (default), it will automatically process all unprocessed claims. +
-Leave it at 0 and press OK.
-
-[.bordershadow]
-image::05/05-run-settings.png[run settings]
-
-Press the `run-details` in the next popup to see how the run is progressing.
+Now go into the settings at the right side and press Create Run to create a new run of the pipeline you just added.
 
 [.bordershadow]
-image::05/05-run-details.png[run details]
+image::05/05-create-run.png[create run]
+
+* Use these settings:
+** Name:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+Process Claim Run
+** Run type:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+Run once immediately after creation
+** claim_id:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+3
+** detection_endpoint:
+[.lines_space]
+[.console-input]
+[source, text]
+[subs=attributes+]
+http://modelmesh-serving.{user}:8008
+
+This is the same route to the object detection endpoint that was used earlier in the workshop. +
+When done it should look something like this:
+
+[.bordershadow]
+image::05/05-run-settings-create-pipeline.png[run settings]
+
+Note that by changing claim_id you can change which claim to process. If you set it to 0 it will process all unprocessed claims.
+
+Press `Create` and watch it go.
 
 == Check the results
 After the pipeline has finished running, you can go to the app and take a look at the claims. +
