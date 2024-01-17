@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: ic-app
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   replicas: 1
   selector:
@@ -24,6 +24,10 @@ spec:
             - containerPort: 5000
               protocol: TCP
           env:
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
             - name: INFERENCE_SERVER_URL
               value: http://llm.ic-shared-llm.svc.cluster.local:3000/
             - name: MAX_NEW_TOKENS
@@ -39,7 +43,7 @@ spec:
             - name: REPETITION_PENALTY
               value: '1.03'
             - name: POSTGRES_HOST
-              value: claimdb.ic-shared-db.svc.cluster.local
+              value: claimdb.$(NAMESPACE).svc.cluster.local
             - name: POSTGRES_DB
               valueFrom:
                 secretKeyRef:
@@ -60,16 +64,16 @@ spec:
             - name: S3_ENDPOINT_URL
               value: http://minio.ic-shared-minio.svc.cluster.local:9000
             - name: IMAGES_BUCKET
-              value: claim-images
+              value: $(NAMESPACE)
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
-                  name: miniocreds
+                  name: secret-minio
                   key: aws_access_key_id
             - name: AWS_SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
-                  name: miniocreds
+                  name: secret-minio
                   key: aws_secret_access_key
           resources: {}
           terminationMessagePath: /dev/termination-log

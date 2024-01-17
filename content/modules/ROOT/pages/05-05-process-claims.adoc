@@ -2,30 +2,35 @@
 include::_attributes.adoc[]
 
 == What will the pipeline do?
-Now that we have the web app deployed, we need some way to process the claims in the web app. For that, we will use a pipeline that either can run ad-hoc or be scheduled just like the sanity check pipeline. +
+Now that we have the web app deployed, we can see that some claims are unprocessed yet. Of course, we want to way to do this processing, and it's even better if it can be fully automated!
+
+For that, we will use a pipeline that can either be run ad-hoc or scheduled just like, the sanity check pipeline.
+
 This pipeline is also a good starting point for creating an ArgoCD or Tekton pipeline which can be automatically triggered.
 
 == What's inside the pipeline?
-If you navigate to `lab-materials/05/05-05/` you can see a variety of files. +
-Just like before, we have both an Elyra version and a yaml version of the pipeline. This time, we will use the yaml file of the pipeline, which has been slightly customized to be able to run independently of Elyra. +
+
+If you navigate to `insurance-claim-processing/lab-materials/05/05-05` you can see a variety of files. +
+Just like before, we have both an Elyra version and a yaml version of the pipeline. This time, we will use the yaml definition of the pipeline, which has been slightly customized to be able to run independently of Elyra. +
 Here are the main files of the pipeline and what they do:
 
-* *get_claims* - Will connect to the database, fetch any unprocessed claims, and add them to a list that will be passed to the other tasks through a file `claims.json`.
-* The following will go through all the claims and use the full body of the text to try and find some important feature, then push that to the database:
+* *get_claims* - Will connect to the database, fetch any unprocessed claims, and add them to a list that will be passed to the other tasks through a file: `claims.json`.
+* The following will go through all the claims that need to be processed, and use the full body of the text to try and find some important feature, then push the results to the database:
 ** *get_location* - Finds the location of the accident.
 ** *get_accident_time* - Finds the time of the accident.
 ** *summarize_text* - Makes a short summary of the text.
 ** *get_sentiment* - Gets the sentiment of the text.
-* *detect_objects* - Downloads the images of the claims and uses the served object-detection model to find damages in the image.
+* *detect_objects* - Downloads the images of the claim and uses the served object-detection model to classify the damages in the image.
 
 == Create a new PVC
-Before we can run the pipeline, we need to create a PVC it can use to store file and results in. +
-Go to the OpenShift Console and navigate to Storage ->  PersistantStorageClaims.
+
+Before we can run the pipeline, we need to create a PVC that will be used to store intermediary files and results in. +
+Go to the OpenShift Console and navigate to Storage -> PersistentVolumeClaims.
 
 [.bordershadow]
 image::05/05-PVC.png[go to PVC]
 
-Make sure you are in the right project (your username) and then press `Create PersistantVolumeClaim`.
+Make sure you are in the right project (your username) and then press `Create PersistentVolumeClaim`.
 
 [.bordershadow]
 image::05/05-create-pvc.png[Create PVC]
