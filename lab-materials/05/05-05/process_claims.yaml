@@ -1,8 +1,8 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  name: process-claims
-  # generateName: training-pipeline-
+  # name: process-claims
+  generateName: training-pipeline-
   annotations:
     tekton.dev/output_artifacts: '{"run-a-file": [{"key": "artifacts/$PIPELINERUN/run-a-file/mlpipeline-metrics.tgz",
       "name": "mlpipeline-metrics", "path": "/tmp/mlpipeline-metrics.json"}, {"key":
@@ -163,6 +163,12 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.annotations['pipelines.kubeflow.org/run_name']
+          - name: NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: POSTGRES_HOST
+            value: claimdb.$(NAMESPACE).svc.cluster.local
           image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.0
           volumeMounts:
           - mountPath: /shared-data
@@ -229,6 +235,12 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.annotations['pipelines.kubeflow.org/run_name']
+          - name: NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: POSTGRES_HOST
+            value: claimdb.$(NAMESPACE).svc.cluster.local
           image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.0
           volumeMounts:
           - mountPath: /shared-data
@@ -293,6 +305,12 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.annotations['pipelines.kubeflow.org/run_name']
+          - name: NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: POSTGRES_HOST
+            value: claimdb.$(NAMESPACE).svc.cluster.local
           image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.0
           volumeMounts:
           - mountPath: /shared-data
@@ -357,6 +375,12 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.annotations['pipelines.kubeflow.org/run_name']
+          - name: NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: POSTGRES_HOST
+            value: claimdb.$(NAMESPACE).svc.cluster.local
           image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.0
           volumeMounts:
           - mountPath: /shared-data
@@ -427,6 +451,14 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.annotations['pipelines.kubeflow.org/run_name']
+          - name: NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: POSTGRES_HOST
+            value: claimdb.$(NAMESPACE).svc.cluster.local
+          - name: IMAGES_BUCKET
+            value: $(NAMESPACE)
           image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.0
           volumeMounts:
           - mountPath: /shared-data
@@ -493,6 +525,12 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.annotations['pipelines.kubeflow.org/run_name']
+          - name: NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: POSTGRES_HOST
+            value: claimdb.$(NAMESPACE).svc.cluster.local
           image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.0
           volumeMounts:
           - mountPath: /shared-data
