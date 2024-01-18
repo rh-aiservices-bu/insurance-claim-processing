@@ -10,27 +10,27 @@ spec:
       - cluster: in-cluster
         name: ic-shared-minio-app
         repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
-        targetRevision: dev
+        targetRevision: main
         path: bootstrap/ic-shared-minio
       - cluster: in-cluster
         name: ic-shared-database-app
         repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
-        targetRevision: dev
+        targetRevision: main
         path: bootstrap/ic-shared-database
       - cluster: in-cluster
         name: ic-shared-llm-app
         repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
-        targetRevision: dev
+        targetRevision: main
         path: bootstrap/ic-shared-llm
       - cluster: in-cluster
         name: ic-shared-img-det
         repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
-        targetRevision: dev
+        targetRevision: main
         path: bootstrap/ic-shared-img-det
       - cluster: in-cluster
         name: ic-rhoai-configuration
         repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
-        targetRevision: dev
+        targetRevision: main
         path: bootstrap/ic-rhoai-configuration
   template:
     metadata:
