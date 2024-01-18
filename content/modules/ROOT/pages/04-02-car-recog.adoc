@@ -1,12 +1,12 @@
 = Car recognition
 include::_attributes.adoc[]
 
-In our last notebook we confirmed that the YOLO model could identify cars in a photograph.  
+In our last notebook we confirmed that the YOLO model could identify cars in a photograph.
 
 [.bordershadow]
 image::04/sample-car-image.png[car image]
 
-We also confirmed that while a YOLO model can identify multiple 'cars' in an image, humans may have a difficult time verifying the identified cars. 
+We discovered that YOLO is able to detect multiple cars in an image. However, we did not see which cars were identified.
 
 [.bordershadow]
 image::04/multiple-car-images.png[multiple cars]
@@ -14,18 +14,15 @@ image::04/multiple-car-images.png[multiple cars]
 [.bordershadow]
 image::04/model-prediction-results.png[predict cars]
 
-In the above image, the yolo model identified 17 cars and 1 truck.  Which cars ,in the above image, were identified?
+In the above image, the yolo model identified 17 cars and 1 truck.
 
-Therefore we need to write some code that will place 'boxes' around the 'cars' identified by the YOLO model.
+Therefore we need to write some code that will draw boxes around the cars identified by the YOLO model.
 
 [.bordershadow]
 image::04/box-identified-cars.png[identify cars]
 
-
-. In your running pytorch workbench, navigate to the folder `lab-materials/04`.
-
-. Look for (and open) the notebook called `04-02-car-recognition.ipynb`
-
-. Execute the cells of the notebook, and ensure you understand what is happening
+- In your running workbench, navigate to the folder `insurance-claim-processing/lab-materials/04`.
+- Look for (and open) the notebook called `04-02-car-recognition.ipynb`
+- Execute the cells of the notebook, and ensure you understand what is happening
 
 

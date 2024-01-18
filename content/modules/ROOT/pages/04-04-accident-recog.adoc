@@ -3,18 +3,15 @@ include::_attributes.adoc[]
 
 Now that we have retrained our model we can test it against some sample images.
 
-We have converted our model to onnx format and placed a copy within an amazon s3 bucket.  We will test this version against some sample test images. 
+We have converted our model to onnx format and placed a copy within an S3 bucket.  We will test this version against some sample test images.
 
-
-Using the re-trained model, on the below image, we see that the model is able to identify a 'severe' car crash with '88%' probability.
+Using the re-trained model, we will see that we are able to identify a severe car crash with 88% certainty, like in the below picture.
 
 [.bordershadow]
 image::04/retrained-model-results.png[retrained modelresults]
 
+To test the model yourself:
 
-
-. In your running pytorch workbench, navigate to the folder `lab-materials/04`.
-
-. Look for (and open) the notebook called `04-04-accident-recog.ipynb`
-
-. Execute the cells of the notebook.
+- In your workbench, navigate to the folder `insurance-claim-processing/lab-materials/04`.
+- Look for (and open) the notebook called `04-04-accident-recog.ipynb`
+- Execute the cells of the notebook.

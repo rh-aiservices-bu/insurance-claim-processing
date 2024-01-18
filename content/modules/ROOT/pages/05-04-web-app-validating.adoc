@@ -1,3 +1,22 @@
-= pages/05-04-web-app-validating.adoc
+= Validating the application
 include::_attributes.adoc[]
 
+== Original App
+
+The first item menu on the left, Original App, gives a view of what the older application used at the insurance company looks like. You can navigate each claim and see that the interface was very crude, with a simple copy of the originally received email with the pictures that were attached to it.
+
+[.bordershadow]
+image::05/original-app-1.png[]
+[.bordershadow]
+image::05/original-app-2.png[]
+
+== Prototype App
+
+The second item menu on the left, New App, gives a view of what the prototype of the new application looks like. You can navigate each claim and see that the interface is much more user friendly, with a nice interface to navigate the claim and see the pictures that were attached to it.
+
+Moreover, for the claims that have been processed, you can see the summary of this claim as well as the customer sentiment analysis, the location and time of the event that have been extracted from the claim, and the pictures that have been processed by the AI.
+
+[.bordershadow]
+image::05/new-app-1.png[]
+
+This is still obviously a very simple and crude application, but remember that this was a prototype. And it was enough to show the potential of an AI-Enhanced application to the board, and convince them to invest in the project.

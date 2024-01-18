@@ -30,7 +30,7 @@
               "kubernetes_shared_mem_size": {},
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
-              "runtime_image": "quay.io/rlundber/rh1/sanity_pipeline:1.7",
+              "runtime_image": "quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-sanity-pipeline:1.0",
               "filename": "test_response_quality.py"
             },
             "label": "",
@@ -278,23 +278,7 @@
             "kubernetes_tolerations": [],
             "kubernetes_pod_annotations": [],
             "mounted_volumes": [],
-            "kubernetes_secrets": [
-              {
-                "env_var": "LLM_ENDPOINT",
-                "name": "llm-info",
-                "key": "LLM_ENDPOINT"
-              },
-              {
-                "env_var": "MODEL_SHA",
-                "name": "llm-info",
-                "key": "MODEL_SHA"
-              },
-              {
-                "env_var": "SERVING_SHA",
-                "name": "llm-info",
-                "key": "SERVING_SHA"
-              }
-            ],
+            "kubernetes_secrets": [],
             "env_vars": [],
             "runtime_image": "quay.io/modh/runtime-images@sha256:7dd23e58291cad7a0ab4a8e04bda06492f2c027eb33b226358380db58dcdd60b"
           }

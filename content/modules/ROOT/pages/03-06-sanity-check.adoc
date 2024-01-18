@@ -2,21 +2,19 @@
 include::_attributes.adoc[]
 
 == What will the pipeline do?
-To make sure that everything works as we would expect it, and that the LLM model has not been tampered with, we need to create a sanity-check pipeline that tests the model through its endpoint. +
-We will test the response time, the response quality, and that the model hash has not changed.
-
-== Deploy a pipeline Server in your project
-
-This step was already done as part of the project setup.
+To make sure that everything works as we would expect it to, and that the model has not been tampered with, we will create a sanity-check pipeline that tests the model through its endpoint. +
+We will test the response time, the response quality, and that the model hash has not changed. +
+And to make sure it stays the same over time, we'll schedule that pipeline.
 
 == Deploy a sanity-check pipeline
 
-In the `lab-materials/03/06` folder there are two pipeline files, one *sanity_check.pipeline* and one *sanity_check.yaml* file.
+In the `insurance-claim-processing/lab-materials/03/06` folder there are two pipeline files, one `sanity_check.pipeline` and one `sanity_check.yaml` file.
 
-The `.pipeline` file can be opened in Elyra to be visually modified and executed, while the `.yaml` file can be imported into the pipeline server through the dashboard. +
+The `.pipeline` file can be opened in Elyra to be visually modified and executed, while the `.yaml` file can be imported into the pipeline server through the RHOAI Dashboard. +
 Here we will be running the pipeline through Elyra.
 
 == Ad-Hoc execution
+
 Running it through Elyra is the same as doing an ad-hoc execution of the pipeline, as opposed to importing the pipeline which won't automatically execute it.
 
 . Start by going to your running workbench
@@ -27,7 +25,7 @@ Running it through Elyra is the same as doing an ad-hoc execution of the pipelin
 .. response time check
 .. security check
 . Feel free to peek into each of the python files by double clicking on the nodes to see what they do. +
-. After the tests have been ran, we have a final function that will summarize the results and log them.
+. After the tests have been run, we have a final function that will summarize the results and log them.
 . To run the pipeline, press the Play button in the menu bar.
 +
 [.bordershadow]
@@ -41,7 +39,7 @@ image::03/03-07-run-pipeline-ok.png[]
 
 == Schedule execution
 
-We can also **schedule** an execution so that the sanity check is ran at regular intervals. +
+We can also **schedule** an execution so that the sanity check is executed at regular intervals. +
 To do that:
 
 . Go back to the OpenShift AI Data Science Project
@@ -51,10 +49,10 @@ To do that:
 [.bordershadow]
 image::03/07-create-run.png[create run]
 
-. On the next screen, choose a name, select **Hourly** and click **Create**:
+. On the next screen, choose a name, select a Periodic run to trigger every **Day** and click **Create**:
 +
 [.bordershadow]
-image::03/03-07-hourlyrun.png[]
+image::03/03-06-dailyrun.png[]
 
 . We can now leave the sanity-check pipeline alone.
-. It will run hourly, and will inform us if anything goes wrong with our LLM model.
+. It will run daily, and will inform us if anything goes wrong with our LLM.

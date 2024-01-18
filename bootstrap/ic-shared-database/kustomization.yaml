@@ -13,6 +13,10 @@ resources:
 # wave 1
 - pvc.yaml
 - secret.yaml
+- secret-minio.yaml
 - deployment.yaml
 - service.yaml
+- sql-script-configmap.yaml
 # wave 2
+- db-init-job.yaml
+- populate-images.yaml

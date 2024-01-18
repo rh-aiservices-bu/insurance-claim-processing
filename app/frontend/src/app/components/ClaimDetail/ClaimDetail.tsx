@@ -96,7 +96,7 @@ const ClaimDetail: React.FunctionComponent<ClaimDetailProps> = () => {
                                             <Text component={TextVariants.h3}>Body:</Text>
                                             <div className='display-linebreak'>{claim.body}</div>
                                             <Text component={TextVariants.h3}>Attached images:</Text>
-                                            {claim && claim.original_images && <ImageCarousel images={claim.original_images} />}
+                                            {claim && claim.original_images && <Grid><GridItem span={4}><ImageCarousel images={claim.original_images}/></GridItem></Grid>}
                                         </TextContent>
                                     </AccordionContent>
                                 </AccordionItem>

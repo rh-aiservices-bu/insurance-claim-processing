@@ -67,4 +67,56 @@ From the main folder, launch `npm run dev`. This will launch both backend and fr
 - Frontend is accessible at `http://localhost:9000`
 - Backend is accessible at `http://localhost:5000`, with Swagger API doc at `http://localhost:5000/docs`
 
+```bash
+#!/bin/bash
+
+# Script to restart all showroom pods - You must be logged in as a cluster admin to run this script
+
+# Get all namespaces
+namespaces=$(oc get namespaces -o jsonpath='{.items[*].metadata.name}' \
+    | tr ' ' '\n' \
+    | grep '^showroom')
+
+# Stop all the pods
+for namespace in $namespaces; do
+    # Check if the deployment "showroom" exists in the namespace
+    if oc -n $namespace get deployment showroom &> /dev/null; then
+        # If it exists, restart the rollout
+        # oc -n $namespace rollout restart deployment/showroom
+        oc -n $namespace scale deploy showroom --replicas=0
+    fi
+done
+
+
+# wait for them all to fully stop
+# start all the pods
+for namespace in $namespaces; do
+    # Check if the deployment "showroom" exists in the namespace
+    if oc -n $namespace get deployment showroom &> /dev/null; then
+        # If it exists, restart the rollout
+        # oc -n $namespace rollout restart deployment/showroom
+        oc -n $namespace scale deploy showroom --replicas=1
+    fi
+done
+
+
+```
+
+## How to graduate code from dev to main
+
+- From `dev`, create a new branch, like `feature/prepare-for-main-merge`.
+- Modify the following files to make their relevant content point to `main`:
+  - `bootstrap/applicationset/applicationset-bootstrap.yaml`
+  - `content/antora.yml`
+  - `content/modules/ROOT/pages/05-03-web-app-deploy-application.adoc`
+- Make a pull request from this branch to `main`, review and merge
+
+</details>
+
+<details>
+  <summary>Links for RH1 event environment assignment</summary>
+
+- URL for all labs: [https://one.demo.redhat.com/](https://one.demo.redhat.com/)
+- Search for `insurance`
+
 </details>

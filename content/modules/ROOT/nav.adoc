@@ -7,15 +7,16 @@
 
 * 2. Connection and Setup ({user})
 ** xref:02-01-getting-connected.adoc[2.1 Getting connected]
-** xref:02-02-creating-project.adoc[2.2 Creating your project]
-** xref:02-03-validating-env.adoc[2.3 Validating the environment]
+** xref:02-02-creating-project.adoc[2.2 Creating your project and pipeline server]
+** xref:02-03-creating-workbench.adoc[2.3 Creating your workbench]
+** xref:02-04-validating-env.adoc[2.4 Validating the environment]
 
 * 3. Working with an LLM
 ** xref:03-01-notebook-based-llm.adoc[3.1 Notebook-Based LLM Example]
 ** xref:03-02-summarization.adoc[3.2 Text Summarization]
-** xref:03-03-information-extractions.adoc[3.4 Information Extraction]
+** xref:03-03-information-extractions.adoc[3.3 Information Extraction]
 ** xref:03-04-comparing-models.adoc[3.4 Comparing Models Accuracy]
-** xref:03-05-prompt-engineering.adoc[3.5 Prompt Engineering Exercise]
+** xref:03-05-prompt-engineering.adoc[3.5 Prompt Engineering Exercise (Optional)]
 ** xref:03-06-sanity-check.adoc[3.6 Sanity-check pipeline]
 
 * 4. Image Processing
@@ -23,14 +24,14 @@
 ** xref:04-02-car-recog.adoc[4.2 Car recognition]
 ** xref:04-03-model-retraining.adoc[4.3 Model retraining]
 ** xref:04-04-accident-recog.adoc[4.4 Accident/Damage recognition]
-** xref:04-05-serving-manual.adoc[4.5 Model Serving (Manual)]
-** xref:04-06-serving-automated.adoc[4.6 Model Serving (Automated)]
+** xref:04-05-model-serving.adoc[4.5 Model Serving]
 
 * 5. Web App Deployment
-** xref:05-01-web-app-deploy-manual.adoc[5.1 Deploying your Web App manually]
-** xref:05-02-web-app-deploy-gitops.adoc[5.2 Deploying your Web App via GitOps]
-** xref:05-03-web-app-update.adoc[5.3 Updating your Web App via GitOps]
-** xref:05-04-web-app-validating.adoc[5.4 Validating Claims processing]
+** xref:05-01-application.adoc[5.1 Application overview]
+** xref:05-02-openshift-terminal.adoc[5.2 OpenShift Terminal]
+** xref:05-03-web-app-deploy-application.adoc[5.3 Deploying the application via GitOps]
+** xref:05-04-web-app-validating.adoc[5.4 Validating the application]
+** xref:05-05-process-claims.adoc[5.5 Process claims with a pipeline]
 
 * 6. Productization and Extrapolations
 ** xref:06-01-potential-imp-ref.adoc[6.1 Potential improvements and refinements]

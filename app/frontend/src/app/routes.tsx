@@ -35,16 +35,16 @@ const routes: AppRouteConfig[] = [
     path: '/',
     title: 'Original App',
   },
-  {
+/*   {
     component: NewApp,
     exact: true,
     path: '/newapp',
     title: 'NewApp',
-  },
+  }, */
   {
     component: ClaimsList,
     exact: true,
-    label: 'Claims List (New App)',
+    label: 'New App',
     path: '/ClaimsList',
     title: 'Claims List',
   },

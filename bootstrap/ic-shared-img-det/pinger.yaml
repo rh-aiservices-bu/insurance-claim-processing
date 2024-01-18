@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: pinger
-        image: quay.io/rlundber/sds-small:1.8
+        image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-small-datascience:1.0
         command:
         - python
         - -u
