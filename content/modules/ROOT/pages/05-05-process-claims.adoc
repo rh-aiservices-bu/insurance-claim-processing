@@ -2,7 +2,7 @@
 include::_attributes.adoc[]
 
 == What will the pipeline do?
-Now that we have the web app deployed, we can see that some claims are unprocessed yet. Of course, we want to way to do this processing, and it's even better if it can be fully automated!
+Now that we have the web app deployed, we can see that some claims are unprocessed yet. Of course, we want to execute this processing, and it's even better if it can be fully automated!
 
 For that, we will use a pipeline that can either be run ad-hoc or scheduled just like, the sanity check pipeline.
 

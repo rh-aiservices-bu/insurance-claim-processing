@@ -105,6 +105,11 @@ spec:
     syncOptions: [CreateNamespace=false]
 EOF
 
+- Wait for the application to be fully deployed and initialized. It will be the case when the two Jobs `db-init-job` and `populate-images` are completed (Completions: 1 of 1).
+
+[.bordershadow]
+image::05/jobs-completed.png[]
+
 - Once the application is deployed, you can check its Route with the following command:
 +
 [.lines_space]

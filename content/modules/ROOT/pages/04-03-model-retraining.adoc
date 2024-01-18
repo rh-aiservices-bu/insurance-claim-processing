@@ -24,28 +24,33 @@ We have provided the following training data set, available as a zip file, and l
 == Interpreting the Model re-Training Results
 [%collapsible]
 ====
+The following training run shows the results for the full dataset.
+
 Let's start by understanding what an 'epoch' is. Machine learning models are trained with specific datasets passed through the algorithm. Each time a dataset passes through an algorithm, it is said to have completed an epoch. Therefore, epoch, in machine learning, refers to the one entire passing of training data through the algorithm
 
-In the training run below you would see 'n' number of epochs based on the number of epoch training runs you set in the following code snippet:
-results = model.train(data='data.yaml', epochs=1, imgsz=640)
+In the training run below you can see a training run of 7 epochs with a batch size of 32 (meaning 32 images were analyzed simultaneously), that were set through the following code snippet:
+results = model.train(data='./datasets/accident-full/data.yaml', epochs=7, imgsz=640, batch=32)
 
-In your training run, each epoch will show a summary for both the training and validation phases: lines 1 and 2 show results of the training phase and lines 3 and 4 show the results of the validation phase for each epoch.
+In the training run, each epoch shows a summary for both the training and validation phases: lines 1 and 2 show results of the training phase and lines 3 and 4 show the results of the validation phase for each epoch.
 
 image::04/model-retraining-summary.png[retraining summary]
 
-The training phase includes a calculation of the amount of error in a loss function, so the most valuable metrics here are box_loss and cls_loss.
+The training phase includes a calculation of the amount of error in a loss function, so the most valuable metrics here are box_loss and cls_loss:
 
-box_loss shows the amount of error in detected bounding boxes.
-cls_loss shows the amount of error in detected object classes.
+* box_loss shows the amount of errors in detected bounding boxes.
+* cls_loss shows the amount of errors in detected object classes.
 
-If the model really learns something from the data, then you should see that these values decrease from epoch to epoch.
-In a previous screenshot the box_loss decreased: 1.271, 1.113, 0.8679 and the cls_loss decreased too: 1.893, 1.404, 0.9703.
+If the model really learns something from the data, we should see that these values decrease from epoch to epoch. +
+In the previous screenshot the box_loss decreased from 1.219 on the first epoch to 0.8386 in the last, and the cls_loss decreased from 1.875 to 0.9001.
 
-The most valuable quality metric is mAP50-95, which is Mean Average Precision. If the model learns and improves, the precision should grow from epoch to epoch.  In a previous screenshot mAP50-95 increased: 0.314 (epoch1), 0.663 (epoch4), 0.882 (epoch7)
+The other valuable quality metric is mAP50-95, which is Mean Average Precision. If the model learns and improves, the precision should grow from epoch to epoch. +
+In the previous screenshot mAP50-95 increased from 0.423 (epoch1) to 0.755 (epoch7).
+
+We can also see that throughout the training, the GPU was used, with a memory consumption of a little bit more than 13GB.
 
 If after the last epoch you did not get acceptable precision, you can increase the number of epochs and run the training again. Also, you can tune other parameters like batch, lr0, lrf or change the optimizer you're using.
 
 During training we export the trained model, after each epoch, to the /runs/detect/train/weights/last.pt file and the model with the highest precision to the /runs/detect/train/weights/best.pt file. So, after training is finished, you can get the best.pt file to use in production.
 
-Note:  In real world problems, you need to run much more epochs (then we have shown here) and be prepared to wait hours or days (like we did!) until training finishes.
+Note:  In real world problems, you need to run many more epochs than we have shown here, and be prepared to wait hours or days until training finishes, and not a mere 16mn as we did in this example.
 ====
