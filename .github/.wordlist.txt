@@ -128,6 +128,7 @@ md
 minio
 Minio
 mistralai
+mn
 mockups
 modelmesh
 ModelMesh
@@ -157,6 +158,7 @@ Patternfly
 PatternFly
 PersistantStorageClaims
 PersistentVolumeClaim
+PersistentVolumeClaims
 pipelineserver
 Pipfile
 pn
