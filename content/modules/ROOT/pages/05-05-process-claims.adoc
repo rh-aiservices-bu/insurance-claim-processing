@@ -11,16 +11,20 @@ This pipeline is also a good starting point for creating an ArgoCD or Tekton pip
 == What's inside the pipeline?
 
 If you navigate to `insurance-claim-processing/lab-materials/05/05-05` you can see a variety of files. +
-Just like before, we have both an Elyra version and a yaml version of the pipeline. This time, we will use the yaml definition of the pipeline, which has been slightly customized to be able to run independently of Elyra. +
+
+This time, we will use the **yaml definition** of a **pipeline**, `process_claims.yaml`, to process the claims. +
+
 Here are the main files of the pipeline and what they do:
 
 * *get_claims* - Will connect to the database, fetch any unprocessed claims, and add them to a list that will be passed to the other tasks through a file: `claims.json`.
-* The following will go through all the claims that need to be processed, and use the full body of the text to try and find some important feature, then push the results to the database:
+* The following scripts will go through all the claims that need to be processed, and use the full body of the text to try and find some important feature, then push the results to the database:
 ** *get_location* - Finds the location of the accident.
 ** *get_accident_time* - Finds the time of the accident.
 ** *summarize_text* - Makes a short summary of the text.
 ** *get_sentiment* - Gets the sentiment of the text.
 * *detect_objects* - Downloads the images of the claim and uses the served object-detection model to classify the damages in the image.
+
+NOTE: In the folder, we still have for reference an Elyra version of the pipeline (`process_claims.pipeline`), but you cannot really use it from VSCode, which is the environment you should still be in.
 
 == Create a new PVC
 
