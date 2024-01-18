@@ -102,13 +102,21 @@ done
 
 ```
 
+## How to graduate code from dev to main
+
+- From `dev`, create a new branch, like `feature/prepare-for-main-merge`.
+- Modify the following files to make their relevant content point to `main`:
+  - `bootstrap/applicationset/applicationset-bootstrap.yaml`
+  - `content/antora.yml`
+  - `content/modules/ROOT/pages/05-03-web-app-deploy-application.adoc`
+- Make a pull request from this branch to `main`, review and merge
 
 </details>
 
-
-
 <details>
   <summary>Links for RH1 event environment assignment</summary>
-* URL for all labs: https://one.demo.redhat.com/[https://one.demo.redhat.com/,window=_blank]
-* Search for `insurance`
+
+- URL for all labs: [https://one.demo.redhat.com/](https://one.demo.redhat.com/)
+- Search for `insurance`
+
 </details>
