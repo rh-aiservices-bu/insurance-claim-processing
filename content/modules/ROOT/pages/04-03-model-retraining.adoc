@@ -52,5 +52,5 @@ If after the last epoch you did not get acceptable precision, you can increase t
 
 During training we export the trained model, after each epoch, to the /runs/detect/train/weights/last.pt file and the model with the highest precision to the /runs/detect/train/weights/best.pt file. So, after training is finished, you can get the best.pt file to use in production.
 
-Note:  In real world problems, you need to run many more epochs than we have shown here, and be prepared to wait hours or days until training finishes, and not a mere 16mn as we did in this example.
+Note:  In real world problems, you need to run many more epochs than we have shown here, and be prepared to wait hours or days until training finishes, and not a mere 16 minutes as we did in this example.
 ====
