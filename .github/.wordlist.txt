@@ -4,6 +4,7 @@ amazonaws
 Anbalagan
 ansible
 Ansible
+antora
 apiVersion
 applicationset
 ApplicationSet
@@ -241,6 +242,7 @@ Webpack
 www
 yaml
 YAML
+yml
 yolo
 YOLO
 yolov
