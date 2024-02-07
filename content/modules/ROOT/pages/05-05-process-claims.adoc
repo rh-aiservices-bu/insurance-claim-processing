@@ -2,7 +2,12 @@
 include::_attributes.adoc[]
 
 == What will the pipeline do?
-Now that we have the web app deployed, we can see that some claims are unprocessed yet. Of course, we want to execute this processing, and it's even better if it can be fully automated!
+Now that we have the web app deployed, we can see that some claims are still unprocessed. 
+
+[.bordershadow]
+image::05/05-new-app-claim-unprocessed.jpg[]
+
+Of course, we want to execute this processing, and it's even better if it can be fully automated!
 
 For that, we will use a pipeline that can either be run ad-hoc or scheduled just like, the sanity check pipeline.
 
@@ -11,6 +16,10 @@ This pipeline is also a good starting point for creating an ArgoCD or Tekton pip
 == What's inside the pipeline?
 
 If you navigate to `insurance-claim-processing/lab-materials/05/05-05` you can see a variety of files. +
+
+[.bordershadow]
+image::05/05-process-claims-yaml.jpg[]
+
 
 This time, we will use the **yaml definition** of a **pipeline**, `process_claims.yaml`, to process the claims. +
 
@@ -29,7 +38,12 @@ NOTE: In the folder, we still have for reference an Elyra version of the pipelin
 == Create a new PVC
 
 Before we can run the pipeline, we need to create a PVC that will be used to store intermediary files and results in. +
-Go to the OpenShift Console and navigate to Storage -> PersistentVolumeClaims.
+Go to the OpenShift Console.  Make sure and change your view from 'Developer' to 'Administrator.
+
+[.bordershadow]
+image::05/05-switch-to-admin-view.jpg[]
+
+Under the Administrator view, Navigate to Storage -> PersistentVolumeClaims.
 
 [.bordershadow]
 image::05/05-PVC.png[go to PVC]
@@ -37,7 +51,7 @@ image::05/05-PVC.png[go to PVC]
 Make sure you are in the right project (your username) and then press `Create PersistentVolumeClaim`.
 
 [.bordershadow]
-image::05/05-create-pvc.png[Create PVC]
+image::05/05-create-pvc-button.jpg[Create PVC]
 
 * Use these settings:
 ** StorageClass:
@@ -71,24 +85,26 @@ image::05/05-PVC-settings.png[PVC settings]
 Then press `Create`.
 
 == Run the pipeline
-To run the pipeline, start by downloading the `process_claims.yaml` file locally. +
-Then go to your Data Science project and press Import Pipeline.
+To run the pipeline, start by downloading the `process_claims.yaml` file locally to your pc. +
+
+Then go to the 'Red Hat OpenShift Data Science' dashboard.  Select your Data Science project, scroll down until you see the 'Data Connections' service, and press Import Pipeline.
 
 [.bordershadow]
-image::05/05-import-pipeline-button.png[import pipeline]
+image::05/05-import-pipeline.jpg[import pipeline]
 
 Now upload process_claims.yaml file, either by drag-and-dropping or using the Upload button. Then make sure to give your pipeline a good name like `Process Claims Pipeline`. +
+
 It should look something like this afterwards:
 
 [.bordershadow]
-image::05/05-imported-pipeline.png[imported pipeline]
+image::05/05-import-pipeline-highlighted.jpg[imported pipeline]
 
 Press `Import Pipeline` and you should see it pop up under your pipelines.
 
 Now go into the settings at the right side and press Create Run to create a new run of the pipeline you just added.
 
 [.bordershadow]
-image::05/05-create-run.png[create run]
+image::05/05-create-run.jpg[create run]
 
 * Use these settings:
 ** Name:
@@ -126,7 +142,16 @@ Note that by changing claim_id you can change which claim to process. If you set
 
 Press `Create` and watch it go.
 
+[.bordershadow]
+image::05/05-process-claims.jpg[process]
+
 == Check the results
-After the pipeline has finished running, you can go to the app and take a look at the claims. +
-Instead of just a long body, you will now see a summary, a location field, an accident time field, and a sentiment field. +
-You can also see that we have new image(s) which have bounding boxes where the damage is.
+After the pipeline has finished running, you can go to the app and take a look at the claims.  You will see that claim 3 is now processed.
+
+[.bordershadow]
+image::05/05-process-claim3-app.jpg[claim3processed]
+
+Click on claim3.  Instead of just a long body, you will now see a summary, a location field, an accident time field, and a sentiment field. You can also see that we have new image(s) which have bounding boxes where the damage is.
+
+[.bordershadow]
+image::05/05-processed-claim.jpg[claim3processe]
