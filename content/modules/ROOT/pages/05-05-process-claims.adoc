@@ -169,4 +169,4 @@ image::05/05-process-claim3-app.jpg[claim3processed]
 * You can also see that we have new image(s) which have bounding boxes where the damage is
 +
 [.bordershadow]
-image::05/05-processed-claim.jpg[claim3processe]
+image::05/05-processed-claim.jpg[claim3processed]
