@@ -25,13 +25,13 @@ This time, we will use the **yaml definition** of a **pipeline**, `process_claim
 
 Here are the main files of the pipeline and what they do:
 
-* *get_claims* - Will connect to the database, fetch any unprocessed claims, and add them to a list that will be passed to the other tasks through a file: `claims.json`.
+* *get_claims* - Will connect to the database, fetch any unprocessed claims, and add them to a list that will be passed to the other tasks through a file: `claims.json`
 * The following scripts will go through all the claims that need to be processed, and use the full body of the text to try and find some important feature, then push the results to the database:
-** *get_location* - Finds the location of the accident.
-** *get_accident_time* - Finds the time of the accident.
-** *summarize_text* - Makes a short summary of the text.
-** *get_sentiment* - Gets the sentiment of the text.
-* *detect_objects* - Downloads the images of the claim and uses the served object-detection model to classify the damages in the image.
+** *get_location* - Finds the location of the accident
+** *get_accident_time* - Finds the time of the accident
+** *summarize_text* - Makes a short summary of the text
+** *get_sentiment* - Gets the sentiment of the text
+* *detect_objects* - Downloads the images of the claim and uses the served object-detection model to classify the damages in the image
 
 NOTE: In the folder, we still have for reference an Elyra version of the pipeline (`process_claims.pipeline`), but you cannot really use it from VSCode, which is the environment you should still be in.
 
@@ -39,18 +39,18 @@ NOTE: In the folder, we still have for reference an Elyra version of the pipelin
 
 Before we can run the pipeline, we need to create a PVC that will be used to store intermediary files and results in. +
 
-* Go to the OpenShift Console.
+* Go to the OpenShift Console
 * Make sure and change your view from **Developer** to **Administrator**
 +
 [.bordershadow]
 image::05/05-switch-to-admin-view.jpg[]
 
-* Under the Administrator view, navigate to **Storage** -> **PersistentVolumeClaims**.
+* Under the Administrator view, navigate to **Storage** -> **PersistentVolumeClaims**
 +
 [.bordershadow]
 image::05/05-PVC.png[go to PVC]
 
-* Make sure you are in the right project (your username) and then press **Create PersistentVolumeClaim**.
+* Make sure you are in the right project (your username) and then press **Create PersistentVolumeClaim**
 +
 [.bordershadow]
 image::05/05-create-pvc-button.jpg[Create PVC]
@@ -90,8 +90,8 @@ image::05/05-PVC-settings.png[PVC settings]
 
 == Run the pipeline
 
-* Start by downloading the `process_claims.yaml` file locally to your laptop.
-** In your VSCode Workbench, right click on the file, and select **Download**.
+* Start by downloading the `process_claims.yaml` file locally to your laptop
+** In your VSCode Workbench, right click on the file, and select **Download**
 ** Save the file somewhere on your laptop
 * Then go to the Red Hat OpenShift Data Science dashboard
 * Select your Data Science project
@@ -101,17 +101,17 @@ image::05/05-PVC-settings.png[PVC settings]
 [.bordershadow]
 image::05/05-import-pipeline.jpg[import pipeline]
 
-* Now upload the `process_claims.yaml` file, either by drag-and-dropping or using the Upload button.
-* Then make sure to give your pipeline a good name like `Process Claims Pipeline`.
+* Now upload the `process_claims.yaml` file, either by drag-and-dropping or using the Upload button
+* Then make sure to give your pipeline a good name like `Process Claims Pipeline`
 * It should look something like this afterwards:
 +
 [.bordershadow]
 image::05/05-import-pipeline-highlighted.jpg[imported pipeline]
 
-* Click  **Import Pipeline** and you should see it pop up under your pipelines.
+* Click  **Import Pipeline** and you should see it pop up under your pipelines
 
 * Now go into the settings at the right side
-* Click **Create Run** to create a new run of the pipeline you just added.
+* Click **Create Run** to create a new run of the pipeline you just added
 +
 [.bordershadow]
 image::05/05-create-run.jpg[create run]
@@ -149,24 +149,24 @@ This is the same route to the object detection endpoint that was used earlier in
 [.bordershadow]
 image::05/05-run-settings-create-pipeline.png[run settings]
 
-* Note that by changing claim_id you can change which claim to process. If you set it to 0 it will process all unprocessed claims.
+* Note that by changing claim_id you can change which claim to process. If you set it to 0 it will process all unprocessed claims
 
-* Click **Create** and watch it run.
+* Click **Create** and watch it run
 +
 [.bordershadow]
 image::05/05-process-claims.jpg[process]
 
 == Check the results
 
-* After the pipeline has finished running, you can go to the app and take a look at the claims.
-* You will see that claim 3 is now processed.
+* After the pipeline has finished running, you can go to the app and take a look at the claims
+* You will see that claim 3 is now processed
 +
 [.bordershadow]
 image::05/05-process-claim3-app.jpg[claim3processed]
 
-* Click on claim3.
-* Instead of just a long body, you will now see a summary, a location field, an accident time field, and a sentiment field.
-* You can also see that we have new image(s) which have bounding boxes where the damage is.
+* Click on claim3
+* Instead of just a long body, you will now see a summary, a location field, an accident time field, and a sentiment field
+* You can also see that we have new image(s) which have bounding boxes where the damage is
 +
 [.bordershadow]
 image::05/05-processed-claim.jpg[claim3processe]
