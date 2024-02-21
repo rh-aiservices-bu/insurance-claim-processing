@@ -9,11 +9,4 @@ The instructions of this lab are always available at https://rh-aiservices-bu.gi
 
 == Acknowledgements
 
-Here is a list of people who have participated, directly or indirectly, to the creation and delivery of this lab.
-
-* Guillaume Moutier
-* Robert Lundberg
-* Audrey Guidera
-* Chris Chase
-* Prasanth Anbalagan
-* Erwan Granger
+Thanks to everyone who helped create this lab, https://github.com/rh-aiservices-bu/insurance-claim-processing/graphs/contributors[contributors,window=_blank] and reviewers!
