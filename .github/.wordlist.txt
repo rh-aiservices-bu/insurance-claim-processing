@@ -107,6 +107,7 @@ Inlining
 insecureEdgeTerminationPolicy
 io
 ipynb
+jpg
 js
 json
 jsonpath

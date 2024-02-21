@@ -119,4 +119,8 @@ image::05/jobs-completed.png[]
 [source, text]
 echo "   Application URL : https://$(oc get route ic-app -ojsonpath='{.status.ingress[0].host}')/ "
 
-Open the URL in your browser to access the application and head to the next step.
++
+[.bordershadow]
+image::05/05-open-url.jpg[]
+
+Open the the URL in your browser to access the application and head to the next step.
