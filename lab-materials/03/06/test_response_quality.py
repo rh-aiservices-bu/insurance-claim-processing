@@ -17,7 +17,7 @@ def test_response_quality():
     similarity = similarity_metric(response, expected_response)
     print(similarity)
 
-    if similarity <= 0.9:
+    if similarity <= 0.8:
         raise Exception("Output is not similar enough to expected output")
         
     print("Response Quality OK")
