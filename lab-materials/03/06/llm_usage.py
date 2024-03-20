@@ -1,30 +1,28 @@
 import os
 
-from langchain.llms import HuggingFaceTextGenInference
+from langchain.llms import VLLMOpenAI
 from langchain.chains.combine_documents.stuff import StuffDocumentsChain
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from langchain.evaluation import load_evaluator
 from langchain.embeddings import HuggingFaceEmbeddings
 
-INFERENCE_SERVER_URL = "http://llm.ic-shared-llm.svc.cluster.local:3000"
+INFERENCE_SERVER_URL = "http://vllm.llm-hosting.svc.cluster.local:8000"
 MAX_NEW_TOKENS = 512
-TOP_K = 10
 TOP_P = 0.95
-TYPICAL_P = 0.95
 TEMPERATURE = 0.01
-REPETITION_PENALTY = 1.03
+PRESENCE_PENALTY = 1.03
 
 def infer_with_template(input_text, template):
-    llm = HuggingFaceTextGenInference(
-        inference_server_url=INFERENCE_SERVER_URL,
-        max_new_tokens=MAX_NEW_TOKENS,
-        top_k=TOP_K,
+    llm = VLLMOpenAI(
+        openai_api_key="EMPTY",
+        openai_api_base= f"{INFERENCE_SERVER_URL}/v1",
+        model_name="mistralai/Mistral-7B-Instruct-v0.2",
+        max_tokens=MAX_NEW_TOKENS,
         top_p=TOP_P,
-        typical_p=TYPICAL_P,
         temperature=TEMPERATURE,
-        repetition_penalty=REPETITION_PENALTY,
-        streaming=True,
+        presence_penalty=PRESENCE_PENALTY,
+        streaming=False,
         verbose=False,
     )
     
