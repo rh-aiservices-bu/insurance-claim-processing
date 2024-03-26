@@ -2,13 +2,13 @@
 include::_attributes.adoc[]
 
 . At this point, we need to deploy the model into RHOAI model serving.
-. We will create another data connection...
-.. with almost identical information
-.. but we will change the bucket name from `userX` to `models`
+. We will create another Data Connection...
+.. With almost identical information
+.. But we will change the bucket name from `userX` to `models`
 
 == Create a Data Connection
 
-* In your Data Science project, create a data connection that refers to the shared minio.
+* In your Data Science project, create a Data Connection that refers to the shared MinIO.
 * Here is the info you need to enter:
 ** Name:
 [.lines_space]
@@ -54,9 +54,9 @@ image::04/model-data-connection.png[model connection]
 
 == Create a Model Server
 
-In your project create a model server.
+In your project create a model server:
 
-* Click **Add model server**
+* In the Single-model serving Platform type, click **Deploy model**:
 +
 [.bordershadow]
 image::04/add-model-server.png[]
