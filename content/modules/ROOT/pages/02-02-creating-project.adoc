@@ -99,12 +99,12 @@ image::02/data-connection.png[]
 
 It is highly recommended to create your pipeline server before creating a workbench. So let's do that now!
 
-* In your Data Science Project (DSP), click on **Create a pipeline Server**
+* In your Data Science Project (DSP), click on **Configure pipeline Server**
 +
 [.bordershadow]
 image::02/02-02-pipelineserver01.png[]
 
-* Select the Data Connection created earlier (**Shared Minio - pipelines**) and click the **Configure** button:
+* Select the Key Drop-Down with the option of *"Populate the form with credentials from your selected data connection"* using the Data Connection created earlier (**Shared Minio - pipelines**) and click the **Configure pipeline server** button:
 +
 [.bordershadow]
 image::02/02-02-pipelineserver02.png[]
@@ -117,4 +117,3 @@ image::02/02-02-pipelineserver03.png[]
 At this point, your pipeline server is ready and deployed.
 
 IMPORTANT: You need to **wait** until that screen is ready. If it's still spinning, wait for it to complete. If you continue and create your workbench **before** the pipeline server is ready, your workbench will not be able to submit pipelines to it.
-
