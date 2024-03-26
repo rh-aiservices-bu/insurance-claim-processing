@@ -56,7 +56,7 @@ image::04/model-data-connection.png[model connection]
 
 In your project create a model server:
 
-* In the Single-model serving Platform type, click **Deploy model**:
+* In the "Multi-model serving platform" type of model, click **Add model server**:
 +
 [.bordershadow]
 image::04/add-model-server.png[]
@@ -118,7 +118,7 @@ image::04/add-model-server-config.png[]
 
 In your project, under **Models and model servers** select **Deploy model**.
 
-* Click **Deploy model**
+* Click **Deploy model**:
 +
 [.bordershadow]
 image::04/select-deploy-model.png[]
