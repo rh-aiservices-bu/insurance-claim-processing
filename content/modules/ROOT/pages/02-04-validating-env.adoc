@@ -37,7 +37,7 @@ If the output of this notebook looks suspicious, please inform the people leadin
 
 == Overall view
 
-This is a summarized visualization of how the environment is laid out.
+This is a summarized visualization of how the environment is laid out:
 
 [.bordershadow]
 image::02/ic-eng-diag.drawio.svg[]

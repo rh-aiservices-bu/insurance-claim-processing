@@ -20,17 +20,17 @@ So let's take some examples, and discuss what we **could** do using the same tec
 == Use cases
 
 1. Healthcare
-   - medical imaging analysis
-   - patient record summarization
+   - Medical imaging analysis
+   - Patient record summarization
 
 2. Automotive
    - Object recognition for autonomous vehicles
 
 3. Agriculture
-   - crop disease analysis
+   - Crop disease analysis
 
 4. Finance
-   - loan application paperwork analysis
+   - Loan application paperwork analysis
 
 5. Manufacturing
    - Quality control through visual inspection of products
