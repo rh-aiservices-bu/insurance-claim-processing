@@ -1,21 +1,21 @@
 = Creating your project and pipeline server
 include::_attributes.adoc[]
 
-As a preliminary step, each of you is going to
+As a preliminary step, each of you is going to:
 
-. Create a Data Science project
+. Create a Data Science project:
 ** this will help keep your things together
 
-. Create a Data Connection
+. Create a Data Connection:
 ** we need that for the pipeline server to store its artifacts
 
-. Deploy a Data Science Pipeline Server
+. Deploy a Data Science Pipeline Server:
 ** we will need one, and it's better to create it from the start
 
-. Launch a Workbench
+. Launch a Workbench:
 ** we will use it to review content and notebooks
 
-. Clone the git repo into your Workbench
+. Clone the git repo into your Workbench:
 ** this contains all the code from the prototype
 
 The instructions below will guide you through these steps. Follow them carefully.
