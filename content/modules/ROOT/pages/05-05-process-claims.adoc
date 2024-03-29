@@ -71,7 +71,12 @@ image::05/05-PVC-settings.png[PVC settings]
 Then press `Create`.
 
 == Run the pipeline
-To run the pipeline, start by downloading the `process_claims.yaml` file locally. +
+To run the pipeline, start by downloading the `process_claims.yaml` file locally. To do this, select the menu in the top left of the VSCode environment and navigate to *File -> Save As...*.
+
+[.bordershadow]
+image::05/05-download-process-yaml.png[download process claims yaml]
+
+
 Then go to your Data Science project and press Import Pipeline.
 
 [.bordershadow]
