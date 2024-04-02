@@ -11,8 +11,9 @@ resources:
 - fix-odf-config.yaml
 # wave 1
 - pvc.yaml
+- pvc-ollama.yaml
 - deployment.yaml
 - service.yaml
-- deployment-flant5.yaml
-- service-flant5.yaml
+- deployment-ollama.yaml
+- service-ollama.yaml
 # wave 2
