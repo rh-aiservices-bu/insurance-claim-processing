@@ -32,6 +32,8 @@ asciidoc:
     ocp-short: "OpenShift"
     argocd: "ArgoCD"
     ocp-gitops: "OpenShift GitOps"
+    ic-lab: "Lab"
+    ic: "Insurance Claim Processing Lab"
 
   extensions:
     - ./content/lib/tab-block.js

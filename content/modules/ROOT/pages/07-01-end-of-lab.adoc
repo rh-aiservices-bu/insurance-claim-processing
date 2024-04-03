@@ -5,8 +5,8 @@ We hope that the materials we used during this time together were useful and gav
 
 If you notice https://github.com/rh-aiservices-bu/insurance-claim-processing/issues[issues,window=_blank] with the content and/or want to send us a https://github.com/rh-aiservices-bu/insurance-claim-processing/pulls[pull request,window=_blank], we'll appreciate it very much.
 
-The instructions of this lab are always available at https://rh-aiservices-bu.github.io/insurance-claim-processing/[https://rh-aiservices-bu.github.io/insurance-claim-processing/,window=_blank]. Make note of this URL as it will be updated with new content as we continue to improve the lab.
+The instructions of this {ic} are always available at https://rh-aiservices-bu.github.io/insurance-claim-processing/[https://rh-aiservices-bu.github.io/insurance-claim-processing/,window=_blank]. Make note of this URL as it will be updated with new content as we continue to improve the {ic-lab}.
 
 == Acknowledgements
 
-Thanks to everyone who helped create this lab, https://github.com/rh-aiservices-bu/insurance-claim-processing/graphs/contributors[contributors,window=_blank] and reviewers!
+Thanks to everyone who helped create this {ic}, https://github.com/rh-aiservices-bu/insurance-claim-processing/graphs/contributors[contributors,window=_blank] and reviewers!

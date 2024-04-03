@@ -37,11 +37,11 @@ image::05/05-toggle-off-workbench.jpg[]
 [.bordershadow]
 image::05/stop-workbench.png[]
 
-- In the image section, change the image to `CUSTOM - VSCode for Insurance Claim Processsing Lab`:
+- In the image section, change the image to `CUSTOM - VSCode for {ic}`:
 +
 [.bordershadow]
 image::05/05-change-to-vscode.jpg[]
-- Note that this is a Custom-built image added in this particular lab to illustrate the flexibility of the {rhoai} platform. Not everyone wants to use Jupyter Notebooks for everything.
+- Note that this is a Custom-built image added in this particular {ic-lab} to illustrate the flexibility of the {rhoai} platform. Not everyone wants to use Jupyter Notebooks for everything.
 
 - Then click on `Update workbench` at the bottom of the page:
 +

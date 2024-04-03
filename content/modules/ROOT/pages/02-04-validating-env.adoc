@@ -33,7 +33,7 @@ Success: LLM Service is reachable on llm.ic-shared-llm.svc.cluster.local:3000
 Success: ModelMesh is reachable on modelmesh-serving.ic-shared-img-det.svc.cluster.local:8033
 ----
 
-If the output of this notebook looks suspicious, please inform the people leading the lab.
+If the output of this notebook looks suspicious, please inform the people leading the {ic}.
 
 == Overall view
 

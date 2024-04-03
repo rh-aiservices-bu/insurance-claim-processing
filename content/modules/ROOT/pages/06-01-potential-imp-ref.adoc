@@ -1,15 +1,15 @@
 = Potential Improvements and Refinements
 include::_attributes.adoc[]
 
-== To the lab materials
+== To the {ic} materials
 
-If you have any feedback regarding this Lab, please use https://github.com/rh-aiservices-bu/insurance-claim-processing/issues[Issues,window=_blank] and https://github.com/rh-aiservices-bu/insurance-claim-processing/pulls[Pull Requests,window=_blank].
+If you have any feedback regarding this {ic}, please use https://github.com/rh-aiservices-bu/insurance-claim-processing/issues[Issues,window=_blank] and https://github.com/rh-aiservices-bu/insurance-claim-processing/pulls[Pull Requests,window=_blank].
 
-But this section of the lab is not meant for Improvements and Refinements **to the lab**. Instead it is about...
+But this section of the {ic} is not meant for Improvements and Refinements **to the lab**. Instead it is about...
 
 == To the presented prototype
 
-What we have shown in this lab is a very rough prototype, put together very quickly, in order to demonstrate:
+What we have shown in this {ic} is a very rough prototype, put together very quickly, in order to demonstrate:
 
 * Which improvements could be done
 * How long it would take to do them

@@ -35,7 +35,7 @@ image::02/02-01-rhoai-front-page.png[]
 
 If you got this far and saw all that, congratulations, you properly connected to the {rhoai} Dashboard Application!
 
-We are now ready to start the lab.
+We are now ready to start the {ic}.
 
 == Getting Support during RH1 In-Person Labs
 
