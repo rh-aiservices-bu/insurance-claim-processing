@@ -12,17 +12,17 @@ image::05/application-architecture.drawio.svg[]
 The different components are:
 
 - The **frontend**: the application itself, developed using the Patternfly framework (React, Typescript), running in the browser of the user.
-- The **backend**: a Python FastAPI application, running in a container on OpenShift. It handles the communication with the database, the LLM, and the Object storage. It handles the communication with the frontend by exposing a REST API.
-- The **database**: a PostgreSQL database, running in a container on OpenShift. It stores the claims.
+- The **backend**: a Python FastAPI application, running in a container on {ocp}. It handles the communication with the database, the LLM, and the Object storage. It handles the communication with the frontend by exposing a REST API.
+- The **database**: a PostgreSQL database, running in a container on {ocp}. It stores the claims.
 - The **LLM**: the language model used to summarize and extract information from the claims. It is consumed by the backend through its API.
 - The **Object storage**: an S3-compatible object storage. It stores the claim images.
 
 == Application Code
 
-If you want to have a look at the code of the application, you can do it directly from OpenShift AI!
+If you want to have a look at the code of the application, you can do it directly from {rhoai}!
 
 - Close the different Jupyter tabs that may still be opened in your browser.
-- Go back to the OpenShift AI dashboard.
+- Go back to the {rhoai} Dashboard.
 - Stop your Workbench by using the toggle.
 
 +
@@ -41,7 +41,7 @@ image::05/stop-workbench.png[]
 +
 [.bordershadow]
 image::05/05-change-to-vscode.jpg[]
-- Note that this is a Custom-built image added in this particular lab to illustrate the flexibility of the OpenShift AI platform. Not everyone wants to use Jupyter Notebooks for everything.
+- Note that this is a Custom-built image added in this particular lab to illustrate the flexibility of the {rhoai} platform. Not everyone wants to use Jupyter Notebooks for everything.
 
 - Then click on `Update workbench` at the bottom of the page:
 +

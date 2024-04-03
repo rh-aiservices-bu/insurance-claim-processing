@@ -42,7 +42,7 @@ image::03/03-07-run-pipeline-ok.png[]
 We can also **schedule** an execution so that the sanity check is executed at regular intervals. +
 To do that:
 
-. Go back to the OpenShift AI Data Science Project
+. Go back to the {rhoai} Data Science Project
 . Find the pipeline you just ran
 . Click the 3 dots at the very end of the line, and click "Create run".
 +

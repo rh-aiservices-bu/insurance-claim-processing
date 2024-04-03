@@ -9,9 +9,9 @@ The information, code, models and techniques it contains are illustrations of wh
 
 == Disclaimer
 
-This lab is an example of what a customer could build using OpenShift AI. OpenShift AI has no specific feature related to Insurance Claim Processing.
+This lab is an example of what a customer could build using {rhoai}. {rhoai} has no specific feature related to Insurance Claim Processing.
 
-This lab makes use of large language models (LLM) and image processing models. These models are not included in the OpenShift AI product. They are provided as a convenience for this lab.
+This lab makes use of large language models (LLM) and image processing models. These models are not included in the {rhoai} product. They are provided as a convenience for this lab.
 
 The quality of these models is enough for a prototype. Choosing the right model to use in a production environment is a complex task that requires a lot of experimentation and tuning. This lab does not cover this aspect.
 

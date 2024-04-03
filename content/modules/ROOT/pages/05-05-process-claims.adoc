@@ -39,7 +39,7 @@ NOTE: In the folder, we still have for reference an Elyra version of the pipelin
 
 Before we can run the pipeline, we need to create a PVC that will be used to store intermediary files and results in. +
 
-* Go to the OpenShift Console
+* Go to the {ocp-short} Console
 * Make sure and change your view from **Developer** to **Administrator**
 +
 [.bordershadow]
@@ -93,7 +93,7 @@ image::05/05-PVC-settings.png[PVC settings]
 * Start by downloading the `process_claims.yaml` file locally to your laptop
 ** In your VSCode Workbench, right click on the file, and select **Download**
 ** Save the file somewhere on your laptop
-* Then go to the Red Hat OpenShift Data Science dashboard
+* Then go to the {rhoai} Dashboard
 * Select your Data Science project
 * Scroll down until you see the **Pipelines** section
 * Click **Import Pipeline**

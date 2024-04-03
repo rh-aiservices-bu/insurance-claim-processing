@@ -1,7 +1,7 @@
 = Model Serving
 include::_attributes.adoc[]
 
-. At this point, we need to deploy the model into RHOAI model serving.
+. At this point, we need to deploy the model into {rhoai-short} model serving.
 . We will create another Data Connection...
 .. With almost identical information
 .. But we will change the bucket name from `userX` to `models`
