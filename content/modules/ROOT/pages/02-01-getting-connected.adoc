@@ -14,7 +14,7 @@ If you are using the customized version of the instructions, the information bel
 
 In a new window or tab, open the following URL and log in:
 
-* The {rhoai} URL for our shared environment:
+* The {rhoai} Dashboard URL for our shared environment:
 ** https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/[https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/,window=_blank]
 * Enter your credentials (as detailed above)
 * The result should look like:
