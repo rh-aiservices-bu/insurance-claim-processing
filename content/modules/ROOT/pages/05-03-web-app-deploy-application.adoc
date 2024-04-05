@@ -1,12 +1,12 @@
 = Deploying the application via GitOps
 include::_attributes.adoc[]
 
-== Deploy your instance of ArgoCD
+== Deploy your instance of {argocd}
 
 We will start by deploying an instance of ArgoCD in your namespace. +
 This will be used to deploy the application.
 
-- Copy the following text, and paste it in the OpenShift Terminal to deploy ArgoCD.
+- Copy the following text, and paste it in the {ocp-short} Terminal to deploy {argocd}.
 +
 [.lines_space]
 [.console-input]
@@ -42,7 +42,7 @@ spec:
         termination: edge
 EOF
 
-- Still in the Terminal, run the following command to check the status of the ArgoCD deployment.
+- Still in the Terminal, run the following command to check the status of the {argocd} deployment.
 +
 [.lines_space]
 [.console-input]
@@ -54,17 +54,17 @@ oc rollout status deploy/argocd-server
 [.bordershadow]
 image::05/argocd-rollout.png[]
 
-**Optional**: If you know and understand ArgoCD and want to look at its interface, look at the following details. Otherwise, you can skip to the next step.
+**Optional**: If you know and understand {argocd} and want to look at its interface, look at the following details. Otherwise, you can skip to the next step.
 [%collapsible]
 ====
 Now that Argo is deployed, you can connect to its UI through its Route.
 
-- Let's find the Route of the ArgoCD instance by running the following command in the Terminal:
+- Let's find the Route of the {argocd} instance by running the following command in the Terminal:
 +
 [.lines_space]
 [.console-input]
 [source, text]
-echo "   ArgoCD UI : https://$(oc get route argocd-server -ojsonpath='{.status.ingress[0].host}')/ "
+echo "   {argocd} UI : https://$(oc get route argocd-server -ojsonpath='{.status.ingress[0].host}')/ "
 
 - You should obtain something like this:
 +
@@ -76,9 +76,9 @@ image::05/argocd-route.png[]
 
 == Deploy the application(s) via GitOps
 
-Now that ArgoCD is deployed in your namespace, we can use it to deploy the application via GitOps.
+Now that {argocd} is deployed in your namespace, we can use it to deploy the application via GitOps.
 
-- Copy the content of the following text, and paste it in the OpenShift Terminal to deploy the application.
+- Copy the content of the following text, and paste it in the {ocp-short} Terminal to deploy the application.
 +
 [.lines_space]
 [.console-input]

@@ -1,7 +1,7 @@
 = Setting the stage
 include::_attributes.adoc[]
 
-In order to make this lab seem more realistic, we will be describing this imaginary scenario.
+In order to make this {ic} seem more realistic, we will be describing this imaginary scenario.
 
 == Situation
 :slide:

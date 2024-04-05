@@ -1,7 +1,7 @@
 = Getting connected
 include::_attributes.adoc[]
 
-For the purposes of this training session, we have provisioned a single OpenShift cluster, with OpenShift AI deployed on it.
+For the purposes of this training session, we have provisioned a single {ocp} cluster, with {rhoai} deployed on it.
 
 Each person attending this lab will have a unique user account in which to do their work.
 
@@ -14,7 +14,7 @@ If you are using the customized version of the instructions, the information bel
 
 In a new window or tab, open the following URL and log in:
 
-* The Red Hat OpenShift AI Dashboard URL for our shared environment:
+* The {rhoai} Dashboard URL for our shared environment:
 ** https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/[https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/,window=_blank]
 * Enter your credentials (as detailed above)
 * The result should look like:
@@ -33,9 +33,9 @@ image::02/02-01-login-scary.png[]
 [.bordershadow]
 image::02/02-01-rhoai-front-page.png[]
 
-If you got this far and saw all that, congratulations, you properly connected to the OpenShift AI Dashboard Application!
+If you got this far and saw all that, congratulations, you properly connected to the {rhoai} Dashboard Application!
 
-We are now ready to start the lab.
+We are now ready to start the {ic}.
 
 == Getting Support during RH1 In-Person Labs
 

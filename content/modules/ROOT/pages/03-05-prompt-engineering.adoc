@@ -1,9 +1,9 @@
 = Prompt Engineering exercise (optional)
 include::_attributes.adoc[]
 
-NOTE: This part of the lab is marked as optional. It can therefore be skipped without effect on the other parts of the lab. You can always come back to it later at the end of the lab if you have time to spare.
+NOTE: This part of the {ic} is marked as optional. It can therefore be skipped without effect on the other parts of the lab. You can always come back to it later at the end of the {ic-lab} if you have time to spare.
 
-IMPORTANT: When you interact with ChatGPT or other commercial services, a lot of guardrails are in place to prevent you from getting unwanted  or not suitable for work results. In our Lab exercises, we are using a model that is not protected by those guardrails, and we will be modifying its settings. Therefore, it is your responsibility to do it in a safe way, and to make sure that the results you get are suitable for you and/or your audience. The authors of this Lab cannot be held responsible for any inappropriate results you may get.
+IMPORTANT: When you interact with ChatGPT or other commercial services, a lot of guardrails are in place to prevent you from getting unwanted  or not suitable for work results. In our {ic} exercises, we are using a model that is not protected by those guardrails, and we will be modifying its settings. Therefore, it is your responsibility to do it in a safe way, and to make sure that the results you get are suitable for you and/or your audience. The authors of this {ic} cannot be held responsible for any inappropriate results you may get.
 
 As you have seen in the previous sections, there are different factors that will influence the results you can get from your model: the model parameters, the prompt, the query, and of course the data itself...
 

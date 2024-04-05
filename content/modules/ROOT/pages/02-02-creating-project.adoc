@@ -22,7 +22,7 @@ The instructions below will guide you through these steps. Follow them carefully
 
 == Create a project
 
-* First, in the OpenShift AI Dashboard application, navigate to the Data Science Projects menu on the left:
+* First, in the {rhoai} Dashboard application, navigate to the Data Science Projects menu on the left:
 +
 [.bordershadow]
 image::02/02-02-ds-proj-nav.png[]

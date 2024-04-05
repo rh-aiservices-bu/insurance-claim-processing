@@ -15,7 +15,7 @@ image::04/roboflow-test-images.png[roboflow images]
 3. Each image has an annotation text file in the 'labels' subfolder. The annotation text files have the same names as the image files.
 ====
 
-We have provided the following training data set, available as a zip file, and located in an S3 bucket: `accident-sample.zip` (as we don,t have time in this Lab to fully retrain the model, we will use a sample of the training data set).
+We have provided the following training data set, available as a zip file, and located in an S3 bucket: `accident-sample.zip` (as we don,t have time in this {ic-lab} to fully retrain the model, we will use a sample of the training data set).
 
 - In your running workbench, navigate to the folder `insurance-claim-processing/lab-materials/04`.
 - Look for (and open) the notebook called `04-03-model-retraining.ipynb`

@@ -1,7 +1,7 @@
 = Applicability to other industries
 include::_attributes.adoc[]
 
-Now, the examples we've shown throughout this lab are specific to the Insurance industry, and within that, claims processing.
+Now, the examples we've shown throughout this {ic} are specific to the Insurance industry, and within that, claims processing.
 
 However, none of the techniques we used here are inherently related to this industry or this use-case.
 

@@ -9,7 +9,7 @@ include::_attributes.adoc[]
 image::02/02-03-create-wb.png[]
 * Make sure it has the following characteristics:
 ** Choose a name for it, like: `My Workbench`
-** Image Selection: `CUSTOM - Insurance Claim Processing Lab Workbench`
+** Image Selection: `CUSTOM - {ic} Workbench`
 ** Container Size: `Standard`
 ** Accelerator: `None`
 * That should look like:
