@@ -94,7 +94,7 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.annotations['pipelines.kubeflow.org/run_name']
-          image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.0
+          image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.1
           volumeMounts:
           - mountPath: /shared-data
             name: processing-pipeline-storage
@@ -169,7 +169,7 @@ spec:
                 fieldPath: metadata.namespace
           - name: POSTGRES_HOST
             value: claimdb.$(NAMESPACE).svc.cluster.local
-          image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.0
+          image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.1
           volumeMounts:
           - mountPath: /shared-data
             name: processing-pipeline-storage
@@ -241,7 +241,7 @@ spec:
                 fieldPath: metadata.namespace
           - name: POSTGRES_HOST
             value: claimdb.$(NAMESPACE).svc.cluster.local
-          image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.0
+          image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.1
           volumeMounts:
           - mountPath: /shared-data
             name: processing-pipeline-storage
@@ -311,7 +311,7 @@ spec:
                 fieldPath: metadata.namespace
           - name: POSTGRES_HOST
             value: claimdb.$(NAMESPACE).svc.cluster.local
-          image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.0
+          image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.1
           volumeMounts:
           - mountPath: /shared-data
             name: processing-pipeline-storage
@@ -381,7 +381,7 @@ spec:
                 fieldPath: metadata.namespace
           - name: POSTGRES_HOST
             value: claimdb.$(NAMESPACE).svc.cluster.local
-          image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.0
+          image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.1
           volumeMounts:
           - mountPath: /shared-data
             name: processing-pipeline-storage
@@ -459,7 +459,7 @@ spec:
             value: claimdb.$(NAMESPACE).svc.cluster.local
           - name: IMAGES_BUCKET
             value: $(NAMESPACE)
-          image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.0
+          image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.1
           volumeMounts:
           - mountPath: /shared-data
             name: processing-pipeline-storage
@@ -531,7 +531,7 @@ spec:
                 fieldPath: metadata.namespace
           - name: POSTGRES_HOST
             value: claimdb.$(NAMESPACE).svc.cluster.local
-          image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.0
+          image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-processing-pipeline:1.1
           volumeMounts:
           - mountPath: /shared-data
             name: processing-pipeline-storage
