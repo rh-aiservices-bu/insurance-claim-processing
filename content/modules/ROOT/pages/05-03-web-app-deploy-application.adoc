@@ -97,7 +97,7 @@ spec:
   source:
     path: lab-materials/05/app
     repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
-    targetRevision: main
+    targetRevision: dev
   syncPolicy:
     automated:
       prune: true
