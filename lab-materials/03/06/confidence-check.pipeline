@@ -271,7 +271,7 @@
         "version": 8,
         "runtime_type": "KUBEFLOW_PIPELINES",
         "properties": {
-          "name": "sanity_check",
+          "name": "confidence-check",
           "runtime": "Data Science Pipelines",
           "pipeline_defaults": {
             "kubernetes_tolerations": [],
