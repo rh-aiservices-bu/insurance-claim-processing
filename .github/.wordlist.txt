@@ -129,6 +129,7 @@ mAP
 md
 minio
 Minio
+MinIO
 mistralai
 mn
 mockups
@@ -142,6 +143,7 @@ nav
 Nodejs
 npm
 oc
+ocp
 ocs
 ods
 ojsonpath
@@ -180,6 +182,7 @@ pvc
 py
 pytorch
 Pytorch
+quantized
 rbac
 README
 readonly
