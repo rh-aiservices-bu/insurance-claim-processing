@@ -49,6 +49,8 @@ DevOps
 dex
 diag
 dir
+diy
+DIY
 dotenv
 drawio
 ds
