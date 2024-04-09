@@ -1,6 +1,8 @@
 = Accident Recognition
 include::_attributes.adoc[]
 
+== Introduction
+
 Now that we have retrained our model we can test it against some sample images.
 
 We have converted our model to onnx format and placed a copy within an S3 bucket. We will test this version against some sample test images.
@@ -10,7 +12,9 @@ Using the re-trained model, we will see that we are able to identify a severe ca
 [.bordershadow]
 image::04/retrained-model-results.png[retrained modelresults]
 
-To test the model yourself:
+== (Optional) Detailed code and execution
+
+If you want to dig deeper into this section, follow the instructions below. If you are pressed for time, you can skip to the next section.
 
 - In your workbench, navigate to the folder `insurance-claim-processing/lab-materials/04`.
 - Look for (and open) the notebook called `04-04-accident-recog.ipynb`

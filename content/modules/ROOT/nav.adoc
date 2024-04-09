@@ -21,9 +21,9 @@
 
 * 4. Image Processing
 ** xref:04-01-over-approach.adoc[4.1 Overall Approach]
-** xref:04-02-car-recog.adoc[4.2 Car recognition]
-** xref:04-03-model-retraining.adoc[4.3 Model retraining]
-** xref:04-04-accident-recog.adoc[4.4 Accident/Damage recognition]
+** xref:04-02-car-recog.adoc[4.2 Car recognition (Optional)]
+** xref:04-03-model-retraining.adoc[4.3 Model retraining (Optional)]
+** xref:04-04-accident-recog.adoc[4.4 Accident/Damage recognition (Optional)]
 ** xref:04-05-model-serving.adoc[4.5 Model Serving]
 
 * 5. Web App Deployment
