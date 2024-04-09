@@ -32,7 +32,7 @@ asciidoc:
     ocp-short: "OpenShift"
     argocd: "ArgoCD"
     ocp-gitops: "OpenShift GitOps"
-    ic-lab: "Lab"
+    ic-lab: "lab"
     ic: "Insurance Claim Processing Lab"
 
   extensions:
