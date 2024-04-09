@@ -1,6 +1,8 @@
 = Car recognition
 include::_attributes.adoc[]
 
+== Introduction
+
 In our last notebook we confirmed that the YOLO model could identify cars in a photograph.
 
 [.bordershadow]
@@ -20,6 +22,10 @@ Therefore we need to write some code that will draw boxes around the cars identi
 
 [.bordershadow]
 image::04/box-identified-cars.png[identify cars]
+
+== (Optional) Detailed code and execution
+
+If you want to dig deeper into this section, follow the instructions below. If you are pressed for time, you can skip to the next section.
 
 - In your running workbench, navigate to the folder `insurance-claim-processing/lab-materials/04`.
 - Look for (and open) the notebook called `04-02-car-recognition.ipynb`

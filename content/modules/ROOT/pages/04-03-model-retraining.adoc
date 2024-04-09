@@ -1,6 +1,8 @@
 = Model Retraining
 include::_attributes.adoc[]
 
+== Introduction
+
 To retrain the YOLO model we need a prepared dataset of car images with moderate and severe accident labels.  We have such a dataset (from https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5/dataset/1[RoboFlow,window=_blank] ) that has annotated images and has split them into training and validation datasets.  We will use this training set to retrain our current YOLO model.
 
 [.bordershadow]
@@ -14,6 +16,10 @@ image::04/roboflow-test-images.png[roboflow images]
 2. We have created a folder for the dataset (data) and have have 2 subfolders in it: 'train' and 'valid'.  Within each subfolder we have created 2 subfolders:  'images' and 'labels'.
 3. Each image has an annotation text file in the 'labels' subfolder. The annotation text files have the same names as the image files.
 ====
+
+== (Optional) Detailed code and execution
+
+If you want to dig deeper into this section, follow the instructions below. If you are pressed for time, you can skip to the next section.
 
 We have provided the following training data set, available as a zip file, and located in an S3 bucket: `accident-sample.zip` (as we don,t have time in this {ic-lab} to fully retrain the model, we will use a sample of the training data set).
 
