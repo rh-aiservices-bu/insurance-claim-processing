@@ -46,7 +46,7 @@ spec:
             sh -c "mkdir -p ./jupyter-work-dir && cd ./jupyter-work-dir"
             sh -c "echo 'Downloading file:///opt/app-root/bin/utils/bootstrapper.py' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/bootstrapper.py --output bootstrapper.py"
             sh -c "echo 'Downloading file:///opt/app-root/bin/utils/requirements-elyra.txt' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/requirements-elyra.txt --output requirements-elyra.txt"
-            sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt && python3 bootstrapper.py --pipeline-name 'sanity_check' --cos-endpoint 'https://minio-api-robert-serving-test.apps.rhods-internal.61tk.p1.openshiftapps.com' --cos-bucket 'pipeline-bucket' --cos-directory 'sanity_check-0109084010' --cos-dependencies-archive 'test_response_quality-d0510f0c-fc50-42fc-a598-97e26b34ed88.tar.gz' --file 'insurance-claim-processing/lab-materials/03/06/test_response_quality.py' --outputs 'quality_result.json' "
+            sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt && python3 bootstrapper.py --pipeline-name 'sanity_check' --cos-endpoint 'http://minio.ic-shared-minio.svc:9000' --cos-bucket 'user2' --cos-directory 'sanity_check-0409135238' --cos-dependencies-archive 'test_response_quality-d0510f0c-fc50-42fc-a598-97e26b34ed88.tar.gz' --file 'insurance-claim-processing/lab-materials/03/06/test_response_quality.py' --outputs 'quality_result.json' "
           command:
           - sh
           - -c
@@ -55,12 +55,12 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: AWS_ACCESS_KEY_ID
-                name: aws-connection-minio-pipeline
+                name: aws-connection-shared-minio---pipelines
           - name: AWS_SECRET_ACCESS_KEY
             valueFrom:
               secretKeyRef:
                 key: AWS_SECRET_ACCESS_KEY
-                name: aws-connection-minio-pipeline
+                name: aws-connection-shared-minio---pipelines
           - name: ELYRA_RUNTIME_ENV
             value: kfp
           - name: ELYRA_ENABLE_PIPELINE_INFO
@@ -71,7 +71,7 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.annotations['pipelines.kubeflow.org/run_name']
-          image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-sanity-pipeline:1.0
+          image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-sanity-pipeline:1.1
         stepTemplate:
           volumeMounts:
           - name: mlpipeline-metrics
@@ -92,7 +92,7 @@ spec:
             elyra/pipeline-source: sanity_check.pipeline
             pipelines.kubeflow.org/task_display_name: test_response_quality
             pipelines.kubeflow.org/component_spec_digest: '{"name": "Run a file",
-              "outputs": [], "version": "Run a file@sha256=5358a652664edc3aa96dcbf0002719b8c6b6b4dfa176a48c3c3786c22766358e"}'
+              "outputs": [], "version": "Run a file@sha256=0ede2ced24a6127c78656498f8e9b13b6b1d1d8e42c8db43354771af59f60488"}'
     - name: run-a-file-2
       taskSpec:
         steps:
@@ -102,7 +102,7 @@ spec:
             sh -c "mkdir -p ./jupyter-work-dir && cd ./jupyter-work-dir"
             sh -c "echo 'Downloading file:///opt/app-root/bin/utils/bootstrapper.py' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/bootstrapper.py --output bootstrapper.py"
             sh -c "echo 'Downloading file:///opt/app-root/bin/utils/requirements-elyra.txt' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/requirements-elyra.txt --output requirements-elyra.txt"
-            sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt && python3 bootstrapper.py --pipeline-name 'sanity_check' --cos-endpoint 'https://minio-api-robert-serving-test.apps.rhods-internal.61tk.p1.openshiftapps.com' --cos-bucket 'pipeline-bucket' --cos-directory 'sanity_check-0109084010' --cos-dependencies-archive 'test_responsetime-c50bb14f-a036-4af1-b5dc-21e48eb80f7f.tar.gz' --file 'insurance-claim-processing/lab-materials/03/06/test_responsetime.py' --outputs 'responsetime_result.json' "
+            sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt && python3 bootstrapper.py --pipeline-name 'sanity_check' --cos-endpoint 'http://minio.ic-shared-minio.svc:9000' --cos-bucket 'user2' --cos-directory 'sanity_check-0409135238' --cos-dependencies-archive 'test_responsetime-c50bb14f-a036-4af1-b5dc-21e48eb80f7f.tar.gz' --file 'insurance-claim-processing/lab-materials/03/06/test_responsetime.py' --outputs 'responsetime_result.json' "
           command:
           - sh
           - -c
@@ -111,12 +111,12 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: AWS_ACCESS_KEY_ID
-                name: aws-connection-minio-pipeline
+                name: aws-connection-shared-minio---pipelines
           - name: AWS_SECRET_ACCESS_KEY
             valueFrom:
               secretKeyRef:
                 key: AWS_SECRET_ACCESS_KEY
-                name: aws-connection-minio-pipeline
+                name: aws-connection-shared-minio---pipelines
           - name: ELYRA_RUNTIME_ENV
             value: kfp
           - name: ELYRA_ENABLE_PIPELINE_INFO
@@ -127,7 +127,7 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.annotations['pipelines.kubeflow.org/run_name']
-          image: quay.io/modh/runtime-images@sha256:7dd23e58291cad7a0ab4a8e04bda06492f2c027eb33b226358380db58dcdd60b
+          image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-sanity-pipeline:1.1
         stepTemplate:
           volumeMounts:
           - name: mlpipeline-metrics
@@ -148,7 +148,7 @@ spec:
             elyra/pipeline-source: sanity_check.pipeline
             pipelines.kubeflow.org/task_display_name: test_responsetime
             pipelines.kubeflow.org/component_spec_digest: '{"name": "Run a file",
-              "outputs": [], "version": "Run a file@sha256=3e58a6283faf2610ead4310f242aa11d207880bb328d65d9b80064eac003274c"}'
+              "outputs": [], "version": "Run a file@sha256=fbcb6cccb2393e957b4b042a22dffff6d92d28a73efb5775c07bb82b7973cdf3"}'
     - name: run-a-file-3
       taskSpec:
         steps:
@@ -158,7 +158,7 @@ spec:
             sh -c "mkdir -p ./jupyter-work-dir && cd ./jupyter-work-dir"
             sh -c "echo 'Downloading file:///opt/app-root/bin/utils/bootstrapper.py' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/bootstrapper.py --output bootstrapper.py"
             sh -c "echo 'Downloading file:///opt/app-root/bin/utils/requirements-elyra.txt' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/requirements-elyra.txt --output requirements-elyra.txt"
-            sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt && python3 bootstrapper.py --pipeline-name 'sanity_check' --cos-endpoint 'https://minio-api-robert-serving-test.apps.rhods-internal.61tk.p1.openshiftapps.com' --cos-bucket 'pipeline-bucket' --cos-directory 'sanity_check-0109084010' --cos-dependencies-archive 'test_security-6b595dc7-afb8-46bb-bf52-7cd695ddafb8.tar.gz' --file 'insurance-claim-processing/lab-materials/03/06/test_security.py' --outputs 'security_result.json' "
+            sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt && python3 bootstrapper.py --pipeline-name 'sanity_check' --cos-endpoint 'http://minio.ic-shared-minio.svc:9000' --cos-bucket 'user2' --cos-directory 'sanity_check-0409135238' --cos-dependencies-archive 'test_security-6b595dc7-afb8-46bb-bf52-7cd695ddafb8.tar.gz' --file 'insurance-claim-processing/lab-materials/03/06/test_security.py' --outputs 'security_result.json' "
           command:
           - sh
           - -c
@@ -167,12 +167,12 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: AWS_ACCESS_KEY_ID
-                name: aws-connection-minio-pipeline
+                name: aws-connection-shared-minio---pipelines
           - name: AWS_SECRET_ACCESS_KEY
             valueFrom:
               secretKeyRef:
                 key: AWS_SECRET_ACCESS_KEY
-                name: aws-connection-minio-pipeline
+                name: aws-connection-shared-minio---pipelines
           - name: ELYRA_RUNTIME_ENV
             value: kfp
           - name: ELYRA_ENABLE_PIPELINE_INFO
@@ -183,7 +183,7 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.annotations['pipelines.kubeflow.org/run_name']
-          image: quay.io/modh/runtime-images@sha256:7dd23e58291cad7a0ab4a8e04bda06492f2c027eb33b226358380db58dcdd60b
+          image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-sanity-pipeline:1.1
         stepTemplate:
           volumeMounts:
           - name: mlpipeline-metrics
@@ -204,7 +204,7 @@ spec:
             elyra/pipeline-source: sanity_check.pipeline
             pipelines.kubeflow.org/task_display_name: test_security
             pipelines.kubeflow.org/component_spec_digest: '{"name": "Run a file",
-              "outputs": [], "version": "Run a file@sha256=51651082dff4a766733eb7e70c27fa7c33370a3c14f3af453c03a463d0a64dac"}'
+              "outputs": [], "version": "Run a file@sha256=911e07386ce6fbae48167dee9e6eb42f31497bc01b0ef69e3d3b40b4d203a6d0"}'
     - name: run-a-file-4
       taskSpec:
         steps:
@@ -214,7 +214,7 @@ spec:
             sh -c "mkdir -p ./jupyter-work-dir && cd ./jupyter-work-dir"
             sh -c "echo 'Downloading file:///opt/app-root/bin/utils/bootstrapper.py' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/bootstrapper.py --output bootstrapper.py"
             sh -c "echo 'Downloading file:///opt/app-root/bin/utils/requirements-elyra.txt' && curl --fail -H 'Cache-Control: no-cache' -L file:///opt/app-root/bin/utils/requirements-elyra.txt --output requirements-elyra.txt"
-            sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt && python3 bootstrapper.py --pipeline-name 'sanity_check' --cos-endpoint 'https://minio-api-robert-serving-test.apps.rhods-internal.61tk.p1.openshiftapps.com' --cos-bucket 'pipeline-bucket' --cos-directory 'sanity_check-0109084010' --cos-dependencies-archive 'summarize_results-6b99ceae-d124-4758-904a-03e1a49fe56d.tar.gz' --file 'insurance-claim-processing/lab-materials/03/06/summarize_results.py' --inputs 'responsetime_result.json;security_result.json;quality_result.json' --outputs 'results.json' "
+            sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt && python3 bootstrapper.py --pipeline-name 'sanity_check' --cos-endpoint 'http://minio.ic-shared-minio.svc:9000' --cos-bucket 'user2' --cos-directory 'sanity_check-0409135238' --cos-dependencies-archive 'summarize_results-6b99ceae-d124-4758-904a-03e1a49fe56d.tar.gz' --file 'insurance-claim-processing/lab-materials/03/06/summarize_results.py' --inputs 'responsetime_result.json;security_result.json;quality_result.json' --outputs 'results.json' "
           command:
           - sh
           - -c
@@ -223,12 +223,12 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: AWS_ACCESS_KEY_ID
-                name: aws-connection-minio-pipeline
+                name: aws-connection-shared-minio---pipelines
           - name: AWS_SECRET_ACCESS_KEY
             valueFrom:
               secretKeyRef:
                 key: AWS_SECRET_ACCESS_KEY
-                name: aws-connection-minio-pipeline
+                name: aws-connection-shared-minio---pipelines
           - name: ELYRA_RUNTIME_ENV
             value: kfp
           - name: ELYRA_ENABLE_PIPELINE_INFO
@@ -239,7 +239,7 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.annotations['pipelines.kubeflow.org/run_name']
-          image: quay.io/modh/runtime-images@sha256:7dd23e58291cad7a0ab4a8e04bda06492f2c027eb33b226358380db58dcdd60b
+          image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-sanity-pipeline:1.1
         stepTemplate:
           volumeMounts:
           - name: mlpipeline-metrics
@@ -260,7 +260,7 @@ spec:
             elyra/pipeline-source: sanity_check.pipeline
             pipelines.kubeflow.org/task_display_name: summarize_results
             pipelines.kubeflow.org/component_spec_digest: '{"name": "Run a file",
-              "outputs": [], "version": "Run a file@sha256=bfe6fa070a3ebd821fe5801ef8beb2f710d88a1e58380eb85b169a1b44a5b753"}'
+              "outputs": [], "version": "Run a file@sha256=710a8e5ea145ddcf52ee1df00cbb79bc030fb9b139970cea9676a461974dcd0e"}'
       runAfter:
       - run-a-file
       - run-a-file-2
