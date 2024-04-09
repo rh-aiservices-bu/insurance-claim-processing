@@ -5,3 +5,4 @@ opencv-python-headless==4.8.1.78
 python-dotenv==1.0.0
 psycopg2-binary==2.9.9
 boto3==1.26.165
+openai==1.13.3

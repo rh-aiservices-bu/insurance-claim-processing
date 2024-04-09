@@ -1,5 +1,3 @@
-import os
-
 from langchain.llms import VLLMOpenAI
 from langchain.chains.combine_documents.stuff import StuffDocumentsChain
 from langchain.chains import LLMChain
@@ -7,7 +5,7 @@ from langchain.prompts import PromptTemplate
 from langchain.evaluation import load_evaluator
 from langchain.embeddings import HuggingFaceEmbeddings
 
-INFERENCE_SERVER_URL = "http://vllm.llm-hosting.svc.cluster.local:8000"
+INFERENCE_SERVER_URL = "http://llm.ic-shared-llm.svc.cluster.local:8000"
 MAX_NEW_TOKENS = 512
 TOP_P = 0.95
 TEMPERATURE = 0.01

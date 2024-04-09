@@ -19,17 +19,17 @@ class Database:
                 conn (psycopg2.extensions.connection): A connection object representing the database connection.
             """
             self.logger.info(f"Connecting to PostgreSQL Database...")
-            try:
-                conn = psycopg2.connect(
-                        host = config["POSTGRES_HOST"],
-                        dbname = config["POSTGRES_DB"],
-                        user = config["POSTGRES_USER"],
-                        password = config["POSTGRES_PASSWORD"],
-                        port = config["POSTGRES_PORT"]
-                    )
-                self.logger.info(f"Connection successful!")
-            except psycopg2.OperationalError as e:
-                self.logger.info(f"Could not connect to Database: {e}")
+            # try:
+            conn = psycopg2.connect(
+                    host = config["POSTGRES_HOST"],
+                    dbname = config["POSTGRES_DB"],
+                    user = config["POSTGRES_USER"],
+                    password = config["POSTGRES_PASSWORD"],
+                    port = config["POSTGRES_PORT"]
+                )
+            self.logger.info(f"Connection successful!")
+            # except psycopg2.OperationalError as e:
+            #     self.logger.info(f"Could not connect to Database: {e}")
 
             return conn
 
