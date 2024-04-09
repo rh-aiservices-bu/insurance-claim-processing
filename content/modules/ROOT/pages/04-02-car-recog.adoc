@@ -24,5 +24,3 @@ image::04/box-identified-cars.png[identify cars]
 - In your running workbench, navigate to the folder `insurance-claim-processing/lab-materials/04`.
 - Look for (and open) the notebook called `04-02-car-recognition.ipynb`
 - Execute the cells of the notebook, and ensure you understand what is happening
-
-

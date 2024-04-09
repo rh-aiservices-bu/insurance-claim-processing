@@ -49,6 +49,8 @@ DevOps
 dex
 diag
 dir
+diy
+DIY
 dotenv
 drawio
 ds
@@ -107,6 +109,7 @@ Inlining
 insecureEdgeTerminationPolicy
 io
 ipynb
+jpg
 js
 json
 jsonpath

@@ -4,7 +4,14 @@ include::_attributes.adoc[]
 As part of this prototype, we investigated the use of the YOLOv8 model.
 This model can be found online at https://www.yolov8.com[yolov8,window=_blank] and downloaded.
 
-We will first review its out-of-the-box capabilities. We will then fine-tune it to allow it to do more specialized work for us. Once we have a new, customized version of the model, we will deploy it in OpenShift AI Model Serving. Once that is done, we will send queries to it.
+== Image Processing Sections
+
+. We will first review its out-of-the-box capabilities. 
+. We will then fine-tune it to allow it to do more specialized work for us. 
+. Once we have a new, customized version of the model, we will deploy it in {rhoai} Model Serving. 
+. Once that is done, we will send queries to it.
+
+== Image Processing Out-of-the-box capabilities
 
 Let's start by looking at a YOLOv8 model and explore how it works on static car images.
 
@@ -12,8 +19,5 @@ Let's start by looking at a YOLOv8 model and explore how it works on static car 
 image::04/sample-car-image.png[car image]
 
 - In your running workbench, navigate to the folder `insurance-claim-processing/lab-materials/04`.
-- Look for (and open) the notebook called `04-01-over-approach.ipynb`
-- Execute the cells of the notebook, and ensure you understand what is happening
-
-
-
+- Look for (and open) the notebook called`04-01-over-approach.ipynb`.
+- Execute the cells of the notebook, and ensure you understand what is happening.

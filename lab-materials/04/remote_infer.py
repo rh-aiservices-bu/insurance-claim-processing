@@ -13,17 +13,13 @@ colors = np.random.uniform(0, 255, size=(len(CLASSES), 3))
 def preprocess(image_path):
     original_image: np.ndarray = cv2.imread(image_path)
     [height, width, _] = original_image.shape
-
-    # Prepare a square image for inference
-    length = max((height, width))
-    image = np.zeros((length, length, 3), np.uint8)
-    image[0:height, 0:width] = original_image
-
+ 
     # Calculate scale factor
-    scale = length / 640
-
+    scale = (height/640, width/640)
+ 
     # Preprocess the image and prepare blob for model
-    blob = cv2.dnn.blobFromImage(image, scalefactor=1 / 255, size=(640, 640), swapRB=True)
+    blob = cv2.dnn.blobFromImage(original_image, scalefactor=1 / 255, size=(640, 640), swapRB=True)
+ 
     return blob, scale, original_image
 
 
@@ -82,8 +78,8 @@ def postprocess(response, scale, original_image):
             'box': box,
             'scale': scale}
         detections.append(detection)
-        draw_bounding_box(original_image, class_ids[index], scores[index], round(box[0] * scale), round(box[1] * scale),
-                          round((box[0] + box[2]) * scale), round((box[1] + box[3]) * scale))
+        draw_bounding_box(original_image, class_ids[index], scores[index], round(box[0] * scale[1]), round(box[1] * scale[0]),                           
+                            round((box[0] + box[2]) * scale[1]), round((box[1] + box[3]) * scale[0]))
     return original_image
 
 

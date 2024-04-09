@@ -1,25 +1,26 @@
 = Creating a workbench
 include::_attributes.adoc[]
 
+IMPORTANT: If you've used the auto-created workbench, you do not need to perform this section. Only do so if you are interested in how a workbench is created.
+
 == Launch a Workbench
 
-* Once the Data Connection and Pipeline Server are fully created
-* Create a workbench
+* Once the Data Connection and Pipeline Server are fully created, create a Workbench:
 +
 [.bordershadow]
 image::02/02-03-create-wb.png[]
 * Make sure it has the following characteristics:
 ** Choose a name for it, like: `My Workbench`
-** Image Selection: `CUSTOM - Insurance Claim Processing Lab Workbench`
+** Image Selection: `CUSTOM - {ic} Workbench`
 ** Container Size: `Standard`
 ** Accelerator: `None`
 * That should look like:
 +
 [.bordershadow]
 image::02/02-02-launch-workbench-01.png[]
-* You should not need to modify any other Workbench settings (such as Storage)
+NOTE: You should **not** need to modify any other Workbench settings (such as Storage)
 * Wait for your workbench to be fully started
-* Once it is, click the **Open** Link to connect to it.
+* Once it is, click the **Open** Link to connect to it:
 +
 [.bordershadow]
 image::02/02-03-open-link.png[]
@@ -30,7 +31,7 @@ image::02/02-03-open-link.png[]
 [.bordershadow]
 image::02/02-02-accept.png[]
 
-* Do so
+* Click on *Allow selected permissions*
 * You should now see this:
 +
 [.bordershadow]

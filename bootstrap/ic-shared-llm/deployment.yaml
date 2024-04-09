@@ -49,19 +49,14 @@ spec:
             periodSeconds: 100
             successThreshold: 1
             failureThreshold: 3
-          env:
-            - name: MODEL_ID
-              value: mistralai/Mistral-7B-Instruct-v0.2
-            - name: MAX_INPUT_LENGTH
-              value: '4096'
-            - name: MAX_TOTAL_TOKENS
-              value: '8192'
-            - name: HUGGINGFACE_HUB_CACHE
-              value: /models-cache
-            - name: PORT
-              value: '3000'
-            - name: HOSTNAME
-              value: '0.0.0.0'
+          env: []
+          args: [
+            "--model",
+            "mistralai/Mistral-7B-Instruct-v0.2",
+            "--download-dir",
+            "/models-cache",
+            "--dtype", "float16",
+            "--max-model-len", "6144" ]
           securityContext:
             capabilities:
               drop:
@@ -72,7 +67,7 @@ spec:
               type: RuntimeDefault
           ports:
             - name: http
-              containerPort: 3000
+              containerPort: 8000
               protocol: TCP
           imagePullPolicy: IfNotPresent
           startupProbe:
@@ -91,7 +86,7 @@ spec:
             - name: shm
               mountPath: /dev/shm
           terminationMessagePolicy: File
-          image: 'ghcr.io/huggingface/text-generation-inference:1.3'
+          image: 'quay.io/rh-aiservices-bu/vllm-openai-ubi9:0.4.0'
       volumes:
         - name: models-cache
           persistentVolumeClaim:

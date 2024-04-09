@@ -1,0 +1,8 @@
+= Pre-Created project and pipeline server
+include::_attributes.adoc[]
+
+In order to give you a feel for what "day 2" experience would be like, we have pre-created a Project for you, and started to populate it with various artifacts.
+
+If you want to learn more about the product and go deeper, the next ("DYI") section will walk you through the steps required to create all this from scratch instead.
+
+`TODO`

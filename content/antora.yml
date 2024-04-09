@@ -4,7 +4,6 @@ version: ~
 nav:
   - modules/ROOT/nav.adoc
 
-
 asciidoc:
   attributes:
     release-version: dev
@@ -27,6 +26,14 @@ asciidoc:
     openshift_cluster_ingress_domain: PLACEHOLDER-URL.com
     rhoai_dashboard_url: https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/
     login_command: oc login --insecure-skip-tls-verify=false -u userX -p openshift https://api.MYCLUSTER.com:6443"
+    rhoai: "Red Hat OpenShift AI"
+    rhoai-short: "RHOAI"
+    ocp: "OpenShift Container Platform"
+    ocp-short: "OpenShift"
+    argocd: "ArgoCD"
+    ocp-gitops: "OpenShift GitOps"
+    ic-lab: "Lab"
+    ic: "Insurance Claim Processing Lab"
 
   extensions:
     - ./content/lib/tab-block.js

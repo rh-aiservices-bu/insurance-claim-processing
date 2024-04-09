@@ -1,12 +1,12 @@
-= Working with the OpenShift Terminal
+= Working with the {ocp} Terminal
 include::_attributes.adoc[]
 
-To deploy the application, you will use the OpenShift Web Terminal. +
-This is a web-based terminal that allows you to execute commands on the OpenShift cluster from the OpenShift Console.
+To deploy the application, you will use the {ocp} Web Terminal. +
+This is a web-based terminal that allows you to execute commands on the {ocp-short} cluster from the {ocp-short} Console.
 
-== Opening the OpenShift Console
+== Opening the {ocp} Console
 
-- Access the OpenShift Console via this link:
+- Access the {ocp-short} Console via this link:
 +
 [.bordershadow]
 image::05/01-openshift-console.png[]
@@ -15,7 +15,7 @@ image::05/01-openshift-console.png[]
 
 == Open a Web Terminal
 
-- On the OpenShift Console, click on the Web Terminal icon in the top right corner:
+- On the {ocp-short} Console, click on the Web Terminal icon in the top right corner:
 +
 [.bordershadow]
 image::05/web-term-1.png[]
