@@ -1,6 +1,8 @@
 = Creating your project and pipeline server
 include::_attributes.adoc[]
 
+IMPORTANT: If you've used the auto-created project, you do not need to perform this section. Only do so if you are interested in how a project and pipeline server are created.
+
 As a preliminary step, each of you is going to:
 
 . Create a Data Science project:
