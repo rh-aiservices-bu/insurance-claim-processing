@@ -5,4 +5,20 @@ In order to give you a feel for what "day 2" experience would be like, we have p
 
 If you want to learn more about the product and go deeper, the next ("DYI") section will walk you through the steps required to create all this from scratch instead.
 
-`TODO`
+== Go to your project
+
+First, in the {rhoai} Dashboard application, navigate to the Data Science Projects menu on the left:
+[.bordershadow]
+image::02/02-02-ds-proj-nav.png[]
+
+Then, open the project called 'UserX-auto'. +
+Inside the project you should see a few items that already has been pre-created:
+[.bordershadow]
+image::02/02-02-pre-created-components.png[]
+
+These components are as follows:
+
+* A Workbench - this is your environment that you can experiment and train in.
+* A Cluster storage - this is a persistant storage for your workbench.
+* A Data Connection - it contains all the information needed to talk with an existing S3 storage, we use that to store models and pipeline artifacts.
+* A Pipeline Server - the pipeline server has already been set up here so you can import or run pipelines right away.

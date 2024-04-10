@@ -32,6 +32,11 @@ spec:
         repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
         targetRevision: dev
         path: bootstrap/ic-rhoai-configuration
+      - cluster: in-cluster
+        name: ic-user-projects
+        repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
+        targetRevision: feat/auto-create-projects
+        path: bootstrap/ic-user-projects
   template:
     metadata:
       name: '{{name}}'

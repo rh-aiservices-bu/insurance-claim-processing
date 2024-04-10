@@ -1,0 +1,43 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: create-and-apply-resources
+  namespace: ic-user-projects
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+spec:
+  backoffLimit: 4
+  template:
+    spec:
+      serviceAccount: project-creator
+      serviceAccountName: project-creator
+      containers:
+      - name: create-and-apply-resources
+        image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-generic-data-science-notebook:1.2
+        volumeMounts:
+        - name: python-script-volume
+          mountPath: /usr/src/app
+        imagePullPolicy: IfNotPresent
+        command: ["/bin/bash"]
+        args:
+        - -ec
+        - |-
+          user_count=$(oc get namespaces | grep showroom | wc -l)
+          python3 /usr/src/app/create-projects-and-resources.py --user_count $user_count
+          oc apply -f resources/project.yaml
+          oc apply -f resources/project_role_binding.yaml
+          #oc apply -f resources/minio.yaml
+          oc apply -f resources/ds_connections.yaml
+          oc apply -f resources/pipeline.yaml
+          #oc apply -f resources/pipeline_secret.yaml
+          oc apply -f resources/workbench_pvc.yaml
+          oc apply -f resources/workbench.yaml
+          oc apply -f resources/git_clone_job.yaml
+      volumes:
+      - name: python-script-volume
+        configMap:
+          name: python-script-configmap
+      restartPolicy: Never
