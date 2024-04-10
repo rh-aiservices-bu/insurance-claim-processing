@@ -1,14 +1,14 @@
-= Sanity-Check Pipeline
+= Confidence-Check Pipeline
 include::_attributes.adoc[]
 
 == What will the pipeline do?
-To make sure that everything works as we would expect it to, and that the model has not been tampered with, we will create a sanity-check pipeline that tests the model through its endpoint. +
+To make sure that everything works as we would expect it to, and that the model has not been tampered with, we will create a confidence-check pipeline that tests the model through its endpoint. +
 We will test the response time, the response quality, and that the model hash has not changed. +
 And to make sure it stays the same over time, we'll schedule that pipeline.
 
-== Deploy a sanity-check pipeline
+== Deploy a confidence-check pipeline
 
-In the `insurance-claim-processing/lab-materials/03/06` folder there are two pipeline files, one `sanity_check.pipeline` and one `sanity_check.yaml` file.
+In the `insurance-claim-processing/lab-materials/03/06` folder there are two pipeline files, one `confidence_check.pipeline` and one `confidence_check.yaml` file.
 
 The `.pipeline` file can be opened in Elyra to be visually modified and executed, while the `.yaml` file can be imported into the pipeline server through the RHOAI Dashboard. +
 Here we will be running the pipeline through Elyra.
@@ -19,7 +19,7 @@ Running it through Elyra is the same as doing an ad-hoc execution of the pipelin
 
 . Start by going to your running workbench
 . Navigate to the folder `insurance-claim-processing/lab-materials/03/06`
-. Open up the `sanity_check.pipeline` file
+. Open up the `confidence_check.pipeline` file
 . Here we can see that the pipeline consists of 3 checks:
 .. response quality check
 .. response time check
@@ -29,7 +29,7 @@ Running it through Elyra is the same as doing an ad-hoc execution of the pipelin
 . To run the pipeline, press the Play button in the menu bar.
 +
 [.bordershadow]
-image::03/07-elyra-pipeline.png[elyra sanity pipeline]
+image::03/07-elyra-pipeline.png[elyra confidence pipeline]
 . in the popup, leave the name unchanged and click **OK**:
 +
 [.bordershadow]
@@ -39,7 +39,7 @@ image::03/03-07-run-pipeline-ok.png[]
 
 == Schedule execution
 
-We can also **schedule** an execution so that the sanity check is executed at regular intervals. +
+We can also **schedule** an execution so that the confidence check is executed at regular intervals. +
 To do that:
 
 . Go back to the {rhoai} Data Science Project
@@ -54,5 +54,5 @@ image::03/07-create-run.png[create run]
 [.bordershadow]
 image::03/03-06-dailyrun.png[]
 
-. We can now leave the sanity-check pipeline alone.
+. We can now leave the confidence-check pipeline alone.
 . It will run daily, and will inform us if anything goes wrong with our LLM.
