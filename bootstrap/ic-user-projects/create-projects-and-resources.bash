@@ -425,7 +425,7 @@ spec:
             - '--email-domain=*'
             - '--skip-provider-button'
             - >-
-              --openshift-sar={"verb":"get","resource":"notebooks","resourceAPIGroup":"kubeflow.org","resourceName":"$WORKBENCH_IMAGE","namespace":"$(NAMESPACE)"}
+              --openshift-sar={"verb":"get","resource":"notebooks","resourceAPIGroup":"kubeflow.org","resourceName":"$WORKBENCH_IMAGE","namespace":"$USER_PROJECT"}
             - >-
               --logout-url=$DASHBOARD_ROUTE/projects/$USER_PROJECT?notebookLogout=$WORKBENCH_IMAGE
       enableServiceLinks: false
