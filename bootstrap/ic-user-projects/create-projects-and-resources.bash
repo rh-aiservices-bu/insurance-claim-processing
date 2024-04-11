@@ -1,13 +1,12 @@
 #!/bin/bash
 # Get user count
-user_count=$(oc.exe get namespaces | grep showroom | wc -l)
+user_count=$(oc get namespaces | grep showroom | wc -l)
 
 # Get needed variables
-MINIO_ROOT_USER=$(oc.exe get secret minio-root-user -n ic-shared-minio -o template --template '{{.data.MINIO_ROOT_USER|base64decode}}')
-MINIO_ROOT_PASSWORD=$(oc.exe get secret minio-root-user -n ic-shared-minio -o template --template '{{.data.MINIO_ROOT_PASSWORD|base64decode}}')
-MINIO_HOST=https://$(oc.exe get route minio-s3 -n ic-shared-minio -o template --template '{{.spec.host}}')
-DASHBOARD_ROUTE=https://$(oc.exe get route rhods-dashboard -n redhat-ods-applications -o jsonpath='{.spec.host}')
-PIPELINE_ROUTE=https://$(oc.exe get route ds-pipeline-pipelines-definition -o jsonpath='{.spec.host}')
+MINIO_ROOT_USER=$(oc get secret minio-root-user -n ic-shared-minio -o template --template '{{.data.MINIO_ROOT_USER|base64decode}}')
+MINIO_ROOT_PASSWORD=$(oc get secret minio-root-user -n ic-shared-minio -o template --template '{{.data.MINIO_ROOT_PASSWORD|base64decode}}')
+MINIO_HOST=https://$(oc get route minio-s3 -n ic-shared-minio -o template --template '{{.spec.host}}')
+DASHBOARD_ROUTE=https://$(oc get route rhods-dashboard -n redhat-ods-applications -o jsonpath='{.spec.host}')
 
 # Define some variables
 WORKBENCH_NAME="my-workbench"
@@ -24,10 +23,10 @@ USER_PROJECT="user$i-auto"
 
 echo "Generating and apply resources for $USER_NAME..."
 
-# envsubst < "templates/project.yaml" | oc.exe apply -f -
+# envsubst < "templates/project.yaml" | oc apply -f -
 
 # Create projects
-cat << EOF | oc.exe apply -f-
+cat << EOF | oc apply -f-
 apiVersion: project.openshift.io/v1
 kind: Project
 metadata:
@@ -45,7 +44,7 @@ spec:
 EOF
 
 # Apply role bindings
-cat << EOF | oc.exe apply -f-
+cat << EOF | oc apply -f-
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
@@ -109,7 +108,7 @@ roleRef:
 EOF
 
 # Create Data Science Connections
-cat << EOF | oc.exe apply -f-
+cat << EOF | oc apply -f-
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -124,7 +123,7 @@ spec:
         - -ec
         - |-
           echo -n "Waiting for minio-root-user to exist"
-          while [ -z "$(oc get secret -n ic-shared-minio minio-root-user -oname 2>/dev/null)" ]; do
+          while [ -z "\$(oc get secret -n ic-shared-minio minio-root-user -oname 2>/dev/null)" ]; do
             echo -n '.'
             sleep 1
           done; echo
@@ -162,7 +161,7 @@ spec:
 EOF
 
 # Set up the pipeline server
-cat << EOF | oc.exe apply -f-
+cat << EOF | oc apply -f-
 apiVersion: datasciencepipelinesapplications.opendatahub.io/v1alpha1
 kind: DataSciencePipelinesApplication
 metadata:
@@ -210,7 +209,7 @@ spec:
 EOF
 
 # Create the Elyra secret 
-cat << EOF | oc.exe apply -f-
+cat << EOF | oc apply -f-
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -229,6 +228,8 @@ spec:
             echo -n .
             sleep 5
           done; echo
+
+          PIPELINE_ROUTE=https://\$(oc get route ds-pipeline-pipelines-definition -o jsonpath='{.spec.host}')
 
           cat << EOF | oc apply -f-
           apiVersion: v1
@@ -258,7 +259,7 @@ spec:
 EOF
 
 # Create the workbench PVC
-cat << EOF | oc.exe apply -f-
+cat << EOF | oc apply -f-
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
@@ -284,7 +285,7 @@ spec:
 EOF
 
 # Create the workbench
-cat << EOF | oc.exe apply -f-
+cat << EOF | oc apply -f-
 apiVersion: kubeflow.org/v1
 kind: Notebook
 metadata:
@@ -456,7 +457,7 @@ spec:
 EOF
 
 # Git clone job
-cat << EOF | oc.exe apply -f-
+cat << EOF | oc apply -f-
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -477,7 +478,7 @@ spec:
         - -ec
         - |-
           echo -n "Waiting for workbench pod in $USER_PROJECT namespace"
-          while [ -z "$(oc get pods -n $USER_PROJECT -l app=$WORKBENCH_NAME -o custom-columns=STATUS:.status.phase --no-headers | grep Running 2>/dev/null)" ]; do
+          while [ -z "\$(oc get pods -n $USER_PROJECT -l app=$WORKBENCH_NAME -o custom-columns=STATUS:.status.phase --no-headers | grep Running 2>/dev/null)" ]; do
               echo -n '.'
               sleep 1
           done
@@ -490,7 +491,7 @@ spec:
         args:
         - -ec
         - |-
-          pod_name=$(oc get pods --selector=app=$WORKBENCH_NAME -o jsonpath='{.items[0].metadata.name}') && oc exec $pod_name -- git clone https://github.com/rh-aiservices-bu/insurance-claim-processing
+          pod_name=\$(oc get pods --selector=app=$WORKBENCH_NAME -o jsonpath='{.items[0].metadata.name}') && oc exec $pod_name -- git clone https://github.com/rh-aiservices-bu/insurance-claim-processing
       restartPolicy: Never
 EOF
 done
