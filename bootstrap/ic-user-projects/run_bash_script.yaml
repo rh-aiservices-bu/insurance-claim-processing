@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: create-data-connection
+  name: create-and-apply-resources
   namespace: ic-user-projects
   annotations:
     argocd.argoproj.io/sync-wave: "2"
@@ -46,8 +46,6 @@ spec:
           # export USER_NAME USER_PROJECT
 
           echo "Generating and apply resources for $USER_NAME..."
-
-          # envsubst < "templates/project.yaml" | oc.exe apply -f -
 
           # Create projects
           cat << EOF | oc.exe apply -f-
