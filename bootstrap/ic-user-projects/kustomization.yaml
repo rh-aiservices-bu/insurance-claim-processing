@@ -11,6 +11,4 @@ resources:
 # wave 0
 - project-manager.yaml
 # wave 1
-- config-map-code.yaml
-# wave 2
-- create-and-apply-resources.yaml
+- create-projects-and-resources-job.yaml
