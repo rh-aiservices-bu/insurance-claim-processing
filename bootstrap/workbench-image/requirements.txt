@@ -162,7 +162,6 @@ oauthlib==3.2.2; python_version >= '3.6'
 onnx==1.15.0; python_version >= '3.8'
 onnxruntime==1.17.1
 openai==1.14.1; python_full_version >= '3.7.1'
-opencv-python==4.9.0.80; python_version >= '3.6'
 opencv-python-headless==4.9.0.80; python_version >= '3.6'
 orjson==3.9.15; python_version >= '3.8'
 overrides==7.7.0; python_version >= '3.6'
