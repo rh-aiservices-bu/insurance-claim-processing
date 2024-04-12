@@ -57,7 +57,7 @@ spec:
     spec:
       containers:
       - name: oauth-proxy
-        image: registry.redhat.io/openshift4/ose-oauth-proxy@sha256:4bef31eb993feb6f1096b51b4876c65a6fb1f4401fee97fa4f4542b6b7c9bc46
+        image: registry.redhat.io/openshift4/ose-oauth-proxy@sha256:ab112105ac37352a2a4916a39d6736f5db6ab4c29bad4467de8d613e80e9bb33
         command: ["tail"]
         args: ["-f", "/dev/null"]
         resources:
@@ -67,7 +67,7 @@ spec:
             cpu: 10m
             memory: 10Mi
       - name: model-server
-        image: quay.io/opendatahub/openvino_model_server@sha256:2cbe8a48ab0bc6fe7fb76919bf33253e83a6218a9c4b486b744c3dcf30679616
+        image: quay.io/modh/openvino_model_server@sha256:5d04d405526ea4ce5b807d0cd199ccf7f71bab1228907c091e975efa770a4908
         command: ["tail"]
         args: ["-f", "/dev/null"]
         resources:
@@ -77,7 +77,7 @@ spec:
             cpu: 10m
             memory: 10Mi
       - name: runtime-adapter
-        image: registry.redhat.io/rhods/odh-modelmesh-runtime-adapter-rhel8@sha256:6bba39a3ab246803a1ab6fec1629246c10934faed3ed20add59aeb0945f29883
+        image: registry.redhat.io/rhoai/odh-modelmesh-runtime-adapter-rhel8@sha256:5762982131a5381e582a8952a3ba336b68a1e46257f552a087da6d5a900b8bdf
         command: ["tail"]
         args: ["-f", "/dev/null"]
         resources:
@@ -87,7 +87,7 @@ spec:
             cpu: 10m
             memory: 10Mi
       - name: modelmesh
-        image: registry.redhat.io/rhods/odh-modelmesh-rhel8@sha256:2977caf3d7914f9d9c407ad3e01d78f783202c358766b70fca342560e1afe3df
+        image: registry.redhat.io/rhoai/odh-modelmesh-rhel8@sha256:b20c29b1a81e8200a81aab2361af2863889eaa3ea68f4fb19335b97949276a1b
         command: ["tail"]
         args: ["-f", "/dev/null"]
         resources:
@@ -115,7 +115,7 @@ spec:
     spec:
       containers:
         - name: mariadb
-          image: registry.redhat.io/rhel8/mariadb-103@sha256:2370ca7fd91c0d35910006c8ba40bb9651244b2a42050cb9b2dd9d5163155e15
+          image: registry.redhat.io/rhel8/mariadb-103@sha256:3d30992e60774f887c4e7959c81b0c41b0d82d042250b3b56f05ab67fd4cdee1
           command: ["tail"]
           args: ["-f", "/dev/null"]
           resources:
@@ -125,7 +125,7 @@ spec:
               cpu: 10m
               memory: 10Mi
         - name: ds-pipeline-scheduledworkflow-pipelines-definition
-          image: registry.redhat.io/rhods/odh-ml-pipelines-scheduledworkflow-rhel8@sha256:17cb168262d64409c613d09815a122958e69c29c1b78218f5f8a47af0a76b3f7
+          image: registry.redhat.io/rhoai/odh-ml-pipelines-scheduledworkflow-rhel8@sha256:3edce9aaa66f349c2291a161686349e0068017c7ad084146f41878f27a6eae74
           command: ["tail"]
           args: ["-f", "/dev/null"]
           resources:
@@ -135,7 +135,7 @@ spec:
               cpu: 10m
               memory: 10Mi
         - name: ds-pipeline-pipelines-definition
-          image: registry.redhat.io/rhods/odh-ml-pipelines-api-server-rhel8@sha256:e1a5ceff2354b5ea787838143338848727a0dba4240fe8ed84350128603399e9
+          image: registry.redhat.io/rhoai/odh-ml-pipelines-api-server-rhel8@sha256:07954372e0e4dff0109d8d2551d059832ad87fb1fe8fbb8a54fa1c0f7878dbc1
           command: ["tail"]
           args: ["-f", "/dev/null"]
           resources:
@@ -145,7 +145,7 @@ spec:
               cpu: 10m
               memory: 10Mi
         - name: ds-pipeline-persistenceagent-pipelines-definition
-          image: registry.redhat.io/rhods/odh-ml-pipelines-persistenceagent-rhel8@sha256:e87c4aab19435d4d3ded11acf53506a586127a4ec670db65bd25c72ed66c3537
+          image: registry.redhat.io/rhoai/odh-ml-pipelines-persistenceagent-rhel8@sha256:6fdf2b754aea6732ae0757e099ec69fac1cb32e633342a160546ee5b99604af7
           command: ["tail"]
           args: ["-f", "/dev/null"]
           resources:
