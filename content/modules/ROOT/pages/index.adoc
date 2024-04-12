@@ -38,7 +38,7 @@ a|- summarization check
 - sentiment check
 - Model Comparison check and choice
 - prompt engineering exercise
-- sanity-check pipeline
+- confidence-check pipeline
 
 |Image Processing |20 | Hands-On
 a|- car recognition checks

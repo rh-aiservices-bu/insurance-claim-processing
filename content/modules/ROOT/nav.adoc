@@ -19,7 +19,7 @@
 ** xref:03-03-information-extractions.adoc[3.3 Information Extraction]
 ** xref:03-04-comparing-model-servers.adoc[3.4 Comparing Model Servers]
 ** xref:03-05-prompt-engineering.adoc[3.5 Prompt Engineering Exercise (Optional)]
-** xref:03-06-sanity-check.adoc[3.6 Sanity-check pipeline]
+** xref:03-06-confidence-check.adoc[3.6 Confidence-check pipeline]
 
 * 4. Image Processing
 ** xref:04-01-over-approach.adoc[4.1 Overall Approach]
