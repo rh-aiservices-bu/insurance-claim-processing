@@ -37,14 +37,15 @@ If you got this far and saw all that, congratulations, you properly connected to
 
 We are now ready to start the {ic}.
 
-== Getting Support during RH1 In-Person Labs
+== Getting Support during Red Hat Summit
 
 * In the room:
-** Some very kind colleagues will be walking around in the room, to help and/or answer questions.
+** Some very kind colleagues of ours will be walking around in the room, to help and/or answer questions.
 ** If you run into a particular issue, call out to one of them and quietly explain what the issue is.
-** If they are unsure or if it's likely to be a long explanation, they might ask you to "post the question in slack" instead. (see below)
-* Over Slack:
-** We have a dedicated Slack Channel where more colleagues (who kindly agreed to stay up late) will try to answer questions.
-** Head over to the slack channel called https://redhat.enterprise.slack.com/archives/C066EQ8LWBS[#rh1-insurance-claims-lab,window=_blank]
-** Post a message such as `I am userX and I have an issue with exercise number 2.4`
-** Use the https://slack.com/help/articles/115000769927-Use-threads-to-organize-discussions-[threads,window=_blank] feature in slack to then post a screenshot of a description of the issue, in-thread.
+
+// ** If they are unsure or if it's likely to be a long explanation, they might ask you to "post the question in slack" instead. (see below)
+// * Over Slack:
+// ** We have a dedicated Slack Channel where more colleagues (who kindly agreed to stay up late) will try to answer questions.
+// ** Head over to the slack channel called https://redhat.enterprise.slack.com/archives/C066EQ8LWBS[#rh1-insurance-claims-lab,window=_blank]
+// ** Post a message such as `I am userX and I have an issue with exercise number 2.4`
+// ** Use the https://slack.com/help/articles/115000769927-Use-threads-to-organize-discussions-[threads,window=_blank] feature in slack to then post a screenshot of a description of the issue, in-thread.
