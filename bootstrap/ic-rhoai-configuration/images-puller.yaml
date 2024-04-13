@@ -154,4 +154,14 @@ spec:
             requests:
               cpu: 10m
               memory: 10Mi
+        - name: ds-pipeline-runtime-image-confidence
+          image: quay.io/rh-aiservices-bu/rhoai-lab-insurance-claim-confidence-pipeline:1.1
+          command: ["tail"]
+          args: ["-f", "/dev/null"]
+          resources:
+            limits:
+              memory: 20Mi
+            requests:
+              cpu: 10m
+              memory: 10Mi
 
