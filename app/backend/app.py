@@ -201,7 +201,7 @@ async def websocket_endpoint(websocket: WebSocket):
     while True:
         data = await websocket.receive_text()
         data = json.loads(data)
-        for next_token in chatbot.stream(data["query"]):
+        for next_token in chatbot.stream(data["query"], data["claim"]):
             await websocket.send_text(next_token)
 
 # Serve React App

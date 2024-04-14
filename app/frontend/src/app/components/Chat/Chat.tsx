@@ -7,7 +7,7 @@ import * as React from 'react';
 import orb from '@app/assets/bgimages/orb.svg';
 import userAvatar from '@app/assets/bgimages/avatar-user.svg';
 
-const Chat: React.FunctionComponent<{}> = () => {
+const Chat: React.FunctionComponent<{claimSummary: string}> = ({claimSummary}) => {
 
     type Query = string;
     type Answer = string[];
@@ -65,7 +65,8 @@ const Chat: React.FunctionComponent<{}> = () => {
             //setMessageHistory([...messageHistory, queryText]); // Add the query to the message history
             // Put the query in a JSON object so that we can add other info later
             let data = {
-                query: queryText
+                query: queryText,
+                claim: claimSummary
             };
             connection.current?.send(JSON.stringify(data)); // Send the query to the server
             setQueryText(''); // Clear the query text

@@ -41,19 +41,20 @@ class Chatbot:
         )
 
         self.rag_template = """<s>[INST] <<SYS>>
-                        You are a helpful, respectful and honest assistant named HatBot answering questions.
-                        You will be given a question you need to answer, and a context to provide you with information. You must answer the question based as much as possible on this context.
+                        You are a helpful, respectful and honest assistant named "Parasol Assistant".
+                        You will be given a claim summary, a context to provide you with information, and a question. You must answer the question based as much as possible on this claim and this context.
                         Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.
 
                         If a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.
                         <</SYS>>
 
+                        Claim Summary:
+                        {claim}
+
                         Context: 
-                        {context}
+                        {{context}}
 
-                        Question: {question} [/INST]"""
-
-        self.RAG_PROMPT = PromptTemplate.from_template(self.rag_template)
+                        Question: {{question}} [/INST]"""
 
     def remove_source_duplicates(self, input_list):
         unique_list = []
@@ -62,7 +63,7 @@ class Chatbot:
                 unique_list.append(item.metadata["source"])
         return unique_list
 
-    def stream(self, input_text) -> Generator:
+    def stream(self, query, claim) -> Generator:
         # A Queue is needed for Streaming implementation
         q = Queue()
         job_done = object()
@@ -105,17 +106,21 @@ class Chatbot:
             text_field="page_content",
         )
 
+        # Inject claim summary into the prompt
+        injected_prompt = self.rag_template.format(claim=claim)
+        prompt = PromptTemplate.from_template(injected_prompt)
+
         # Instantiate RAG chain
         rag_chain = RetrievalQA.from_chain_type(
             llm,
             retriever=retriever,
-            chain_type_kwargs={"prompt": self.RAG_PROMPT},
+            chain_type_kwargs={"prompt": prompt},
             return_source_documents=True,
         )
 
         # Create a function to call - this will run in a thread
         def task():
-            resp = rag_chain.invoke({"query": input_text})
+            resp = rag_chain.invoke({"query": query, "claim": claim})
             sources = self.remove_source_duplicates(resp['source_documents'])
             if len(sources) != 0:
                 q.put("\n*Sources:* \n")
