@@ -21,7 +21,8 @@ class QueueCallback(BaseCallbackHandler):
         self.logger = logger
 
     def on_llm_new_token(self, token: str, **kwargs: any) -> None:
-        self.q.put(token)
+        data = {"type": "token", "token": token}
+        self.q.put(data)
 
     def on_llm_end(self, *args, **kwargs: any) -> None:
         return self.q.empty()
@@ -123,25 +124,22 @@ class Chatbot:
             resp = rag_chain.invoke({"query": query, "claim": claim})
             sources = self.remove_source_duplicates(resp['source_documents'])
             if len(sources) != 0:
-                q.put("<BR/>Sources: ")
                 for i, source in enumerate(sources):
-                    if i == 0:
-                        q.put(" " + str(source))
-                    else:    
-                        q.put(", " + str(source))
+                    data = {"type": "source", "source": sources}
+                    q.put(data)
             q.put(job_done)
 
         # Create a thread and start the function
         t = Thread(target=task)
         t.start()
 
-        # Get each new token from the queue and yield for our generator
+        # Get each new item from the queue and yield for our generator
         while True:
             try:
-                next_token = q.get(True, timeout=1)
-                if next_token is job_done:
+                next_item = q.get(True, timeout=1)
+                if next_item is job_done:
                     break
-                if isinstance(next_token, str):
-                    yield next_token
+                if isinstance(next_item, dict):
+                    yield next_item
             except Empty:
                 continue

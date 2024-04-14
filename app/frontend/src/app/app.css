@@ -151,13 +151,7 @@ body,
   height: 100px;
 }
 
-.chat-answer-text {
-  padding-top: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 25px;
-  overflow-wrap: break-word;
-}
+
 
 .chat-question-text {
   padding-top: 5px;
@@ -188,12 +182,33 @@ body,
   padding-right: 10px;
 }
 
+
+.chat-answer-text {
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  margin-bottom: 0px !important;
+  overflow-wrap: break-word;
+}
+
+.chat-source-text {
+  font-style: italic;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  margin-bottom: 0px !important;
+  overflow-wrap: break-word;
+}
+
 .chat-item {
   width: 100%;
   vertical-align: top;
   padding-left: 10px !important;
   padding-right: 10px !important;
-  padding-bottom: 5px !important; 
+  padding-bottom: 10px !important;
+  margin-bottom: 0px !important;
 }
 
 .grid-item-orb {

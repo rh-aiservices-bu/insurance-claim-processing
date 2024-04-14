@@ -201,8 +201,9 @@ async def websocket_endpoint(websocket: WebSocket):
     while True:
         data = await websocket.receive_text()
         data = json.loads(data)
-        for next_token in chatbot.stream(data["query"], data["claim"]):
-            await websocket.send_text(next_token)
+        for next_item in chatbot.stream(data["query"], data["claim"]):
+            answer = json.dumps(next_item)
+            await websocket.send_text(answer)
 
 # Serve React App
 class SPAStaticFiles(StaticFiles):

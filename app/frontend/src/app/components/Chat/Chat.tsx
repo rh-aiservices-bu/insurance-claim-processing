@@ -7,7 +7,7 @@ import * as React from 'react';
 import orb from '@app/assets/bgimages/orb.svg';
 import userAvatar from '@app/assets/bgimages/avatar-user.svg';
 
-const Chat: React.FunctionComponent<{claimSummary: string}> = ({claimSummary}) => {
+const Chat: React.FunctionComponent<{ claimSummary: string }> = ({ claimSummary }) => {
 
     type Query = string;
     type Answer = string[];
@@ -38,7 +38,14 @@ const Chat: React.FunctionComponent<{claimSummary: string}> = ({claimSummary}) =
         }
 
         ws.onmessage = (event) => {
-            setAnswerText(answerText => [...answerText, event.data]);
+            const data = JSON.parse(event.data);
+            if (data['type'] === 'token') {
+                setAnswerText(answerText => [...answerText, data['token']]);
+                return
+            } else if (data['type'] === 'source') {
+                setAnswerSources(answerSources => [...answerSources, data['source']]);
+                return
+            }
         }
 
         connection.current = ws;
@@ -72,6 +79,7 @@ const Chat: React.FunctionComponent<{claimSummary: string}> = ({claimSummary}) =
             connection.current?.send(JSON.stringify(data)); // Send the query to the server
             setQueryText(''); // Clear the query text
             setAnswerText([]); // Clear the previous response
+            setAnswerSources([]); // Clear the previous sources
         };
     }
 
@@ -120,13 +128,13 @@ const Chat: React.FunctionComponent<{claimSummary: string}> = ({claimSummary}) =
                                     </React.Fragment>
                                 );
                             })}
-
                             <Grid className='chat-item'>
                                 <GridItem span={1} className='grid-item-orb'>
                                     <img src={orb} className='orb' />
                                 </GridItem>
                                 <GridItem span={11}>
                                     <Text component={TextVariants.p} className='chat-answer-text'>{answerText.join("") != "" && answerText.join("")}</Text>
+                                    <Text component={TextVariants.p} className='chat-source-text'>{answerSources.join("") != "" && "Source: "}{answerSources.join("") != "" && answerSources.join(", ")}</Text>
                                 </GridItem>
                             </Grid>
                         </TextContent>
