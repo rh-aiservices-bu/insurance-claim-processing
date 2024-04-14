@@ -23,6 +23,10 @@ body,
   white-space: pre-line;
 }
 
+.avatar {
+  background-color: #ebebeb
+}
+
 @import "~react-image-gallery/styles/css/image-gallery.css";
 
 .image-gallery-thumbnail {
@@ -147,7 +151,15 @@ body,
   height: 100px;
 }
 
-.chat-bot-answer-text {
+.chat-answer-text {
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 25px;
+  overflow-wrap: break-word;
+}
+
+.chat-question-text {
   padding-top: 5px;
   padding-left: 10px;
   padding-right: 10px;
@@ -172,4 +184,29 @@ body,
   font-size: x-small;
   color: #696969;
   padding-bottom: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.chat-item {
+  width: 100%;
+  vertical-align: top;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  padding-bottom: 5px !important; 
+}
+
+.grid-item-orb {
+  text-align: center;
+}
+
+.orb {
+  width: 25px;
+  height: 25px;
+  margin-top: 7px;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
 }

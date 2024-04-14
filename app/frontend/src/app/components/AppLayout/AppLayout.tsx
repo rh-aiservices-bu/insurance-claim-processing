@@ -1,4 +1,4 @@
-import imgAvatar from '@app/assets/bgimages/avatar-img.svg';
+import imgAvatar from '@app/assets/bgimages/avatar-user.svg';
 import logo from '@app/assets/bgimages/parasol-logo.svg';
 import { IAppRoute, IAppRouteGroup, routes } from '@app/routes';
 import {
@@ -59,12 +59,12 @@ const AppLayout: React.FunctionComponent<IAppLayout> = ({ children }) => {
         <ToolbarItem>
           <TextContent>
             <Text component={TextVariants.p} className='pf-v5-global--spacer--md'>
-              Username
+              Alex Garcia
             </Text>
           </TextContent>
         </ToolbarItem>
         <ToolbarItem>
-          <Avatar src={imgAvatar} alt="" />
+          <Avatar src={imgAvatar} alt="" border='light' className='avatar'/>
         </ToolbarItem>
       </ToolbarContent>
     </Toolbar>

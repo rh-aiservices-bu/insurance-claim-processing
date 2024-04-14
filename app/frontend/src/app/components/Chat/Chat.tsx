@@ -2,8 +2,10 @@ import config from '@app/config';
 import { faCommentDots, faPaperPlane } from '@fortawesome/free-regular-svg-icons';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button, Card, CardBody, CardHeader, Flex, FlexItem, Panel, PanelMain, PanelMainBody, Stack, StackItem, Text, TextArea, TextContent, TextVariants, Tooltip } from '@patternfly/react-core';
+import { Button, Card, CardBody, CardHeader, Flex, FlexItem, Grid, GridItem, Icon, Panel, PanelMain, PanelMainBody, Stack, StackItem, Text, TextArea, TextContent, TextVariants, Tooltip } from '@patternfly/react-core';
 import * as React from 'react';
+import orb from '@app/assets/bgimages/orb.svg';
+import userAvatar from '@app/assets/bgimages/avatar-user.svg';
 
 const Chat: React.FunctionComponent<{}> = () => {
 
@@ -13,7 +15,7 @@ const Chat: React.FunctionComponent<{}> = () => {
     type MessageHistory = Message[];
 
     const [queryText, setQueryText] = React.useState<Query>('');
-    const [answerText, setAnswerText] = React.useState<Answer>([' Hi! I am Parasol Assistant&trade;. How can I help you today?']);
+    const [answerText, setAnswerText] = React.useState<Answer>([' Hi! I am Parasol Assistant™. How can I help you today?']);
     const [messageHistory, setMessageHistory] = React.useState<MessageHistory>([]);
 
     const wsUrl = config.backend_api_url.replace(/(http)(s)?(:\/\/.+)\/api/, function (_, http, s, rest) {
@@ -39,7 +41,7 @@ const Chat: React.FunctionComponent<{}> = () => {
         }
 
         connection.current = ws;
-        
+
         // Clean up function
         return () => {
             if (connection.current) {
@@ -73,7 +75,7 @@ const Chat: React.FunctionComponent<{}> = () => {
 
     const resetMessageHistory = () => {
         setMessageHistory([]);
-        setAnswerText(['Hi! I am Parasol Assistant&trade;. How can I help you today?']);
+        setAnswerText(['Hi! I am Parasol Assistant™. How can I help you today?']);
     };
 
     return (
@@ -89,10 +91,24 @@ const Chat: React.FunctionComponent<{}> = () => {
                         <TextContent>
                             {messageHistory.map((message, index) => {
                                 const renderMessage = () => {
-                                    if (typeof message === 'string') {
-                                        return <Text component={TextVariants.p} className='chat-bot-answer-text'>Q: {message}</Text>;
-                                    } else {
-                                        return <Text component={TextVariants.p} className='chat-bot-answer-text'>A: {message.join("")}</Text>;
+                                    if (typeof message === 'string') { // If the message is a query
+                                        return <Grid className='chat-item'>
+                                            <GridItem span={1} className='grid-item-orb'>
+                                                <img src={userAvatar} className='user-avatar' />
+                                            </GridItem>
+                                            <GridItem span={11}>
+                                                <Text component={TextVariants.p} className='chat-question-text'>{message}</Text>
+                                            </GridItem>
+                                        </Grid>
+                                    } else { // If the message is a response
+                                        return <Grid className='chat-item'>
+                                            <GridItem span={1} className='grid-item-orb'>
+                                                <img src={orb} className='orb' />
+                                            </GridItem>
+                                            <GridItem span={11}>
+                                                <Text component={TextVariants.p} className='chat-answer-text'>{message.join("")}</Text>
+                                            </GridItem>
+                                        </Grid>
                                     }
                                 };
 
@@ -102,7 +118,15 @@ const Chat: React.FunctionComponent<{}> = () => {
                                     </React.Fragment>
                                 );
                             })}
-                            <Text className='chat-bot-answer-text'>{answerText.join("") != "" && 'A:' + answerText.join("")}</Text>
+
+                            <Grid className='chat-item'>
+                                <GridItem span={1} className='grid-item-orb'>
+                                    <img src={orb} className='orb' />
+                                </GridItem>
+                                <GridItem span={11}>
+                                    <Text component={TextVariants.p} className='chat-answer-text'>{answerText.join("") != "" && answerText.join("")}</Text>
+                                </GridItem>
+                            </Grid>
                         </TextContent>
                     </StackItem>
                     <StackItem className='chat-input-panel'>
@@ -131,7 +155,11 @@ const Chat: React.FunctionComponent<{}> = () => {
                                             </Tooltip>
                                         </FlexItem>
                                         <FlexItem align={{ default: 'alignRight' }}>
-                                            <Button variant="link" onClick={sendQueryText} aria-label='SendQuery'><FontAwesomeIcon icon={faPaperPlane} /></Button>
+                                            <Tooltip
+                                                content={<div>Send your query</div>}
+                                            >
+                                                <Button variant="link" onClick={sendQueryText} aria-label='SendQuery'><FontAwesomeIcon icon={faPaperPlane} /></Button>
+                                            </Tooltip>
                                         </FlexItem>
                                     </Flex>
                                 </PanelMainBody>
@@ -140,7 +168,7 @@ const Chat: React.FunctionComponent<{}> = () => {
                     </StackItem>
                     <StackItem>
                         <TextContent>
-                            <Text className='chat-disclaimer'>Powered by AI. It may display inaccurate info, including about technology, so double-check the responses.</Text>
+                            <Text className='chat-disclaimer'>Powered by AI. It may display inaccurate info, so please double-check the responses.</Text>
                         </TextContent>
                     </StackItem>
                 </Stack>
