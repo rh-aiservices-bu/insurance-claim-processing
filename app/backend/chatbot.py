@@ -123,9 +123,12 @@ class Chatbot:
             resp = rag_chain.invoke({"query": query, "claim": claim})
             sources = self.remove_source_duplicates(resp['source_documents'])
             if len(sources) != 0:
-                q.put("\n*Sources:* \n")
-                for source in sources:
-                    q.put("* " + str(source) + "\n")
+                q.put("<BR/>Sources: ")
+                for i, source in enumerate(sources):
+                    if i == 0:
+                        q.put(" " + str(source))
+                    else:    
+                        q.put(", " + str(source))
             q.put(job_done)
 
         # Create a thread and start the function

@@ -16,6 +16,7 @@ const Chat: React.FunctionComponent<{claimSummary: string}> = ({claimSummary}) =
 
     const [queryText, setQueryText] = React.useState<Query>('');
     const [answerText, setAnswerText] = React.useState<Answer>([' Hi! I am Parasol Assistant™. How can I help you today?']);
+    const [answerSources, setAnswerSources] = React.useState<string[]>([]); // Array of sources for the answer
     const [messageHistory, setMessageHistory] = React.useState<MessageHistory>([]);
 
     const wsUrl = config.backend_api_url.replace(/(http)(s)?(:\/\/.+)\/api/, function (_, http, s, rest) {
