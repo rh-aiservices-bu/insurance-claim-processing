@@ -57,12 +57,16 @@ class Chatbot:
 
                         Question: {{question}} [/INST]"""
 
-    def remove_source_duplicates(self, input_list):
-        unique_list = []
-        for item in input_list:
-            if item.metadata["source"] not in unique_list:
-                unique_list.append(item.metadata["source"])
-        return unique_list
+    def format_sources(self, input_list):
+        sources = ""
+        if len(input_list) != 0:
+            sources += input_list[0].metadata["source"] + ', page: ' + str(input_list[0].metadata["page"])
+            page_list = [input_list[0].metadata["page"]]
+            for item in input_list:
+                if item.metadata["page"] not in page_list: # Avoid duplicates
+                    page_list.append(item.metadata["page"])
+                    sources += ', ' + str(item.metadata["page"])
+        return sources
 
     def stream(self, query, claim) -> Generator:
         # A Queue is needed for Streaming implementation
@@ -122,11 +126,10 @@ class Chatbot:
         # Create a function to call - this will run in a thread
         def task():
             resp = rag_chain.invoke({"query": query, "claim": claim})
-            sources = self.remove_source_duplicates(resp['source_documents'])
+            sources = self.format_sources(resp['source_documents'])
             if len(sources) != 0:
-                for i, source in enumerate(sources):
-                    data = {"type": "source", "source": sources}
-                    q.put(data)
+                data = {"type": "source", "source": sources}
+                q.put(data)
             q.put(job_done)
 
         # Create a thread and start the function

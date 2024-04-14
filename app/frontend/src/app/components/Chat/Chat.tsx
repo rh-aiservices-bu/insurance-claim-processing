@@ -63,7 +63,7 @@ const Chat: React.FunctionComponent<{ claimSummary: string }> = ({ claimSummary 
         if (chatBotAnswer) {
             chatBotAnswer.scrollTop = chatBotAnswer.scrollHeight;
         }
-    }, [answerText]);  // Dependency array
+    }, [answerText, answerSources]);  // Dependency array
 
 
     const sendQueryText = () => {
@@ -134,7 +134,7 @@ const Chat: React.FunctionComponent<{ claimSummary: string }> = ({ claimSummary 
                                 </GridItem>
                                 <GridItem span={11}>
                                     <Text component={TextVariants.p} className='chat-answer-text'>{answerText.join("") != "" && answerText.join("")}</Text>
-                                    <Text component={TextVariants.p} className='chat-source-text'>{answerSources.join("") != "" && "Source: "}{answerSources.join("") != "" && answerSources.join(", ")}</Text>
+                                    <Text component={TextVariants.p} className='chat-source-text'>{answerSources.join("") != "" && "Relevant References: "}{answerSources.join("") != "" && answerSources.join(", ")}</Text>
                                 </GridItem>
                             </Grid>
                         </TextContent>
