@@ -43,7 +43,7 @@ class Chatbot:
 
         self.rag_template = """<s>[INST] <<SYS>>
                         You are a helpful, respectful and honest assistant named "Parasol Assistant".
-                        You will be given a claim summary, a context to provide you with information, and a question. You must answer the question based as much as possible on this claim and this context.
+                        You will be given a claim summary, references to provide you with information, and a question. You must answer the question based as much as possible on this claim with the help of the references.
                         Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.
 
                         If a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.
@@ -52,10 +52,24 @@ class Chatbot:
                         Claim Summary:
                         {claim}
 
-                        Context: 
+                        References: 
                         {{context}}
 
                         Question: {{question}} [/INST]"""
+
+        self.rag_template_no_summary = """<s>[INST] <<SYS>>
+                        You are a helpful, respectful and honest assistant named "Parasol Assistant".
+                        You will be given a context to provide you with information, and a question. You must answer the question based as much as possible on this context. Please don't mention you are using a context in your response.
+                        Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.
+
+                        If a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.
+                        <</SYS>>
+
+                        Context: 
+                        {context}
+
+                        Question: {question} [/INST]"""
+
 
     def format_sources(self, input_list):
         sources = ""
@@ -112,8 +126,11 @@ class Chatbot:
         )
 
         # Inject claim summary into the prompt
-        injected_prompt = self.rag_template.format(claim=claim)
-        prompt = PromptTemplate.from_template(injected_prompt)
+        if claim != "":
+            prompt_template = self.rag_template.format(claim=claim)
+        else:
+            prompt_template = self.rag_template_no_summary
+        prompt = PromptTemplate.from_template(prompt_template)
 
         # Instantiate RAG chain
         rag_chain = RetrievalQA.from_chain_type(

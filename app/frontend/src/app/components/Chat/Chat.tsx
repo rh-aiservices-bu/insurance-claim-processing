@@ -138,7 +138,7 @@ const Chat: React.FunctionComponent<{ claimSummary: string }> = ({ claimSummary 
                                 </GridItem>
                                 <GridItem span={11}>
                                     <Text component={TextVariants.p} className='chat-answer-text'>{answerText.join("") != "" && answerText.join("")}</Text>
-                                    <Text component={TextVariants.p} className='chat-source-text'>{answerSources.join("") != "" && "Relevant References: "}{answerSources.join("") != "" && answerSources.join(", ")}</Text>
+                                    <Text component={TextVariants.p} className='chat-source-text'>{answerSources.join("") != "" && "References: "}{answerSources.join("") != "" && answerSources.join(", ")}</Text>
                                 </GridItem>
                             </Grid>
                         </TextContent>
