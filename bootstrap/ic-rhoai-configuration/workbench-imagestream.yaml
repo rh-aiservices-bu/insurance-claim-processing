@@ -4,7 +4,7 @@ metadata:
   annotations:
     opendatahub.io/notebook-image-order: '01'
     opendatahub.io/notebook-image-url: >-
-      https://github.com/rh-aiservices-bu/insurance-claim-processing/tree/main/bootstrap/workbench-image
+      https://github.com/rh-aiservices-bu/parasol-insurance/tree/main/bootstrap/workbench-image
     internal.config.kubernetes.io/previousNamespaces: default
     internal.config.kubernetes.io/previousKinds: ImageStream
     opendatahub.io/notebook-image-name: CUSTOM - Insurance Claim Processing Lab Workbench

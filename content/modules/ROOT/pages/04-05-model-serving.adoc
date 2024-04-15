@@ -184,7 +184,7 @@ image::04/inference-url.png[]
 
 We will now use this URL to query the model.
 
-- In your running workbench, navigate to the folder `insurance-claim-processing/lab-materials/04`.
+- In your running workbench, navigate to the folder `parasol-insurance/lab-materials/04`.
 - Look for (and open) the notebook called `04-05-model-serving.ipynb`.
 - Execute the cells of the notebook, and ensure you understand what is happening.
 

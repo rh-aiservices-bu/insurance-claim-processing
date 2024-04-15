@@ -1,14 +1,14 @@
 {
-  "name": "insurance-claim-processing",
+  "name": "parasol-insurance",
   "version": "1.0.0",
   "description": "Backend for the RAG Chatbot Patternfly.",
   "repository": {
     "type": "git",
-    "url": "git+https://https://github.com/rh-aiservices-bu/insurance-claim-processing.git"
+    "url": "git+https://https://github.com/rh-aiservices-bu/parasol-insurance.git"
   },
-  "homepage": "https://github.com/rh-aiservices-bu/insurance-claim-processing/README.md",
+  "homepage": "https://github.com/rh-aiservices-bu/parasol-insurance/README.md",
   "bugs": {
-    "url": "https://github.com/rh-aiservices-bu/insurance-claim-processing/issues"
+    "url": "https://github.com/rh-aiservices-bu/parasol-insurance/issues"
   },
   "license": "MIT",
   "private": true,

@@ -58,4 +58,4 @@ a|- What else could we add that would have value?
 
 == Contributing
 
-If you are interested in contributing to this project, consult this GitHub Repo: https://github.com/rh-aiservices-bu/insurance-claim-processing/[https://github.com/rh-aiservices-bu/insurance-claim-processing/,window=_blank]
+If you are interested in contributing to this project, consult this GitHub Repo: https://github.com/rh-aiservices-bu/parasol-insurance/[https://github.com/rh-aiservices-bu/parasol-insurance/,window=_blank]
