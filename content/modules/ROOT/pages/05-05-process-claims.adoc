@@ -15,7 +15,7 @@ For that, we will use a pipeline that can either be run ad-hoc or scheduled just
 
 == What's inside the pipeline?
 
-If you navigate to `insurance-claim-processing/lab-materials/05/05-05` you can see a variety of files. +
+If you navigate to `parasol-insurance/lab-materials/05/05-05` you can see a variety of files. +
 
 [.bordershadow]
 image::05/05-process-claims-yaml.jpg[]

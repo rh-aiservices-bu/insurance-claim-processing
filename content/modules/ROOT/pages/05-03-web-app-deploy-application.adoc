@@ -96,7 +96,7 @@ spec:
   project: default
   source:
     path: lab-materials/05/app
-    repoURL: https://github.com/rh-aiservices-bu/insurance-claim-processing.git
+    repoURL: https://github.com/rh-aiservices-bu/parasol-insurance.git
     targetRevision: dev
   syncPolicy:
     automated:
