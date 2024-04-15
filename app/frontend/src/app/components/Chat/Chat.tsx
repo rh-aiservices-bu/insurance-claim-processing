@@ -82,6 +82,7 @@ const Chat: React.FunctionComponent<{ claimSummary: string }> = ({ claimSummary 
 
     const resetMessageHistory = () => {
         setMessageHistory([]);
+        setAnswerSources([]);
         setAnswerText(['Hi! I am Parasol Assistant. How can I help you today?']);
     };
 
