@@ -15,7 +15,7 @@ const Chat: React.FunctionComponent<{ claimSummary: string }> = ({ claimSummary 
     type MessageHistory = Message[];
 
     const [queryText, setQueryText] = React.useState<Query>('');
-    const [answerText, setAnswerText] = React.useState<Answer>([' Hi! I am Parasol Assistant™. How can I help you today?']);
+    const [answerText, setAnswerText] = React.useState<Answer>([' Hi! I am Parasol Assistant. How can I help you today?']);
     const [answerSources, setAnswerSources] = React.useState<string[]>([]); // Array of sources for the answer
     const [messageHistory, setMessageHistory] = React.useState<MessageHistory>([]);
 
@@ -82,14 +82,14 @@ const Chat: React.FunctionComponent<{ claimSummary: string }> = ({ claimSummary 
 
     const resetMessageHistory = () => {
         setMessageHistory([]);
-        setAnswerText(['Hi! I am Parasol Assistant™. How can I help you today?']);
+        setAnswerText(['Hi! I am Parasol Assistant. How can I help you today?']);
     };
 
     return (
         <Card isRounded className='chat-card'>
             <CardHeader className='chat-card-header'>
                 <TextContent>
-                    <Text component={TextVariants.h3} className='chat-card-header-title'><FontAwesomeIcon icon={faCommentDots} />&nbsp;Parasol Assistant&trade;</Text>
+                    <Text component={TextVariants.h3} className='chat-card-header-title'><FontAwesomeIcon icon={faCommentDots} />&nbsp;Parasol Assistant</Text>
                 </TextContent>
             </CardHeader>
             <CardBody className='chat-card-body'>
