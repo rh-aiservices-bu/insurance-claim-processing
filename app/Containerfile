@@ -4,7 +4,9 @@ USER root
 
 WORKDIR /tmp
 
-RUN git clone https://github.com/rh-aiservices-bu/insurance-claim-processing.git
+RUN git clone https://github.com/rh-aiservices-bu/insurance-claim-processing.git && \
+    cd insurance-claim-processing && \
+    git checkout visual-modification
 
 FROM registry.access.redhat.com/ubi9/nodejs-18
 
