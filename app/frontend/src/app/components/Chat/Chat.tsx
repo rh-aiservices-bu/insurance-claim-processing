@@ -67,16 +67,22 @@ const Chat: React.FunctionComponent<{ claimSummary: string }> = ({ claimSummary 
         if (connection.current?.readyState === WebSocket.OPEN) {
             const previousAnswer = answerText; // Save the previous response, needed because states are updated asynchronously
             setMessageHistory([...messageHistory, previousAnswer, queryText]); // Add the previous response to the message history
-            //setMessageHistory([...messageHistory, queryText]); // Add the query to the message history
-            // Put the query in a JSON object so that we can add other info later
-            let data = {
-                query: queryText,
-                claim: claimSummary
-            };
-            connection.current?.send(JSON.stringify(data)); // Send the query to the server
             setQueryText(''); // Clear the query text
             setAnswerText([]); // Clear the previous response
             setAnswerSources([]); // Clear the previous sources
+            // Put the query in a JSON object so that we can add other info later
+            if (queryText != "" ) {
+                let data = {
+                    query: queryText,
+                    claim: claimSummary
+                };
+                connection.current?.send(JSON.stringify(data)); // Send the query to the server
+            } else {
+                setAnswerText(['Please enter a query...']);
+             }
+            
+            
+            
         };
     }
 
