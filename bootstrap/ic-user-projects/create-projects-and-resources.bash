@@ -18,7 +18,7 @@ do
 
 # Construct dynamic variables
 USER_NAME="user$i"
-USER_PROJECT="user$i-auto"
+USER_PROJECT="user$i"
 
 echo "Generating and apply resources for $USER_NAME..."
 
@@ -205,7 +205,7 @@ spec:
     deploy: true
 EOF
 
-# Create the Elyra secret 
+# Create the Elyra secret
 cat << EOF | oc apply -f-
 apiVersion: batch/v1
 kind: Job
@@ -488,7 +488,7 @@ spec:
         args:
         - -ec
         - |-
-          pod_name=\$(oc get pods --selector=app=$WORKBENCH_NAME -o jsonpath='{.items[0].metadata.name}') && oc exec \$pod_name -- git clone https://github.com/rh-aiservices-bu/insurance-claim-processing
+          pod_name=\$(oc get pods --selector=app=$WORKBENCH_NAME -o jsonpath='{.items[0].metadata.name}') && oc exec \$pod_name -- git clone https://github.com/rh-aiservices-bu/parasol-insurance
       restartPolicy: Never
 EOF
 done
