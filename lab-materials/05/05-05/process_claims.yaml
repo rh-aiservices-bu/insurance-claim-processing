@@ -69,6 +69,7 @@ spec:
             rm -r *
             git clone https://github.com/rh-aiservices-bu/parasol-insurance
             cd parasol-insurance
+            git checkout dev
             ls
           command:
           - sh
