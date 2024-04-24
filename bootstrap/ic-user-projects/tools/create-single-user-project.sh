@@ -1,20 +1,19 @@
 #!/bin/bash
-# Get user count
-user_count=$(oc get namespaces | grep showroom | wc -l)
+while true; do
+  echo "Creating an individual user..."
+  read -p "Please enter the username: " USER_NAME
+  read -p "Please enter the projectname: " USER_PROJECT
+  echo ""
 
-echo -n 'Waiting for minio-root-user secret'
-while [ -z "\$(oc get secret -n ic-shared-minio minio-root-user -oname 2>/dev/null)" ]; do
-  echo -n .
-  sleep 5
-done; echo
+  read -p "Is this correct? (y/n) " yn
+  case $yn in
+    [Yy]* ) break;;
+    [Nn]* ) ;;
+    * ) echo "Please answer yes or no.";;
+  esac
+done
 
-echo -n 'Waiting for rhods-dashboard route'
-while [ -z "\$(oc get route -n redhat-ods-applications rhods-dashboard -oname 2>/dev/null)" ]; do
-  echo -n .
-  sleep 5
-done; echo
 
-# Get needed variables
 MINIO_ROOT_USER=$(oc get secret minio-root-user -n ic-shared-minio -o template --template '{{.data.MINIO_ROOT_USER|base64decode}}')
 MINIO_ROOT_PASSWORD=$(oc get secret minio-root-user -n ic-shared-minio -o template --template '{{.data.MINIO_ROOT_PASSWORD|base64decode}}')
 MINIO_HOST=https://$(oc get route minio-s3 -n ic-shared-minio -o template --template '{{.spec.host}}')
@@ -24,13 +23,6 @@ DASHBOARD_ROUTE=https://$(oc get route rhods-dashboard -n redhat-ods-application
 WORKBENCH_NAME="my-workbench"
 WORKBENCH_IMAGE="ic-workbench:2.1.2"
 PIPELINE_ENGINE="Tekton"
-
-for i in $(seq 1 $user_count);
-do
-
-# Construct dynamic variables
-USER_NAME="user$i"
-USER_PROJECT="user$i"
 
 echo "Generating and apply resources for $USER_NAME..."
 
@@ -131,6 +123,12 @@ spec:
       - args:
         - -ec
         - |-
+          echo -n "Waiting for minio-root-user to exist"
+          while [ -z "\$(oc get secret -n ic-shared-minio minio-root-user -oname 2>/dev/null)" ]; do
+            echo -n '.'
+            sleep 1
+          done; echo
+
           echo "Minio user: $MINIO_ROOT_USER"
           echo "Minio pass: $MINIO_ROOT_PASSWORD"
           echo "Internal service url: http://minio.ic-shared-minio.svc.cluster.local:9000/"
@@ -488,7 +486,7 @@ spec:
           echo "Workbench pod is running in $USER_PROJECT namespace"
       containers:
       - name: git-clone
-        image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-generic-data-science-notebook:1.2
+        image: image-registry.openshift-image-registry.svc:5000/openshift/tools:latest
         imagePullPolicy: IfNotPresent
         command: ["/bin/bash"]
         args:
@@ -497,7 +495,3 @@ spec:
           pod_name=\$(oc get pods --selector=app=$WORKBENCH_NAME -o jsonpath='{.items[0].metadata.name}') && oc exec \$pod_name -- git clone https://github.com/rh-aiservices-bu/parasol-insurance
       restartPolicy: Never
 EOF
-
-sleep 20
-
-done

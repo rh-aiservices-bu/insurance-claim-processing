@@ -1,18 +1,5 @@
 #!/bin/bash
-while true; do
-  echo "Creating an individual user..."
-  read -p "Please enter the username: " USER_NAME
-  read -p "Please enter the projectname: " PROJECT_NAME
-  echo ""
-
-  read -p "Is this correct? (y/n) " yn
-  case $yn in
-    [Yy]* ) break;;
-    [Nn]* ) ;;
-    * ) echo "Please answer yes or no.";;
-  esac
-done
-
+user_count=$(oc get namespaces | grep showroom | wc -l)
 
 MINIO_ROOT_USER=$(oc get secret minio-root-user -n ic-shared-minio -o template --template '{{.data.MINIO_ROOT_USER|base64decode}}')
 MINIO_ROOT_PASSWORD=$(oc get secret minio-root-user -n ic-shared-minio -o template --template '{{.data.MINIO_ROOT_PASSWORD|base64decode}}')
@@ -23,6 +10,45 @@ DASHBOARD_ROUTE=https://$(oc get route rhods-dashboard -n redhat-ods-application
 WORKBENCH_NAME="my-workbench"
 WORKBENCH_IMAGE="ic-workbench:2.1.2"
 PIPELINE_ENGINE="Tekton"
+projects_without_running_pods=()
+
+for i in $(seq 1 $user_count);
+do
+
+# Construct dynamic variables
+USER_NAME="user$i"
+USER_PROJECT="user$i"
+
+if [ -z "$(oc get pods -n $USER_PROJECT -l app=$WORKBENCH_NAME -o custom-columns=STATUS:.status.phase --no-headers | grep Running)" ]; then
+    echo "$USER_PROJECT workbench is not running."
+    projects_without_running_pods+=("$USER_PROJECT")
+fi
+
+done
+
+while true; do
+  read -p "Do you want to recreate the above users? (y/n) " yn
+    case $yn in
+      [Yy]* ) break;;
+      [Nn]* ) exit;;
+      * ) echo "Please answer yes or no.";;
+    esac
+done
+
+
+for USER_PROJECT in "${projects_without_running_pods[@]}"; 
+do
+
+# Assume username and user project is the same
+USER_NAME=$USER_PROJECT
+
+echo "Deleting user $USER_PROJECT..."
+oc delete project $USER_PROJECT
+echo "Waiting for project $USER_PROJECT to be deleted..."
+while oc get project "$USER_PROJECT" &> /dev/null; do
+  echo -n '.'
+  sleep 5
+done
 
 echo "Generating and apply resources for $USER_NAME..."
 
@@ -495,3 +521,5 @@ spec:
           pod_name=\$(oc get pods --selector=app=$WORKBENCH_NAME -o jsonpath='{.items[0].metadata.name}') && oc exec \$pod_name -- git clone https://github.com/rh-aiservices-bu/parasol-insurance
       restartPolicy: Never
 EOF
+
+done
