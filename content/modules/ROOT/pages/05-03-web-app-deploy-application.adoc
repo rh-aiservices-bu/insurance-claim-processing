@@ -107,6 +107,8 @@ EOF
 
 - Wait for the application to be fully deployed and initialized. It will be the case when the two Jobs `db-init-job` and `populate-images` are completed (Completions: 1 of 1).
 
+Make sure you are in the right project (your username) and then check Jobs under `Administrator` -> `Storage`.
+
 [.bordershadow]
 image::05/jobs-completed.png[]
 
