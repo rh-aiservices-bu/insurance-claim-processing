@@ -1,15 +1,15 @@
 site:
-  title: "Streamlining insurance claims with OpenShift AI"
-  url: https://redhat-scholars.github.io/course-template
+  title: "Parasol Insurance AI Workshop"
+  url: https://github.com/rh-aiservices-bu/parasol-insurance
   start_page: modules::index.adoc
 
 ui:
   bundle:
-    url: ./content/docs-ui/ui-bundle.zip
+    url: https://github.com/rhpds/showroom_theme_summit/releases/download/rh-1-2025/ui-bundle.zip
   supplemental_files: ./content/supplemental-ui
 
 content:
-  edit_url: 'https://github.com/rh-aiservices-bu/insurance-claim-processing/edit/dev/{path}'
+  edit_url: 'https://github.com/rh-aiservices-bu/parasol-insurance/edit/dev-rhoai-2.13/{path}'
   sources:
     - url: ./
       start_path: content
